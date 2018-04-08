@@ -1,0 +1,18 @@
+{
+  "rulesDirectory": ["tslint-plugin-prettier"],
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  "jsRules": {},
+  "rules": {
+    "prettier": [true, { "singleQuote": true, "printWidth": 100 }],
+    "arrow-return-shorthand": true,
+    "interface-name": [true, "never-prefix"],
+    "object-literal-sort-keys": false,
+    "ordered-imports": false,
+    "no-string-literal": false,
+    "no-unused-expression": true,
+    "no-unused-variable": true,
+    "no-unused-imports": true
+  },
+  "rulesDirectory": []
+}

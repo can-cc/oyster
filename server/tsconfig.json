@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./built",
+    "baseUrl": "./",
+    "allowJs": true,
+    "target": "es5",
+    "lib": ["es2015", "es2017", "dom"], // dom lib for rxjs dom and ajx error
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true
+  },
+  "include": ["./src/**/*"]
+}
