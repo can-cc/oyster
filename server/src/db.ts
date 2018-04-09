@@ -11,16 +11,12 @@ export const knex = require('knex')({
 
 const createAtomTable = knex.schema.createTableIfNotExists('atom', table => {
   table.increments();
-  table.string('identity');
   table.string('title');
   table.string('link');
-  table.string('summary');
   table.string('content');
   table.string('published');
-  table.string('updated');
   table.string('author');
   table.boolean('isRead');
-  table.timestamps();
 });
 
 export const createTablesIfNotExsits = async () => {
