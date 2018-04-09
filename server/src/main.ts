@@ -1,11 +1,17 @@
-import startFetchFeed from 'feedjs';
-import express from 'express';
-import path from 'path';
-import { getAtoms, createTablesIfNotExsits, insertToAtom, makeAtomRead } from './db';
-import colors from 'colors';
-import fs from 'fs';
+import * as express from 'express';
+import * as path from 'path';
+import * as colors from 'colors';
+import * as fs from 'fs';
+import * as yaml from 'js-yaml';
+import { createTablesIfNotExsits } from './db';
+import { getAtoms, insertToAtom, makeAtomRead } from './dao';
+import { fetchFeedSources } from './fetcher';
+const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
 
-const feedsFilePath = path.join(process.env.HOME, '.feeds');
+const feedsFileName = 'feeds.yml';
+const feedsFilePath = path.join(__dirname, '../../', feedsFileName);
 
 function checkFeedFileExist() {
   if (!fs.existsSync(feedsFilePath)) {
@@ -15,15 +21,37 @@ function checkFeedFileExist() {
 }
 
 function getFeeds() {
-  return JSON.parse(fs.readFileSync(feedsFilePath, 'utf8'));
+  const feeds = yaml.safeLoad(fs.readFileSync(feedsFilePath, 'utf8')).feeds;
+  return feeds;
 }
+
+const typeDefs = `
+  type Query { feeds: [Feed] }
+  type Feed { title: String, author: String }
+`;
+
+// The resolvers
+const resolvers = {
+  Query: {
+    feeds: async (root, args, context) => {
+      const atoms = await getAtoms(100);
+      return atoms;
+    }
+  }
+};
+
+// Put together a schema
+const schema = makeExecutableSchema({
+  typeDefs,
+  resolvers
+});
 
 async function main() {
   checkFeedFileExist();
   await createTablesIfNotExsits();
 
   const feedSources = getFeeds();
-  startFetchFeed(feedSources, async (error, feeds) => {
+  fetchFeedSources(feedSources, async (error, feeds) => {
     if (error) {
       console.error(error);
     } else {
@@ -33,10 +61,6 @@ async function main() {
 
   const app = express();
 
-  app.get('/alive', (req, res) => {
-    res.send('I am alive');
-  });
-
   app.get('/new-unread/:number', async (req, res) => {
     const atoms = await getAtoms(req.params.number);
     res.json(atoms.reverse());
@@ -44,11 +68,16 @@ async function main() {
 
   app.post('/unread/:id', async (req, res) => {
     await makeAtomRead(req.params.id);
-    res.send('ok'); // NOTE: 操他妈的，一定要返回点东西emacs那个狗逼web插件才能把进程关掉，调死爸爸了
+    res.send('ok');
   });
 
+  app.use('/api/v1/graphql', bodyParser.json(), graphqlExpress({ schema }));
+
+  // GraphiQL, a visual editor for queries
+  app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
+
   app.listen(7788);
-  console.log(colors.green(`server start at http://127.0.0.1:7788`));
+  console.log(colors.green(`server start at http://localhost:7788`));
 }
 
 main();

@@ -12,7 +12,9 @@
     "no-string-literal": false,
     "no-unused-expression": true,
     "no-unused-variable": true,
-    "no-unused-imports": true
+    "no-unused-imports": true,
+    "no-var-requires": false,
+    "no-console": false
   },
   "rulesDirectory": []
 }
