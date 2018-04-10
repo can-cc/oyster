@@ -1,6 +1,7 @@
 import * as md5 from 'md5';
 import * as xml2js from 'xml2js';
 import * as fetch from 'isomorphic-fetch';
+import { logger } from './logger';
 
 import { parseFeed } from './parser';
 import * as Rx from 'rxjs';
@@ -10,6 +11,7 @@ const loop = sources => {
   return Rx.Observable.interval(1000).mergeMap(() =>
     Rx.Observable.of(...sources)
       .concatMap(async source => {
+        logger.info(`fetch ${source.label}`);
         const feedRawData = await (await fetch(source.url)).text();
         return { ...source, feedRawData };
       })
@@ -21,8 +23,8 @@ const loop = sources => {
         hashMap[feed.url] = hash;
         return true;
       })
-      .catch(error => {
-        console.error(`fetch failure : ${error.message}`); // TODO 如何向外抛出错误
+      .catch((error, f) => {
+        console.error(f, `fetch failure : ${error.message}`);
         return Rx.Observable.of(null);
       })
   );

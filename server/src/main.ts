@@ -34,6 +34,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     feeds: async (root, args, context) => {
+      console.log(args);
       const atoms = await getAtoms(100);
       return atoms;
     }
