@@ -9,5 +9,8 @@
     "moduleResolution": "node",
     "experimentalDecorators": true
   },
-  "include": ["./src/**/*"]
+  "include": ["./src/**/*"],
+  "files": [
+    "./typing.d.ts"
+  ]
 }

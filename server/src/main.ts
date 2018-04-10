@@ -51,12 +51,8 @@ async function main() {
   await createTablesIfNotExsits();
 
   const feedSources = getFeeds();
-  fetchFeedSources(feedSources, async (error, feeds) => {
-    if (error) {
-      console.error(error);
-    } else {
-      await Promise.all(feeds.map(insertToAtom));
-    }
+  fetchFeedSources(feedSources, (feeds: any[]) => {
+    Promise.all(feeds.map(insertToAtom)).then();
   });
 
   const app = express();

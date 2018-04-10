@@ -12,6 +12,7 @@ export const knex = require('knex')({
 const createAtomTable = knex.schema.createTableIfNotExists('atom', table => {
   table.increments();
   table.string('title');
+  table.string('label');
   table.string('link');
   table.string('content');
   table.string('published');
