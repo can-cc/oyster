@@ -3,12 +3,13 @@ import * as path from 'path';
 import * as colors from 'colors';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
+import * as bodyParser from 'body-parser';
+
 import { createTablesIfNotExsits } from './db';
 import { getAtoms, insertToAtom, makeAtomRead } from './dao';
 import { fetchFeedSources } from './fetcher';
-const bodyParser = require('body-parser');
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
 
 const feedsFileName = 'feeds.yml';
 const feedsFilePath = path.join(__dirname, '../../', feedsFileName);
@@ -26,17 +27,15 @@ function getFeeds() {
 }
 
 const typeDefs = `
-  type Query { feeds: [Feed] }
-  type Feed { title: String, author: String }
+  type Query { feeds(limit: Int! offset: Int): [Feed] }
+  type Feed { title: String, author: String, content: String, published: Float, isRead: Boolean }
 `;
 
 // The resolvers
 const resolvers = {
   Query: {
-    feeds: async (root, args, context) => {
-      console.log(args);
-      const atoms = await getAtoms(100);
-      return atoms;
+    feeds: async (root, args: { limit: number; offset?: number }, context) => {
+      return await getAtoms(args.limit, args.offset);
     }
   }
 };
@@ -62,8 +61,8 @@ async function main() {
 
   const app = express();
 
-  app.get('/new-unread/:number', async (req, res) => {
-    const atoms = await getAtoms(req.params.number);
+  app.get('/new-unread/:limit', async (req, res) => {
+    const atoms = await getAtoms(req.params.limit);
     res.json(atoms.reverse());
   });
 
@@ -74,7 +73,6 @@ async function main() {
 
   app.use('/api/v1/graphql', bodyParser.json(), graphqlExpress({ schema }));
 
-  // GraphiQL, a visual editor for queries
   app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
 
   app.listen(7788);

@@ -1,3 +1,13 @@
-<p>
-  feed-list works!
-</p>
+<mat-list>
+  <mat-list-item *ngFor="let feed of feeds">
+    <div class="label" matListAvatar>{{feed}}</div>
+    <h3 matLine> {{feed.title}} </h3>
+    <p matLine>
+      <span>{{feed.author}}</span>
+    </p>
+
+    <div matLine class="feed-detail">
+      <div [innerHtml]="feed.content | trustHtml"></div>
+    </div>
+  </mat-list-item>
+</mat-list>

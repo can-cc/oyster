@@ -8,7 +8,7 @@ import * as Rx from 'rxjs';
 
 const loop = sources => {
   const hashMap = new Map();
-  return Rx.Observable.interval(1000).mergeMap(() =>
+  return Rx.Observable.interval(50000).mergeMap(() =>
     Rx.Observable.of(...sources)
       .concatMap(async source => {
         logger.info(`fetch ${source.label}`);
@@ -24,7 +24,7 @@ const loop = sources => {
         return true;
       })
       .catch((error, f) => {
-        console.error(f, `fetch failure : ${error.message}`);
+        logger.error(`fetch failure : ${error.message}`);
         return Rx.Observable.of(null);
       })
   );
@@ -43,5 +43,5 @@ export const fetchFeedSources = (feeds, listenFn) => {
       return listenFn(error);
     }
   });
-  return () => subscription.unsubscribe(); // TODO: next complete
+  return () => subscription.unsubscribe();
 };

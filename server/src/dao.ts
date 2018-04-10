@@ -18,10 +18,11 @@ export const makeAtomRead = id => {
     });
 };
 
-export const getAtoms = async (count: number) => {
+export const getAtoms = async (limit: number, offset: number = 0) => {
   return knex('atom')
     .where({ isRead: null })
     .select('*')
-    .limit(count)
-    .orderBy('created_at', 'desc');
+    .limit(limit)
+    .offset(offset)
+    .orderBy('id', 'desc');
 };

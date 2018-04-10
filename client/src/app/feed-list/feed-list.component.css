@@ -1,0 +1,15 @@
+.mat-list-item {
+  height: auto !important;
+
+  .label {
+    
+  }
+}
+
+.feed-detail {
+  opacity: 0.9;
+  overflow: hidden;
+  border: 1px solid #999;
+}
+
+
