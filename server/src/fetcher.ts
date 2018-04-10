@@ -5,9 +5,9 @@ import * as Rx from 'rxjs';
 import { parseFeed } from './parser';
 import { logger } from './logger';
 
-const loop = (sources: FeedSource[]): Rx.Observable<{} | FeedResult> => {
+const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedResult> => {
   const hashMap = new Map();
-  return Rx.Observable.interval(50000)
+  return Rx.Observable.interval(interval || 5 * 60 * 1000)
     .startWith(0)
     .concatMap(() =>
       Rx.Observable.of(...sources)
@@ -32,10 +32,10 @@ const loop = (sources: FeedSource[]): Rx.Observable<{} | FeedResult> => {
 };
 
 export const fetchFeedSources = (
-  feedSources: FeedSource[],
+  feedSetting: FeedSetting,
   handleFeeds: (feeds: any[]) => void
 ): (() => void) => {
-  const feed$ = loop(feedSources);
+  const feed$ = loop(feedSetting.feeds, feedSetting.fetchinginterval);
   const subscription = feed$.subscribe(
     async (result: { label: string; url: string; feedRawData: string }) => {
       try {

@@ -21,8 +21,8 @@ function checkFeedFileExist() {
   }
 }
 
-function getFeeds() {
-  const feeds = yaml.safeLoad(fs.readFileSync(feedsFilePath, 'utf8')).feeds;
+function getFeedSetting() {
+  const feeds = yaml.safeLoad(fs.readFileSync(feedsFilePath, 'utf8'));
   return feeds;
 }
 
@@ -50,8 +50,8 @@ async function main() {
   checkFeedFileExist();
   await createTablesIfNotExsits();
 
-  const feedSources = getFeeds();
-  fetchFeedSources(feedSources, (feeds: any[]) => {
+  const feedSetting = getFeedSetting();
+  fetchFeedSources(feedSetting, (feeds: any[]) => {
     Promise.all(feeds.map(insertToAtom)).then();
   });
 
