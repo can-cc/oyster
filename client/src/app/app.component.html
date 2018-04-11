@@ -1,6 +1,12 @@
 <app-category></app-category>
 
-<app-feed-list [feeds]="feeds" (select)="onFeedListSelect($event)"></app-feed-list>
+<app-feed-list
+  [feeds]="feeds"
+  (select)="onFeedListSelect($event)"
+  infiniteScroll
+  [infiniteScrollDistance]="3"
+  [scrollWindow]="false"
+  (scrolled)="queryFeeds()"
+></app-feed-list>
 
 <app-article-preview [feed]="selectedFeed"></app-article-preview>
-

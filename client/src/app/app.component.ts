@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ApolloQueryResult } from 'apollo-client';
@@ -9,17 +9,25 @@ import { ApolloQueryResult } from 'apollo-client';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  @ViewChild('list') list;
   feeds: Feed[] = [];
   selectedFeed: Feed;
+  pageLimit = 20;
+  offset = 0;
 
   constructor(private apollo: Apollo) {}
 
   ngOnInit() {
+    this.queryFeeds();
+  }
+
+  queryFeeds(): void {
     this.apollo
       .watchQuery({
         query: gql`
           query getFeeds($limit: Int!, $offset: Int) {
             feeds(limit: $limit, offset: $offset) {
+              id
               title
               author
               link
@@ -31,15 +39,22 @@ export class AppComponent implements OnInit {
           }
         `,
         variables: {
-          limit: 20
+          limit: this.pageLimit,
+          offset: this.offset
         }
       })
       .valueChanges.subscribe(
-        ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) => (this.feeds = data.feeds)
+        ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
+          (this.feeds = this.feeds.concat(data.feeds))
       );
+    this.offset += this.pageLimit;
   }
 
-  onFeedListSelect(feed: Feed) {
+  public resetOffset(): void {
+    this.offset = 0;
+  }
+
+  public onFeedListSelect(feed: Feed) {
     this.selectedFeed = feed;
   }
 }

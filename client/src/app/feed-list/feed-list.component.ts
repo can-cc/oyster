@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, ElementRef } from '@angular/core';
+import * as formatDistance from 'date-fns/formatDistance';
 
 @Component({
   selector: 'app-feed-list',
@@ -11,5 +12,17 @@ export class FeedListComponent implements OnInit {
 
   selectIndex: number;
 
+  constructor(private el: ElementRef) {
+    console.log(el);
+  }
+
   ngOnInit() {}
+
+  public calcPublishedDistance(time: number) {
+    return formatDistance(new Date(), new Date(time));
+  }
+
+  public trackByFeed(index: number, feed: Feed): number {
+    return feed.id;
+  }
 }

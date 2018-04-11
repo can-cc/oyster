@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ApolloModule, Apollo } from 'apollo-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { MatIconRegistry } from '@angular/material';
@@ -15,6 +16,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { TrustHtmlPipe } from './pipe/trust-html.pipe';
 import { CategoryComponent } from './category/category.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
+import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
+import { ColorService } from './color.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,8 @@ import { ArticlePreviewComponent } from './article-preview/article-preview.compo
     FeedListComponent,
     TrustHtmlPipe,
     CategoryComponent,
-    ArticlePreviewComponent
+    ArticlePreviewComponent,
+    ArticleAvatarComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +36,10 @@ import { ArticlePreviewComponent } from './article-preview/article-preview.compo
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    InfiniteScrollModule
   ],
-  providers: [],
+  providers: [ColorService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

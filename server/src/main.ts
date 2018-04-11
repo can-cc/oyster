@@ -28,7 +28,7 @@ function getFeedSetting() {
 
 const typeDefs = `
   type Query { feeds(limit: Int! offset: Int): [Feed] }
-  type Feed { title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
+  type Feed { id: Int, title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
 `;
 
 // The resolvers

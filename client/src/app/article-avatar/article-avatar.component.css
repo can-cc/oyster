@@ -1,0 +1,27 @@
+.article-avatar {
+  position: relative;
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.source-name {
+  width: 100%;
+  line-height: 80px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
