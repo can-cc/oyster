@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-feed-list',
@@ -8,28 +6,10 @@ import gql from 'graphql-tag';
   styleUrls: ['./feed-list.component.css']
 })
 export class FeedListComponent implements OnInit {
-  feeds: any[] = [];
+  @Input() feeds: Feed[];
+  @Output() select: EventEmitter<Feed> = new EventEmitter();
 
-  constructor(private apollo: Apollo) {}
+  selectIndex: number;
 
-  ngOnInit() {
-    this.apollo
-      .watchQuery({
-        query: gql`
-          query getFeeds($limit: Int!, $offset: Int) {
-            feeds(limit: $limit, offset: $offset) {
-              title
-              author
-              content
-              published
-              isRead
-            }
-          }
-        `,
-        variables: {
-          limit: 20
-        }
-      })
-      .valueChanges.subscribe(({ data }: any) => (this.feeds = data.feeds));
-  }
+  ngOnInit() {}
 }

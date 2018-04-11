@@ -1,16 +1,19 @@
 import { knex } from './db';
+import { QueryBuilder } from 'knex';
+import { logger } from './logger';
 
-export const insertToAtom = async data => {
-  const exist = await knex('atom').where({ title: data.title });
+export const saveFeed = async (feed: Feed): Promise<QueryBuilder | void> => {
+  const exist = await knex('atom').where({ title: feed.title });
   if (exist.length) {
     return Promise.resolve();
   }
+  logger.info(`saving feed.  title: ${feed.title}`);
   return knex('atom').insert({
-    ...data
+    ...feed
   });
 };
 
-export const makeAtomRead = id => {
+export const markFeedRead = id => {
   return knex('atom')
     .where({ id })
     .update({
@@ -18,7 +21,7 @@ export const makeAtomRead = id => {
     });
 };
 
-export const getAtoms = async (limit: number, offset: number = 0) => {
+export const getAtoms = async (limit: number, offset: number = 0): Promise<QueryBuilder> => {
   return knex('atom')
     .where({ isRead: null })
     .select('*')

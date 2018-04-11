@@ -1,0 +1,5 @@
+:host {
+  flex-shrink: 0;
+  width: 130px;
+  flex-basis: 1;
+}

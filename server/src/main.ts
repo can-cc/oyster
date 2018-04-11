@@ -8,7 +8,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 import * as bodyParser from 'body-parser';
 
 import { createTablesIfNotExsits } from './db';
-import { getAtoms, insertToAtom, makeAtomRead } from './dao';
+import { getAtoms, markFeedRead, saveFeed } from './dao';
 import { fetchFeedSources } from './fetcher';
 
 const feedsFileName = 'feeds.yml';
@@ -28,7 +28,7 @@ function getFeedSetting() {
 
 const typeDefs = `
   type Query { feeds(limit: Int! offset: Int): [Feed] }
-  type Feed { title: String, author: String, content: String, published: Float, isRead: Boolean }
+  type Feed { title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
 `;
 
 // The resolvers
@@ -51,8 +51,8 @@ async function main() {
   await createTablesIfNotExsits();
 
   const feedSetting = getFeedSetting();
-  fetchFeedSources(feedSetting, (feeds: any[]) => {
-    Promise.all(feeds.map(insertToAtom)).then();
+  fetchFeedSources(feedSetting, async (feeds: any[]) => {
+    await Promise.all(feeds.map(saveFeed));
   });
 
   const app = express();
@@ -63,7 +63,7 @@ async function main() {
   });
 
   app.post('/unread/:id', async (req, res) => {
-    await makeAtomRead(req.params.id);
+    await markFeedRead(req.params.id);
     res.send('ok');
   });
 

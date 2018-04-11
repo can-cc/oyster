@@ -41,7 +41,7 @@ export const fetchFeedSources = (
       try {
         const feeds = await parseFeed(result.feedRawData);
         logger.info(`parse "${result.label} feed raw data susscess"; lenght = ${feeds.length}`);
-        return handleFeeds(feeds);
+        return handleFeeds(feeds.map(feed => ({ ...feed, source: result.label })));
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
       }

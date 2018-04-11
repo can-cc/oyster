@@ -1,0 +1,21 @@
+:host {
+  flex: 1;
+  padding: 6px 18px;
+  overflow: auto;
+}
+
+.title-link {
+  display: inline-block;
+}
+.title-link button {
+  white-space: normal;
+}
+.title-link h2 {
+  color: black;
+  font-weight: bold;
+}
+
+.content ::ng-deep * {
+  max-width: 100%;
+  white-space: pre-wrap;
+}

@@ -1,9 +1,26 @@
+:host {
+  width: 300px;
+  height: 100%;
+  overflow: auto;
+  flex-shrink: 0;
+  flex-basis: 1;
+  border: 1px solid #eee;
+  border-bottom-width: 0;
+  border-top-width: 0;
+}
+
+.mat-nav-list {
+  padding: 8px 0 20px;
+}
+
 .mat-list-item {
   height: auto !important;
+  border-bottom: 1px solid #eee;
+  box-sizing: border-box;
+}
 
-  .label {
-    
-  }
+.mat-list-item:last-child {
+  border-bottom: none;
 }
 
 .feed-detail {
