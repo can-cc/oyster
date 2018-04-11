@@ -1,5 +1,4 @@
 import * as md5 from 'md5';
-import * as xml2js from 'xml2js';
 import * as fetch from 'isomorphic-fetch';
 import * as Rx from 'rxjs';
 import { parseFeed } from './parser';

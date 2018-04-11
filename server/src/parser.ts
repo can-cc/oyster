@@ -1,6 +1,5 @@
 import * as moment from 'moment';
 import * as R from 'ramda';
-import * as xml2js from 'xml2js';
 import * as xml2json from 'xml2json';
 
 const parseATOM = (entrys: any[], feed): Feed[] =>

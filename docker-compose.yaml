@@ -1,0 +1,18 @@
+version: "3.2"
+services:
+  nginx:
+    restart: "no"
+    build: ./client/
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt:/etc/letsencrypt
+    links:
+      - backend:backend
+  backend:
+    restart: "no"
+    build: ./server/
+    command: >
+      sh -c "node built/main.js"
+  
