@@ -21,3 +21,8 @@ declare interface Feed {
   author: string;
   published: number;
 }
+
+declare interface VapidKeys {
+  publicKey: string;
+  privateKey: string;
+}

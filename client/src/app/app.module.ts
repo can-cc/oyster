@@ -1,23 +1,29 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { ApolloModule, Apollo } from 'apollo-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { ServiceWorkerModule } from '@angular/service-worker';
+
 import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloModule, Apollo } from 'apollo-angular';
+
 import { MatIconRegistry } from '@angular/material';
 
-import { AppComponent } from './app.component';
-import { FeedListComponent } from './feed-list/feed-list.component';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+
+import { AppComponent } from './app.component';
+import { FeedListComponent } from './feed-list/feed-list.component';
 import { TrustHtmlPipe } from './pipe/trust-html.pipe';
 import { CategoryComponent } from './category/category.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
 import { ColorService } from './color.service';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -30,14 +36,15 @@ import { ColorService } from './color.service';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule, // provides HttpClient for HttpLink
+    HttpClientModule,
     ApolloModule,
     HttpLinkModule,
     BrowserAnimationsModule,
     MatListModule,
     MatIconModule,
     MatButtonModule,
-    InfiniteScrollModule
+    InfiniteScrollModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [ColorService],
   bootstrap: [AppComponent]

@@ -14,6 +14,9 @@ import { fetchFeedSources } from './fetcher';
 const feedsFileName = 'feeds.yml';
 const feedsFilePath = path.join(__dirname, '../../', feedsFileName);
 
+import './web-push';
+import { startWebPush } from './web-push';
+
 function checkFeedFileExist() {
   if (!fs.existsSync(feedsFilePath)) {
     console.log('check your `~/.feeds` file');
@@ -50,6 +53,8 @@ async function main() {
   checkFeedFileExist();
   await createTablesIfNotExsits();
 
+  startWebPush();
+
   const feedSetting = getFeedSetting();
   fetchFeedSources(feedSetting, async (feeds: any[]) => {
     await Promise.all(feeds.map(saveFeed));
@@ -65,6 +70,10 @@ async function main() {
   app.post('/unread/:id', async (req, res) => {
     await markFeedRead(req.params.id);
     res.send('ok');
+  });
+
+  app.post('/webpush/subscribe', async (req, res) => {
+    console.log(req.body);
   });
 
   app.use('/api/v1/graphql', bodyParser.json(), graphqlExpress({ schema }));

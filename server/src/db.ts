@@ -20,6 +20,19 @@ const createAtomTable = knex.schema.createTableIfNotExists('atom', table => {
   table.boolean('isRead');
 });
 
+const createVapidKeysTable = knex.schema.createTableIfNotExists('vapidkey', table => {
+  table.string('publicKey');
+  table.string('privateKey');
+});
+
+const createWebPushSubscribersTable = knex.schema.createTableIfNotExists(
+  'webpush_subscribers',
+  table => {
+    table.increments();
+    table.string('url');
+  }
+);
+
 export const createTablesIfNotExsits = async () => {
-  return await Promise.all([createAtomTable]).then();
+  return await Promise.all([createAtomTable, createVapidKeysTable]).then();
 };
