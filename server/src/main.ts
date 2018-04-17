@@ -8,7 +8,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 import * as bodyParser from 'body-parser';
 
 import { createTablesIfNotExsits } from './db';
-import { getAtoms, markFeedRead, saveFeed } from './dao';
+import { getAtoms, markFeedRead, saveFeed, getVapidKey } from './dao';
 import { fetchFeedSources } from './fetcher';
 
 const feedsFileName = 'feeds.yml';
@@ -67,13 +67,26 @@ async function main() {
     res.json(atoms.reverse());
   });
 
+  app.get('/api/client/config', async (req, res) => {
+    const vapidPublicKey: string = (await getVapidKey()).publicKey;
+    res.json({ vapidPublicKey });
+  });
+
   app.post('/unread/:id', async (req, res) => {
     await markFeedRead(req.params.id);
     res.send('ok');
   });
 
-  app.post('/webpush/subscribe', async (req, res) => {
+  app.post('/api/webpush/subscribe', async (req, res) => {
     console.log(req.body);
+    var body = [];
+    req.on('data', chunk => body.push(chunk));
+    req.on('end', () => {
+      body = JSON.parse(Buffer.concat(body).toString());
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ msg: `I've got the endpoint: ${body.endpoint}` }));
+      console.log(body);
+    });
   });
 
   app.use('/api/v1/graphql', bodyParser.json(), graphqlExpress({ schema }));

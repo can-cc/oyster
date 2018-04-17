@@ -4,3 +4,10 @@
   height: 100%;
   overflow: hidden;
 }
+
+
+app-push-control {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}

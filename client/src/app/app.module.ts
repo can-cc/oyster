@@ -13,6 +13,7 @@ import { MatIconRegistry } from '@angular/material';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -21,9 +22,13 @@ import { TrustHtmlPipe } from './pipe/trust-html.pipe';
 import { CategoryComponent } from './category/category.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
-import { ColorService } from './color.service';
 
 import { environment } from '../environments/environment';
+import { PushControlComponent } from './push-control/push-control.component';
+
+import { WebPushService } from './web-push.service';
+import { ColorService } from './color.service';
+import { ConfigService } from './config.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +37,8 @@ import { environment } from '../environments/environment';
     TrustHtmlPipe,
     CategoryComponent,
     ArticlePreviewComponent,
-    ArticleAvatarComponent
+    ArticleAvatarComponent,
+    PushControlComponent
   ],
   imports: [
     BrowserModule,
@@ -43,10 +49,12 @@ import { environment } from '../environments/environment';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatSnackBarModule,
     InfiniteScrollModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('/web-push-service-worker.js')
   ],
-  providers: [ColorService],
+  providers: [ColorService, WebPushService, ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -64,6 +72,11 @@ export class AppModule {
     iconRegistry.addSvgIcon(
       'track-change',
       sanitizer.bypassSecurityTrustResourceUrl('assets/ic_track_changes.svg')
+    );
+
+    iconRegistry.addSvgIcon(
+      'notifications',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/ic_notifications.svg')
     );
   }
 }
