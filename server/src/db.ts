@@ -9,30 +9,30 @@ export const knex = require('knex')({
   useNullAsDefault: true
 });
 
-const createAtomTable = knex.schema.createTableIfNotExists('atom', table => {
-  table.increments();
-  table.string('title');
-  table.string('source');
-  table.string('link');
-  table.string('content');
-  table.string('published');
-  table.string('author');
-  table.boolean('isRead');
-});
+// const createAtomTable = knex.schema.createTableIfNotExists('atom', table => {
+//   table.increments();
+//   table.string('title');
+//   table.string('source');
+//   table.string('link');
+//   table.string('content');
+//   table.string('published');
+//   table.string('author');
+//   table.boolean('isRead');
+// });
 
-const createVapidKeysTable = knex.schema.createTableIfNotExists('vapidkey', table => {
-  table.string('publicKey');
-  table.string('privateKey');
-});
+// const createVapidKeysTable = knex.schema.createTableIfNotExists('vapidkey', table => {
+//   table.string('publicKey');
+//   table.string('privateKey');
+// });
 
-const createWebPushSubscribersTable = knex.schema.createTableIfNotExists(
-  'webpush_subscribers',
-  table => {
-    table.increments();
-    table.string('url');
-  }
-);
+// const createWebPushSubscribersTable = knex.schema.createTableIfNotExists(
+//   'webpush_subscribers',
+//   table => {
+//     table.increments();
+//     table.string('url');
+//   }
+// );
 
-export const createTablesIfNotExsits = async () => {
-  return await Promise.all([createAtomTable, createVapidKeysTable]).then();
-};
+// export const createTablesIfNotExsits = async () => {
+//   return await Promise.all([createAtomTable, createVapidKeysTable]).then();
+// };

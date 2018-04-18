@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
 import { WebPushService } from '../web-push.service';
 import { ConfigService } from '../config.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { PingDialogComponent } from './ping-dialog/ping-dialog.component';
 
 @Component({
   selector: 'app-push-control',
@@ -14,7 +16,8 @@ export class PushControlComponent implements OnInit {
   constructor(
     private configService: ConfigService,
     private webPushService: WebPushService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit() {}
@@ -52,5 +55,11 @@ export class PushControlComponent implements OnInit {
     } catch (error) {
       console.error(error);
     }
+  }
+
+  public ping(): void {
+    this.dialog.open(PingDialogComponent, {
+      width: '250px'
+    });
   }
 }

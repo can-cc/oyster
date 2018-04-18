@@ -1,6 +1,6 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -8,12 +8,13 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloModule, Apollo } from 'apollo-angular';
 
-import { MatIconRegistry } from '@angular/material';
+import { MatIconRegistry, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -29,6 +30,8 @@ import { PushControlComponent } from './push-control/push-control.component';
 import { WebPushService } from './web-push.service';
 import { ColorService } from './color.service';
 import { ConfigService } from './config.service';
+import { AuthInterceptor } from './auth.interceptor';
+import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +41,8 @@ import { ConfigService } from './config.service';
     CategoryComponent,
     ArticlePreviewComponent,
     ArticleAvatarComponent,
-    PushControlComponent
+    PushControlComponent,
+    PingDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -50,11 +54,22 @@ import { ConfigService } from './config.service';
     MatIconModule,
     MatButtonModule,
     MatSnackBarModule,
+    MatDialogModule,
     InfiniteScrollModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('/web-push-service-worker.js')
   ],
-  providers: [ColorService, WebPushService, ConfigService],
+  providers: [
+    ColorService,
+    WebPushService,
+    ConfigService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
@@ -73,6 +88,8 @@ export class AppModule {
       'track-change',
       sanitizer.bypassSecurityTrustResourceUrl('assets/ic_track_changes.svg')
     );
+
+    iconRegistry.addSvgIcon('send', sanitizer.bypassSecurityTrustResourceUrl('assets/ic_send.svg'));
 
     iconRegistry.addSvgIcon(
       'notifications',

@@ -1,6 +1,7 @@
 import { knex } from './db';
 import { QueryBuilder } from 'knex';
 import { logger } from './logger';
+import { subscribeOn } from 'rxjs/operator/subscribeOn';
 
 export const saveFeed = async (feed: Feed): Promise<QueryBuilder | void> => {
   const exist = await knex('atom').where({ title: feed.title });
@@ -43,8 +44,8 @@ export const getVapidKey = async (): Promise<VapidKeys> => {
   return (await knex('vapidkey').select('*'))[0];
 };
 
-export const saveWebpushSubscriber = async (url: string): Promise<void> => {
-  return await knex('webpush_subscribers').insert({ url });
+export const saveWebpushSubscription = async (subscription: WebPushSubscription): Promise<void> => {
+  return await knex('webpush_subscribers').insert({ serialization: JSON.stringify(subscription) });
 };
 
 export const getWebpushSubscribers = async (): Promise<QueryBuilder> => {

@@ -26,3 +26,12 @@ declare interface VapidKeys {
   publicKey: string;
   privateKey: string;
 }
+
+declare interface WebPushSubscription {
+  endpoint: string;
+  expirationTime: string | null;
+  keys: {
+    p256dh: string;
+    auth: string;
+  };
+}
