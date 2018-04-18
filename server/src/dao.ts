@@ -4,14 +4,15 @@ import { logger } from './logger';
 import { subscribeOn } from 'rxjs/operator/subscribeOn';
 
 export const saveFeed = async (feed: Feed): Promise<QueryBuilder | void> => {
-  const exist = await knex('atom').where({ title: feed.title });
-  if (exist.length) {
-    return Promise.resolve();
-  }
   logger.info(`saving feed.  title: ${feed.title}`);
   return knex('atom').insert({
     ...feed
   });
+};
+
+export const isFeedExist = async (feed: Feed): Promise<boolean> => {
+  const cols = await knex('atom').where({ title: feed.title });
+  return !!cols.length;
 };
 
 export const markFeedRead = id => {

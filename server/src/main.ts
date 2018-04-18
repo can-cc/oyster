@@ -5,7 +5,7 @@ import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as morgan from 'morgan';
 
-import { getAtoms, markFeedRead, saveFeed, getVapidKey } from './dao';
+import { getAtoms, markFeedRead, saveFeed, getVapidKey, isFeedExist } from './dao';
 import { fetchFeedSources } from './fetcher';
 
 const feedsFileName = 'feeds.yml';
@@ -57,10 +57,31 @@ async function main() {
 
   setupWebPush();
 
-  const feedSetting = getFeedSetting();
-  fetchFeedSources(feedSetting, async (feeds: any[]) => {
-    await Promise.all(feeds.map(saveFeed));
-  });
+  const feedSetting: FeedSetting = getFeedSetting();
+
+  try {
+    fetchFeedSources(feedSetting, async (feeds: any[]) => {
+      await Promise.all(
+        feeds.map(async (feed: Feed): Promise<void> => {
+          if (!await isFeedExist(feed)) {
+            await saveFeed(feed);
+            await Promise.all(
+              webPushService.getSubscribers().map((subscription: WebPushSubscription): Promise<
+                void
+              > => {
+                return sendNotification(subscription, {
+                  title: feed.title,
+                  msg: feed.content
+                });
+              })
+            );
+          }
+        })
+      );
+    });
+  } catch (error) {
+    logger.error(error);
+  }
 
   const app = express();
 

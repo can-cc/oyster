@@ -35,3 +35,8 @@ declare interface WebPushSubscription {
     auth: string;
   };
 }
+
+declare interface WebPushNotification {
+  title: string;
+  msg: string;
+}
