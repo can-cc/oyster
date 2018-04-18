@@ -10,12 +10,10 @@ export const setupWebPush = async () => {
   }
   const vapidKeys = await getVapidKey();
 
+  // NOTE replace the email
   webpush.setVapidDetails('mailto:octopus@octopus.com', vapidKeys.publicKey, vapidKeys.privateKey);
 };
 
-export const sendNotification = async (
-  subscription: WebPushSubscription,
-  params: any
-): Promise<void> => {
-  await webpush.sendNotification(subscription, params, {});
+export const sendNotification = (subscription: WebPushSubscription, params: any): Promise<void> => {
+  return webpush.sendNotification(subscription, JSON.stringify(params));
 };

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { WebPushService } from '../web-push.service';
 import { ConfigService } from '../config.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { PingDialogComponent } from './ping-dialog/ping-dialog.component';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-push-control',
@@ -58,8 +59,15 @@ export class PushControlComponent implements OnInit {
   }
 
   public ping(): void {
-    this.dialog.open(PingDialogComponent, {
-      width: '250px'
-    });
+    const dialogRef: MatDialogRef<PingDialogComponent, string> = this.dialog.open(
+      PingDialogComponent,
+      {
+        width: '250px'
+      }
+    );
+    dialogRef
+      .afterClosed()
+      .pipe(mergeMap(this.webPushService.pingNotification))
+      .subscribe();
   }
 }

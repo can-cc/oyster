@@ -19,9 +19,18 @@ class WebPushService {
   }
 
   private async loadSubscribes(): Promise<void> {
-    this.subscribers = (await getWebpushSubscribers()).map((serialization: string) => {
-      return JSON.parse(serialization);
-    });
+    try {
+      this.subscribers = this.subscribers.concat(
+        (await getWebpushSubscribers())
+          .map(col => col.serialization)
+          .map((serialization: string) => {
+            return JSON.parse(serialization);
+          })
+      );
+    } catch (error) {
+      logger.error(error);
+      throw error;
+    }
   }
 }
 

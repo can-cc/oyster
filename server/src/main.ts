@@ -4,9 +4,6 @@ import * as colors from 'colors';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as morgan from 'morgan';
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
-import * as bodyParser from 'body-parser';
 
 import { getAtoms, markFeedRead, saveFeed, getVapidKey } from './dao';
 import { fetchFeedSources } from './fetcher';
@@ -14,11 +11,14 @@ import { fetchFeedSources } from './fetcher';
 const feedsFileName = 'feeds.yml';
 const feedsFilePath = path.join(__dirname, '../../', feedsFileName);
 
-import './web-push';
 import { setupWebPush, sendNotification } from './web-push';
 import { authMiddle } from './middle/auth.middle';
 import { logger } from './logger';
+
 import webPushService from './service/web-push.service';
+
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
+const { makeExecutableSchema } = require('graphql-tools');
 
 function checkFeedFileExist() {
   if (!fs.existsSync(feedsFilePath)) {
@@ -54,7 +54,6 @@ const schema = makeExecutableSchema({
 
 async function main() {
   checkFeedFileExist();
-  // await createTablesIfNotExsits();
 
   setupWebPush();
 
@@ -66,54 +65,72 @@ async function main() {
   const app = express();
 
   app.use(morgan('tiny'));
+  app.use(require('body-parser').json());
   app.use(authMiddle);
 
   app.get('/new-unread/:limit', async (req, res) => {
-    const atoms = await getAtoms(req.params.limit);
-    res.json(atoms.reverse());
+    try {
+      const atoms = await getAtoms(req.params.limit);
+      res.json(atoms.reverse());
+    } catch (error) {
+      throw error;
+    }
   });
 
   app.get('/api/client/config', async (req, res) => {
-    const vapidPublicKey: string = (await getVapidKey()).publicKey;
-    res.json({ vapidPublicKey });
+    try {
+      const vapidPublicKey: string = (await getVapidKey()).publicKey;
+      res.json({ vapidPublicKey });
+    } catch (error) {
+      throw error;
+    }
   });
 
   app.post('/unread/:id', async (req, res) => {
-    await markFeedRead(req.params.id);
-    res.send('ok');
+    try {
+      await markFeedRead(req.params.id);
+      res.send('ok');
+    } catch (error) {
+      throw error;
+    }
   });
 
   app.post('/api/webpush/subscribe', (req, res) => {
-    const data = [];
-    req.on('data', chunk => data.push(chunk));
-    req.on('end', () => {
-      const subscription: WebPushSubscription = JSON.parse(Buffer.concat(data).toString())
-        .subscription;
-
+    try {
+      const subscription: WebPushSubscription = req.body.subscription;
       webPushService.addSubscription(subscription);
       res.status(204).send();
-    });
+    } catch (error) {
+      throw error;
+    }
   });
 
-  app.post('/api/webpush/ping', (req, res) => {
-    const { data }: { data: string } = req.body;
-    const icon = `img/${Math.floor(Math.random() * 3)}.png`;
-    const params = {
-      title: "You've got a push-notification!!",
-      msg: `Hi, this is message from server. It"s ${new Date().toLocaleString()} now. You can send any message, e.g. notification icons and so`,
-      icon
-    };
-    Promise.all(
-      webPushService.getSubscribers().map(subscription => {
-        return sendNotification(subscription, JSON.stringify(params));
-      })
-    );
-    res.status(204).send();
+  app.post('/api/webpush/ping', async (req, res) => {
+    try {
+      const { msg }: { msg: string } = req.body;
+      const params = {
+        title: "You've got a push-notification!!",
+        msg
+      };
+      await Promise.all(
+        webPushService.getSubscribers().map(subscription => {
+          return sendNotification(subscription, params);
+        })
+      );
+      res.status(204).send();
+    } catch (error) {
+      throw error;
+    }
   });
 
-  app.use('/api/v1/graphql', bodyParser.json(), graphqlExpress({ schema }));
+  app.use('/api/v1/graphql', graphqlExpress({ schema }));
 
   app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
+
+  app.use((err, req, res, next) => {
+    logger.error(err);
+    next(err);
+  });
 
   app.listen(7788);
   console.log(colors.green(`server start at http://localhost:7788`));

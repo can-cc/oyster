@@ -7,11 +7,9 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./ping-dialog.component.css']
 })
 export class PingDialogComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<PingDialogComponent>) {}
+  msg: string;
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
+  constructor(public dialogRef: MatDialogRef<PingDialogComponent>) {}
 
   ngOnInit() {}
 }

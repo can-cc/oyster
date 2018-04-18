@@ -1,5 +1,6 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -15,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -44,9 +47,12 @@ import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.comp
     PushControlComponent,
     PingDialogComponent
   ],
+  entryComponents: [PingDialogComponent],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
+    MatInputModule,
     ApolloModule,
     HttpLinkModule,
     BrowserAnimationsModule,
@@ -55,6 +61,8 @@ import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.comp
     MatButtonModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     InfiniteScrollModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('/web-push-service-worker.js')

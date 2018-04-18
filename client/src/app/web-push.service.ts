@@ -19,6 +19,10 @@ export class WebPushService {
     return outputArray;
   }
 
+  public pingNotification = (msg: string): Observable<any> => {
+    return this.httpClient.post('/api/webpush/ping', { msg }).catch(this.handleError);
+  };
+
   public addSubscriber(subscription: string): Observable<any> {
     const body = {
       subscription: subscription
