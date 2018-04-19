@@ -8,6 +8,9 @@ const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedR
   const hashMap = new Map();
   return Rx.Observable.interval(interval || 5 * 60 * 1000)
     .startWith(0)
+    .do(() => {
+      logger.info('========== start fetch a seq feed source ==========');
+    })
     .concatMap(() =>
       Rx.Observable.of(...sources)
         .concatMap(async source => {
