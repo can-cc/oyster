@@ -16,6 +16,7 @@ CREATE TABLE vapidKey (
 
 CREATE TABLE webpush_subscribers (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       serialization TEXT NOT NULL
+       serialization TEXT NOT NULL,
+       useragent TEXT
 );
 
