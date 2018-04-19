@@ -7,7 +7,7 @@ class Configure {
 
   constructor() {
     const configDoc: any = yaml.safeLoad(
-      fs.readFileSync(path.join(__dirname, '../config.yaml'), 'utf8')
+      fs.readFileSync(path.join(__dirname, '../../config.yaml'), 'utf8')
     );
     this.config = configDoc;
   }

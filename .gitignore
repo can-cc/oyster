@@ -2,3 +2,4 @@
 /feeds.yml
 /server/combined.log
 /server/error.log
+/db/db.sqlite3

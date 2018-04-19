@@ -45,8 +45,15 @@ export const getVapidKey = async (): Promise<VapidKeys> => {
   return (await knex('vapidkey').select('*'))[0];
 };
 
-export const saveWebpushSubscription = async (subscription: WebPushSubscription): Promise<void> => {
-  return await knex('webpush_subscribers').insert({ serialization: JSON.stringify(subscription) });
+export const saveWebpushSubscription = async (
+  subscription: WebPushSubscription,
+  useragent: string
+): Promise<void> => {
+  logger.info(`saving webpush subscription [useragent] ${useragent}`);
+  return await knex('webpush_subscribers').insert({
+    serialization: JSON.stringify(subscription),
+    useragent
+  });
 };
 
 export const getWebpushSubscribers = async (): Promise<QueryBuilder> => {

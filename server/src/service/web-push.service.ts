@@ -12,9 +12,9 @@ class WebPushService {
     return this.subscribers;
   }
 
-  public addSubscription(subscription: WebPushSubscription): void {
+  public addSubscription(subscription: WebPushSubscription, useragent: string): void {
     this.subscribers.push(subscription);
-    saveWebpushSubscription(subscription);
+    saveWebpushSubscription(subscription, useragent);
     logger.info(`add new subscription which endpoint is ${subscription.endpoint}`);
   }
 

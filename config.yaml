@@ -1,1 +1,2 @@
 SERCERT_KEY: oyster # !IMPORTANT please replace this key
+FEED_FILE_PATH: 'feeds.yml'

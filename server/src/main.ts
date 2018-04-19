@@ -4,12 +4,14 @@ import * as colors from 'colors';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as morgan from 'morgan';
+import * as useragent from 'express-useragent';
+import * as htmlToText from 'html-to-text';
+import configure from './configure';
 
 import { getAtoms, markFeedRead, saveFeed, getVapidKey, isFeedExist } from './dao';
 import { fetchFeedSources } from './fetcher';
 
-const feedsFileName = 'feeds.yml';
-const feedsFilePath = path.join(__dirname, '../../', feedsFileName);
+const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
 import { setupWebPush, sendNotification } from './web-push';
 import { authMiddle } from './middle/auth.middle';
@@ -21,14 +23,14 @@ const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
 
 function checkFeedFileExist() {
-  if (!fs.existsSync(feedsFilePath)) {
+  if (!fs.existsSync(feedsFile)) {
     console.log('check your `feeds.yml` file');
     process.exit();
   }
 }
 
 function getFeedSetting() {
-  const feeds = yaml.safeLoad(fs.readFileSync(feedsFilePath, 'utf8'));
+  const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
   return feeds;
 }
 
@@ -69,9 +71,15 @@ async function main() {
               webPushService.getSubscribers().map((subscription: WebPushSubscription): Promise<
                 void
               > => {
+                const content = htmlToText.fromString(feed.content, {
+                  ignoreImage: true,
+                  ignoreHref: true,
+                  wordwrap: false
+                });
                 return sendNotification(subscription, {
                   title: feed.title,
-                  msg: feed.content
+                  content,
+                  link: feed.link
                 });
               })
             );
@@ -87,6 +95,7 @@ async function main() {
 
   app.use(morgan('tiny'));
   app.use(require('body-parser').json());
+  app.use(useragent.express());
   app.use(authMiddle);
 
   app.get('/new-unread/:limit', async (req, res) => {
@@ -119,7 +128,8 @@ async function main() {
   app.post('/api/webpush/subscribe', (req, res) => {
     try {
       const subscription: WebPushSubscription = req.body.subscription;
-      webPushService.addSubscription(subscription);
+      const userAgent: string = req.useragent.source;
+      webPushService.addSubscription(subscription, userAgent);
       res.status(204).send();
     } catch (error) {
       throw error;
@@ -129,9 +139,11 @@ async function main() {
   app.post('/api/webpush/ping', async (req, res) => {
     try {
       const { msg }: { msg: string } = req.body;
+      const content = htmlToText.fromString(msg);
       const params = {
-        title: "You've got a push-notification!!",
-        msg
+        title: 'Pong!',
+        content,
+        link: ''
       };
       await Promise.all(
         webPushService.getSubscribers().map(subscription => {
@@ -150,7 +162,7 @@ async function main() {
 
   app.use((err, req, res, next) => {
     logger.error(err);
-    next(err);
+    res.status(500).json({ error: 'unknown' });
   });
 
   app.listen(7788);

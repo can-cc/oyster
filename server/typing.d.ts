@@ -1,3 +1,18 @@
+declare namespace Express {
+  interface Request {
+    useragent: {
+      isMobile: boolean;
+      isDesktop: true;
+      isBot: false;
+      browser: string;
+      version: string;
+      os: string;
+      platform: string;
+      source: string;
+    };
+  }
+}
+
 declare interface FeedSource {
   label: string;
   url: string;
@@ -38,5 +53,6 @@ declare interface WebPushSubscription {
 
 declare interface WebPushNotification {
   title: string;
-  msg: string;
+  content: string;
+  link: string;
 }

@@ -13,6 +13,9 @@ services:
   backend:
     restart: "no"
     build: ./server/
+    volumes:
+      - db:/app/db
+      - feeds.yml:/app/feeds.yml
     command: >
       sh -c "node built/main.js"
   

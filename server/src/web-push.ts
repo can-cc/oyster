@@ -18,5 +18,9 @@ export const sendNotification = (
   subscription: WebPushSubscription,
   params: WebPushNotification
 ): Promise<void> => {
-  return webpush.sendNotification(subscription, JSON.stringify(params));
+  return webpush.sendNotification(subscription, JSON.stringify(params)).catch(error => {
+    logger.log('[!IMPORTANT] push to FCM error');
+    logger.error(error);
+    throw error;
+  });
 };
