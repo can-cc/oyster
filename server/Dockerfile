@@ -118,5 +118,6 @@ RUN npm i && mkdir /app && cp -R ./node_modules ./app
 WORKDIR /app
 
 COPY . .
+COPY ../feeds.yml /
 
 RUN npm run build
