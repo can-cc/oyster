@@ -18,4 +18,11 @@ services:
       - ./config:/config
     command: >
       sh -c "node built/main.js"
-  
+  jwt:
+    restart: "no"
+    build: ./server/
+    volumes:
+      - ./db:/db
+      - ./config:/config
+    command: >
+      sh -c "node built/tool/generate-token oyster"
