@@ -1,0 +1,9 @@
+version: "3.2"
+services:
+  jwt:
+    restart: "no"
+    build: ./
+    volumes:
+      - ../config:/config
+    command: >
+      sh -c "node built/tool/generate-token oyster"
