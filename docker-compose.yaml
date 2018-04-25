@@ -15,8 +15,7 @@ services:
     build: ./server/
     volumes:
       - ./db:/db
-      - ./feeds.yml:/feeds.yml
-      - ./config.yaml:/config.yaml
+      - ./config:/config
     command: >
       sh -c "node built/main.js"
   
