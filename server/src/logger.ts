@@ -1,3 +1,4 @@
+import * as path from 'path';
 import * as winston from 'winston';
 import * as moment from 'moment-timezone';
 
@@ -16,11 +17,11 @@ export const logger = winston.createLogger({
   format: winston.format.combine(winston.format.json(), volume()),
   transports: [
     new winston.transports.File({
-      filename: 'error.log',
+      filename: path.resolve(__dirname, '../../log/', 'error.log'),
       level: 'error'
     }),
     new winston.transports.File({
-      filename: 'combined.log'
+      filename: path.resolve(__dirname, '../../log/', 'combined.log')
     })
   ]
 });
