@@ -16,5 +16,6 @@ services:
     volumes:
       - ./db:/db
       - ./config:/config
+      - ./log:/log
     command: >
       sh -c "node built/main.js"
