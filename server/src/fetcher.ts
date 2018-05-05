@@ -6,31 +6,33 @@ import { logger } from './logger';
 
 const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedResult> => {
   const hashMap = new Map();
-  return Rx.Observable.interval(interval || 5 * 60 * 1000)
+  return Rx.Observable.interval(1000)
     .startWith(0)
     .do(() => {
       logger.info('========== start fetch a seq feed source ==========');
     })
-    .do(() => {
-      Rx.Observable.of(...sources)
-        .concatMap(async source => {
-          logger.info(`fetch ${source.label}`);
-          const feedRawData = await (await fetch(source.url)).text();
-          return { ...source, feedRawData };
-        })
-        .filter(feed => {
-          const hash = md5(feed.feedRawData);
-          if (hashMap[feed.url] === hash) {
-            return false;
-          }
-          hashMap[feed.url] = hash;
-          return true;
-        })
-        .catch((error, caught) => {
-          logger.error(`fetch failure : ${error.message}`);
-          return Rx.Observable.empty().ignoreElements();
-        });
-    });
+    .switchMap(() =>
+      Rx.Observable.of(...sources).concatMap(source => {
+        return Rx.Observable.of(source)
+          .mergeMap(async source => {
+            logger.info(`fetch ${source.label}`);
+            const feedRawData = await (await fetch(source.url)).text();
+            return { ...source, feedRawData };
+          })
+          .filter(feed => {
+            const hash = md5(feed.feedRawData);
+            if (hashMap[feed.url] === hash) {
+              return false;
+            }
+            hashMap[feed.url] = hash;
+            return true;
+          })
+          .catch((error, caught) => {
+            logger.error(`fetch failure : ${error.message}`);
+            return Rx.Observable.empty().ignoreElements();
+          });
+      })
+    );
 };
 
 export const fetchFeedSources = (
