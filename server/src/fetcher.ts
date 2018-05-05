@@ -6,14 +6,14 @@ import { logger } from './logger';
 
 const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedResult> => {
   const hashMap = new Map();
-  return Rx.Observable.interval(1000)
+  return Rx.Observable.interval(interval || 5 * 60 * 1000)
     .startWith(0)
     .do(() => {
       logger.info('========== start fetch a seq feed source ==========');
     })
     .switchMap(() =>
-      Rx.Observable.of(...sources).concatMap(source => {
-        return Rx.Observable.of(source)
+      Rx.Observable.of(...sources).concatMap(s => {
+        return Rx.Observable.of(s)
           .mergeMap(async source => {
             logger.info(`fetch ${source.label}`);
             const feedRawData = await (await fetch(source.url)).text();
