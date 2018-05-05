@@ -11,7 +11,7 @@ const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedR
     .do(() => {
       logger.info('========== start fetch a seq feed source ==========');
     })
-    .concatMap(() =>
+    .do(() => {
       Rx.Observable.of(...sources)
         .concatMap(async source => {
           logger.info(`fetch ${source.label}`);
@@ -29,8 +29,8 @@ const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedR
         .catch((error, caught) => {
           logger.error(`fetch failure : ${error.message}`);
           return Rx.Observable.empty().ignoreElements();
-        })
-    );
+        });
+    });
 };
 
 export const fetchFeedSources = (
