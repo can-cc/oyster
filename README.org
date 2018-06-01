@@ -1,0 +1,12 @@
+
+** Deploy
+
+#+BEGIN_SRC bash
+docker-compose up
+#+END_SRC
+
+*** Log
+log file write to ./log dir
+
+*** db
+use sqlite3, initial in ./db dir
