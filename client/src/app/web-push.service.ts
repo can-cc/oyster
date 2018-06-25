@@ -1,5 +1,5 @@
-
-import {throwError as observableThrowError,  Observable } from 'rxjs';
+import { throwError as observableThrowError, Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
@@ -19,15 +19,15 @@ export class WebPushService {
   }
 
   public pingNotification = (msg: string): Observable<any> => {
-    return this.httpClient.post('/api/webpush/ping', { msg }).catch(this.handleError);
+    return this.httpClient.post('/api/webpush/ping', { msg }).pipe(catchError(this.handleError));
   };
 
-  public addSubscriber(subscription: string): Observable<any> {
+  public addSubscriber(subscription: any): Observable<any> {
     const body = {
       subscription: subscription
     };
 
-    return this.httpClient.post('/api/webpush/subscribe', body).catch(this.handleError);
+    return this.httpClient.post('/api/webpush/subscribe', body).pipe(catchError(this.handleError));
   }
 
   private handleError(error: Response | any) {

@@ -43,7 +43,6 @@ export class PushControlComponent implements OnInit {
 
         this.webPushService.addSubscriber(pushSubscription).subscribe(
           res => {
-            console.log('[App] Add subscriber request answer', res);
             this.snackBar.open('Now you are subscribed', null, {
               duration: 2000
             });
