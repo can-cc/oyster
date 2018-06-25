@@ -1,3 +1,5 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {
   HttpEvent,
@@ -6,9 +8,8 @@ import {
   HttpRequest,
   HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
+
+
 import { MatSnackBar } from '@angular/material';
 
 @Injectable()
@@ -28,7 +29,7 @@ export class AuthInterceptor implements HttpInterceptor {
           });
         }
       }
-      return Observable.throw(error);
+      return observableThrowError(error);
     });
   }
 }

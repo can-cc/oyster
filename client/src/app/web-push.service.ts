@@ -1,8 +1,7 @@
+
+import {throwError as observableThrowError,  Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-import 'rxjs/add/operator/catch';
-import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class WebPushService {
@@ -38,6 +37,6 @@ export class WebPushService {
     } else {
       errMsg = error.message ? error.message : error.toString();
     }
-    return Observable.throw(errMsg);
+    return observableThrowError(errMsg);
   }
 }
