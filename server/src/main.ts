@@ -125,6 +125,15 @@ async function main() {
     }
   });
 
+  app.post('/auth/signin', async (req, res) => {
+    try {
+      await markFeedRead(req.params.id);
+      res.send('ok');
+    } catch (error) {
+      throw error;
+    }
+  });
+
   app.post('/api/webpush/subscribe', (req, res) => {
     try {
       const subscription: WebPushSubscription = req.body.subscription;

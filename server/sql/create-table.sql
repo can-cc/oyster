@@ -9,6 +9,15 @@ CREATE TABLE atom (
        isRead BOOLEAN
 );
 
+CREATE TABLE user (
+       id INTEGER PRIMARY KEY AUTOINCREMENT,
+       username TEXT,
+       hash TEXT,
+       created_at DATE,
+       updated_at DATE
+);
+
+
 CREATE TABLE vapidKey (
        publicKey TEXT NOT NULL,
        privateKey TEXT NOT NULL
