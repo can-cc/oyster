@@ -1,14 +1,1 @@
-<app-push-control></app-push-control>
-
-<app-category></app-category>
-
-<app-feed-list
-  [feeds]="feeds"
-  (select)="onFeedListSelect($event)"
-  infiniteScroll
-  [infiniteScrollDistance]="2"
-  [scrollWindow]="false"
-  (scrolled)="queryFeeds()"
-></app-feed-list>
-
-<app-article-preview [feed]="selectedFeed"></app-article-preview>
+<router-outlet></router-outlet>
