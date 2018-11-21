@@ -6,6 +6,7 @@ import * as yaml from 'js-yaml';
 import * as morgan from 'morgan';
 import * as useragent from 'express-useragent';
 import * as htmlToText from 'html-to-text';
+import { authRouter } from './route/auth';
 import configure from './configure';
 
 import { getAtoms, markFeedRead, saveFeed, getVapidKey, isFeedExist } from './dao';
@@ -68,9 +69,7 @@ async function main() {
           if (!await isFeedExist(feed)) {
             await saveFeed(feed);
             await Promise.all(
-              webPushService.getSubscribers().map((subscription: WebPushSubscription): Promise<
-                void
-              > => {
+              webPushService.getSubscribers().map((subscription: WebPushSubscription): Promise<void> => {
                 const content = htmlToText.fromString(feed.content, {
                   ignoreImage: true,
                   ignoreHref: true,
