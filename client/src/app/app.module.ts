@@ -1,6 +1,6 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -35,6 +35,8 @@ import { ColorService } from './color.service';
 import { ConfigService } from './config.service';
 import { AuthInterceptor } from './auth.interceptor';
 import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 
 @NgModule({
   declarations: [
@@ -45,12 +47,15 @@ import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.comp
     ArticlePreviewComponent,
     ArticleAvatarComponent,
     PushControlComponent,
-    PingDialogComponent
+    PingDialogComponent,
+    LoginPageComponent,
+    FeedsPageComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
     ApolloModule,
