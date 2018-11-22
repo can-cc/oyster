@@ -37,6 +37,8 @@ import { AuthInterceptor } from './auth.interceptor';
 import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
+import { RouterModule } from '@angular/router';
+import { AppRoutingModule } from './app.routing';
 
 @NgModule({
   declarations: [
@@ -69,6 +71,7 @@ import { FeedsPageComponent } from './feeds-page/feeds-page.component';
     MatFormFieldModule,
     MatInputModule,
     InfiniteScrollModule,
+    AppRoutingModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('/web-push-service-worker.js')
   ],
