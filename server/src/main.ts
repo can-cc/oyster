@@ -1,37 +1,47 @@
-import * as express from 'express';
-import * as path from 'path';
-import * as colors from 'colors';
-import * as fs from 'fs';
-import * as yaml from 'js-yaml';
-import * as morgan from 'morgan';
-import * as useragent from 'express-useragent';
-import * as htmlToText from 'html-to-text';
-import { authRouter } from './route/auth';
-import configure from './configure';
+import * as express from "express";
+import * as path from "path";
+import * as colors from "colors";
+import * as fs from "fs";
+import * as yaml from "js-yaml";
+import * as morgan from "morgan";
+import * as useragent from "express-useragent";
+import * as htmlToText from "html-to-text";
+import { authRouter } from "./route/auth";
+import configure from "./configure";
 
-import { getAtoms, markFeedRead, saveFeed, getVapidKey, isFeedExist } from './dao';
-import { fetchFeedSources } from './fetcher';
+import {
+  getAtoms,
+  markFeedRead,
+  saveFeed,
+  getVapidKey,
+  isFeedExist
+} from "./dao";
+import { fetchFeedSources } from "./fetcher";
 
-const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
+const feedsFile = path.resolve(
+  __dirname,
+  "../..",
+  configure.getConfig("FEED_FILE_PATH")
+);
 
-import { setupWebPush, sendNotification } from './web-push';
-import { authMiddle } from './middle/auth.middle';
-import { logger } from './logger';
+import { setupWebPush, sendNotification } from "./web-push";
+import { authMiddle } from "./middle/auth.middle";
+import { logger } from "./logger";
 
-import webPushService from './service/web-push.service';
+import webPushService from "./service/web-push.service";
 
-const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
+const { graphqlExpress, graphiqlExpress } = require("apollo-server-express");
+const { makeExecutableSchema } = require("graphql-tools");
 
 function checkFeedFileExist() {
   if (!fs.existsSync(feedsFile)) {
-    console.log('check your `feeds.yml` file');
+    console.log("check your `feeds.yml` file");
     process.exit();
   }
 }
 
 function getFeedSetting() {
-  const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
+  const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, "utf8"));
   return feeds;
 }
 
@@ -65,25 +75,29 @@ async function main() {
   try {
     fetchFeedSources(feedSetting, async (feeds: any[]) => {
       await Promise.all(
-        feeds.map(async (feed: Feed): Promise<void> => {
-          if (!await isFeedExist(feed)) {
-            await saveFeed(feed);
-            await Promise.all(
-              webPushService.getSubscribers().map((subscription: WebPushSubscription): Promise<void> => {
-                const content = htmlToText.fromString(feed.content, {
-                  ignoreImage: true,
-                  ignoreHref: true,
-                  wordwrap: false
-                });
-                return sendNotification(subscription, {
-                  title: feed.title,
-                  content,
-                  link: feed.link
-                });
-              })
-            );
+        feeds.map(
+          async (feed: Feed): Promise<void> => {
+            if (!(await isFeedExist(feed))) {
+              await saveFeed(feed);
+              await Promise.all(
+                webPushService.getSubscribers().map(
+                  (subscription: WebPushSubscription): Promise<void> => {
+                    const content = htmlToText.fromString(feed.content, {
+                      ignoreImage: true,
+                      ignoreHref: true,
+                      wordwrap: false
+                    });
+                    return sendNotification(subscription, {
+                      title: feed.title,
+                      content,
+                      link: feed.link
+                    });
+                  }
+                )
+              );
+            }
           }
-        })
+        )
       );
     });
   } catch (error) {
@@ -92,23 +106,23 @@ async function main() {
 
   const app = express();
 
-  app.use(morgan('tiny'));
-  app.use(require('body-parser').json());
+  app.use(morgan("tiny"));
+  app.use(require("body-parser").json());
   app.use(useragent.express());
   app.use(authMiddle);
 
-  app.use(authRouter);
+  app.use("/api", authRouter);
 
-  app.get('/new-unread/:limit', async (req, res) => {
-    try {
-      const atoms = await getAtoms(req.params.limit);
-      res.json(atoms.reverse());
-    } catch (error) {
-      throw error;
-    }
-  });
+  // app.get('/api/new-unread/:limit', async (req, res) => {
+  //   try {
+  //     const atoms = await getAtoms(req.params.limit);
+  //     res.json(atoms.reverse());
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // });
 
-  app.get('/api/client/config', async (req, res) => {
+  app.get("/api/client/config", async (req, res) => {
     try {
       const vapidPublicKey: string = (await getVapidKey()).publicKey;
       res.json({ vapidPublicKey });
@@ -117,25 +131,25 @@ async function main() {
     }
   });
 
-  app.post('/unread/:id', async (req, res) => {
-    try {
-      await markFeedRead(req.params.id);
-      res.send('ok');
-    } catch (error) {
-      throw error;
-    }
-  });
+  // app.post('/unread/:id', async (req, res) => {
+  //   try {
+  //     await markFeedRead(req.params.id);
+  //     res.send('ok');
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // });
 
-  app.post('/auth/signin', async (req, res) => {
-    try {
-      await markFeedRead(req.params.id);
-      res.send('ok');
-    } catch (error) {
-      throw error;
-    }
-  });
+  // app.post('/auth/signin', async (req, res) => {
+  //   try {
+  //     await markFeedRead(req.params.id);
+  //     res.send('ok');
+  //   } catch (error) {
+  //     throw error;
+  //   }
+  // });
 
-  app.post('/api/webpush/subscribe', (req, res) => {
+  app.post("/api/webpush/subscribe", (req, res) => {
     try {
       const subscription: WebPushSubscription = req.body.subscription;
       const userAgent: string = req.useragent.source;
@@ -146,14 +160,14 @@ async function main() {
     }
   });
 
-  app.post('/api/webpush/ping', async (req, res) => {
+  app.post("/api/webpush/ping", async (req, res) => {
     try {
       const { msg }: { msg: string } = req.body;
       const content = htmlToText.fromString(msg);
       const params = {
-        title: 'Pong!',
+        title: "Pong!",
         content,
-        link: ''
+        link: ""
       };
       await Promise.all(
         webPushService.getSubscribers().map(subscription => {
@@ -166,13 +180,16 @@ async function main() {
     }
   });
 
-  app.use('/api/v1/graphql', graphqlExpress({ schema }));
+  app.use("/api/v1/graphql", graphqlExpress({ schema }));
 
-  app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
+  app.use(
+    "/api/v1/graphiql",
+    graphiqlExpress({ endpointURL: "/api/v1/graphql" })
+  );
 
   app.use((err, req, res, next) => {
     logger.error(err);
-    res.status(500).json({ error: 'unknown' });
+    res.status(500).json({ error: "unknown" });
   });
 
   app.listen(7788);

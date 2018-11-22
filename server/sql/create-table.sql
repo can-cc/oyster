@@ -11,7 +11,7 @@ CREATE TABLE atom (
 
 CREATE TABLE user (
        id INTEGER PRIMARY KEY AUTOINCREMENT,
-       username TEXT,
+       username TEXT UNQUIE,
        hash TEXT,
        created_at DATE,
        updated_at DATE

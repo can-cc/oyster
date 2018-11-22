@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(authReq).pipe(
       catchError((error, caught) => {
         if (error instanceof HttpErrorResponse) {
-          if (error.status === 401) {
+          if (error.status === 401 && error.url.indexOf('/api/login') === -1) {
             this.snackBar.open('auth failure, please set localStorage [jwt-token]', null, {
               duration: 2000
             });

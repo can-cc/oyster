@@ -9,7 +9,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloModule, Apollo } from 'apollo-angular';
 
-import { MatIconRegistry, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+import { MatIconRegistry, MAT_DIALOG_DEFAULT_OPTIONS, MatCardModule } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -39,6 +39,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { AppRoutingModule } from './app.routing';
   ],
   entryComponents: [PingDialogComponent],
   imports: [
+    CoreModule.forRoot(),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -69,6 +71,7 @@ import { AppRoutingModule } from './app.routing';
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     InfiniteScrollModule,
     AppRoutingModule,

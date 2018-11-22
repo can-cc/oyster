@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -12,17 +12,19 @@ export class LoginPageComponent implements OnInit {
 
   constructor(fb: FormBuilder, private httpClient: HttpClient) {
     this.form = fb.group({
-      username: '',
-      password: '',
+      username: new FormControl(''),
+      password: new FormControl('')
     });
   }
 
   ngOnInit(): void {}
 
   handleLogin(): void {
-    this.httpClient.post('/api/login', this.form.value).pipe().subscribe(response => {
-      
-    });
+    this.httpClient
+      .post('/api/login', this.form.value)
+      .pipe()
+      .subscribe(response => {
+        
+      });
   }
-
 }
