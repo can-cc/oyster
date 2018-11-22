@@ -97,6 +97,8 @@ async function main() {
   app.use(useragent.express());
   app.use(authMiddle);
 
+  app.use(authRouter);
+
   app.get('/new-unread/:limit', async (req, res) => {
     try {
       const atoms = await getAtoms(req.params.limit);
