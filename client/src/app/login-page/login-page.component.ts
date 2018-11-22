@@ -20,7 +20,9 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {}
 
   handleLogin(): void {
-    this.httpClient.post('/api/login', this.form.value).pipe().subscribe();
+    this.httpClient.post('/api/login', this.form.value).pipe().subscribe(response => {
+      
+    });
   }
 
 }
