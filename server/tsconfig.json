@@ -3,15 +3,15 @@
     "outDir": "./built",
     "baseUrl": "./",
     "allowJs": true,
-    "target": "es5",
-    "lib": ["es2015", "es2017", "dom", "esnext.asynciterable"],
+    "target": "es6",
+    "module": "commonjs",
+    "strict": false,
+    "lib": ["es5", "es6", "es2015", "es2017", "dom", "esnext.asynciterable"],
     "sourceMap": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
   "include": ["./src/**/*"],
-  "files": [
-    "./typing.d.ts"
-  ]
+  "files": ["./src/typing.d.ts"]
 }

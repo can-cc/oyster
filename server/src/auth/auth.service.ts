@@ -9,4 +9,8 @@ export class AuthService {
   public static unsignJwt(token: string): any {
     return jwt.verify(token, configure.getConfig('SERCERT_KEY'));
   }
+
+  public login(): void {
+
+  }
 }
