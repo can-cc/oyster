@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.ts", "**/*.js"],
+      "options": {
+        "parser": "typescript",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    }
+  ]
+}
