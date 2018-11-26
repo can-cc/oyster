@@ -47,7 +47,7 @@ export const getAtoms = async (limit: number, offset: number = 0): Promise<Query
 };
 
 export const checkHasVapidKey = async (): Promise<boolean> => {
-  const cols = await knex('vapidkey').select('*');
+  const cols = await knex('vapidKey').select('*');
   return !!cols.length;
 };
 

@@ -121,7 +121,7 @@ async function main() {
   app.use(morgan('tiny'));
   app.use(require('body-parser').json());
   app.use(useragent.express());
-  app.use(authMiddle);
+  // app.use(authMiddle);
 
   app.use('/api', authRouter);
 
@@ -131,6 +131,15 @@ async function main() {
       res.json({ vapidPublicKey });
     } catch (error) {
       throw error;
+    }
+  });
+
+  app.get('/api/atoms/:limit', async (req, res, next) =>{
+    try {
+      const atoms = await getAtoms(req.params.limit, req.query.offset);
+      return res.status(200).json(atoms);
+    } catch (error) {
+      next(error);
     }
   });
 
@@ -174,7 +183,7 @@ async function main() {
     res.status(500).json({ error: 'unknown' });
   });
 
-  app.listen(7788);
+  app.listen(7788, '0.0.0.0');
   console.log(colors.green(`server start at http://localhost:7788`));
 }
 

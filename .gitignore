@@ -5,3 +5,4 @@
 /db/db.sqlite3
 /server/yarn-error.log
 /log/*
+.DS_Store
