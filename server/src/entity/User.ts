@@ -5,12 +5,15 @@ export class User {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column()
+  @Column({ unique: true })
   public username: string;
 
   @Column()
   public hash: string;
 
-  // created_at: Date;
-  // updated_at: Date;
+  @Column({name: 'created_at'})
+  public createdAt: Date;
+
+  @Column({name: 'updated_at'})
+  public updatedAt: Date;
 }
