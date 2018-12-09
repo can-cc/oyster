@@ -1,7 +1,9 @@
 import * as express from 'express';
 import * as bcrypt from 'bcryptjs';
 import { getUserByUsername } from '../dao';
-import { AuthService } from '../auth/auth.service';
+import authService, { AuthService } from '../service/auth.service';
+import {getRepository} from "typeorm";
+
 
 const authRouter = express.Router();
 

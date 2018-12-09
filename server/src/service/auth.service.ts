@@ -1,5 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 import configure from '../configure';
+import { getRepository } from 'typeorm';
 
 export class AuthService {
   public static signJwt(data: any) {
@@ -10,7 +11,9 @@ export class AuthService {
     return jwt.verify(token, configure.getConfig('SERCERT_KEY'));
   }
 
-  public login(): void {
+  // constructor() {}
 
-  }
+  public login(): void {}
 }
+
+export default new AuthService();
