@@ -101,9 +101,10 @@ export function setupServer() {
   app.use(morgan('tiny'));
   app.use(require('body-parser').json());
   app.use(useragent.express());
-  app.use(authMiddle);
 
   app.use('/api', authRouter);
+
+  app.use(authMiddle);
 
   app.get('/api/client/config', async (req, res) => {
     try {

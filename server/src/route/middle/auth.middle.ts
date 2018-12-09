@@ -8,9 +8,11 @@ export function authMiddle(req, res, next) {
   }
 
   try {
-    AuthService.unsignJwt(jwtdata);
+    const x = AuthService.unsignJwt(jwtdata);
+    console.log('xxxxxxxx', x);
     return next();
   } catch (error) {
+    console.error(error); 
     res.status(401).send();
   }
 }

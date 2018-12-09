@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
+import { User } from '../../typing/auth';
 
 @Component({
   selector: 'app-login-page',
@@ -28,12 +29,15 @@ export class LoginPageComponent implements OnInit {
 
   handleLogin(): void {
     this.httpClient
-      .post('/api/login', this.form.value)
+      .post('/api/login', this.form.value, { observe: 'response' })
       .pipe()
       .subscribe(
         response => {
           this.router.navigate(['/feeds'], { replaceUrl: false });
-          // this.authService.handleLoginSuccess(response)
+          this.authService.handleLoginSuccess(
+            response.body as User,
+            response.headers.get('jwt-token')
+          );
           console.log(response);
         },
         () => {}

@@ -16,8 +16,13 @@ export class AuthService {
     this.jwt = jwt;
   }
 
+  private saveJwt(jwt: string): void {
+    window.localStorage.setItem('jwt-token', jwt);
+  }
+
   public handleLoginSuccess(user: User, jwt: string): void {
-    this.jwt = jwt;
+    this.setJwt(jwt);
+    this.saveJwt(jwt);
     this.user = user;
   }
 
