@@ -10,14 +10,15 @@ import {
 } from '@angular/common/http';
 
 import { MatSnackBar } from '@angular/material';
+import { AuthService } from './core/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, private authService: AuthService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authReq = req.clone({
-      headers: req.headers.set('jwt-token', window.localStorage.getItem('jwt-token') || '')
+      headers: req.headers.set('jwt-token', this.authService.getJwt() || '')
     });
 
     return next.handle(authReq).pipe(

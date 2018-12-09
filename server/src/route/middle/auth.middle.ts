@@ -1,4 +1,4 @@
-import { AuthService } from '../service/auth.service';
+import { AuthService } from '../../service/auth.service';
 
 export function authMiddle(req, res, next) {
   const jwtdata: string = req.header('jwt-token');

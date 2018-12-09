@@ -20,6 +20,7 @@ import { setupWebPush, sendNotification } from './web-push';
 import { logger } from './logger';
 
 import webPushService from './service/web-push.service';
+import { authMiddle } from './route/middle/auth.middle';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
@@ -100,7 +101,7 @@ export function setupServer() {
   app.use(morgan('tiny'));
   app.use(require('body-parser').json());
   app.use(useragent.express());
-  // app.use(authMiddle);
+  app.use(authMiddle);
 
   app.use('/api', authRouter);
 

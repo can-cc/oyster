@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -10,7 +12,12 @@ import { HttpClient } from '@angular/common/http';
 export class LoginPageComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(fb: FormBuilder, private httpClient: HttpClient) {
+  constructor(
+    fb: FormBuilder,
+    private httpClient: HttpClient,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.form = fb.group({
       username: new FormControl(''),
       password: new FormControl('')
@@ -23,8 +30,13 @@ export class LoginPageComponent implements OnInit {
     this.httpClient
       .post('/api/login', this.form.value)
       .pipe()
-      .subscribe(response => {
-        
-      });
+      .subscribe(
+        response => {
+          this.router.navigate(['/feeds'], { replaceUrl: false });
+          // this.authService.handleLoginSuccess(response)
+          console.log(response);
+        },
+        () => {}
+      );
   }
 }

@@ -1,13 +1,27 @@
 import { Injectable } from '@angular/core';
+import { User } from '../../typing/auth';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private jwt: string;
+  private user: User;
 
-  constructor() {}
+  constructor() {
+    this.setJwt(window.localStorage.getItem('jwt-token'));
+  }
 
-  handleLoginSuccess(user) {
-    
+  public setJwt(jwt: string) {
+    this.jwt = jwt;
+  }
+
+  public handleLoginSuccess(user: User, jwt: string): void {
+    this.jwt = jwt;
+    this.user = user;
+  }
+
+  public getJwt(): string {
+    return this.jwt;
   }
 }

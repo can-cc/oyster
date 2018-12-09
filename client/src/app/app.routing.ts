@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LoginPageComponent
   },
   {
-    path: '',
+    path: 'feeds',
     component: FeedsPageComponent
   },
 ];

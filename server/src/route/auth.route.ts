@@ -1,8 +1,5 @@
 import * as express from 'express';
-import * as bcrypt from 'bcryptjs';
-import { getUserByUsername } from '../dao';
 import authService, { AuthService } from '../service/auth.service';
-
 
 const authRouter = express.Router();
 
@@ -12,7 +9,8 @@ authRouter.post('/login', async (req, res, next) => {
     const user = await authService.login(username, password);
     if (user) {
       const jwtToken = AuthService.signJwt({
-        id: user.id
+        id: user.id,
+        username: user.username
       });
       return res
         .header('jwt-header', jwtToken)

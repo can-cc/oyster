@@ -37,7 +37,6 @@ import { AuthInterceptor } from './auth.interceptor';
 import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
-import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 
