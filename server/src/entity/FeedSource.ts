@@ -5,6 +5,15 @@ export class FeedSource {
   @PrimaryGeneratedColumn()
   public id: number;
 
-  @Column({ unique: true })
-  public username: string;
+  @Column()
+  public name: string;
+
+  @Column()
+  public url: string;
+  
+  @Column({name: 'created_at'})
+  public createdAt: Date;
+
+  @Column({name: 'updated_at'})
+  public updatedAt: Date;
 }
