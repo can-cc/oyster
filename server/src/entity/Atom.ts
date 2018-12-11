@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'rss-atom' })
 export class Atom {
   @PrimaryGeneratedColumn()
   public id: number;
@@ -13,9 +13,9 @@ export class Atom {
 
   @Column()
   public title: string;
-  
+
   @Column()
-  public content: string
+  public content: string;
 
   @Column()
   public hash: string;

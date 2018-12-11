@@ -3,6 +3,7 @@ const { makeExecutableSchema } = require('graphql-tools');
 
 const typeDefs = `
   type Query { feeds(limit: Int! offset: Int): [Feed] }
+  type Mutation { source(name: String! url: String!): Boolean }
   type Feed { id: Int, title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
 `;
 
