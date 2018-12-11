@@ -1,7 +1,7 @@
 import * as md5 from 'md5';
 import * as fetch from 'isomorphic-fetch';
 import * as Rx from 'rxjs';
-import { parseFeed } from './parser';
+import { parseFeed } from './util/parser';
 import { logger } from './logger';
 
 const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedResult> => {

@@ -8,10 +8,11 @@ import * as useragent from 'express-useragent';
 import * as htmlToText from 'html-to-text';
 import { authRouter } from './route/auth.route';
 import configure from './configure';
+import { schema } from './graphql/schema';
 
 import 'reflect-metadata';
 
-import { getAtoms, markFeedRead, saveFeed, getVapidKey, isFeedExist } from './dao';
+import { getAtoms, saveFeed, getVapidKey, isFeedExist } from './dao';
 import { fetchFeedSources } from './fetcher';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
@@ -36,26 +37,6 @@ function getFeedSetting() {
   const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
   return feeds;
 }
-
-const typeDefs = `
-  type Query { feeds(limit: Int! offset: Int): [Feed] }
-  type Feed { id: Int, title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
-`;
-
-// The resolvers
-const resolvers = {
-  Query: {
-    feeds: async (root, args: { limit: number; offset?: number }, context) => {
-      return await getAtoms(args.limit, args.offset);
-    }
-  }
-};
-
-// Put together a schema
-const schema = makeExecutableSchema({
-  typeDefs,
-  resolvers
-});
 
 export function setupServer() {
   checkFeedFileExist();
