@@ -39,6 +39,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
+import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { CoreModule } from './core/core.module';
     PushControlComponent,
     PingDialogComponent,
     LoginPageComponent,
-    FeedsPageComponent
+    FeedsPageComponent,
+    FeedSourcePageComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
