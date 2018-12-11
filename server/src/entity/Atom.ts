@@ -1,15 +1,27 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
 @Entity()
-export class FeedSource {
+export class Atom {
   @PrimaryGeneratedColumn()
   public id: number;
 
   @Column()
-  public name: string;
+  public sourceId: string;
 
   @Column()
-  public url: string;
+  public originHref: string;
+
+  @Column()
+  public title: string;
+  
+  @Column()
+  public content: string
+
+  @Column()
+  public hash: string;
+
+  @Column()
+  public author: string;
 
   @CreateDateColumn()
   public createdAt: Date;
