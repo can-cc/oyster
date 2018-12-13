@@ -24,7 +24,6 @@ import webPushService from './service/web-push.service';
 import { authMiddle } from './route/middle/auth.middle';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
-const { makeExecutableSchema } = require('graphql-tools');
 
 function checkFeedFileExist() {
   if (!fs.existsSync(feedsFile)) {

@@ -1,18 +1,22 @@
-FROM node:8.9-alpine
+FROM node:8.9
 
-ENV PATH /usr/local/bin:$PATH
+WORKDIR /app
 
-COPY package.json ./
+COPY package*.json ./
 
-RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
+RUN npm install
 
-RUN npm i && mkdir /app && cp -R ./node_modules ./app
+COPY . .
 
 RUN mkdir /db
 RUN mkdir /log
+RUN mkdir /config
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm run build
+EXPOSE 8080
+
+CMD [ "npm", "start" ]
+
