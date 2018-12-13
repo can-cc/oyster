@@ -1,17 +1,13 @@
 import * as path from 'path';
 import * as winston from 'winston';
-import * as moment from 'moment-timezone';
-
-moment().local();
 
 const volume = winston.format((info, opts) => {
-  info.timestamp = moment()
-    .tz('Asia/Shanghai')
-    .format('YYYY-MM-DD, hh:mm:ss');
+  info.timestamp = new Date().getTime();
 
   return info;
 });
 
+// TODO remove verbose log
 export const logger = winston.createLogger({
   level: 'info',
   format: winston.format.combine(winston.format.json(), volume()),
@@ -22,9 +18,6 @@ export const logger = winston.createLogger({
     }),
     new winston.transports.File({
       filename: path.resolve(__dirname, '../../log/', 'combined.log')
-    }),
-    new winston.transports.Console({
-      format: winston.format.simple()
     })
   ]
 });
