@@ -9,7 +9,7 @@ export function authMiddle(req, res, next) {
 
   try {
     const x = AuthService.unsignJwt(jwtdata);
-    console.log('xxxxxxxx', x);
+
     return next();
   } catch (error) {
     console.error(error); 
