@@ -2,10 +2,9 @@ import * as express from 'express';
 import * as path from 'path';
 import * as colors from 'colors';
 import * as fs from 'fs';
-import * as yaml from 'js-yaml';
 import * as morgan from 'morgan';
-import * as useragent from 'express-useragent';
 import * as htmlToText from 'html-to-text';
+import * as useragent from 'express-useragent';
 import { authRouter } from './route/auth.route';
 import configure from './configure';
 import { schema } from './graphql/schema';
@@ -21,6 +20,7 @@ import { setupWebPush, sendNotification } from './web-push';
 import { logger } from './logger';
 
 import webPushService from './service/web-push.service';
+import feedFetcherService from './service/feed-fetcher.service';
 import { authMiddle } from './route/middle/auth.middle';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
@@ -32,49 +32,12 @@ function checkFeedFileExist() {
   }
 }
 
-function getFeedSetting() {
-  const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
-  return feeds;
-}
-
 export function setupServer() {
   checkFeedFileExist();
 
   setupWebPush();
 
-  const feedSetting: FeedSetting = getFeedSetting();
-
-  try {
-    fetchFeedSources(feedSetting, async (feeds: any[]) => {
-      await Promise.all(
-        feeds.map(
-          async (feed: Feed): Promise<void> => {
-            if (!(await isFeedExist(feed))) {
-              await saveFeed(feed);
-              await Promise.all(
-                webPushService.getSubscribers().map(
-                  (subscription: WebPushSubscription): Promise<void> => {
-                    const content = htmlToText.fromString(feed.content, {
-                      ignoreImage: true,
-                      ignoreHref: true,
-                      wordwrap: false
-                    });
-                    return sendNotification(subscription, {
-                      title: feed.title,
-                      content,
-                      link: feed.link
-                    });
-                  }
-                )
-              );
-            }
-          }
-        )
-      );
-    });
-  } catch (error) {
-    logger.error(error);
-  }
+  feedFetcherService.pollFetch();
 
   const app = express();
 
