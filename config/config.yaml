@@ -1,4 +1,4 @@
- f: oyster # !IMPORTANT please replace this key
+SERCERT_KEY: oyster # !IMPORTANT please replace this key
 JWT_EXP: 2592000 # 30d
 FEED_FILE_PATH: 'config/feeds.yml'
 

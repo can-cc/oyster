@@ -18,7 +18,7 @@ class Configure {
     };
   }
 
-  public getConfig(key: string): string {
+  public getConfig(key: string): any {
     return this.config[key];
   }
 }

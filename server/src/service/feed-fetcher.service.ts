@@ -5,6 +5,8 @@ import * as htmlToText from 'html-to-text';
 import { getAtoms, saveFeed, getVapidKey, isFeedExist } from '../dao';
 import { fetchFeedSources } from '../fetcher';
 import configure from '../configure';
+import * as redis from 'redis';
+import * as bloom from 'bloom-redis';
 
 import { setupWebPush, sendNotification } from '../web-push';
 import { logger } from '../logger';
@@ -20,7 +22,22 @@ function getFeedSetting() {
 }
 
 class FeedFetcher {
-  // constructor() {}
+  private filter: bloom.BloomFilter;
+
+  constructor() {
+    const client = redis.createClient({
+      host: configure.getConfig('REDIS_HOST'),
+      port: configure.getConfig('REDIS_POST')
+    });
+    bloom.connect(client);
+    this.filter = new bloom.BloomFilter({ key: 'mykey' });
+  }
+
+  private markFeedExist(): void {
+      this.filter.add();
+  }
+
+  private isFeedExist() {}
 
   public pollFetch() {
     const feedSetting: FeedSetting = getFeedSetting();
