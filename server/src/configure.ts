@@ -9,7 +9,13 @@ class Configure {
     const configDoc: any = yaml.safeLoad(
       fs.readFileSync(path.join(__dirname, '../../config/config.yaml'), 'utf8')
     );
-    this.config = configDoc;
+    const customConfigDoc: any = yaml.safeLoad(
+      fs.readFileSync(path.join(__dirname, '../../config/config.custom.yaml'), 'utf8')
+    )
+    this.config = {
+      ...configDoc,
+      ...customConfigDoc
+    };
   }
 
   public getConfig(key: string): string {
