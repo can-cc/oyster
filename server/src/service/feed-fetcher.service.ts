@@ -2,17 +2,16 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
 import * as htmlToText from 'html-to-text';
-import { getAtoms, saveFeed, getVapidKey, isFeedExist } from '../dao';
+import { saveFeed, getVapidKey, isFeedExist } from '../dao';
 import { fetchFeedSources } from '../fetcher';
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
 
-import { setupWebPush, sendNotification } from '../web-push';
+import { sendNotification } from '../web-push';
 import { logger } from '../logger';
 
 import webPushService from '../service/web-push.service';
-import { authMiddle } from '../route/middle/auth.middle';
 
 const feedsFile = path.resolve(__dirname, '../../..', configure.getConfig('FEED_FILE_PATH'));
 
@@ -32,12 +31,6 @@ class FeedFetcher {
     bloom.connect(client);
     this.filter = new bloom.BloomFilter({ key: 'mykey' });
   }
-
-  private markFeedExist(): void {
-      this.filter.add();
-  }
-
-  private isFeedExist() {}
 
   public pollFetch() {
     const feedSetting: FeedSetting = getFeedSetting();
@@ -73,5 +66,11 @@ class FeedFetcher {
       logger.error(error);
     }
   }
+
+  private markFeedExist(): void {
+    this.filter.add();
+  }
+
+  private isFeedExist() {}
 }
 export default new FeedFetcher();

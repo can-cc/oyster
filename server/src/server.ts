@@ -12,7 +12,6 @@ import { schema } from './graphql/schema';
 import 'reflect-metadata';
 
 import { getAtoms, saveFeed, getVapidKey, isFeedExist } from './dao';
-import { fetchFeedSources } from './fetcher';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
@@ -46,6 +45,9 @@ export function setupServer() {
   app.use(useragent.express());
 
   app.use('/api', authRouter);
+
+  app.use('/api/v1/graphql', graphqlExpress({ schema }));
+  app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
 
   app.use(authMiddle);
 
@@ -97,10 +99,6 @@ export function setupServer() {
       throw error;
     }
   });
-
-  app.use('/api/v1/graphql', graphqlExpress({ schema }));
-
-  app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
 
   app.use((err, req, res, next) => {
     logger.error(err);

@@ -1,4 +1,5 @@
 import { getAtoms } from '../dao';
+import feedService from '../service/feed.service';
 const { makeExecutableSchema } = require('graphql-tools');
 
 const typeDefs = `
@@ -6,7 +7,7 @@ const typeDefs = `
     feeds(limit: Int! offset: Int): [Feed]
     sources: [FeedSource]
   }
-  type Mutation { source(name: String! url: String!): Boolean }
+  type Mutation { source(name: String! url: String!): FeedSource }
   type FeedSource { id: String, name: String, url: String}
   type Feed { id: Int, title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
 `;
@@ -22,8 +23,8 @@ const resolvers = {
     }
   },
   Mutation: {
-    source: (root, args: { name: string; url: string }) => {
-      return true;
+    source: async (root, {name, url}) => {
+      return await feedService.saveFeedSource({name, url});
     }
   }
 };
