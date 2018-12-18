@@ -32,9 +32,7 @@ const FeedSourceCreateMutation = gql`
 export class FeedSourceService {
   public feedSources$: Subject<FeedSource[]> = new BehaviorSubject([]);
 
-  constructor(private apollo: Apollo) {
-    this.feedSources$.subscribe(console.log);
-  }
+  constructor(private apollo: Apollo) {}
 
   public querySourceList(): void {
     this.apollo

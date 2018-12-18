@@ -12,9 +12,7 @@ export class FeedListComponent implements OnInit {
 
   selectIndex: number;
 
-  constructor(private el: ElementRef) {
-    console.log(el);
-  }
+  constructor(private el: ElementRef) {}
 
   ngOnInit() {}
 
