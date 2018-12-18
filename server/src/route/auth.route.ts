@@ -12,7 +12,6 @@ authRouter.post('/login', async (req, res, next) => {
         id: user.id,
         username: user.username
       });
-      console.log('jwtToken', jwtToken);
       return res
         .header('jwt-token', jwtToken)
         .status(200)

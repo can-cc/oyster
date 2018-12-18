@@ -1,3 +1,7 @@
 SERCERT_KEY: oyster # !IMPORTANT please replace this key
 JWT_EXP: 2592000 # 30d
 FEED_FILE_PATH: 'config/feeds.yml'
+
+# redis
+REDIS_HOST: localhost
+REDIS_PORT: 6379

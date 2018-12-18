@@ -3,7 +3,6 @@ import * as winston from 'winston';
 
 const volume = winston.format((info, opts) => {
   info.timestamp = new Date().getTime();
-
   return info;
 });
 
