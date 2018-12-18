@@ -1,8 +1,3 @@
-export declare interface User {
-  id: string;
-  username: string;
-}
-
 export declare interface FeedSource {
   id: string;
   name: string;
@@ -17,4 +12,9 @@ export declare interface Feed {
   content: string;
   author: string;
   published: number;
+}
+
+export declare interface CreateFeedSourceInput {
+  name: string;
+  url: string;
 }

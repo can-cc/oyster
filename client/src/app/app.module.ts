@@ -40,6 +40,7 @@ import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.component';
+import { FeedSourceCreaterComponent } from './feed-source-page/feed-source-creater/feed-source-creater.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.com
     PingDialogComponent,
     LoginPageComponent,
     FeedsPageComponent,
-    FeedSourcePageComponent
+    FeedSourcePageComponent,
+    FeedSourceCreaterComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [

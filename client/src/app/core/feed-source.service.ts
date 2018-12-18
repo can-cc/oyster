@@ -1,13 +1,21 @@
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
-import { Apollo } from 'apollo-angular';
-import { ApolloQueryResult } from 'apollo-client';
+import { Apollo, QueryRef } from 'apollo-angular';
+import { FeedSource, CreateFeedSourceInput } from '../../typing/feed';
 
 const FeedSourcesQuery = gql`
   query getFeedSources {
     sources {
       id
+      name
+      url
     }
+  }
+`;
+
+const FeedSourceCreateMutation = gql`
+  mutation($troopInput: TroopInput!) {
+    createTroop(troopInput: $troopInput)
   }
 `;
 
@@ -15,19 +23,18 @@ const FeedSourcesQuery = gql`
   providedIn: 'root'
 })
 export class FeedSourceService {
+  constructor(private apollo: Apollo) {}
 
-  constructor(
-    private apollo: Apollo
-  ) { }
-
-  public getSourceList() {
-    this.apollo
-    .watchQuery({
+  public getSourceList(): QueryRef<FeedSource[]> {
+    return this.apollo.watchQuery({
       query: FeedSourcesQuery
-    })
-    .valueChanges.subscribe(
-      ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) => {
-        // (this.feeds = this.feeds.concat(data.feeds))
+    });
+  }
+
+  public createFeedSource({ name, url }: CreateFeedSourceInput) {
+    return this.apollo.mutate({
+      mutation: FeedSourceCreateMutation,
+      variables: { name, url }
     });
   }
 }

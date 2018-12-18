@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ApolloQueryResult } from 'apollo-client';
+import { Feed } from '../../typing/feed';
 
 @Component({
   selector: 'app-feeds-page',
