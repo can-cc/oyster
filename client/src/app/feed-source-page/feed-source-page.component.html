@@ -1,6 +1,6 @@
-<p>
-  feed-source-page works!
-</p>
+<div>
+  <li *ngFor="let source of (feedSourceService.feedSources$ | async)"> {{ source.name }} </li>
+</div>
 
 
 <app-feed-source-creater></app-feed-source-creater>

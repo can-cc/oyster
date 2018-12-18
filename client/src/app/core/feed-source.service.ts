@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
 import { Apollo, QueryRef } from 'apollo-angular';
 import { FeedSource, CreateFeedSourceInput } from '../../typing/feed';
+import { Subject, Observable, BehaviorSubject } from 'rxjs';
+import { FetchResult } from 'apollo-link';
+import { map, tap } from 'rxjs/operators';
 
 const FeedSourcesQuery = gql`
   query getFeedSources {
@@ -27,18 +30,34 @@ const FeedSourceCreateMutation = gql`
   providedIn: 'root'
 })
 export class FeedSourceService {
-  constructor(private apollo: Apollo) {}
+  public feedSources$: Subject<FeedSource[]> = new BehaviorSubject([]);
 
-  public getSourceList(): QueryRef<FeedSource[]> {
-    return this.apollo.watchQuery({
-      query: FeedSourcesQuery
-    });
+  constructor(private apollo: Apollo) {
+    this.feedSources$.subscribe(console.log);
   }
 
-  public createFeedSource({ name, url }: CreateFeedSourceInput) {
-    return this.apollo.mutate({
-      mutation: FeedSourceCreateMutation,
-      variables: { name, url }
-    });
+  public querySourceList(): void {
+    this.apollo
+      .query<{ sources: FeedSource[] }>({
+        query: FeedSourcesQuery,
+        fetchPolicy: 'no-cache'
+      })
+      .subscribe(({ data }) => {
+        this.feedSources$.next(data.sources);
+      });
+  }
+
+  public createFeedSource({ name, url }: CreateFeedSourceInput): Observable<FeedSource> {
+    return this.apollo
+      .mutate({
+        mutation: FeedSourceCreateMutation,
+        variables: { name, url }
+      })
+      .pipe(
+        map(({ data }: FetchResult<{ source: FeedSource }>) => data.source),
+        tap(() => {
+          this.querySourceList();
+        })
+      );
   }
 }

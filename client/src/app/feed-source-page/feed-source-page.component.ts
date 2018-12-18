@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FeedSourceService } from '../core/feed-source.service';
 
 @Component({
   selector: 'app-feed-source-page',
@@ -7,9 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedSourcePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(public feedSourceService: FeedSourceService) { }
 
   ngOnInit() {
+    this.feedSourceService.querySourceList();
   }
 
 }

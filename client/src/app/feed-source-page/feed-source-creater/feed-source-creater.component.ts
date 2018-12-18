@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 import { FeedSourceService } from '../../core/feed-source.service';
+import { FeedSource } from '../../../typing/feed';
 
 @Component({
   selector: 'app-feed-source-creater',
@@ -11,21 +11,18 @@ import { FeedSourceService } from '../../core/feed-source.service';
 export class FeedSourceCreaterComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(
-    fb: FormBuilder,
-    private httpClient: HttpClient,
-    private feedSourceService: FeedSourceService
-  ) {
+  constructor(fb: FormBuilder, private feedSourceService: FeedSourceService) {
     this.form = fb.group({
       url: new FormControl(''),
       name: new FormControl('')
     });
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   handleCreate() {
-    // this.feedSourceService.
+    this.feedSourceService.createFeedSource(this.form.value).subscribe((source: FeedSource) => {
+      this.form.reset();
+    });
   }
 }

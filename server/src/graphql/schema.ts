@@ -18,8 +18,8 @@ const resolvers = {
     feeds: async (root, args: { limit: number; offset?: number }, context) => {
       return await getAtoms(args.limit, args.offset);
     },
-    sources: (root, args: {}) => {
-      return [{id: 1}];
+    sources: async (root, args: {}) => {
+      return await feedService.getFeedSources();
     }
   },
   Mutation: {
