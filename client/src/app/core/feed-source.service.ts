@@ -14,8 +14,12 @@ const FeedSourcesQuery = gql`
 `;
 
 const FeedSourceCreateMutation = gql`
-  mutation($troopInput: TroopInput!) {
-    createTroop(troopInput: $troopInput)
+  mutation mutationFeedSource($name: String!, $url: String!) {
+    source(name: $name, url: $url) {
+      id
+      name
+      url
+    }
   }
 `;
 
