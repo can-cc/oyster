@@ -1,15 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({ name: 'rss-atom' })
-export class Atom {
+@Entity({ name: 'feed' })
+export class Feed {
   @PrimaryGeneratedColumn()
   public id: number;
-
-  @Column()
-  public sourceId: string;
-
-  @Column()
-  public originHref: string;
 
   @Column()
   public title: string;
@@ -18,7 +12,10 @@ export class Atom {
   public content: string;
 
   @Column()
-  public hash: string;
+  public sourceId: string;
+
+  @Column()
+  public originHref: string;
 
   @Column()
   public author: string;
@@ -28,4 +25,12 @@ export class Atom {
 
   @UpdateDateColumn()
   public updatedAt: Date;
+
+  constructor(feedData: any) {
+    this.title = feedData.title;
+    this.content = feedData.content;
+    this.sourceId = feedData.sourceId;
+    this.originHref = feedData.originHref;
+    this.author = feedData.author;
+  }
 }
