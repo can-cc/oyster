@@ -3,6 +3,15 @@ import { FeedSource } from '../entity/FeedSource';
 import { Feed } from '../entity/Feed';
 
 class FeedService {
+  public async getFeeds(limit: number, offset: number): Promise<Feed[]> {
+    return await getRepository(Feed)
+      .createQueryBuilder()
+      .orderBy('createdAt')
+      .limit(limit)
+      .offset(offset)
+      .getMany();
+  }
+
   public async getFeedSources(): Promise<FeedSource[]> {
     return await getRepository(FeedSource).find();
   }

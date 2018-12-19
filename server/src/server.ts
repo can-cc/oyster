@@ -11,7 +11,7 @@ import { authRouter } from './route/auth.route';
 import configure from './configure';
 import { schema } from './graphql/schema';
 
-import { getAtoms, getVapidKey } from './dao';
+import { getVapidKey } from './dao';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
@@ -21,6 +21,7 @@ import { logger } from './logger';
 import webPushService from './service/web-push.service';
 import feedFetcherService from './service/feed-fetcher.service';
 import { authMiddle } from './route/middle/auth.middle';
+import feedService from './service/feed.service';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
@@ -62,7 +63,7 @@ export function setupServer() {
 
   app.get('/api/atoms/:limit', async (req, res, next) => {
     try {
-      const atoms = await getAtoms(req.params.limit, req.query.offset);
+      const atoms = await feedService.getFeeds(req.params.limit, req.query.offset);
       return res.status(200).json(atoms);
     } catch (error) {
       next(error);

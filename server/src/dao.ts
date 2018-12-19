@@ -37,15 +37,6 @@ export const markFeedRead = id => {
     });
 };
 
-export const getAtoms = async (limit: number, offset: number = 0): Promise<QueryBuilder> => {
-  return knex('atom')
-    .where({ isRead: null })
-    .select('*')
-    .limit(limit)
-    .offset(offset)
-    .orderBy('id', 'desc');
-};
-
 export const checkHasVapidKey = async (): Promise<boolean> => {
   const cols = await knex('vapidKey').select('*');
   return !!cols.length;

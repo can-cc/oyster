@@ -1,4 +1,3 @@
-import { getAtoms } from '../dao';
 import feedService from '../service/feed.service';
 const { makeExecutableSchema } = require('graphql-tools');
 
@@ -16,7 +15,7 @@ const typeDefs = `
 const resolvers = {
   Query: {
     feeds: async (root, args: { limit: number; offset?: number }, context) => {
-      return await getAtoms(args.limit, args.offset);
+      return await feedService.getFeeds(args.limit, args.offset);
     },
     sources: async (root, args: {}) => {
       return await feedService.getFeedSources();
