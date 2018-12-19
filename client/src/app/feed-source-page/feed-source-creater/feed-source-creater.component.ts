@@ -20,7 +20,7 @@ export class FeedSourceCreaterComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleCreate() {
+  handleCreate(): void {
     this.feedSourceService.createFeedSource(this.form.value).subscribe((source: FeedSource) => {
       this.form.reset();
     });

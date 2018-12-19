@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import gql from 'graphql-tag';
-import { Apollo, QueryRef } from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import { FeedSource, CreateFeedSourceInput } from '../../typing/feed';
 import { Subject, Observable, BehaviorSubject } from 'rxjs';
 import { FetchResult } from 'apollo-link';
