@@ -11,7 +11,7 @@ import { schema } from './graphql/schema';
 
 import 'reflect-metadata';
 
-import { getAtoms, saveFeed, getVapidKey, isFeedExist } from './dao';
+import { getAtoms, getVapidKey } from './dao';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
