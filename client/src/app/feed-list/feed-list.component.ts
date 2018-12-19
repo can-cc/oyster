@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output, ElementRef } from '@angular/core';
 import * as formatDistance from 'date-fns/formatDistance';
+import { Feed } from '../../typing/feed';
 
 @Component({
   selector: 'app-feed-list',

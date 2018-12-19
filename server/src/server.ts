@@ -63,8 +63,8 @@ export function setupServer() {
 
   app.get('/api/atoms/:limit', async (req, res, next) => {
     try {
-      const atoms = await feedService.getFeeds(req.params.limit, req.query.offset);
-      return res.status(200).json(atoms);
+      const feeds = await feedService.getFeeds(req.params.limit, req.query.offset);
+      return res.status(200).json(feeds);
     } catch (error) {
       next(error);
     }

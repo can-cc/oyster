@@ -32,11 +32,11 @@ export class FeedsPageComponent implements OnInit {
               id
               title
               author
-              link
-              source
+              originHref
+              sourceId
               content
-              published
-              isRead
+              createdAt
+              updatedAt
             }
           }
         `,

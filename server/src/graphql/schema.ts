@@ -8,7 +8,7 @@ const typeDefs = `
   }
   type Mutation { source(name: String! url: String!): FeedSource }
   type FeedSource { id: String, name: String, url: String}
-  type Feed { id: Int, title: String, author: String, link: String, source: String, content: String, published: Float, isRead: Boolean }
+  type Feed { id: Int, title: String, author: String, originHref: String, sourceId: String, content: String, createdAt: String, updatedAt: String }
 `;
 
 // The resolvers
