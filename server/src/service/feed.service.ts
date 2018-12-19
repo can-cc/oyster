@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { FeedSource } from '../entity/FeedSource';
+import { Feed } from '../entity/Feed';
 
 class FeedService {
 
@@ -13,6 +14,12 @@ class FeedService {
     feedSource.url = url;
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
     return savedFeedSource;
+  }
+
+  public async saveFeed(feedData): Promise<Feed> {
+    const feed = new Feed(feedData);
+    const savedFeed: Feed = await getRepository(Feed).save(feed);
+    return savedFeed;
   }
 }
 
