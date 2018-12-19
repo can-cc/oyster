@@ -1,17 +1,16 @@
 import * as path from 'path';
 import * as fs from 'fs';
 import * as yaml from 'js-yaml';
-import * as htmlToText from 'html-to-text';
-import { saveFeed, getVapidKey, isFeedExist } from '../dao';
 import { fetchFeedSources } from '../fetcher';
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
 
-import { sendNotification } from '../web-push';
 import { logger } from '../logger';
 
 import webPushService from '../service/web-push.service';
+import { Feed } from '../entity/Feed';
+import feedService from './feed.service';
 
 const feedsFile = path.resolve(__dirname, '../../..', configure.getConfig('FEED_FILE_PATH'));
 
@@ -29,7 +28,7 @@ class FeedFetcher {
       port: configure.getConfig('REDIS_POST')
     });
     bloom.connect(client);
-    this.filter = new bloom.BloomFilter({ key: 'mykey' });
+    this.filter = new bloom.BloomFilter({ key: 'feed-exist' });
   }
 
   public pollFetch() {
@@ -38,25 +37,10 @@ class FeedFetcher {
       fetchFeedSources(feedSetting, async (feeds: any[]) => {
         await Promise.all(
           feeds.map(
-            async (feed: Feed): Promise<void> => {
-              if (!(await isFeedExist(feed))) {
-                await saveFeed(feed);
-                await Promise.all(
-                  webPushService.getSubscribers().map(
-                    (subscription: WebPushSubscription): Promise<void> => {
-                      const content = htmlToText.fromString(feed.content, {
-                        ignoreImage: true,
-                        ignoreHref: true,
-                        wordwrap: false
-                      });
-                      return sendNotification(subscription, {
-                        title: feed.title,
-                        content,
-                        link: feed.link
-                      });
-                    }
-                  )
-                );
+            async (feedData): Promise<void> => {
+              const feed: Feed = new Feed(feedData);
+              if (!(await this.isFeedExist(feed))) {
+                await this.handleParsedFeedData(feed);
               }
             }
           )
@@ -67,10 +51,34 @@ class FeedFetcher {
     }
   }
 
-  private markFeedExist(): void {
-    this.filter.add();
+  private async handleParsedFeedData(feed: Feed): Promise<void> {
+    await feedService.saveFeed(feed);
+    await this.markFeedExist(feed);
+    webPushService.noticeNewFeed(feed).then();
   }
 
-  private isFeedExist() {}
+  private markFeedExist(feed: Feed): Promise<void> {
+    return new Promise((resolve, reject) => {
+      this.filter.add(this.genFeedIdentifyStr(feed), () => {
+        resolve();
+      });
+    });
+    
+  }
+
+  private isFeedExist(feed: Feed): Promise<boolean> {
+    return new Promise((resolve, reject) => {
+      this.filter.contains(this.genFeedIdentifyStr(feed), (error, isContain: boolean) => {
+        if (error) {
+          return reject(error);
+        }
+        return resolve(isContain);
+      });
+    });
+  }
+
+  private genFeedIdentifyStr(feed: Feed): string {
+    return feed.title + feed.content;
+  }
 }
 export default new FeedFetcher();

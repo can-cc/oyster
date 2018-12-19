@@ -27,10 +27,14 @@ export class Feed {
   public updatedAt: Date;
 
   constructor(feedData: any) {
+    if (!feedData) {
+      return;
+    }
     this.title = feedData.title;
     this.content = feedData.content;
     this.sourceId = feedData.sourceId;
     this.originHref = feedData.originHref;
     this.author = feedData.author;
+    this.sourceId = '123';
   }
 }

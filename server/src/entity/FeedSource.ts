@@ -16,4 +16,12 @@ export class FeedSource {
 
   @UpdateDateColumn()
   public updatedAt: Date;
+
+  constructor(feedSourceData) {
+    if (!feedSourceData) {
+      return;
+    }
+    this.name = feedSourceData.name;
+    this.url = feedSourceData.url;
+  }
 }

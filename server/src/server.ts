@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import * as express from 'express';
 import * as path from 'path';
 import * as colors from 'colors';
@@ -9,13 +11,11 @@ import { authRouter } from './route/auth.route';
 import configure from './configure';
 import { schema } from './graphql/schema';
 
-import 'reflect-metadata';
-
 import { getAtoms, getVapidKey } from './dao';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
-import { setupWebPush, sendNotification } from './web-push';
+import { setupWebPush } from './web-push';
 import { logger } from './logger';
 
 import webPushService from './service/web-push.service';
@@ -91,7 +91,7 @@ export function setupServer() {
       };
       await Promise.all(
         webPushService.getSubscribers().map(subscription => {
-          return sendNotification(subscription, params);
+          return webPushService.sendNotification(subscription, params);
         })
       );
       res.status(204).send();

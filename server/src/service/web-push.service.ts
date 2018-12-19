@@ -1,5 +1,9 @@
+import * as webpush from 'web-push';
+import * as htmlToText from 'html-to-text';
 import { getWebpushSubscribers, saveWebpushSubscription } from '../dao';
 import { logger } from '../logger';
+import { Feed } from '../entity/Feed';
+import { WebPushNotification } from 'src/typing/notification';
 
 class WebPushService {
   private subscribers: WebPushSubscription[] = [];
@@ -16,6 +20,33 @@ class WebPushService {
     this.subscribers.push(subscription);
     saveWebpushSubscription(subscription, useragent);
     logger.info(`add new subscription which endpoint is ${subscription.endpoint}`);
+  }
+
+  public noticeNewFeed(feed: Feed): Promise<void[]> {
+    return Promise.all(
+      this.getSubscribers().map(
+        (subscription: WebPushSubscription): Promise<void> => {
+          const content = htmlToText.fromString(feed.content, {
+            ignoreImage: true,
+            ignoreHref: true,
+            wordwrap: false
+          });
+          return this.sendNotification(subscription, {
+            title: feed.title,
+            content,
+            link: feed.originHref
+          });
+        }
+      )
+    );
+  }
+
+  public sendNotification(subscription: WebPushSubscription, params: WebPushNotification): Promise<void> {
+    return webpush.sendNotification(subscription, JSON.stringify(params)).catch(error => {
+      logger.log('[!IMPORTANT] push to FCM error');
+      logger.error(error);
+      throw error;
+    });
   }
 
   private async loadSubscribes(): Promise<void> {

@@ -5,7 +5,7 @@ import * as xml2json from 'xml2json';
 const parseATOM = (entrys: any[], feed): Feed[] =>
   entrys.map((entry): Feed => {
     const title = entry.title;
-    const link = entry.link.href;
+    const originHref = entry.link.href;
     const content = entry.content.$t;
     const published =
       moment(entry.published)
@@ -15,19 +15,19 @@ const parseATOM = (entrys: any[], feed): Feed[] =>
         .toDate()
         .getTime();
     const author = R.path(['author', 'name'])(entry) || R.path(['author', 'name'])(feed);
-    return { title, link, content, published, author };
+    return { title, originHref, content, published, author };
   });
 
 const parseRSS2 = (entrys: any[], channel: any): Feed[] =>
   entrys.map((entry: any): Feed => {
     const title = entry.title;
-    const link = entry.link;
+    const originHref = entry.link;
     const content = entry.description;
     const published = moment(entry.pubDate)
       .toDate()
       .getTime();
     const author = entry.author || R.path(['dc:creator'])(entry);
-    return { title, link, content, published, author };
+    return { title, originHref, content, published, author };
   });
 
 const checkFeedStandard = (xml: any): 'RSS2' | 'ATOM' | 'UNKNOWN' => {

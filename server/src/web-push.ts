@@ -13,14 +13,3 @@ export const setupWebPush = async () => {
   // NOTE replace the email
   webpush.setVapidDetails('mailto:octopus@octopus.com', vapidKeys.publicKey, vapidKeys.privateKey);
 };
-
-export const sendNotification = (
-  subscription: WebPushSubscription,
-  params: WebPushNotification
-): Promise<void> => {
-  return webpush.sendNotification(subscription, JSON.stringify(params)).catch(error => {
-    logger.log('[!IMPORTANT] push to FCM error');
-    logger.error(error);
-    throw error;
-  });
-};

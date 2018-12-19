@@ -31,7 +31,7 @@ declare interface Feed {
   id?: number;
   title: string;
   source?: string;
-  link: string;
+  originHref: string;
   content: string;
   author: string;
   published: number;
@@ -49,10 +49,4 @@ declare interface WebPushSubscription {
     p256dh: string;
     auth: string;
   };
-}
-
-declare interface WebPushNotification {
-  title: string;
-  content: string;
-  link: string;
 }
