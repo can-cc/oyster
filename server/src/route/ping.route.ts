@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as htmlToText from 'html-to-text';
-import webPushService from 'src/service/web-push.service';
+import webPushService from '../service/web-push.service';
 
 const pignRouter = express.Router();
 

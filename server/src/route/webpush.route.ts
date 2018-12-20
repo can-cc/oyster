@@ -1,6 +1,6 @@
 import * as express from 'express';
-import webPushService from 'src/service/web-push.service';
-import { getVapidKey } from 'src/dao';
+import webPushService from '../service/web-push.service';
+import { getVapidKey } from '../dao';
 
 const webpushRouter = express.Router();
 

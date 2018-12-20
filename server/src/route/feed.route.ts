@@ -1,5 +1,5 @@
 import * as express from 'express';
-import feedService from 'src/service/feed.service';
+import feedService from '../service/feed.service';
 
 const feedRouter = express.Router();
 
