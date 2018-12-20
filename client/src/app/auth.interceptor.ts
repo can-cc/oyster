@@ -18,14 +18,14 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authReq = req.clone({
-      headers: req.headers.set('jwt-token', this.authService.getJwt() || '')
+      headers: req.headers.set('Authorization', this.authService.getJwt() || '')
     });
 
     return next.handle(authReq).pipe(
       catchError((error, caught) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401 && error.url.indexOf('/api/login') === -1) {
-            this.snackBar.open('auth failure, please set localStorage [jwt-token]', null, {
+            this.snackBar.open('auth failure, please set localStorage [Authorization]', null, {
               duration: 2000
             });
           }

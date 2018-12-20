@@ -1,7 +1,7 @@
 import { AuthService } from '../../service/auth.service';
 
 export function authMiddle(req, res, next) {
-  const jwtdata: string = req.header('jwt-token');
+  const jwtdata: string = req.header('Authorization');
 
   if (!jwtdata) {
     res.status(401).send();

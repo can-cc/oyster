@@ -36,7 +36,7 @@ export class LoginPageComponent implements OnInit {
           this.router.navigate(['/feeds'], { replaceUrl: false });
           this.authService.handleLoginSuccess(
             response.body as User,
-            response.headers.get('jwt-token')
+            response.headers.get('Authorization')
           );
           console.log(response);
         },

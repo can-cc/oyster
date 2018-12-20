@@ -13,7 +13,7 @@ authRouter.post('/login', async (req, res, next) => {
         username: user.username
       });
       return res
-        .header('jwt-token', jwtToken)
+        .header('Authorization', jwtToken)
         .status(200)
         .json({
           id: user.id,

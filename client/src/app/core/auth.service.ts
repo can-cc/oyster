@@ -9,7 +9,7 @@ export class AuthService {
   private user: User;
 
   constructor() {
-    this.setJwt(window.localStorage.getItem('jwt-token'));
+    this.setJwt(window.localStorage.getItem('Authorization'));
   }
 
   public setJwt(jwt: string) {
@@ -17,7 +17,7 @@ export class AuthService {
   }
 
   private saveJwt(jwt: string): void {
-    window.localStorage.setItem('jwt-token', jwt);
+    window.localStorage.setItem('Authorization', jwt);
   }
 
   public handleLoginSuccess(user: User, jwt: string): void {
