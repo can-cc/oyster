@@ -5,23 +5,21 @@ import * as path from 'path';
 import * as colors from 'colors';
 import * as fs from 'fs';
 import * as morgan from 'morgan';
-import * as htmlToText from 'html-to-text';
 import * as useragent from 'express-useragent';
 import { authRouter } from './route/auth.route';
 import configure from './configure';
 import { schema } from './graphql/schema';
-
-import { getVapidKey } from './dao';
 
 const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
 import { setupWebPush } from './web-push';
 import { logger } from './logger';
 
-import webPushService from './service/web-push.service';
 import feedFetcherService from './service/feed-fetcher.service';
 import { authMiddle } from './route/middle/auth.middle';
-import feedService from './service/feed.service';
+import { feedRouter } from './route/feed.route';
+import { pignRouter } from './route/ping.route';
+import { webpushRouter } from './route/webpush.route';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
@@ -52,54 +50,9 @@ export function setupServer() {
 
   app.use(authMiddle);
 
-  app.get('/api/client/config', async (req, res) => {
-    try {
-      const vapidPublicKey: string = (await getVapidKey()).publicKey;
-      res.json({ vapidPublicKey });
-    } catch (error) {
-      throw error;
-    }
-  });
-
-  app.get('/api/atoms/:limit', async (req, res, next) => {
-    try {
-      const feeds = await feedService.getFeeds(req.params.limit, req.query.offset);
-      return res.status(200).json(feeds);
-    } catch (error) {
-      next(error);
-    }
-  });
-
-  app.post('/api/webpush/subscribe', (req, res) => {
-    try {
-      const subscription: WebPushSubscription = req.body.subscription;
-      const userAgent: string = req.useragent.source;
-      webPushService.addSubscription(subscription, userAgent);
-      res.status(204).send();
-    } catch (error) {
-      throw error;
-    }
-  });
-
-  app.post('/api/webpush/ping', async (req, res) => {
-    try {
-      const { msg }: { msg: string } = req.body;
-      const content = htmlToText.fromString(msg);
-      const params = {
-        title: 'Pong!',
-        content,
-        link: ''
-      };
-      await Promise.all(
-        webPushService.getSubscribers().map(subscription => {
-          return webPushService.sendNotification(subscription, params);
-        })
-      );
-      res.status(204).send();
-    } catch (error) {
-      throw error;
-    }
-  });
+  app.use(feedRouter);
+  app.use(pignRouter);
+  app.use(webpushRouter);
 
   app.use((err, req, res, next) => {
     logger.error(err);
