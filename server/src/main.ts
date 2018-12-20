@@ -1,13 +1,14 @@
 import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { setupServer } from './server';
+import feedFetcherService from './service/feed-fetcher.service';
 
 function main() {
   createConnection()
-  .then(async connection => {
+  .then(() => {
     console.log('database connection successful.')
 
-    console.log('Here you can setup and run express/koa/any other framework.');
+    feedFetcherService.pollFetch();
 
     setupServer();
   })

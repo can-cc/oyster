@@ -34,9 +34,7 @@ export function setupServer() {
   checkFeedFileExist();
 
   setupWebPush();
-
-  feedFetcherService.pollFetch();
-
+  
   const app = express();
 
   app.use(morgan('tiny'));
