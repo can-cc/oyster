@@ -2,19 +2,6 @@ import { knex } from './db';
 import { QueryBuilder } from 'knex';
 import { logger } from './logger';
 
-export const saveFeed = async (feed: Feed): Promise<QueryBuilder | void> => {
-  logger.info(`saving feed.  title: ${feed.title}`);
-  return knex('atom').insert({
-    ...feed
-  });
-};
-
-export const getUserByUsername = async (username: string): Promise<QueryBuilder> => {
-  return knex('user').where({
-    username
-  }).select('*');
-};
-
 export const saveUser = async (username: string, hash: string): Promise<QueryBuilder | void> => {
   return knex('user').insert({
     username,
@@ -27,14 +14,6 @@ export const saveUser = async (username: string, hash: string): Promise<QueryBui
 export const isFeedExist = async (feed: Feed): Promise<boolean> => {
   const cols = await knex('atom').where({ title: feed.title });
   return !!cols.length;
-};
-
-export const markFeedRead = id => {
-  return knex('atom')
-    .where({ id })
-    .update({
-      isRead: true
-    });
 };
 
 export const checkHasVapidKey = async (): Promise<boolean> => {
