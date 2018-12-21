@@ -1,25 +1,55 @@
-import * as path from 'path';
-import * as fs from 'fs';
-import * as yaml from 'js-yaml';
-import { fetchFeedSources } from '../fetcher';
+
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
-
 import { logger } from '../logger';
-
 import webPushService from '../service/web-push.service';
-import { Feed } from '../entity/Feed';
 import feedService from './feed.service';
 import { FeedSource } from '../entity/FeedSource';
+import { Feed } from '../entity/Feed';
 import feedSourceService from './feed-source.service';
+import * as fetch from 'isomorphic-fetch';
+import * as Rx from 'rxjs';
+import { parseFeed } from '../util/parser';
 
-const feedsFile = path.resolve(__dirname, '../../..', configure.getConfig('FEED_FILE_PATH'));
+const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> => {
+  return Rx.Observable.interval(interval)
+    .startWith(0)
+    .switchMap(() =>
+      Rx.Observable.of(...sources).concatMap(s => {
+        return Rx.Observable.of(s)
+          .mergeMap(async source => {
+            logger.info(`fetch ${source.name}`);
+            const feedRawData = await (await fetch(source.url)).text();
+            return { ...source, feedRawData };
+          })
+          .catch((error, caught) => {
+            logger.error(`fetch failure : ${error.message}`);
+            return Rx.Observable.empty().ignoreElements();
+          });
+      })
+    );
+};
 
-// function getFeedSetting() {
-//   const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
-//   return feeds;
-// }
+const fetchFeedSources = (
+  feedSources: FeedSource[],
+  handleFeeds: (feeds: Feed[]) => void
+): (() => void) => {
+  const feed$ = loop(feedSources);
+  const subscription = feed$.subscribe(
+    async (result: { label: string; url: string; feedRawData: string }) => {
+      try {
+        const feeds = await parseFeed(result.feedRawData);
+        logger.info(`parse "${result.label} feed raw data susscess"; lenght = ${feeds.length}`);
+        return handleFeeds(feeds.map(feed => ({ ...feed, source: result.label })));
+      } catch (error) {
+        logger.error(`parse and save feed error. ${error}`);
+      }
+    }
+  );
+  return () => subscription.unsubscribe();
+};
+
 
 class FeedFetcher {
   private filter: bloom.BloomFilter;
