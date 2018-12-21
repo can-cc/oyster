@@ -1,20 +1,17 @@
-import * as md5 from 'md5';
 import * as fetch from 'isomorphic-fetch';
 import * as Rx from 'rxjs';
 import { parseFeed } from './util/parser';
 import { logger } from './logger';
+import { FeedSource } from './entity/FeedSource';
 
-const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedResult> => {
-  return Rx.Observable.interval(interval || 5 * 60 * 1000)
+const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> => {
+  return Rx.Observable.interval(interval)
     .startWith(0)
-    .do(() => {
-      logger.info('========== start fetch a seq feed source ==========');
-    })
     .switchMap(() =>
       Rx.Observable.of(...sources).concatMap(s => {
         return Rx.Observable.of(s)
           .mergeMap(async source => {
-            logger.info(`fetch ${source.label}`);
+            logger.info(`fetch ${source.name}`);
             const feedRawData = await (await fetch(source.url)).text();
             return { ...source, feedRawData };
           })
@@ -27,10 +24,10 @@ const loop = (sources: FeedSource[], interval: number): Rx.Observable<{} | FeedR
 };
 
 export const fetchFeedSources = (
-  feedSetting: FeedSetting,
+  feedSources: FeedSource[],
   handleFeeds: (feeds: any[]) => void
 ): (() => void) => {
-  const feed$ = loop(feedSetting.feeds, feedSetting.fetchinginterval);
+  const feed$ = loop(feedSources);
   const subscription = feed$.subscribe(
     async (result: { label: string; url: string; feedRawData: string }) => {
       try {

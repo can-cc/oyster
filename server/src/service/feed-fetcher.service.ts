@@ -11,13 +11,15 @@ import { logger } from '../logger';
 import webPushService from '../service/web-push.service';
 import { Feed } from '../entity/Feed';
 import feedService from './feed.service';
+import { FeedSource } from '../entity/FeedSource';
+import feedSourceService from './feed-source.service';
 
 const feedsFile = path.resolve(__dirname, '../../..', configure.getConfig('FEED_FILE_PATH'));
 
-function getFeedSetting() {
-  const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
-  return feeds;
-}
+// function getFeedSetting() {
+//   const feeds = yaml.safeLoad(fs.readFileSync(feedsFile, 'utf8'));
+//   return feeds;
+// }
 
 class FeedFetcher {
   private filter: bloom.BloomFilter;
@@ -32,9 +34,9 @@ class FeedFetcher {
   }
 
   public pollFetch() {
-    const feedSetting: FeedSetting = getFeedSetting();
+    const feedSources: FeedSource[] = feedSourceService.getFeedSource();
     try {
-      fetchFeedSources(feedSetting, async (feeds: any[]) => {
+      fetchFeedSources(feedSources, async (feeds: any[]) => {
         await Promise.all(
           feeds.map(
             async (feedData): Promise<void> => {
