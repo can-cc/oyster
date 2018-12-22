@@ -12,7 +12,7 @@ import * as Rx from 'rxjs';
 import { parseFeed } from '../util/parser';
 import { FeedData } from '../typing/feed';
 
-const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> => {
+function loop(sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> {
   return Rx.Observable.interval(interval)
     .startWith(0)
     .switchMap(() =>
@@ -31,7 +31,7 @@ const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Obser
     );
 };
 
-const fetchFeedSources = (feedSources: FeedSource[]): Rx.Observable<FeedData[]> => {
+function fetchFeedSources(feedSources: FeedSource[]): Rx.Observable<FeedData[]> {
   return Rx.Observable.create(observer => {
     const feed$ = loop(feedSources);
     const subscription = feed$.subscribe(async (result: { label: string; url: string; feedRawData: string }) => {
