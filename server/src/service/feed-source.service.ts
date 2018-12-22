@@ -4,9 +4,7 @@ import { getRepository } from 'typeorm';
 class FeedSourceService {
   private source: FeedSource[];
 
-  constructor() {
-    this.refreshFeedSource().then();
-  }
+  // constructor() {}
 
   public async refreshFeedSource(): Promise<void> {
     this.source = await getRepository(FeedSource).find();

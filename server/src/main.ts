@@ -8,7 +8,7 @@ function main() {
   .then(() => {
     console.log('database connection successful.')
 
-    feedFetcherService.pollFetch();
+    feedFetcherService.pollFetch().then();
 
     setupServer();
   })

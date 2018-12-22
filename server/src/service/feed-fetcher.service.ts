@@ -31,17 +31,13 @@ const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Obser
     );
 };
 
-const fetchFeedSources = (
-  feedSources: FeedSource[],
-  handleFeeds: (feeds: Feed[]) => void
-): Rx.Observable<FeedData[]> => {
-  return Rx.Observable.create(resolver => {
+const fetchFeedSources = (feedSources: FeedSource[]): Rx.Observable<FeedData[]> => {
+  return Rx.Observable.create(observer => {
     const feed$ = loop(feedSources);
     const subscription = feed$.subscribe(async (result: { label: string; url: string; feedRawData: string }) => {
       try {
-        const feeds: FeedData[] = await parseFeed(result.feedRawData);
-        logger.info(`parse "${result.label} feed raw data susscess"; lenght = ${feeds.length}`);
-        return handleFeeds(feeds.map((feed: FeedData) => new Feed({ ...feed, sourceId: '123' })));
+        const feedDatas: FeedData[] = await parseFeed(result.feedRawData);
+        observer.next(feedDatas);
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
       }
@@ -62,13 +58,14 @@ class FeedFetcher {
     this.filter = new bloom.BloomFilter({ key: 'feed-exist' });
   }
 
-  public pollFetch() {
+  public async pollFetch() {
+    await feedSourceService.refreshFeedSource();
     const feedSources: FeedSource[] = feedSourceService.getFeedSource();
     try {
-      fetchFeedSources(feedSources, async (feeds: any[]) => {
+      fetchFeedSources(feedSources).subscribe(async (feedDatas: FeedData[]) => {
         await Promise.all(
-          feeds.map(
-            async (feedData): Promise<void> => {
+          feedDatas.map(
+            async (feedData: FeedData): Promise<void> => {
               const feed: Feed = new Feed(feedData);
               if (!(await this.isFeedExist(feed))) {
                 await this.handleParsedFeedData(feed);
