@@ -6,3 +6,4 @@
 /server/yarn-error.log
 /log/*
 .DS_Store
+db/db.sqlite3-journal

@@ -3,7 +3,7 @@ import * as htmlToText from 'html-to-text';
 import { getWebpushSubscribers, saveWebpushSubscription } from '../dao';
 import { logger } from '../logger';
 import { Feed } from '../entity/Feed';
-import { WebPushNotification } from 'src/typing/notification';
+import { WebPushNotification } from '../typing/notification';
 
 class WebPushService {
   private subscribers: WebPushSubscription[] = [];

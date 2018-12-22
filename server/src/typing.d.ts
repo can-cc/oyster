@@ -27,16 +27,6 @@ declare interface FeedResult extends FeedSource {
   feedRawData: string;
 }
 
-declare interface Feed {
-  id?: number;
-  title: string;
-  source?: string;
-  originHref: string;
-  content: string;
-  author: string;
-  published: number;
-}
-
 declare interface VapidKeys {
   publicKey: string;
   privateKey: string;

@@ -1,5 +1,5 @@
-import feedService from "src/service/feed.service";
-import feedSourceService from "src/service/feed-source.service";
+import feedService from '../service/feed.service';
+import feedSourceService from '../service/feed-source.service';
 
 export const resolvers = {
   Query: {
@@ -11,8 +11,8 @@ export const resolvers = {
     }
   },
   Mutation: {
-    source: async (root, {name, url}) => {
-      return await feedSourceService.saveFeedSource({name, url});
+    source: async (root, { name, url }) => {
+      return await feedSourceService.saveFeedSource({ name, url });
     }
   }
 };

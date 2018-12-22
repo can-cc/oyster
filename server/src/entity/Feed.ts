@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { FeedData } from '../typing/feed';
 
 @Entity({ name: 'feed' })
 export class Feed {
@@ -21,12 +22,15 @@ export class Feed {
   public author: string;
 
   @CreateDateColumn()
+  public publishedDate: Date;
+
+  @CreateDateColumn()
   public createdAt: Date;
 
   @UpdateDateColumn()
   public updatedAt: Date;
 
-  constructor(feedData: any) {
+  constructor(feedData: FeedData) {
     if (!feedData) {
       return;
     }

@@ -11,11 +11,6 @@ export const saveUser = async (username: string, hash: string): Promise<QueryBui
   });
 };
 
-export const isFeedExist = async (feed: Feed): Promise<boolean> => {
-  const cols = await knex('atom').where({ title: feed.title });
-  return !!cols.length;
-};
-
 export const checkHasVapidKey = async (): Promise<boolean> => {
   const cols = await knex('vapidKey').select('*');
   return !!cols.length;

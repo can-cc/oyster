@@ -1,4 +1,3 @@
-
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
@@ -11,6 +10,7 @@ import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
 import * as Rx from 'rxjs';
 import { parseFeed } from '../util/parser';
+import { FeedData } from '../typing/feed';
 
 const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> => {
   return Rx.Observable.interval(interval)
@@ -34,22 +34,21 @@ const loop = (sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Obser
 const fetchFeedSources = (
   feedSources: FeedSource[],
   handleFeeds: (feeds: Feed[]) => void
-): (() => void) => {
-  const feed$ = loop(feedSources);
-  const subscription = feed$.subscribe(
-    async (result: { label: string; url: string; feedRawData: string }) => {
+): Rx.Observable<FeedData[]> => {
+  return Rx.Observable.create(resolver => {
+    const feed$ = loop(feedSources);
+    const subscription = feed$.subscribe(async (result: { label: string; url: string; feedRawData: string }) => {
       try {
-        const feeds = await parseFeed(result.feedRawData);
+        const feeds: FeedData[] = await parseFeed(result.feedRawData);
         logger.info(`parse "${result.label} feed raw data susscess"; lenght = ${feeds.length}`);
-        return handleFeeds(feeds.map(feed => ({ ...feed, source: result.label })));
+        return handleFeeds(feeds.map((feed: FeedData) => new Feed({ ...feed, sourceId: '123' })));
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
       }
-    }
-  );
-  return () => subscription.unsubscribe();
+    });
+    return () => subscription.unsubscribe();
+  });
 };
-
 
 class FeedFetcher {
   private filter: bloom.BloomFilter;
@@ -95,7 +94,6 @@ class FeedFetcher {
         resolve();
       });
     });
-    
   }
 
   private isFeedExist(feed: Feed): Promise<boolean> {
