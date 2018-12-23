@@ -8,31 +8,38 @@ import { FeedSource } from '../entity/FeedSource';
 import { Feed } from '../entity/Feed';
 import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
-import * as Rx from 'rxjs';
+import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements } from 'rxjs/operators';
+import { Observable, interval, of, empty } from 'rxjs'
 import { parseFeed } from '../util/parser';
 import { FeedData } from '../typing/feed';
 
-function loop(sources: FeedSource[], interval: number = 5 * 60 * 1000): Rx.Observable<{} | FeedResult> {
-  return Rx.Observable.interval(interval)
-    .startWith(0)
-    .switchMap(() =>
-      Rx.Observable.of(...sources).concatMap(s => {
-        return Rx.Observable.of(s)
-          .mergeMap(async source => {
-            logger.info(`fetch ${source.name}`);
-            const feedRawData = await (await fetch(source.url)).text();
-            return { ...source, feedRawData };
-          })
-          .catch((error, caught) => {
-            logger.error(`fetch failure : ${error.message}`);
-            return Rx.Observable.empty().ignoreElements();
-          });
-      })
-    );
-};
+function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<{} | FeedResult> {
+  return interval(intervalValue)
+    .pipe(
+      startWith(0),
+      switchMap(() =>
+        of(...sources).pipe(
+          concatMap(s => {
+            return of(s).pipe(
+              mergeMap(async source => {
+                logger.info(`fetch ${source.name}`);
+                const feedRawData = await (await fetch(source.url)).text();
+                return { ...source, feedRawData };
+              }),
+              catchError((error, caught) => {
+                logger.error(`fetch failure : ${error.message}`);
+                return empty().pipe(ignoreElements());
+              })
+            )
 
-function fetchFeedSources(feedSources: FeedSource[]): Rx.Observable<FeedData[]> {
-  return Rx.Observable.create(observer => {
+          })
+        )
+      )
+    );
+}
+
+function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
+  return Observable.create(observer => {
     const feed$ = loop(feedSources);
     const subscription = feed$.subscribe(async (result: { label: string; url: string; feedRawData: string }) => {
       try {
