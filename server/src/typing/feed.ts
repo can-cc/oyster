@@ -1,4 +1,4 @@
-export declare interface FeedData {
+export interface FeedData {
   title: string;
   content: string;
   originHref: string;
