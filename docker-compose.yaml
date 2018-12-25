@@ -1,11 +1,15 @@
 version: "3.2"
 services:
+  redis:
+    restart: always
+    image: redis
+    ports:
+      - "6379:6379"
   nginx:
     restart: "no"
     build: ./client/
     ports:
       - "80:80"
-      - "443:443"
     links:
       - backend:backend
   backend:
@@ -15,5 +19,3 @@ services:
       - ./db:/db
       - ./config:/config
       - ./log:/log
-    command: >
-      sh -c "node built/main.js"
