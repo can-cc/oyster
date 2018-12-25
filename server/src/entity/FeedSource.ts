@@ -11,6 +11,9 @@ export class FeedSource {
   @Column()
   public url: string;
 
+  @Column({ nullable: true })
+  public logoUrl: string;
+
   @CreateDateColumn()
   public createdAt: Date;
 
