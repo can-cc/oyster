@@ -1,4 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { UserData } from '../typing/auth';
 
 @Entity()
 export class User {
@@ -16,4 +17,12 @@ export class User {
 
   @Column({name: 'updated_at'})
   public updatedAt: Date;
+
+  constructor(userData: UserData) {
+    if (!userData) {
+      return;
+    }
+    this.username = userData.username;
+    this.hash = userData.hash;
+  }
 }
