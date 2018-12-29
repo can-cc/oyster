@@ -18,7 +18,7 @@ class Configure {
       ...configDoc,
       ...customConfigDoc
     };
-    this.overrideConfigKeyFromEnv();
+    // this.overrideConfigKeyFromEnv();
   }
 
   public getConfig(key: string): any {
