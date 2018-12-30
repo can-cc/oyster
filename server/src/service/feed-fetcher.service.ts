@@ -41,10 +41,10 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
 function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
   return Observable.create(observer => {
     const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe(async (result: { label: string; url: string; feedRawData: string }) => {
+    const subscription = feed$.subscribe(async (result: { id: number, feedRawData: string }) => {
       try {
         const feedDatas: FeedData[] = await parseFeed(result.feedRawData);
-        observer.next(feedDatas);
+        observer.next({...feedDatas, sourceId: result.id});
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
       }

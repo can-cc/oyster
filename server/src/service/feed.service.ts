@@ -5,7 +5,7 @@ class FeedService {
   public async getFeeds(limit: number, offset: number): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder()
-      .orderBy('createdAt')
+      .orderBy('"createdAt"')
       .limit(limit)
       .offset(offset)
       .getMany();
