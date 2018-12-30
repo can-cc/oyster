@@ -3,7 +3,7 @@ import { FeedData } from '../typing/feed';
 
 @Entity({ name: 'feed' })
 export class Feed {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   public id: number;
 
   @Column()
@@ -24,10 +24,10 @@ export class Feed {
   @CreateDateColumn()
   public publishedDate: Date;
 
-  @CreateDateColumn()
+  @CreateDateColumn({ type: 'timestamp'})
   public createdAt: Date;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: 'timestamp'})
   public updatedAt: Date;
 
   constructor(feedData: FeedData) {

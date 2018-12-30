@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Feed } from '../../typing/feed';
 
 @Component({
   selector: 'app-article-preview',

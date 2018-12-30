@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { ColorService } from '../color.service';
+import { Feed } from '../../typing/feed';
 
 @Component({
   selector: 'app-article-avatar',

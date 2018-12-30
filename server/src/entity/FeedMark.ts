@@ -1,5 +1,4 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,JoinColumn, OneToOne, UpdateDateColumn } from 'typeorm';
-import { FeedData } from '../typing/feed';
 import { Feed } from './Feed';
 
 @Entity()

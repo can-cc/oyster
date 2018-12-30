@@ -10,7 +10,7 @@ import { authRouter } from './route/auth.route';
 import configure from './configure';
 import { schema } from './graphql/schema';
 
-const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
+// const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
 import { setupWebPush } from './web-push';
 import { logger } from './logger';
@@ -23,15 +23,15 @@ import { webpushRouter } from './route/webpush.route';
 
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 
-function checkFeedFileExist() {
-  if (!fs.existsSync(feedsFile)) {
-    console.log('check your `feeds.yml` file');
-    process.exit();
-  }
-}
+// function checkFeedFileExist() {
+//   if (!fs.existsSync(feedsFile)) {
+//     console.log('check your `feeds.yml` file');
+//     process.exit();
+//   }
+// }
 
 export function setupServer() {
-  checkFeedFileExist();
+  // checkFeedFileExist();
 
   setupWebPush();
   
