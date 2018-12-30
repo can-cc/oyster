@@ -37,6 +37,7 @@
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.3.3",
+    "sqlite3": "^4.0.4",
     "typeorm": "^0.2.9",
     "web-push": "^3.3.0",
     "winston": "^3.0.0-rc4",

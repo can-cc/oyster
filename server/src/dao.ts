@@ -2,15 +2,6 @@ import { knex } from './db';
 import { QueryBuilder } from 'knex';
 import { logger } from './logger';
 
-// export const saveUser = async (username: string, hash: string): Promise<QueryBuilder | void> => {
-//   return knex('user').insert({
-//     username,
-//     hash,
-//     created_at: new Date().getTime(),
-//     updated_at: new Date().getTime()
-//   });
-// };
-
 export const checkHasVapidKey = async (): Promise<boolean> => {
   const cols = await knex('vapidKey').select('*');
   return !!cols.length;
