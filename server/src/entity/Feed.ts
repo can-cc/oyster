@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { FeedData } from '../typing/feed';
+import { FeedSource } from './FeedSource';
 
 @Entity({ name: 'feed' })
 export class Feed {
@@ -12,8 +13,9 @@ export class Feed {
   @Column()
   public content: string;
 
-  @Column()
-  public sourceId: string;
+  @ManyToOne(() => FeedSource)
+  @JoinColumn()
+  public source: FeedSource;
 
   @Column()
   public originHref: string;
@@ -36,9 +38,8 @@ export class Feed {
     }
     this.title = feedData.title;
     this.content = feedData.content;
-    this.sourceId = feedData.sourceId;
+    this.source = feedData.source;
     this.originHref = feedData.originHref;
     this.author = feedData.author;
-    this.sourceId = feedData.sourceId;
   }
 }

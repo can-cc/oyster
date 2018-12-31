@@ -11,9 +11,9 @@ import * as fetch from 'isomorphic-fetch';
 import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements } from 'rxjs/operators';
 import { Observable, interval, of, empty } from 'rxjs'
 import { parseFeed } from '../util/parser';
-import { FeedData } from '../typing/feed';
+import { FeedData, FeedResult } from '../typing/feed';
 
-function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<{} | FeedResult> {
+function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue)
     .pipe(
       startWith(0),
@@ -24,7 +24,7 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
               mergeMap(async source => {
                 logger.info(`fetch ${source.name}`);
                 const feedRawData = await (await fetch(source.url)).text();
-                return { ...source, feedRawData };
+                return { source, feedRawData };
               }),
               catchError((error, caught) => {
                 logger.error(`fetch failure : ${error.message}`);
@@ -41,10 +41,10 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
 function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
   return Observable.create(observer => {
     const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe(async (result: { id: number, feedRawData: string }) => {
+    const subscription = feed$.subscribe(async (result: FeedResult) => {
       try {
-        const feedDatas: FeedData[] = await parseFeed(result.feedRawData);
-        observer.next({...feedDatas, sourceId: result.id});
+        const feedDatas: FeedData[] = await parseFeed(result.feedRawData).map(f => ({...f, source: result.source}));
+        observer.next(feedDatas);
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
       }
