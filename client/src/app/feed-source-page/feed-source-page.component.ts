@@ -7,11 +7,9 @@ import { FeedSourceService } from '../core/feed-source.service';
   styleUrls: ['./feed-source-page.component.css']
 })
 export class FeedSourcePageComponent implements OnInit {
-
-  constructor(public feedSourceService: FeedSourceService) { }
+  constructor(public feedSourceService: FeedSourceService) {}
 
   ngOnInit() {
     this.feedSourceService.querySourceList();
   }
-
 }

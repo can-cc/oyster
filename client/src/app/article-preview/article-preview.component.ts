@@ -14,13 +14,11 @@ export class ArticlePreviewComponent implements OnInit {
 
   faStar = faStarO;
 
-  constructor(
-    private feedMarkService: FeedMarkService
-  ) {}
+  constructor(private feedMarkService: FeedMarkService) {}
 
   ngOnInit() {}
 
-  handleFavoriteIconClick() {  
+  handleFavoriteIconClick() {
     this.feedMarkService.markFeedFavorite(this.feed.id);
   }
 }

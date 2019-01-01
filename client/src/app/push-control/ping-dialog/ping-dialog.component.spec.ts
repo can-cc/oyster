@@ -8,9 +8,8 @@ describe('PingDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PingDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [PingDialogComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

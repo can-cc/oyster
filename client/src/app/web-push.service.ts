@@ -8,7 +8,7 @@ export class WebPushService {
   constructor(private httpClient: HttpClient) {}
 
   public urlBase64ToUint8Array(base64String: string): Uint8Array {
-    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const padding = '='.repeat((4 - (base64String.length % 4)) % 4);
     const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
     const rawData = window.atob(base64);
     const outputArray = new Uint8Array(rawData.length);
@@ -20,7 +20,7 @@ export class WebPushService {
 
   public pingNotification = (msg: string): Observable<any> => {
     return this.httpClient.post('/api/webpush/ping', { msg }).pipe(catchError(this.handleError));
-  }
+  };
 
   public addSubscriber(subscription: any): Observable<any> {
     const body = {

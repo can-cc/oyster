@@ -8,9 +8,8 @@ describe('FeedListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedListComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedListComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

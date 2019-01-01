@@ -8,9 +8,8 @@ describe('FeedSourceCreaterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedSourceCreaterComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedSourceCreaterComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

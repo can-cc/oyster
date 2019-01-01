@@ -10,7 +10,6 @@ import { Feed } from '../../typing/feed';
   styleUrls: ['./feeds-page.component.css']
 })
 export class FeedsPageComponent implements OnInit {
-
   @ViewChild('list') list;
   feeds: Feed[] = [];
   selectedFeed: Feed;
@@ -63,5 +62,4 @@ export class FeedsPageComponent implements OnInit {
   public onFeedListSelect(feed: Feed) {
     this.selectedFeed = feed;
   }
-
 }
