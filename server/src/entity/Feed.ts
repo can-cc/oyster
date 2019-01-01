@@ -23,7 +23,7 @@ export class Feed {
   @Column()
   public content: string;
 
-  @ManyToOne(() => FeedSource)
+  @ManyToOne(() => FeedSource, { nullable: true })
   @JoinColumn()
   public source: FeedSource;
 
