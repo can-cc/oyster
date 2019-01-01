@@ -1,7 +1,8 @@
 ## Deploy
-#+BEGIN_SRC bash
+
+``` bash
 docker-compose up
-#+END_SRC
+```
 
 ## config
 default config in `config/config.yaml`, it store in git, please do not motifiy it.
@@ -10,8 +11,12 @@ you can change config in `config/config.custom.yaml`, it will override `config/c
 
 otherwise, you can change config in env variables, it will override 
 
+| Name                  | Description                    | Default |
+|-----------------------|--------------------------------|---------|
+| VAPID_DETAIL_EMAIL    | vapid detail email             |         |
+
+
+
 ### Log
 log file write to ./log dir
 
-### db
-use sqlite3, initial in ./db dir
