@@ -1,13 +1,3 @@
-CREATE TABLE atom (
-       id INTEGER PRIMARY KEY AUTOINCREMENT,
-       title TEXT,
-       source TEXT,
-       link TEXT,
-       content TEXT,
-       published TEXT,
-       author TEXT,
-       isRead BOOLEAN
-);
 
 CREATE TABLE vapidKey (
        publicKey TEXT NOT NULL,

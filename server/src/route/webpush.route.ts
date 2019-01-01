@@ -1,12 +1,11 @@
 import * as express from 'express';
 import webPushService from '../service/web-push.service';
-import { getVapidKey } from '../dao';
 
 const webpushRouter = express.Router();
 
 webpushRouter.get('/api/client/config', async (req, res) => {
   try {
-    const vapidPublicKey: string = (await getVapidKey()).publicKey;
+    const vapidPublicKey: string = (await webPushService.getVapidKey()).publicKey;
     res.json({ vapidPublicKey });
   } catch (error) {
     throw error;

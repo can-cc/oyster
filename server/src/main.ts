@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 import { setupServer } from './server';
 import feedFetcherService from './service/feed-fetcher.service';
+import webPushService from './service/web-push.service';
 
 function main() {
   createConnection()
@@ -9,6 +10,8 @@ function main() {
       console.log('database connection successful.');
 
       feedFetcherService.pollFetch().then();
+
+      webPushService.setup();
 
       setupServer();
     })

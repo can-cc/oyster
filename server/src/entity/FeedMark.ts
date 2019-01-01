@@ -4,12 +4,9 @@ import {
   Column,
   CreateDateColumn,
   JoinColumn,
-  OneToOne,
   UpdateDateColumn,
   ManyToOne,
-  Unique,
-  ManyToMany,
-  OneToMany
+  Unique
 } from 'typeorm';
 import { Feed } from './Feed';
 import { User } from './User';
