@@ -5,14 +5,14 @@ import feedFetcherService from './service/feed-fetcher.service';
 
 function main() {
   createConnection()
-  .then(() => {
-    console.log('database connection successful.')
+    .then(() => {
+      console.log('database connection successful.');
 
-    feedFetcherService.pollFetch().then();
+      feedFetcherService.pollFetch().then();
 
-    setupServer();
-  })
-  .catch(error => console.log(error));
+      setupServer();
+    })
+    .catch(error => console.log(error));
 }
 
 main();

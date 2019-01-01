@@ -1,9 +1,21 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,JoinColumn, OneToOne, UpdateDateColumn, ManyToOne, Unique, ManyToMany, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  CreateDateColumn,
+  JoinColumn,
+  OneToOne,
+  UpdateDateColumn,
+  ManyToOne,
+  Unique,
+  ManyToMany,
+  OneToMany
+} from 'typeorm';
 import { Feed } from './Feed';
 import { User } from './User';
 
 @Entity()
-@Unique(["user", "feed"])
+@Unique(['user', 'feed'])
 export class FeedMark {
   @PrimaryGeneratedColumn('uuid')
   public id: string;

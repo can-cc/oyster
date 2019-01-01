@@ -12,7 +12,7 @@ export function authMiddle(req, res, next) {
     req.auth = jwtData.data;
     return next();
   } catch (error) {
-    console.error(error); 
+    console.error(error);
     res.status(401).send();
   }
 }

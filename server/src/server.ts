@@ -34,7 +34,7 @@ export function setupServer() {
   // checkFeedFileExist();
 
   setupWebPush();
-  
+
   const app = express();
 
   app.use(morgan('tiny'));

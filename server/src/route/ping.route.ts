@@ -24,5 +24,4 @@ pignRouter.post('/api/webpush/ping', async (req, res) => {
   }
 });
 
-
 export { pignRouter };

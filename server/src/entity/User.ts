@@ -12,10 +12,10 @@ export class User {
   @Column()
   public hash: string;
 
-  @Column({name: 'created_at'})
+  @Column({ name: 'created_at' })
   public createdAt: Date;
 
-  @Column({name: 'updated_at'})
+  @Column({ name: 'updated_at' })
   public updatedAt: Date;
 
   constructor(userData: UserData) {

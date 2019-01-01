@@ -8,7 +8,7 @@ export const resolvers = {
       console.log(context);
       return await feedService.getFeeds({
         userId: 1,
-        limit: args.limit, 
+        limit: args.limit,
         offset: args.offset
       });
     },

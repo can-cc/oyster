@@ -7,14 +7,14 @@ import feedService from './feed.service';
 
 class FeedMarkerService {
   constructor() {}
-  
-  public async markFeedFavorite({userId, feedId}): Promise<void> {
+
+  public async markFeedFavorite({ userId, feedId }): Promise<void> {
     const user: User = await authService.findUser(userId);
     const feed: Feed = await feedService.findFeed(feedId);
     const mark = new FeedMark({
-        user,
-        feed,
-        type: 'FAVORITE'
+      user,
+      feed,
+      type: 'FAVORITE'
     });
     await getRepository(FeedMark).save(mark);
   }

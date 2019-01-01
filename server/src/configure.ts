@@ -7,9 +7,7 @@ class Configure {
   private config: { [key: string]: string; SERCERT_KEY: string };
 
   constructor() {
-    const configDoc: any = yaml.safeLoad(
-      fs.readFileSync(path.join(__dirname, '../../config/config.yaml'), 'utf8')
-    );
+    const configDoc: any = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../config/config.yaml'), 'utf8'));
     const customConfigDoc: any = yaml.safeLoad(
       fs.readFileSync(path.join(__dirname, '../../config/config.custom.yaml'), 'utf8')
     );
@@ -28,7 +26,7 @@ class Configure {
   private overrideConfigKeyFromEnv() {
     this.config = R.mapObjIndexed((value: string, key: string, config: any) => {
       if (process.env[key]) {
-        config[key] = process.env[key]
+        config[key] = process.env[key];
       }
       return config;
     }, this.config);

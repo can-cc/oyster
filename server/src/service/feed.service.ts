@@ -2,12 +2,12 @@ import { getRepository } from 'typeorm';
 import { Feed } from '../entity/Feed';
 
 class FeedService {
-  public async getFeeds({userId, limit, offset}): Promise<Feed[]> {
+  public async getFeeds({ userId, limit, offset }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
-      .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', {userId})
+      .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .orderBy('"feed"."createdAt"')
-      .limit(limit) 
+      .limit(limit)
       .offset(offset)
       .getMany();
   }
@@ -18,7 +18,7 @@ class FeedService {
   }
 
   public async findFeed(feedId: string): Promise<Feed> {
-    return await getRepository(Feed).findOne({id: feedId});
+    return await getRepository(Feed).findOne({ id: feedId });
   }
 }
 

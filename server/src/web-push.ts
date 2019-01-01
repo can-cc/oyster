@@ -3,7 +3,7 @@ import { checkHasVapidKey, saveVapidKey, getVapidKey } from './dao';
 import { logger } from './logger';
 
 export const setupWebPush = async () => {
-  if (!await checkHasVapidKey()) {
+  if (!(await checkHasVapidKey())) {
     const newVapidKeys: VapidKeys = webpush.generateVAPIDKeys();
     await saveVapidKey(newVapidKeys);
     logger.info(`generate new vapid key [public key: ${newVapidKeys.publicKey}]`);
