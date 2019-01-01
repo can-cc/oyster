@@ -37,6 +37,10 @@ export class FeedsPageComponent implements OnInit {
               content
               createdAt
               updatedAt
+              marks {
+                id
+                type
+              }
             }
           }
         `,

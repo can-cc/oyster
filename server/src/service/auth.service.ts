@@ -19,6 +19,10 @@ export class AuthService {
     return jwt.verify(token, configure.getConfig('SERCERT_KEY'));
   }
 
+  public async findUser(useId: number): Promise<User> {
+    return await getRepository(User).findOne({ id: useId });
+  }
+
   public async login(username: string, password: string): Promise<User | null> {
     const user: User = await getRepository(User).findOne({ username });
     if (!user) {

@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne, JoinColumn, OneToMany } from 'typeorm';
 import { FeedData } from '../typing/feed';
 import { FeedSource } from './FeedSource';
+import { FeedMark } from './FeedMark';
 
 @Entity({ name: 'feed' })
 export class Feed {
@@ -31,6 +32,9 @@ export class Feed {
 
   @UpdateDateColumn()
   public updatedAt: Date;
+
+  @OneToMany(() => FeedMark, mark => mark.feed)
+  public marks: FeedMark[];
 
   constructor(feedData: FeedData) {
     if (!feedData) {

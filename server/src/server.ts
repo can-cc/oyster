@@ -8,7 +8,7 @@ import * as morgan from 'morgan';
 import * as useragent from 'express-useragent';
 import { authRouter } from './route/auth.route';
 import configure from './configure';
-import { schema } from './graphql/schema';
+import { graphqlServer } from './graphql/schema';
 
 // const feedsFile = path.resolve(__dirname, '../..', configure.getConfig('FEED_FILE_PATH'));
 
@@ -38,13 +38,13 @@ export function setupServer() {
   const app = express();
 
   app.use(morgan('tiny'));
+  // TODO remove
   app.use(require('body-parser').json());
   app.use(useragent.express());
 
-  app.use('/api', authRouter);
+  graphqlServer.applyMiddleware({ app, path: '/api/v1/graphql' });
 
-  app.use('/api/v1/graphql', graphqlExpress({ schema }));
-  app.use('/api/v1/graphiql', graphiqlExpress({ endpointURL: '/api/v1/graphql' }));
+  app.use('/api', authRouter);
 
   app.use(authMiddle);
 
@@ -52,11 +52,16 @@ export function setupServer() {
   app.use(pignRouter);
   app.use(webpushRouter);
 
-  app.use((err, req, res, next) => {
-    logger.error(err);
-    res.status(500).json({ error: 'unknown' });
+  app.use((error, req, res, next) => {
+    console.error(error);
+    if (error.name === 'QueryFailedError') {
+      res.status(409).send();
+    } else {
+      res.status(500).send();
+    }
   });
 
   app.listen(7788, '0.0.0.0');
   console.log(colors.green(`server start at http://localhost:7788`));
+  console.log(`🚀 Server ready at http://localhost:7788${graphqlServer.graphqlPath}`);
 }

@@ -43,6 +43,8 @@ import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.com
 import { FeedSourceCreaterComponent } from './feed-source-page/feed-source-creater/feed-source-creater.component';
 import { FeedSourceItemComponent } from './feed-source-page/feed-source-item/feed-source-item.component';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -80,6 +82,7 @@ import { FeedSourceItemComponent } from './feed-source-page/feed-source-item/fee
     MatInputModule,
     InfiniteScrollModule,
     AppRoutingModule,
+    FontAwesomeModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('/web-push-service-worker.js')
   ],

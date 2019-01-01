@@ -1,11 +1,11 @@
-export declare interface FeedSource {
+export interface FeedSource {
   id: string;
   name: string;
   url: string;
 }
 
-export declare interface Feed {
-  id?: number;
+export interface Feed {
+  id?: string;
   title: string;
   source?: string;
   originHref: string;
@@ -14,7 +14,7 @@ export declare interface Feed {
   createdAt: number;
 }
 
-export declare interface CreateFeedSourceInput {
+export interface CreateFeedSourceInput {
   name: string;
   url: string;
 }

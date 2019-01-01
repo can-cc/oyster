@@ -1,17 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,JoinColumn, OneToOne, UpdateDateColumn, ManyToOne } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn,JoinColumn, OneToOne, UpdateDateColumn, ManyToOne, Unique, ManyToMany, OneToMany } from 'typeorm';
 import { Feed } from './Feed';
 import { User } from './User';
 
 @Entity()
+@Unique(["user", "feed"])
 export class FeedMark {
   @PrimaryGeneratedColumn('uuid')
-  public id: number;
+  public id: string;
 
   @ManyToOne(() => User)
   @JoinColumn()
   public user: User;
 
-  @OneToOne(() => Feed)
+  @ManyToOne(() => Feed)
   @JoinColumn()
   public feed: Feed;
 
@@ -23,4 +24,12 @@ export class FeedMark {
 
   @UpdateDateColumn()
   public updatedAt: Date;
+
+  constructor(markData) {
+    if (markData) {
+      this.user = markData.user;
+      this.feed = markData.feed;
+      this.type = markData.type;
+    }
+  }
 }

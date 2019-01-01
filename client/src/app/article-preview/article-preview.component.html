@@ -1,6 +1,14 @@
-<a class="title-link" [href]="feed?.originHref" target="_blank">
-  <button mat-button>
-    <h2>{{feed?.title}}</h2>
-  </button>
-</a>
-<div class="content" [innerHtml]="feed?.content | trustHtml"></div>
+<div *ngIf="feed">
+  <a class="title-link" [href]="feed?.originHref" target="_blank">
+    <button mat-button>
+      <h2>{{feed?.title}}</h2>
+    </button>
+
+  </a>
+
+  <fa-icon (click)="handleFavoriteIconClick()" [icon]="faStar"></fa-icon>
+  
+  <div class="content" [innerHtml]="feed?.content | trustHtml"></div>
+</div>
+
+
