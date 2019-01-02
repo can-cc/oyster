@@ -21,7 +21,7 @@ export class FeedListComponent implements OnInit {
     return formatDistance(new Date(), new Date(time));
   }
 
-  public trackByFeed(index: number, feed: Feed): number {
+  public trackByFeed(index: number, feed: Feed): string {
     return feed.id;
   }
 }

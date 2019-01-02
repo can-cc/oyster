@@ -1,8 +1,10 @@
 import { FeedSource } from '../entity/FeedSource';
 import { getRepository } from 'typeorm';
+import { Subject } from 'rxjs';
 
 class FeedSourceService {
   private source: FeedSource[];
+  private source$ = new Subject();
 
   // constructor() {}
 

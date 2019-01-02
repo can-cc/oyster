@@ -23,8 +23,6 @@ authRouter.post('/login', async (req, res, next) => {
       return res.status(401).send();
     }
   } catch (error) {
-    // TODO 中间件拦截
-    console.error(error);
     next(error);
   }
 });

@@ -5,17 +5,31 @@ services:
     image: redis
     ports:
       - "6379:6379"
+  postgres:
+    restart: always
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
   nginx:
-    restart: "no"
+    restart: always
     build: ./client/
     ports:
       - "80:80"
+    networks: 
+      - app
     links:
       - backend:backend
   backend:
     restart: "no"
     build: ./server/
+    environment:
+      VAPID_DETAIL_EMAIL: ${VAPID_DETAIL_EMAIL}
     volumes:
       - ./db:/db
       - ./config:/config
       - ./log:/log
+
+networks:
+  app:

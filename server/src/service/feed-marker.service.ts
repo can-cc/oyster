@@ -6,7 +6,7 @@ import { Feed } from '../entity/Feed';
 import feedService from './feed.service';
 
 class FeedMarkerService {
-  constructor() {}
+  // constructor() {}
 
   public async markFeedFavorite({ userId, feedId }): Promise<void> {
     const user: User = await authService.findUser(userId);
