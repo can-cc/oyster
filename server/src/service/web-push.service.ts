@@ -23,7 +23,11 @@ class WebPushService {
       logger.info(`generate new vapid key [public key: ${newVapidKeys.publicKey}]`);
     }
     const vapidKey: VapidKey = await this.getVapidKey();
-    webpush.setVapidDetails(`mailto:${configure.getConfig('VAPID_DETAIL_EMAIL')}`, vapidKey.publicKey, vapidKey.privateKey);
+    const vapidDetailEmail: string = configure.getConfig('VAPID_DETAIL_EMAIL');
+    if (!vapidDetailEmail) {
+      throw new Error('VAPID_DETAIL_EMAIL not found')
+    }
+    webpush.setVapidDetails(`mailto:${vapidDetailEmail}`, vapidKey.publicKey, vapidKey.privateKey);
   };
   
 
