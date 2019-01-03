@@ -3,20 +3,22 @@ services:
   redis:
     restart: always
     image: redis
-    ports:
-      - "6379:6379"
+    networks: 
+      - app
   postgres:
     restart: always
     image: postgres
+    networks: 
+      - app
     environment:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
-      - ./pgdata:/var/lib/postgresql/data
+      - ./docker-data/pgdata:/var/lib/postgresql/data
   nginx:
     restart: always
     build: ./client/
     ports:
-      - "80:80"
+      - "8070:80"
     networks: 
       - app
     links:
@@ -24,12 +26,17 @@ services:
   backend:
     restart: "no"
     build: ./server/
+    networks: 
+      - app
     environment:
+      REDIS_HOST: redis
+      POSTGRES_HOST: postgres
       VAPID_DETAIL_EMAIL: ${VAPID_DETAIL_EMAIL}
     volumes:
-      - ./db:/db
       - ./config:/config
       - ./log:/log
+    depends_on:
+      - postgres
 
 networks:
   app:
