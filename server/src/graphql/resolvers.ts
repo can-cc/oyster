@@ -4,8 +4,6 @@ import feedSourceService from '../service/feed-source.service';
 export const resolvers = {
   Query: {
     feeds: async (root, args: { limit: number; offset?: number }, context) => {
-      console.log(root);
-      console.log(context);
       return await feedService.getFeeds({
         userId: 1,
         limit: args.limit,
