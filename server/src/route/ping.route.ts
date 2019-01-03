@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as htmlToText from 'html-to-text';
 import webPushService from '../service/web-push.service';
+import webpushSubscriberService from '../service/webpush-subscriber.service';
+import { WebpushSubscriber } from '../entity/WebpushSubscriber';
 
 const pignRouter = express.Router();
 
@@ -14,8 +16,8 @@ pignRouter.post('/api/webpush/ping', async (req, res) => {
       link: ''
     };
     await Promise.all(
-      webPushService.getSubscribers().map(subscription => {
-        return webPushService.sendNotification(subscription, params);
+      webpushSubscriberService.getWebpushSubscribers().map((subscriber: WebpushSubscriber) => {
+        return webPushService.sendNotification(subscriber, params);
       })
     );
     res.status(204).send();

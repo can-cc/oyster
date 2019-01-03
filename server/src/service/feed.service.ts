@@ -6,7 +6,7 @@ class FeedService {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
-      .orderBy('"feed"."createdAt"')
+      .orderBy('"feed"."createdAt"', 'DESC')
       .limit(limit)
       .offset(offset)
       .getMany();
