@@ -38,7 +38,6 @@ export class LoginPageComponent implements OnInit {
             response.body as User,
             response.headers.get('Authorization')
           );
-          console.log(response);
         },
         () => {}
       );
