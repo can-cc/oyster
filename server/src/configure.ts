@@ -16,7 +16,7 @@ class Configure {
       ...configDoc,
       ...customConfigDoc
     };
-    // this.overrideConfigKeyFromEnv();
+    this.overrideConfigKeyFromEnv();
   }
 
   public getConfig(key: string): any {
@@ -28,7 +28,7 @@ class Configure {
       if (process.env[key]) {
         config[key] = process.env[key];
       }
-      return config;
+      return config[key];
     }, this.config);
   }
 }

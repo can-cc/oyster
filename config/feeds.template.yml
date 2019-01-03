@@ -1,5 +1,0 @@
-fetchinginterval: 50000
-feeds:
-  -
-    label: raspberrypi
-    url: https://www.raspberrypi.org/feed/

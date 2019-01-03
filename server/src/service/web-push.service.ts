@@ -8,7 +8,6 @@ import * as webpush from 'web-push';
 import { getRepository } from 'typeorm';
 import { VapidKey } from '../entity/VapidKey';
 
-
 class WebPushService {
   private subscribers: WebPushSubscription[] = [];
 
@@ -25,15 +24,15 @@ class WebPushService {
     const vapidKey: VapidKey = await this.getVapidKey();
     const vapidDetailEmail: string = configure.getConfig('VAPID_DETAIL_EMAIL');
     if (!vapidDetailEmail) {
-      throw new Error('VAPID_DETAIL_EMAIL not found')
+      throw new Error('VAPID_DETAIL_EMAIL not found');
     }
     webpush.setVapidDetails(`mailto:${vapidDetailEmail}`, vapidKey.publicKey, vapidKey.privateKey);
-  };
-  
+  }
 
   public async checkHasVapidKey(): Promise<boolean> {
     return await getRepository(VapidKey)
-    .count().then(count => count > 0);
+      .count()
+      .then(count => count > 0);
   }
 
   public async saveVapidKey(newVapidKeys: VapidKeys): Promise<void> {

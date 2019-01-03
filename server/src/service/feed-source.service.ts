@@ -3,26 +3,28 @@ import { getRepository } from 'typeorm';
 import { Subject } from 'rxjs';
 
 class FeedSourceService {
-  private source: FeedSource[];
+  private sources: FeedSource[];
   private source$ = new Subject();
 
-  // constructor() {}
+  constructor() {
+    this.source$.subscribe((source: FeedSource[]) => {
+      this.sources = source;
+    });
+  }
 
   public async refreshFeedSource(): Promise<void> {
-    this.source = await getRepository(FeedSource).find();
+    const sources: FeedSource[] = await getRepository(FeedSource).find();
+    this.source$.next(sources);
   }
 
-  public getFeedSource(): FeedSource[] {
-    return this.source;
-  }
-
-  public async getFeedSources(): Promise<FeedSource[]> {
-    return await getRepository(FeedSource).find();
+  public getFeedSources(): FeedSource[] {
+    return this.sources;
   }
 
   public async saveFeedSource({ name, url }): Promise<FeedSource> {
     const feedSource = new FeedSource({ name, url });
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
+    await this.refreshFeedSource();
     return savedFeedSource;
   }
 }

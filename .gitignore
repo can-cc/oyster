@@ -1,9 +1,6 @@
-/db.sqlite3
-/config/feeds.yml
-/server/combined.log
-/server/error.log
-/db/db.sqlite3
 /server/yarn-error.log
+
 /log/*
 .DS_Store
-db/db.sqlite3-journal
+
+/docker-data

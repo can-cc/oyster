@@ -26,7 +26,6 @@ export function setupServer() {
 
   graphqlServer.applyMiddleware({ app, path: '/api/v1/graphql' });
 
-
   app.use(feedRouter);
   app.use(pignRouter);
   app.use(webpushRouter);
