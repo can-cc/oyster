@@ -7,3 +7,9 @@ REDIS_HOST: "localhost"
 REDIS_PORT: 6379
 
 # postgres
+POSTGRES_HOST: "localhost"
+POSTGRES_USERNAME: "postgres"
+POSTGRES_PASSWORD: "mysecretpassword"
+POSTGRES_DB: "postgres"
+
+VAPID_DETAIL_EMAIL: 'VAPID_DETAIL_EMAIL_NULL'
