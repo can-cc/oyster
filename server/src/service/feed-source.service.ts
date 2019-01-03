@@ -1,14 +1,14 @@
 import { FeedSource } from '../entity/FeedSource';
 import { getRepository } from 'typeorm';
-import { Subject } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 class FeedSourceService {
   private sources: FeedSource[];
-  private source$ = new Subject();
+  private source$: BehaviorSubject<FeedSource[]> = new BehaviorSubject([]);
 
   constructor() {
-    this.source$.subscribe((source: FeedSource[]) => {
-      this.sources = source;
+    this.source$.subscribe((sources: FeedSource[]) => {
+      this.sources = sources;
     });
   }
 
@@ -19,6 +19,10 @@ class FeedSourceService {
 
   public getFeedSources(): FeedSource[] {
     return this.sources;
+  }
+
+  public getFeedSources$(): Observable<FeedSource[]> {
+    return this.source$.asObservable();
   }
 
   public async saveFeedSource({ name, url }): Promise<FeedSource> {

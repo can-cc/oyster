@@ -65,9 +65,9 @@ class FeedFetcher {
 
   public async pollFetch() {
     await feedSourceService.refreshFeedSource();
-    const feedSources: FeedSource[] = feedSourceService.getFeedSources();
+    const feedSources$: Observable<FeedSource[]> = feedSourceService.getFeedSources$();
     try {
-      fetchFeedSources(feedSources).subscribe(async (feedDatas: FeedData[]) => {
+      feedSources$.pipe(switchMap(fetchFeedSources)).subscribe(async (feedDatas: FeedData[]) => {
         await Promise.all(
           feedDatas.map(
             async (feedData: FeedData): Promise<void> => {
