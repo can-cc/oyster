@@ -1,6 +1,7 @@
 import * as express from 'express';
 import feedService from '../service/feed.service';
 import feedMarkerService from '../service/feed-marker.service';
+import { FeedMark } from '../entity/FeedMark';
 
 const feedRouter = express.Router();
 
@@ -22,8 +23,8 @@ feedRouter.post('/api/feed/:feedId/favorite', async (req, res, next) => {
   try {
     const feedId: string = req.params.feedId;
     const userId: number = req.auth.id;
-    await feedMarkerService.markFeedFavorite({ userId, feedId });
-    res.status(200).send();
+    const feedMark: FeedMark =  await feedMarkerService.markFeedFavorite({ userId, feedId });
+    res.status(200).send(feedMark);
   } catch (error) {
     next(error);
   }
