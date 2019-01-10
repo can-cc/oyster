@@ -1,4 +1,4 @@
 <div class="article-avatar" [style.backgroundColor]="hasImage ? 'transparent' : bgColor">
-  <div class="source-name">{{feed.source}}</div>
+  <div class="source-name">{{feed.source.name}}</div>
   <img #image *ngIf="hasImage" [src]="imgSrc" (error)="hasImage = false" />
 </div>

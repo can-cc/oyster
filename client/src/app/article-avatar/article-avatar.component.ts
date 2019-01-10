@@ -18,6 +18,10 @@ export class ArticleAvatarComponent implements OnInit {
   ngOnInit() {
     this.bgColor = this.colorService.getSourceColor(this.feed.source);
 
+    this.checkContentImage();
+  }
+
+  checkContentImage(): void {
     const div: Element = window.document.createElement('div');
     div.innerHTML = this.feed.content;
     const img: HTMLImageElement = div.querySelector('img');
