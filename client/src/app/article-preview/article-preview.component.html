@@ -6,6 +6,8 @@
 
   </a>
 
+  <app-article-preview-info-area></app-article-preview-info-area>
+
   <fa-icon (click)="handleFavoriteIconClick()" [icon]="faStar"></fa-icon>
   
   <div class="content" [innerHtml]="feed?.content | trustHtml"></div>

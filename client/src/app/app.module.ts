@@ -44,6 +44,10 @@ import { FeedSourceCreaterComponent } from './feed-source-page/feed-source-creat
 import { FeedSourceItemComponent } from './feed-source-page/feed-source-item/feed-source-item.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ArticlePreviewInfoAreaComponent } from './article-preview/article-preview-info-area/article-preview-info-area.component';
+
+import { StoreModule } from '@ngrx/store';
+import { feedReducer } from './state/feed.reducer';
 
 @NgModule({
   declarations: [
@@ -59,11 +63,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FeedsPageComponent,
     FeedSourcePageComponent,
     FeedSourceCreaterComponent,
-    FeedSourceItemComponent
+    FeedSourceItemComponent,
+    ArticlePreviewInfoAreaComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
     CoreModule.forRoot(),
+    StoreModule.forRoot({ feed: feedReducer }),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
