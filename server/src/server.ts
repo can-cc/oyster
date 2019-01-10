@@ -11,6 +11,7 @@ import { authMiddle } from './route/middle/auth.middle';
 import { feedRouter } from './route/feed.route';
 import { pignRouter } from './route/ping.route';
 import { webpushRouter } from './route/webpush.route';
+import { feedSourceRouter } from './route/feed-source.route';
 
 export function setupServer() {
   const app = express();
@@ -27,6 +28,7 @@ export function setupServer() {
   graphqlServer.applyMiddleware({ app, path: '/api/v1/graphql' });
 
   app.use(feedRouter);
+  app.use (feedSourceRouter);
   app.use(pignRouter);
   app.use(webpushRouter);
 

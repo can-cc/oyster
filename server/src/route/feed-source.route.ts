@@ -1,6 +1,6 @@
 import * as express from 'express';
 import { FeedSource } from '../entity/FeedSource';
-import feedSourceService from 'src/service/feed-source.service';
+import feedSourceService from '../service/feed-source.service';
 
 const feedSourceRouter = express.Router();
 
