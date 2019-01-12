@@ -89,7 +89,6 @@ import { feedReducer } from './state/feed.reducer';
     InfiniteScrollModule,
     AppRoutingModule,
     FontAwesomeModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production }),
     ServiceWorkerModule.register('/web-push-service-worker.js')
   ],
   providers: [

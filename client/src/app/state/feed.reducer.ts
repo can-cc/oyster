@@ -1,18 +1,28 @@
 import { Action } from '@ngrx/store';
-import { ActionTypes } from './feed.actions';
+import { ActionTypes, AddFeeds } from './feed.actions';
+import { Feed } from '../../typing/feed';
  
-export const initialState = 0;
+export const initialState = {
+    feedMap: {},
+    feedIds: []
+};
  
-export function feedReducer(state = initialState, action: Action) {
+export function feedReducer(state = initialState, action: AddFeeds) {
   switch (action.type) {
-    case ActionTypes.Increment:
-      return state + 1;
- 
-    case ActionTypes.Decrement:
-      return state - 1;
- 
-    case ActionTypes.Reset:
-      return 0;
+    case ActionTypes.ADD_FEEDS:
+      const feeds: Feed[] = action.payload.feeds;
+      const feedMap = feeds.reduce((result, feed) => {
+        result[feed.id] = feed;
+        return result;
+      }, {});
+      return {
+          ...state,
+          feedIds: state.feedIds.concat(feeds.map((feed: Feed) => feed.id)),
+          feedMap: {
+              ...state.feedMap,
+              ...feedMap
+          }
+      }
  
     default:
       return state;

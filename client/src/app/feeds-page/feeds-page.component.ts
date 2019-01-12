@@ -1,8 +1,13 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Store } from '@ngrx/store';  
 import { ApolloQueryResult } from 'apollo-client';
 import { Feed } from '../../typing/feed';
+import { AddFeeds } from '../state/feed.actions';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-feeds-page',
@@ -11,12 +16,20 @@ import { Feed } from '../../typing/feed';
 })
 export class FeedsPageComponent implements OnInit {
   @ViewChild('list') list;
-  feeds: Feed[] = [];
   selectedFeed: Feed;
   pageLimit = 20;
   offset = 0;
 
-  constructor(private apollo: Apollo) {}
+  feeds$: Observable<Feed[]>;
+
+  constructor(private apollo: Apollo, private store: Store<{ feed: {
+    feedMap: {[id: string]: Feed},
+    feedIds: string[]
+  } }>) {
+    this.feeds$ = store.pipe(map(({feed}) => {
+      return feed.feedIds.map(id => feed.feedMap[id]);
+    }));
+  }
 
   ngOnInit() {
     this.queryFeeds();
@@ -54,7 +67,8 @@ export class FeedsPageComponent implements OnInit {
       })
       .valueChanges.subscribe(
         ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
-          (this.feeds = this.feeds.concat(data.feeds))
+          this.store.dispatch(new AddFeeds({feeds: data.feeds}))
+          //(this.feeds = this.feeds.concat(data.feeds))
       );
     this.offset += this.pageLimit;
   }

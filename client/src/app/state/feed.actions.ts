@@ -1,13 +1,16 @@
 import { Action } from '@ngrx/store';
+import { Feed } from '../../typing/feed';
  
 export enum ActionTypes {
-  Increment = '[Counter Component] Increment',
+  ADD_FEEDS = '[Feed Component] Add Feeds',
   Decrement = '[Counter Component] Decrement',
   Reset = '[Counter Component] Reset',
 }
  
-export class Increment implements Action {
-  readonly type = ActionTypes.Increment;
+export class AddFeeds implements Action {
+  readonly type = ActionTypes.ADD_FEEDS;
+
+  constructor(public payload: {feeds: Feed[]}) {}
 }
  
 export class Decrement implements Action {
