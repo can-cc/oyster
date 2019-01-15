@@ -18,6 +18,16 @@ class FeedMarkerService {
     });
     return await getRepository(FeedMark).save(mark);
   }
+
+  public async removeFeedFavoriteMark({ userId, markId }): Promise<void> {
+    const mark: FeedMark = await getRepository(FeedMark).findOne({
+      where: {
+        id: markId,
+        userId
+      },
+    });
+    await getRepository(FeedMark).remove(mark);
+  }
 }
 
 export default new FeedMarkerService();
