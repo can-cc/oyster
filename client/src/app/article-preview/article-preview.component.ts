@@ -3,6 +3,7 @@ import { Feed } from '../../typing/feed';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
 import { FeedMarkService } from '../core/feed-mark.service';
+import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-article-preview',
@@ -12,6 +13,8 @@ import { FeedMarkService } from '../core/feed-mark.service';
 export class ArticlePreviewComponent implements OnInit {
   @Input()
   feed: Feed;
+
+  faBookmark = faBookmark;
 
   faStar = faStarO;
 
