@@ -7,7 +7,8 @@ import { FeedSource } from '../../../typing/feed';
   styleUrls: ['./feed-source-item.component.css']
 })
 export class FeedSourceItemComponent implements OnInit {
-  @Input() source: FeedSource;
+  @Input()
+  source: FeedSource;
 
   constructor() {}
 

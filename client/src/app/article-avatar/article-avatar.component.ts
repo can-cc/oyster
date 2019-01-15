@@ -8,7 +8,8 @@ import { Feed } from '../../typing/feed';
   styleUrls: ['./article-avatar.component.css']
 })
 export class ArticleAvatarComponent implements OnInit {
-  @Input() feed: Feed;
+  @Input()
+  feed: Feed;
   hasImage: boolean;
   imgSrc: string;
   bgColor: string;

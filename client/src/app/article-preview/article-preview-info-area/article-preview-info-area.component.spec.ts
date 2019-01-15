@@ -8,9 +8,8 @@ describe('ArticlePreviewInfoAreaComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlePreviewInfoAreaComponent ]
-    })
-    .compileComponents();
+      declarations: [ArticlePreviewInfoAreaComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

@@ -10,7 +10,8 @@ import { FeedMarkService } from '../core/feed-mark.service';
   styleUrls: ['./article-preview.component.css']
 })
 export class ArticlePreviewComponent implements OnInit {
-  @Input() feed: Feed;
+  @Input()
+  feed: Feed;
 
   faStar = faStarO;
 

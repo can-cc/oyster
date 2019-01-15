@@ -8,8 +8,10 @@ import { Feed } from '../../typing/feed';
   styleUrls: ['./feed-list.component.css']
 })
 export class FeedListComponent implements OnInit {
-  @Input() feeds: Feed[];
-  @Output() select: EventEmitter<Feed> = new EventEmitter();
+  @Input()
+  feeds: Feed[];
+  @Output()
+  select: EventEmitter<Feed> = new EventEmitter();
 
   selectIndex: number;
 

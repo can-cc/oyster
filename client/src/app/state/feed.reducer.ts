@@ -1,12 +1,12 @@
 import { Action } from '@ngrx/store';
 import { ActionTypes, AddFeeds } from './feed.actions';
 import { Feed } from '../../typing/feed';
- 
+
 export const initialState = {
-    feedMap: {},
-    feedIds: []
+  feedMap: {},
+  feedIds: []
 };
- 
+
 export function feedReducer(state = initialState, action: AddFeeds) {
   switch (action.type) {
     case ActionTypes.ADD_FEEDS:
@@ -16,14 +16,14 @@ export function feedReducer(state = initialState, action: AddFeeds) {
         return result;
       }, {});
       return {
-          ...state,
-          feedIds: state.feedIds.concat(feeds.map((feed: Feed) => feed.id)),
-          feedMap: {
-              ...state.feedMap,
-              ...feedMap
-          }
-      }
- 
+        ...state,
+        feedIds: state.feedIds.concat(feeds.map((feed: Feed) => feed.id)),
+        feedMap: {
+          ...state.feedMap,
+          ...feedMap
+        }
+      };
+
     default:
       return state;
   }
