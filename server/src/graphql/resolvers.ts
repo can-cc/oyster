@@ -12,6 +12,15 @@ export const resolvers = {
     },
     sources: async (root, args: {}) => {
       return await feedSourceService.getFeedSources();
+    },
+    sourceFeeds: async (root, args: {sourceId: string; offset?: number, limit?: number}) => {
+      const userId = root.context.auth.id;
+      return await feedService.getSourceFeeds({
+        userId,
+        sourceId: args.sourceId,
+        offset: args.offset,
+        limit: args.limit
+      });
     }
   },
   Mutation: {
