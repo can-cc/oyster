@@ -19,6 +19,21 @@ feedRouter.get('/api/feeds/:limit', async (req, res, next) => {
   }
 });
 
+feedRouter.get('/api/source/:sourceId/feeds', async (req, res, next) => {
+  try {
+    const userId = req.auth.id;
+    const feeds = await feedService.getSourceFeeds({
+      userId,
+      sourceId: req.params.sourceId,
+      limit: req.params.limit,
+      offset: req.query.offset
+    });
+    return res.status(200).json(feeds);
+  } catch (error) {
+    next(error);
+  }
+});
+
 feedRouter.post('/api/feed/:feedId/favorite', async (req, res, next) => {
   try {
     const feedId: string = req.params.feedId;

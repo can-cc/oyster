@@ -13,6 +13,20 @@ class FeedService {
       .getMany();
   }
 
+
+  public async getSourceFeeds({userId, sourceId, limit, offset}): Promise<Feed[]> {
+    return await getRepository(Feed)
+      .createQueryBuilder('feed')
+      .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
+      .leftJoinAndSelect("feed.source", "feed_source")
+      .where('feed_source.id = :sourceId', {sourceId})
+      .orderBy('"feed"."createdAt"', 'DESC')
+      .limit(limit)
+      .offset(offset)
+      .getMany();
+  }
+
+
   public async saveFeed(feed: Feed): Promise<Feed> {
     const savedFeed: Feed = await getRepository(Feed).save(feed);
     return savedFeed;
