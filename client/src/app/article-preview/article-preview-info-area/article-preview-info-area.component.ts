@@ -7,7 +7,6 @@ import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
   styleUrls: ['./article-preview-info-area.component.css']
 })
 export class ArticlePreviewInfoAreaComponent implements OnInit {
-
   constructor() {}
 
   ngOnInit() {}

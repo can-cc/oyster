@@ -1,9 +1,10 @@
-<div *ngIf="feed">
+
+<div *ngIf="(feed$ | async)">
   <fa-icon [icon]="faBookmark"></fa-icon>
 
-  <a class="title-link" [href]="feed?.originHref" target="_blank">
+  <a class="title-link" [href]="(feed$ | async).originHref" target="_blank">
     <button mat-button>
-      <h2>{{feed?.title}}</h2>
+      <h2>{{(feed$ | async).title}}</h2>
     </button>
   </a>
 
@@ -11,7 +12,7 @@
 
   <fa-icon (click)="handleFavoriteIconClick()" [icon]="faStar"></fa-icon>
   
-  <div class="content" [innerHtml]="feed?.content | trustHtml"></div>
+  <div class="content" [innerHtml]="(feed$ | async).content | trustHtml"></div>
 </div>
 
 

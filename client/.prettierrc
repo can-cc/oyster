@@ -9,6 +9,12 @@
       }
     },
     {
+      "files": ["**/*.html"],
+      "options": {
+        "parser": "angular"
+      }
+    },
+    {
       "files": "**/*.scss",
       "options": {
         "parser": "css"

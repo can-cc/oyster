@@ -33,7 +33,7 @@ export class LoginPageComponent implements OnInit {
       .pipe()
       .subscribe(
         response => {
-          this.router.navigate(['/feeds'], { replaceUrl: false });
+          this.router.navigate(['/feed'], { replaceUrl: false });
           this.authService.handleLoginSuccess(
             response.body as User,
             response.headers.get('Authorization')

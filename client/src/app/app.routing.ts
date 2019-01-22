@@ -8,14 +8,18 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/feeds'
+    redirectTo: '/feed'
   },
   {
     path: 'login',
     component: LoginPageComponent
   },
   {
-    path: 'feeds',
+    path: 'feed',
+    component: FeedsPageComponent
+  },
+  {
+    path: 'feed/:feedId',
     component: FeedsPageComponent
   },
   {
