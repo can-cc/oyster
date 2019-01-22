@@ -1,10 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, switchMap, publish, share, takeUntil } from 'rxjs/operators';
 import { Feed } from '../../typing/feed';
 import { FeedMarkService } from '../core/feed-mark.service';
 
@@ -13,11 +13,23 @@ import { FeedMarkService } from '../core/feed-mark.service';
   templateUrl: './article-preview.component.html',
   styleUrls: ['./article-preview.component.css']
 })
-export class ArticlePreviewComponent implements OnInit {
-  @Input()
-  feedId: string;
+export class ArticlePreviewComponent implements OnInit, OnDestroy {
+  private fid: string;
 
-  feed$: Observable<Feed>;
+  @Input()
+  set feedId(id) {
+    this.fid = id;
+    this.fidChange$.next();
+  }
+
+  get feedId() {
+    return this.fid;
+  }
+
+  fidChange$: Subject<void> = new Subject<void>();
+
+  feed: Feed;
+  complete$ = new Subject();
 
   faBookmark = faBookmark;
 
@@ -30,15 +42,26 @@ export class ArticlePreviewComponent implements OnInit {
         feedMap: { [id: string]: Feed };
       };
     }>
-  ) {}
-
-  ngOnInit() {
-    this.feed$ = this.store.pipe(map(store => {
-      return store.feed.feedMap[this.feedId];
-    }));
+  ) {
+    this.fidChange$
+      .pipe(
+        takeUntil(this.complete$),
+        switchMap(() => this.store.pipe(map(store => store.feed.feedMap[this.feedId])))
+      )
+      .subscribe((feed: Feed) => {
+        this.feed = feed;
+      });
   }
+
+  ngOnInit() {}
 
   handleFavoriteIconClick() {
     this.feedMarkService.markFeedFavorite(this.feedId);
+  }
+
+  ngOnDestroy() {
+    this.complete$.next();
+    this.complete$.complete();
+    this.fidChange$.complete();
   }
 }

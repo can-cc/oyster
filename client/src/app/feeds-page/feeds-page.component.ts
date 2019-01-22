@@ -43,12 +43,10 @@ export class FeedsPageComponent implements OnInit {
 
   ngOnInit() {
     this.queryFeeds();
-    
   }
 
   private setUrlFeedIdStream() {
     this.urlFeedId$ = this.route.paramMap.pipe(map((params: ParamMap) => params.get('feedId')));
-
   }
 
   public queryFeeds(): void {
@@ -65,6 +63,7 @@ export class FeedsPageComponent implements OnInit {
               content
               createdAt
               updatedAt
+              publishedDate
               source {
                 id
                 name

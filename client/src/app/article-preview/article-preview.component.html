@@ -1,18 +1,19 @@
-
-<div *ngIf="(feed$ | async)">
+<div *ngIf="!!feed">
   <fa-icon [icon]="faBookmark"></fa-icon>
 
-  <a class="title-link" [href]="(feed$ | async).originHref" target="_blank">
+  <a class="title-link" [href]="feed.originHref" target="_blank">
     <button mat-button>
-      <h2>{{(feed$ | async).title}}</h2>
+      <h2>{{feed.title}}</h2>
     </button>
   </a>
 
-  <app-article-preview-info-area></app-article-preview-info-area>
+  <app-article-preview-info-area
+    [feed]="feed"
+  ></app-article-preview-info-area>
 
   <fa-icon (click)="handleFavoriteIconClick()" [icon]="faStar"></fa-icon>
   
-  <div class="content" [innerHtml]="(feed$ | async).content | trustHtml"></div>
+  <div class="content" [innerHtml]="feed.content | trustHtml"></div>
 </div>
 
 
