@@ -8,7 +8,8 @@ import { Feed } from '../../../typing/feed';
   styleUrls: ['./article-preview-info-area.component.css']
 })
 export class ArticlePreviewInfoAreaComponent implements OnInit {
-  @Input() feed: Feed;
+  @Input()
+  feed: Feed;
 
   constructor() {}
 

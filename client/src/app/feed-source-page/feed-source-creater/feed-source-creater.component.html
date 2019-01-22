@@ -1,23 +1,13 @@
 <form [formGroup]="form">
-
   <mat-form-field class="">
     <input matInput placeholder="Name" formControlName="name" />
   </mat-form-field>
 
   <mat-form-field class="">
-    <input
-      type="text"
-      matInput
-      placeholder="Url"
-      formControlName="url"
-    />
+    <input type="text" matInput placeholder="Url" formControlName="url" />
   </mat-form-field>
 
-  <button 
-    mat-button 
-    mat-raised-button
-    (click)="handleCreate()" 
-    color="primary">
+  <button mat-button mat-raised-button (click)="handleCreate()" color="primary">
     OK
   </button>
 </form>

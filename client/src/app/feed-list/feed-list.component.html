@@ -1,16 +1,18 @@
 <mat-nav-list>
-  <mat-list-item *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
-                 (click)="select.emit(feed); selectIndex=i">
-
+  <mat-list-item
+    *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
+    (click)="select.emit(feed); selectIndex = i"
+  >
     <app-article-avatar matListAvatar [feed]="feed"></app-article-avatar>
 
-    <h3 matLine>{{feed.title}}</h3>
+    <h3 matLine>{{ feed.title }}</h3>
     <div matLine>
       <p class="info">
-        <span>{{feed.author}}</span>
-        <span class="time-distance">{{calcPublishedDistance(feed.publishedDate)}}</span>
+        <span>{{ feed.author }}</span>
+        <span class="time-distance">{{
+          calcPublishedDistance(feed.publishedDate)
+        }}</span>
       </p>
     </div>
-
   </mat-list-item>
 </mat-nav-list>

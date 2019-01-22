@@ -1,7 +1,6 @@
 <mat-list>
   <mat-list-item *ngFor="let category of categorys">
     <mat-icon *ngIf="category.type === 'all'" svgIcon="track-change"></mat-icon>
-    <span>{{category.name}}</span>
-
+    <span>{{ category.name }}</span>
   </mat-list-item>
 </mat-list>
