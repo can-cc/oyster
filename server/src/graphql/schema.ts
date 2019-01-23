@@ -30,6 +30,7 @@ const typeDefs = gql`
     content: String
     createdAt: String
     updatedAt: String
+    publishedDate: String
     marks: [FeedMark]
     source: FeedSource
   }

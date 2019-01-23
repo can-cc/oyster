@@ -6,11 +6,20 @@ import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.com
 
 const routes: Routes = [
   {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: '/feed'
+  },
+  {
     path: 'login',
     component: LoginPageComponent
   },
   {
-    path: 'feeds',
+    path: 'feed',
+    component: FeedsPageComponent
+  },
+  {
+    path: 'feed/:feedId',
     component: FeedsPageComponent
   },
   {

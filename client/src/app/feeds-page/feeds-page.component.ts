@@ -7,6 +7,7 @@ import { Feed } from '../../typing/feed';
 import { AddFeeds } from '../state/feed.actions';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-feeds-page',
@@ -14,13 +15,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./feeds-page.component.css']
 })
 export class FeedsPageComponent implements OnInit {
-  @ViewChild('list')
-  list;
-  selectedFeed: Feed;
   pageLimit = 20;
   offset = 0;
 
-  feeds$: Observable<Feed[]>;
+  public feeds$: Observable<Feed[]>;
+  public urlFeedId$: Observable<string>;
 
   constructor(
     private apollo: Apollo,
@@ -29,8 +28,12 @@ export class FeedsPageComponent implements OnInit {
         feedMap: { [id: string]: Feed };
         feedIds: string[];
       };
-    }>
+    }>,
+    public route: ActivatedRoute,
+    public router: Router
   ) {
+    this.setUrlFeedIdStream();
+
     this.feeds$ = store.pipe(
       map(({ feed }) => {
         return feed.feedIds.map(id => feed.feedMap[id]);
@@ -42,7 +45,11 @@ export class FeedsPageComponent implements OnInit {
     this.queryFeeds();
   }
 
-  queryFeeds(): void {
+  private setUrlFeedIdStream() {
+    this.urlFeedId$ = this.route.paramMap.pipe(map((params: ParamMap) => params.get('feedId')));
+  }
+
+  public queryFeeds(): void {
     this.apollo
       .watchQuery({
         query: gql`
@@ -56,6 +63,7 @@ export class FeedsPageComponent implements OnInit {
               content
               createdAt
               updatedAt
+              publishedDate
               source {
                 id
                 name
@@ -72,10 +80,8 @@ export class FeedsPageComponent implements OnInit {
           offset: this.offset
         }
       })
-      .valueChanges.subscribe(
-        ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
-          this.store.dispatch(new AddFeeds({ feeds: data.feeds }))
-        //(this.feeds = this.feeds.concat(data.feeds))
+      .valueChanges.subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
+        this.store.dispatch(new AddFeeds({ feeds: data.feeds }))
       );
     this.offset += this.pageLimit;
   }
@@ -85,6 +91,6 @@ export class FeedsPageComponent implements OnInit {
   }
 
   public onFeedListSelect(feed: Feed) {
-    this.selectedFeed = feed;
+    this.router.navigate([`/feed/${feed.id}`]);
   }
 }

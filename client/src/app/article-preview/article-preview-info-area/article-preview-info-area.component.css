@@ -1,0 +1,5 @@
+:host .line-container {
+  height: 1px;
+  width: 100%;
+  background-color: black;
+}

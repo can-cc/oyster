@@ -38,7 +38,7 @@ h3 {
 }
 
 .mat-list-item:after {
-  content: '';
+  content: "";
   display: block;
   height: 1px;
   width: 90%;
@@ -62,5 +62,3 @@ h3 {
 .time-distance {
   font-size: 12px;
 }
-
-
