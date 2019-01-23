@@ -1,7 +1,4 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
-import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap, publish, share, takeUntil } from 'rxjs/operators';
@@ -31,9 +28,7 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
   feed: Feed;
   complete$ = new Subject();
 
-  faBookmark = faBookmark;
-
-  faStar = faStarO;
+ 
 
   constructor(
     private feedMarkService: FeedMarkService,

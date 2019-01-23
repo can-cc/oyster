@@ -48,6 +48,7 @@ import { ArticlePreviewInfoAreaComponent } from './article-preview/article-previ
 
 import { StoreModule } from '@ngrx/store';
 import { feedReducer } from './state/feed.reducer';
+import { ArticlePreviewStarComponent } from './article-preview/article-preview-star/article-preview-star.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { feedReducer } from './state/feed.reducer';
     FeedSourcePageComponent,
     FeedSourceCreaterComponent,
     FeedSourceItemComponent,
-    ArticlePreviewInfoAreaComponent
+    ArticlePreviewInfoAreaComponent,
+    ArticlePreviewStarComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [

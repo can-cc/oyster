@@ -1,4 +1,9 @@
 <div class="line-container">
-  <span>{{ feed.publishedDate | date: "EEEE MMMM dd,yyyy h:mm aa" }}</span>
-  <span> via {{ feed.source.name }}</span>
+    <div class="inner-container">
+        <span>{{ feed.publishedDate | date: "EEEE MMMM dd,yyyy h:mm aa" }}</span>
+        <span> via {{ feed.source.name }}</span>
+
+        <div class="read-source">Read Source</div>
+    </div>
+
 </div>

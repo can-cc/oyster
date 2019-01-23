@@ -1,11 +1,9 @@
 <div *ngIf="!!feed">
-  <fa-icon [icon]="faBookmark"></fa-icon>
+ 
 
-  <a class="title-link" [href]="feed.originHref" target="_blank">
-    <button mat-button>
-      <h2>{{ feed.title }}</h2>
-    </button>
-  </a>
+  <app-article-preview-star></app-article-preview-star>
+
+  <h2>{{ feed.title }}</h2>
 
   <app-article-preview-info-area [feed]="feed"></app-article-preview-info-area>
 

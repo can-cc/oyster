@@ -1,6 +1,12 @@
 :host {
   flex: 1;
+  min-width: 400px;
   overflow: auto;
+  position: relative;
+}
+
+:host h2 {
+  text-align: center;
 }
 
 .title-link {
