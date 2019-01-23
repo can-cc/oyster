@@ -1,20 +1,20 @@
 :host {
-    display: block;
-    position: relative;
-    z-index: 1;
-    cursor: pointer;
+  display: block;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
 }
 
 :host .bookmark {
-    color: #673ab7;
-    position: absolute;
-    left: 0;
-    top: -2px;
+  color: #673ab7;
+  position: absolute;
+  left: 0;
+  top: -2px;
 }
 
 :host .star {
-    position: absolute;
-    color: #ffd740;
-    left: 3px;
-    top: 0px;
+  position: absolute;
+  color: #ffd740;
+  left: 3px;
+  top: 0px;
 }

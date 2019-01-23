@@ -1,7 +1,7 @@
 <div *ngIf="!!feed">
- 
-
-  <app-article-preview-star></app-article-preview-star>
+  <app-article-preview-star
+    (click)="handleFavoriteIconClick()"
+  ></app-article-preview-star>
 
   <h2>{{ feed.title }}</h2>
 

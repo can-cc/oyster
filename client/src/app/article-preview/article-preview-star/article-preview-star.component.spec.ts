@@ -7,9 +7,8 @@ describe('ArticlePreviewStarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArticlePreviewStarComponent ]
-    })
-    .compileComponents();
+      declarations: [ArticlePreviewStarComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

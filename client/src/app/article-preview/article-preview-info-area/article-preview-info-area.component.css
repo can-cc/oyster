@@ -3,7 +3,7 @@
   width: 100%;
   background-color: black;
   margin-bottom: 40px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: 900;
   position: relative;
   font-size: 13px;
@@ -11,27 +11,27 @@
 }
 
 :host .inner-container {
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 0 10px;
+  display: inline-block;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 0 10px;
 }
 
 :host .read-source {
-    text-align: center;
-    left: 50%;
-    transform: translate(-50%, 0);
-    position: absolute;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    padding: 0 6px;
-    cursor: pointer;
-    transition: background-color 0.2s;
+  text-align: center;
+  left: 50%;
+  transform: translate(-50%, 0);
+  position: absolute;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 0 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
 
 :host .read-source:hover {
-    background-color: #e8e8e8;
+  background-color: #e8e8e8;
 }

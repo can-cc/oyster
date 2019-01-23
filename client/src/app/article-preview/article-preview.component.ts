@@ -28,8 +28,6 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
   feed: Feed;
   complete$ = new Subject();
 
- 
-
   constructor(
     private feedMarkService: FeedMarkService,
     private store: Store<{
