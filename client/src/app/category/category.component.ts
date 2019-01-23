@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-category',
@@ -8,7 +9,14 @@ import { Component, OnInit } from '@angular/core';
 export class CategoryComponent implements OnInit {
   categorys = [{ type: 'all', name: 'All article' }];
 
-  constructor() {}
+  constructor(
+    private store: Store<{
+      feed: {
+        feedMap: { [id: string]: Feed };
+        feedIds: string[];
+      };
+    }>
+  ) {}
 
   ngOnInit() {}
 }
