@@ -4,6 +4,7 @@ import { Feed } from '../../typing/feed';
 export enum ActionTypes {
   ADD_FEEDS = '[Feed Component] Add Feeds',
   SET_SOURCES = '[Source Component] Set Sources',
+  MARK_FEED_FAVORITE = '[Feed Component] Mark feed favorite',
   Reset = '[Counter Component] Reset'
 }
 
@@ -12,6 +13,12 @@ export class SetSources implements Action {
 }
 
 export class AddFeeds implements Action {
+  readonly type = ActionTypes.ADD_FEEDS;
+
+  constructor(public payload: { feeds: Feed[] }) {}
+}
+
+export class MarkFeedFavorite implements Action {
   readonly type = ActionTypes.ADD_FEEDS;
 
   constructor(public payload: { feeds: Feed[] }) {}
