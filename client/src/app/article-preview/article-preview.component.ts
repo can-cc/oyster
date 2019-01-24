@@ -4,6 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { map, switchMap, publish, share, takeUntil } from 'rxjs/operators';
 import { Feed } from '../../typing/feed';
 import { FeedMarkService } from '../core/feed-mark.service';
+import { MarkFeedFavorite, RemoveFeedMark } from '../state/feed.actions';
 
 @Component({
   selector: 'app-article-preview',
@@ -48,8 +49,14 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
 
   ngOnInit() {}
 
-  handleFavoriteIconClick() {
-    this.feedMarkService.markFeedFavorite(this.feedId);
+  handleMarkFavorite() {
+    const isFavorite = this.feed.marks.length > 0;
+    if (!isFavorite) {
+      this.store.dispatch(new MarkFeedFavorite({ feedId: this.feed.id }));
+    } else {
+      this.store.dispatch(new RemoveFeedMark({ feedId: this.feed.id, markId: this.feed.marks[0].id }));
+    }
+    
   }
 
   ngOnDestroy() {

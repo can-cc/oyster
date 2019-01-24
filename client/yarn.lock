@@ -230,6 +230,10 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.12"
 
+"@ngrx/effects@^7.1.0":
+  version "7.1.0"
+  resolved "http://registry.npm.taobao.org/@ngrx/effects/download/@ngrx/effects-7.1.0.tgz#c42966a92096d605b72a1959599ad6c90a1e15a2"
+
 "@ngrx/store@^7.0.0":
   version "7.1.0"
   resolved "http://registry.npm.taobao.org/@ngrx/store/download/@ngrx/store-7.1.0.tgz#072f22e062e264c62859f37d9807dfac860f161d"

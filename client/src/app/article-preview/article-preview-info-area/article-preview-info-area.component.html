@@ -3,6 +3,6 @@
     <span>{{ feed.publishedDate | date: "EEEE MMMM dd,yyyy h:mm aa" }}</span>
     <span> via {{ feed.source.name }}</span>
 
-    <div class="read-source">Read Source</div>
+    <div class="read-source" (click)="openSourceHref()">Read Source</div>
   </div>
 </div>

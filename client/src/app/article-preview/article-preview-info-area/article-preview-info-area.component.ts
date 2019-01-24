@@ -14,4 +14,8 @@ export class ArticlePreviewInfoAreaComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  openSourceHref() {
+    window.open(this.feed.originHref, '_blank');
+  }
 }

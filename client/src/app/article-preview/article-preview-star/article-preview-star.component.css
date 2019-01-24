@@ -1,14 +1,16 @@
 :host {
   display: block;
-  position: relative;
+  position: absolute;
   z-index: 1;
+  right: 30px;
+  top: 0;
   cursor: pointer;
+  user-select: none;
 }
 
 :host .bookmark {
   color: #673ab7;
-  position: absolute;
-  left: 0;
+  position: relative;
   top: -2px;
 }
 
@@ -16,5 +18,5 @@
   position: absolute;
   color: #ffd740;
   left: 3px;
-  top: 0px;
+  top: 1px;
 }

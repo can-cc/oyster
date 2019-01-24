@@ -1,5 +1,6 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -49,6 +50,7 @@ import { ArticlePreviewInfoAreaComponent } from './article-preview/article-previ
 import { StoreModule } from '@ngrx/store';
 import { feedReducer } from './state/feed.reducer';
 import { ArticlePreviewStarComponent } from './article-preview/article-preview-star/article-preview-star.component';
+import { FeedEffects } from './state/feed.effect';
 
 @NgModule({
   declarations: [
@@ -72,6 +74,7 @@ import { ArticlePreviewStarComponent } from './article-preview/article-preview-s
   imports: [
     CoreModule.forRoot(),
     StoreModule.forRoot({ feed: feedReducer }),
+    EffectsModule.forRoot([FeedEffects]),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

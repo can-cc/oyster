@@ -12,6 +12,12 @@ export interface Feed {
   content: string;
   author: string;
   createdAt: number;
+  marks: FeedMark[];
+}
+
+export interface FeedMark {
+  id: string;
+  type: string;
 }
 
 export interface CreateFeedSourceInput {

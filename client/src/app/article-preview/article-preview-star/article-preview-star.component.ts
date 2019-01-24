@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input } from '@angular/core';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarO } from '@fortawesome/free-regular-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +9,13 @@ import { faBookmark } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./article-preview-star.component.css']
 })
 export class ArticlePreviewStarComponent implements OnInit {
+  @Input()
+  isStar: boolean;
+
   faBookmark = faBookmark;
 
-  faStar = faStarO;
+  faStar = faStar;
+  faStarO = faStarO;
 
   constructor() {}
 

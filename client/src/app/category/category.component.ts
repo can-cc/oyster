@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Feed } from '../../typing/feed';
 
 @Component({
   selector: 'app-category',
