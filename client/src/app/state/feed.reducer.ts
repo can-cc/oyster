@@ -1,5 +1,10 @@
 import { Action } from '@ngrx/store';
-import { ActionTypes, AddFeeds, MarkFeedFavoriteSuccess, RemoveFeedMarkSuccess } from './feed.actions';
+import {
+  ActionTypes,
+  AddFeeds,
+  MarkFeedFavoriteSuccess,
+  RemoveFeedMarkSuccess
+} from './feed.actions';
 import { Feed } from '../../typing/feed';
 
 export const initialState = {
@@ -7,7 +12,10 @@ export const initialState = {
   feedIds: []
 };
 
-export function feedReducer(state = initialState, action: AddFeeds | MarkFeedFavoriteSuccess | RemoveFeedMarkSuccess) {
+export function feedReducer(
+  state = initialState,
+  action: AddFeeds | MarkFeedFavoriteSuccess | RemoveFeedMarkSuccess
+) {
   switch (action.type) {
     case ActionTypes.ADD_FEEDS:
       const feeds: Feed[] = action.payload.feeds;

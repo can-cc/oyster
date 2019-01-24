@@ -54,9 +54,10 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
     if (!isFavorite) {
       this.store.dispatch(new MarkFeedFavorite({ feedId: this.feed.id }));
     } else {
-      this.store.dispatch(new RemoveFeedMark({ feedId: this.feed.id, markId: this.feed.marks[0].id }));
+      this.store.dispatch(
+        new RemoveFeedMark({ feedId: this.feed.id, markId: this.feed.marks[0].id })
+      );
     }
-    
   }
 
   ngOnDestroy() {
