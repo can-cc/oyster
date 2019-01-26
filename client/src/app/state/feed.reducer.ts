@@ -3,20 +3,28 @@ import {
   ActionTypes,
   AddFeeds,
   MarkFeedFavoriteSuccess,
-  RemoveFeedMarkSuccess
+  RemoveFeedMarkSuccess,
+  GetSourcesSuccess
 } from './feed.actions';
 import { Feed } from '../../typing/feed';
 
 export const initialState = {
   feedMap: {},
-  feedIds: []
+  feedIds: [],
+  feedSources: []
 };
 
 export function feedReducer(
   state = initialState,
-  action: AddFeeds | MarkFeedFavoriteSuccess | RemoveFeedMarkSuccess
+  action: AddFeeds | MarkFeedFavoriteSuccess | RemoveFeedMarkSuccess | GetSourcesSuccess
 ) {
   switch (action.type) {
+    case ActionTypes.GET_SOURCES_SUCCESS:
+      return {
+        ...state,
+        feedSources: action.payload.sources
+      };
+
     case ActionTypes.ADD_FEEDS:
       const feeds: Feed[] = action.payload.feeds;
       const feedMap = feeds.reduce((result, feed) => {

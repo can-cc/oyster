@@ -30,19 +30,17 @@ const FeedSourceCreateMutation = gql`
   providedIn: 'root'
 })
 export class FeedSourceService {
-  public feedSources$: Subject<FeedSource[]> = new BehaviorSubject([]);
-
   constructor(private apollo: Apollo) {}
 
-  public querySourceList(): void {
-    this.apollo
+  public querySourceList(): Observable<FeedSource[]> {
+    return this.apollo
       .query<{ sources: FeedSource[] }>({
         query: FeedSourcesQuery,
         fetchPolicy: 'no-cache'
       })
-      .subscribe(({ data }) => {
-        this.feedSources$.next(data.sources);
-      });
+      .pipe(map(({ data }) => {
+        return data.sources;
+      }));
   }
 
   public createFeedSource({ name, url }: CreateFeedSourceInput): Observable<FeedSource> {
@@ -52,10 +50,7 @@ export class FeedSourceService {
         variables: { name, url }
       })
       .pipe(
-        map(({ data }: FetchResult<{ source: FeedSource }>) => data.source),
-        tap(() => {
-          this.querySourceList();
-        })
+        map(({ data }: FetchResult<{ source: FeedSource }>) => data.source)
       );
   }
 }

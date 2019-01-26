@@ -1,3 +1,9 @@
+export interface StoreType {
+  feed: {
+    feedSources: FeedSource[]
+  };
+}
+
 export interface FeedSource {
   id: string;
   name: string;

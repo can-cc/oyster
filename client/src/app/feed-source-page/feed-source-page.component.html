@@ -1,6 +1,6 @@
 <div>
   <app-feed-source-item
-    *ngFor="let source of (feedSourceService.feedSources$ | async)"
+    *ngFor="let source of feedSources"
     [source]="source"
   ></app-feed-source-item>
 </div>
