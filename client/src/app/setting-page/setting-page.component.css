@@ -3,21 +3,44 @@
   background-color: white;
 }
 
+:host .mat-drawer {
+  padding-top: 20px;
+}
+
+:host .mat-drawer-content {
+  background-color: white;
+  margin-left: 160px !important;
+  padding: 20px;
+  border: 1px solid #e8e8e8;
+  border-radius: 10px;
+}
+
 :host .side-links {
   list-style: none;
   padding: 0;
 }
 
-.side-links a {
+:host .side-links li {
+  margin-bottom: 8px;
+}
+
+:host .side-links li .ng-fa-icon {
+  width: 22px;
+  display: inline-block;
+}
+
+.go-back-link {
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  padding: 3px 5px;
+}
+
+.go-back-link:hover {
+  background-color: #f8f8f8;
+}
+
+.mat-drawer a {
   text-decoration: none;
   font-weight: bold;
-  font-family: Arial,"Helvetica Neue",Helvetica,sans-serif;
-}
-
-:host .mat-drawer {
-  padding-right: 20px;
-}
-
-:host .mat-drawer-content {
-  background-color: white;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }

@@ -3,3 +3,7 @@
   width: 130px;
   flex-basis: 1;
 }
+
+.ng-fa-icon {
+  width: 25px;
+}

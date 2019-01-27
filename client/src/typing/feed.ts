@@ -1,6 +1,8 @@
 export interface StoreType {
   feed: {
     feedSources: FeedSource[];
+    feedMap: { [id: string]: Feed };
+    feedIds: string[];
   };
 }
 

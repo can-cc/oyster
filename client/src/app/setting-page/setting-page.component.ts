@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { faListAlt, faBell, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   selector: 'app-setting-page',
   templateUrl: './setting-page.component.html',
