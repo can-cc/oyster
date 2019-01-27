@@ -1,12 +1,25 @@
 <mat-drawer-container class="app-container">
   <mat-drawer mode="side" opened>
-      <ul>
+      <a routerLink="/">
+          <fa-icon [icon]="faArrowLeft"></fa-icon>
+          Go back
+      </a>
+      <ul class="side-links">
         <li>
-          <a routerLink="/setting/source" routerLinkActive="active">Feed Sources</a>
+          <a routerLink="/setting/source" routerLinkActive="active">
+            <fa-icon [icon]="faListAlt"></fa-icon>
+            Feed Sources
+          </a>
         </li>
-        <li>Notification</li>
+        <li>
+          <a routerLink="/setting/notification" routerLinkActive="active">
+            <fa-icon [icon]="faBell"></fa-icon>
+            Notification
+          </a>
+        </li>
       </ul>
   </mat-drawer>
+
   <mat-drawer-content>
     <router-outlet></router-outlet>
   </mat-drawer-content>

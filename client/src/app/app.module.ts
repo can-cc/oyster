@@ -130,17 +130,5 @@ export class AppModule {
       link: httpLink.create({ uri: '/api/v1/graphql' }),
       cache: new InMemoryCache()
     });
-
-    iconRegistry.addSvgIcon(
-      'track-change',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/ic_track_changes.svg')
-    );
-
-    iconRegistry.addSvgIcon('send', sanitizer.bypassSecurityTrustResourceUrl('assets/ic_send.svg'));
-
-    iconRegistry.addSvgIcon(
-      'notifications',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/ic_notifications.svg')
-    );
   }
 }
