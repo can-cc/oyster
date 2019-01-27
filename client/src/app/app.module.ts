@@ -51,6 +51,7 @@ import { StoreModule } from '@ngrx/store';
 import { feedReducer } from './state/feed.reducer';
 import { ArticlePreviewStarComponent } from './article-preview/article-preview-star/article-preview-star.component';
 import { FeedEffects } from './state/feed.effect';
+import { SettingPageComponent } from './setting-page/setting-page.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { FeedEffects } from './state/feed.effect';
     FeedSourceCreaterComponent,
     FeedSourceItemComponent,
     ArticlePreviewInfoAreaComponent,
-    ArticlePreviewStarComponent
+    ArticlePreviewStarComponent,
+    SettingPageComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
