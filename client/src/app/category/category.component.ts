@@ -20,7 +20,7 @@ interface Category {
 })
 export class CategoryComponent implements OnInit {
   readonly fixedCategorys: Category[] = [
-    { type: 'ALL', id:'ALL', name: 'All', icon: faDiceSix },
+    { type: 'ALL', id: 'ALL', name: 'All', icon: faDiceSix },
     { type: 'STAR', id: 'STAR', name: 'Favorite', icon: faStar }
   ];
 
@@ -52,6 +52,6 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {}
 
   onCategoryClick(category: Category) {
-    this.router.navigate([`/feed/${category.id}/`])
+    this.router.navigate([`/feed/${category.id}/`]);
   }
 }

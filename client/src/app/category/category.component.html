@@ -1,5 +1,9 @@
 <mat-list>
-  <mat-list-item (click)="onCategoryClick(category)" *ngFor="let category of categorys" [disableRipple]="false">
+  <mat-list-item
+    (click)="onCategoryClick(category)"
+    *ngFor="let category of categorys"
+    [disableRipple]="false"
+  >
     <fa-icon size="1x" [icon]="category.icon"></fa-icon>
     <span>{{ category.name }}</span>
   </mat-list-item>
