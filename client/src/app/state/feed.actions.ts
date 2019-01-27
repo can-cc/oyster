@@ -27,7 +27,10 @@ export class GetSourcesSuccess implements Action {
 export class AddSources implements Action {
   readonly type = ActionTypes.ADD_SOURCE;
 
-  constructor(public payload: {formData: {name: string; url: string}}, public meta: {resetFormFn: () => void}) {}
+  constructor(
+    public payload: { formData: { name: string; url: string } },
+    public meta: { resetFormFn: () => void }
+  ) {}
 }
 
 export class AddSourcesSuccess implements Action {

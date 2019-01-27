@@ -1,3 +1,13 @@
-<p>
-  setting-page works!
-</p>
+<mat-drawer-container class="app-container">
+  <mat-drawer mode="side" opened>
+      <ul>
+        <li>
+          <a routerLink="/setting/source" routerLinkActive="active">Feed Sources</a>
+        </li>
+        <li>Notification</li>
+      </ul>
+  </mat-drawer>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -13,18 +13,24 @@ import { AddSources } from '../../state/feed.actions';
 export class FeedSourceCreaterComponent implements OnInit {
   public form: FormGroup;
 
-  constructor(fb: FormBuilder, private feedSourceService: FeedSourceService, private store: Store<StoreType>) {
+  constructor(
+    fb: FormBuilder,
+    private feedSourceService: FeedSourceService,
+    private store: Store<StoreType>
+  ) {
     this.form = fb.group({
       url: new FormControl(''),
       name: new FormControl('')
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
   handleCreate(): void {
     const formData = this.form.value;
-    const resetFormFn = () => { this.form.reset(); };
+    const resetFormFn = () => {
+      this.form.reset();
+    };
     this.store.dispatch(new AddSources({ formData }, { resetFormFn }));
   }
 }

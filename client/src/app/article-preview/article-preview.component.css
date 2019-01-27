@@ -8,6 +8,11 @@
 :host h2 {
   text-align: center;
   padding: 15px 10px 0;
+  font-family: "Microsoft Yahei", "\\5FAE软雅黑", "STHeiti Light",
+    "\\534E文细黑", SimSun, "\\5B8B体", Arial, sans-serif;
+  font-weight: bold;
+  font-size: 25px;
+  letter-spacing: 1px;
 }
 
 .content {

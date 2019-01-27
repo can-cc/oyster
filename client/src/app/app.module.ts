@@ -10,7 +10,12 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloModule, Apollo } from 'apollo-angular';
 
-import { MatIconRegistry, MAT_DIALOG_DEFAULT_OPTIONS, MatCardModule } from '@angular/material';
+import {
+  MatIconRegistry,
+  MAT_DIALOG_DEFAULT_OPTIONS,
+  MatCardModule,
+  MatSidenavModule
+} from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
@@ -52,6 +57,7 @@ import { feedReducer } from './state/feed.reducer';
 import { ArticlePreviewStarComponent } from './article-preview/article-preview-star/article-preview-star.component';
 import { FeedEffects } from './state/feed.effect';
 import { SettingPageComponent } from './setting-page/setting-page.component';
+import { NotificationPageComponent } from './notification-page/notification-page.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +76,8 @@ import { SettingPageComponent } from './setting-page/setting-page.component';
     FeedSourceItemComponent,
     ArticlePreviewInfoAreaComponent,
     ArticlePreviewStarComponent,
-    SettingPageComponent
+    SettingPageComponent,
+    NotificationPageComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
@@ -88,6 +95,7 @@ import { SettingPageComponent } from './setting-page/setting-page.component';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatSidenavModule,
     MatSnackBarModule,
     MatDialogModule,
     MatFormFieldModule,

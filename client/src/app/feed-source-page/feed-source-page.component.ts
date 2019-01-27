@@ -13,14 +13,16 @@ import { map } from 'rxjs/operators';
 export class FeedSourcePageComponent implements OnInit {
   feedSources: FeedSource[];
 
-  constructor(
-    private store: Store<StoreType>
-  ) {
-    this.store.pipe(map((store: StoreType) => {
-      return store.feed.feedSources;
-    })).subscribe(sources => {
-      this.feedSources = sources;
-    })
+  constructor(private store: Store<StoreType>) {
+    this.store
+      .pipe(
+        map((store: StoreType) => {
+          return store.feed.feedSources;
+        })
+      )
+      .subscribe(sources => {
+        this.feedSources = sources;
+      });
   }
 
   ngOnInit() {

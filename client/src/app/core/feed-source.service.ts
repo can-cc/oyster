@@ -38,9 +38,11 @@ export class FeedSourceService {
         query: FeedSourcesQuery,
         fetchPolicy: 'no-cache'
       })
-      .pipe(map(({ data }) => {
-        return data.sources;
-      }));
+      .pipe(
+        map(({ data }) => {
+          return data.sources;
+        })
+      );
   }
 
   public createFeedSource({ name, url }: CreateFeedSourceInput): Observable<FeedSource> {
@@ -49,8 +51,6 @@ export class FeedSourceService {
         mutation: FeedSourceCreateMutation,
         variables: { name, url }
       })
-      .pipe(
-        map(({ data }: FetchResult<{ source: FeedSource }>) => data.source)
-      );
+      .pipe(map(({ data }: FetchResult<{ source: FeedSource }>) => data.source));
   }
 }
