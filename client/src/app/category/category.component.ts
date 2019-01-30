@@ -20,8 +20,8 @@ interface Category {
 })
 export class CategoryComponent implements OnInit {
   readonly fixedCategorys: Category[] = [
-    { type: 'ALL', id: 'ALL', name: 'All', icon: faDiceSix },
-    { type: 'STAR', id: 'STAR', name: 'Favorite', icon: faStar }
+    { type: 'ALL', id: 'all', name: 'All', icon: faDiceSix },
+    { type: 'STAR', id: 'favorite', name: 'Favorite', icon: faStar }
   ];
 
   categorys: Category[] = this.fixedCategorys;

@@ -32,7 +32,7 @@ export class FeedsPageComponent implements OnInit {
     public route: ActivatedRoute,
     public router: Router
   ) {
-    this.setUrlFeedIdStream();
+    this.setUrlListener();
 
     this.feeds$ = store.pipe(
       map(({ feed }) => {
@@ -45,13 +45,13 @@ export class FeedsPageComponent implements OnInit {
     this.queryFeeds();
   }
 
-  private setUrlFeedIdStream() {
+  private setUrlListener() {
     this.urlFeedId$ = this.route.paramMap.pipe(map((params: ParamMap) => params.get('feedId')));
   }
 
   public queryFeeds(): void {
     this.apollo
-      .watchQuery({
+      .query({
         query: gql`
           query getFeeds($limit: Int!, $offset: Int) {
             feeds(limit: $limit, offset: $offset) {
@@ -79,8 +79,7 @@ export class FeedsPageComponent implements OnInit {
           limit: this.pageLimit,
           offset: this.offset
         }
-      })
-      .valueChanges.subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
+      }).subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
         this.store.dispatch(new AddFeeds({ feeds: data.feeds }))
       );
     this.offset += this.pageLimit;

@@ -18,10 +18,14 @@ const routes: Routes = [
   },
   {
     path: 'feed',
+    redirectTo: '/feed/all'
+  },
+  {
+    path: 'feed/:category',
     component: FeedsPageComponent
   },
   {
-    path: 'feed/:feedId',
+    path: 'feed/:category/:feedId',
     component: FeedsPageComponent
   },
   {
