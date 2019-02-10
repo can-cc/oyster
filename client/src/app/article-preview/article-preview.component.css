@@ -24,3 +24,14 @@
   max-width: 100%;
   white-space: pre-wrap;
 }
+
+.logo-container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+}

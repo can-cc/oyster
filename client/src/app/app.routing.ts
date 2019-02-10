@@ -10,7 +10,7 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/feed'
+    redirectTo: '/feed/all'
   },
   {
     path: 'login',
@@ -18,6 +18,7 @@ const routes: Routes = [
   },
   {
     path: 'feed',
+    pathMatch: 'full',
     redirectTo: '/feed/all'
   },
   {
@@ -47,7 +48,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '/feed' }
+  { path: '**', redirectTo: '/feed/all' }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs';
-import { map, switchMap, publish, share, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { Feed } from '../../typing/feed';
 import { FeedMarkService } from '../core/feed-mark.service';
 import { MarkFeedFavorite, RemoveFeedMark } from '../state/feed.actions';
@@ -40,7 +40,7 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
     this.fidChange$
       .pipe(
         takeUntil(this.complete$),
-        switchMap(() => this.store.pipe(map(store => store.feed.feedMap[this.feedId])))
+        switchMap(() => this.store.pipe(map(storeValue => storeValue.feed.feedMap[this.feedId])))
       )
       .subscribe((feed: Feed) => {
         this.feed = feed;

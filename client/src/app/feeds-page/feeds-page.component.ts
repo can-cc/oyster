@@ -1,12 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Store } from '@ngrx/store';
 import { ApolloQueryResult } from 'apollo-client';
 import { Feed } from '../../typing/feed';
 import { AddFeeds } from '../state/feed.actions';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, tap, take, takeUntil } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -20,6 +20,8 @@ export class FeedsPageComponent implements OnInit {
 
   public feeds$: Observable<Feed[]>;
   public urlFeedId$: Observable<string>;
+
+  private complete$: Subject<void> = new Subject();
 
   constructor(
     private apollo: Apollo,
@@ -46,7 +48,10 @@ export class FeedsPageComponent implements OnInit {
   }
 
   private setUrlListener() {
-    this.urlFeedId$ = this.route.paramMap.pipe(map((params: ParamMap) => params.get('feedId')));
+    this.urlFeedId$ = this.route.paramMap.pipe(
+      takeUntil(this.complete$),
+      map((params: ParamMap) => params.get('feedId'))
+    );
   }
 
   public queryFeeds(): void {
@@ -79,7 +84,8 @@ export class FeedsPageComponent implements OnInit {
           limit: this.pageLimit,
           offset: this.offset
         }
-      }).subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
+      })
+      .subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
         this.store.dispatch(new AddFeeds({ feeds: data.feeds }))
       );
     this.offset += this.pageLimit;
@@ -90,6 +96,13 @@ export class FeedsPageComponent implements OnInit {
   }
 
   public onFeedListSelect(feed: Feed) {
-    this.router.navigate([`/feed/${feed.id}`]);
+    this.route.paramMap
+      .pipe(
+        take(1),
+        map((params: ParamMap) => params.get('category'))
+      )
+      .subscribe((category: string) => {
+        this.router.navigate([`/feed/${category}/${feed.id}`]);
+      });
   }
 }

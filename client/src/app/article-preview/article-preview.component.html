@@ -10,3 +10,7 @@
 
   <div class="content" [innerHtml]="feed.content | trustHtml"></div>
 </div>
+
+<div class="logo-container" *ngIf="!feed">
+  <img class="logo" src="/assets/logo.png" alt="logo">
+</div>
