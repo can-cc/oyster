@@ -4,9 +4,9 @@ import gql from 'graphql-tag';
 import { Store } from '@ngrx/store';
 import { ApolloQueryResult } from 'apollo-client';
 import { Feed } from '../../typing/feed';
-import { AddFeeds } from '../state/feed.actions';
+import { AddFeeds, GetFeeds } from '../state/feed.actions';
 import { Observable, Subject } from 'rxjs';
-import { map, tap, take, takeUntil } from 'rxjs/operators';
+import { map, take, takeUntil } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -22,9 +22,9 @@ export class FeedsPageComponent implements OnInit {
   public urlFeedId$: Observable<string>;
 
   private complete$: Subject<void> = new Subject();
+  public category: string;
 
   constructor(
-    private apollo: Apollo,
     private store: Store<{
       feed: {
         feedMap: { [id: string]: Feed };
@@ -55,39 +55,9 @@ export class FeedsPageComponent implements OnInit {
   }
 
   public queryFeeds(): void {
-    this.apollo
-      .query({
-        query: gql`
-          query getFeeds($limit: Int!, $offset: Int) {
-            feeds(limit: $limit, offset: $offset) {
-              id
-              title
-              author
-              originHref
-              sourceId
-              content
-              createdAt
-              updatedAt
-              publishedDate
-              source {
-                id
-                name
-              }
-              marks {
-                id
-                type
-              }
-            }
-          }
-        `,
-        variables: {
-          limit: this.pageLimit,
-          offset: this.offset
-        }
-      })
-      .subscribe(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
-        this.store.dispatch(new AddFeeds({ feeds: data.feeds }))
-      );
+    this.store.dispatch(
+      new GetFeeds({ offset: this.offset, limit: this.pageLimit, category: this.category })
+    );
     this.offset += this.pageLimit;
   }
 

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, concatMap } from 'rxjs/operators';
 import { FeedMarkService } from '../core/feed-mark.service';
 import {
   ActionTypes,
@@ -12,18 +12,24 @@ import {
   GetSources,
   GetSourcesSuccess,
   AddSources,
-  AddSourcesSuccess
+  AddSourcesSuccess,
+  GetFeeds,
+  GetFeedsSuccess
 } from './feed.actions';
 import { Action } from '@ngrx/store';
-import { FeedMark, FeedSource } from '../../typing/feed';
+import { FeedMark, FeedSource, Feed } from '../../typing/feed';
 import { FeedSourceService } from '../core/feed-source.service';
+import gql from 'graphql-tag';
+import { ApolloQueryResult } from 'apollo-client';
+import { Apollo } from 'apollo-angular';
 
 @Injectable()
 export class FeedEffects {
   constructor(
     private actions$: Actions,
     private feedMarkService: FeedMarkService,
-    private feedSourceService: FeedSourceService
+    private feedSourceService: FeedSourceService,
+    private apollo: Apollo
   ) {}
 
   @Effect()
@@ -84,5 +90,44 @@ export class FeedEffects {
     map(() => {
       return new GetSources();
     })
+  );
+
+  @Effect()
+  getFeeds$ = this.actions$.pipe(
+    ofType(ActionTypes.GET_FEEDS),
+    concatMap((action: GetFeeds) => {
+      return this.apollo.query({
+        query: gql`
+          query getFeeds($limit: Int!, $offset: Int) {
+            feeds(limit: $limit, offset: $offset) {
+              id
+              title
+              author
+              originHref
+              sourceId
+              content
+              createdAt
+              updatedAt
+              publishedDate
+              source {
+                id
+                name
+              }
+              marks {
+                id
+                type
+              }
+            }
+          }
+        `,
+        variables: {
+          limit: action.payload.limit,
+          offset: action.payload.offset
+        }
+      });
+    }),
+    map(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
+      new GetFeedsSuccess({ feeds: data.feeds })
+    )
   );
 }

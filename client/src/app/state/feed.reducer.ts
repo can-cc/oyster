@@ -1,10 +1,10 @@
-import { Action } from '@ngrx/store';
 import {
   ActionTypes,
   AddFeeds,
   MarkFeedFavoriteSuccess,
   RemoveFeedMarkSuccess,
-  GetSourcesSuccess
+  GetSourcesSuccess,
+  GetFeedsSuccess
 } from './feed.actions';
 import { Feed } from '../../typing/feed';
 
@@ -16,17 +16,22 @@ export const initialState = {
 
 export function feedReducer(
   state = initialState,
-  action: AddFeeds | MarkFeedFavoriteSuccess | RemoveFeedMarkSuccess | GetSourcesSuccess
+  action:
+    | AddFeeds
+    | MarkFeedFavoriteSuccess
+    | RemoveFeedMarkSuccess
+    | GetFeedsSuccess
+    | GetSourcesSuccess
 ) {
   switch (action.type) {
     case ActionTypes.GET_SOURCES_SUCCESS:
       return {
         ...state,
-        feedSources: action.payload.sources
+        feedSources: (<GetSourcesSuccess>action).payload.sources
       };
 
-    case ActionTypes.ADD_FEEDS:
-      const feeds: Feed[] = action.payload.feeds;
+    case ActionTypes.GET_FEEDS_SUCCESS:
+      const feeds: Feed[] = (<GetFeedsSuccess>action).payload.feeds;
       const feedMap = feeds.reduce((result, feed) => {
         result[feed.id] = feed;
         return result;

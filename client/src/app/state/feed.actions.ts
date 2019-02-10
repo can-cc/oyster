@@ -4,7 +4,8 @@ import { Feed, FeedMark, FeedSource } from '../../typing/feed';
 export enum ActionTypes {
   ADD_SOURCE = '[Feed Component] Add feed source',
   ADD_SOURCE_SUCCESS = '[Feed Component] Add feed source success',
-  ADD_FEEDS = '[Feed Component] Add feed',
+  GET_FEEDS = '[Source Component] Get feeds',
+  GET_FEEDS_SUCCESS = '[Source Component] Get feeds success',
   GET_SOURCES = '[Source Component] Get sources',
   GET_SOURCES_SUCCESS = '[Source Component] Get sources success',
   MARK_FEED_FAVORITE = '[Feed Component] Mark feed favorite',
@@ -12,6 +13,18 @@ export enum ActionTypes {
   REMOVE_FEED_MARK = '[Feed Component] Remove feed mark',
   REMOVE_FEED_MARK_SUCCESS = '[Feed Component] Remove feed mark success',
   Reset = '[Counter Component] Reset'
+}
+
+export class GetFeeds implements Action {
+  readonly type = ActionTypes.GET_FEEDS;
+
+  constructor(public payload: { offset: number; limit: number; category: string }) {}
+}
+
+export class GetFeedsSuccess implements Action {
+  readonly type = ActionTypes.GET_FEEDS_SUCCESS;
+
+  constructor(public payload: { feeds: Feed[] }) {}
 }
 
 export class GetSources implements Action {
