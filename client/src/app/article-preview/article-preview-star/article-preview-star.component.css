@@ -9,14 +9,14 @@
 }
 
 :host .bookmark {
-  color: #673ab7;
+  color: #92a1a9;
   position: relative;
   top: -2px;
 }
 
 :host .star {
   position: absolute;
-  color: #ffd740;
+  color: #fedfbb;
   left: 3px;
   top: 1px;
 }
