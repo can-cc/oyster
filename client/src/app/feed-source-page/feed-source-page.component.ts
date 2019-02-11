@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FeedSourceService } from '../core/feed-source.service';
 import { Store } from '@ngrx/store';
 import { FeedSource, StoreType } from '../../typing/feed';
 import { GetSources } from '../state/feed.actions';
@@ -16,8 +15,8 @@ export class FeedSourcePageComponent implements OnInit {
   constructor(private store: Store<StoreType>) {
     this.store
       .pipe(
-        map((store: StoreType) => {
-          return store.feed.feedSources;
+        map((storeValue: StoreType) => {
+          return storeValue.feed.feedSources;
         })
       )
       .subscribe(sources => {

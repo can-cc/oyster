@@ -98,8 +98,8 @@ export class FeedEffects {
     concatMap((action: GetFeeds) => {
       return this.apollo.query({
         query: gql`
-          query getFeeds($limit: Int!, $offset: Int) {
-            feeds(limit: $limit, offset: $offset) {
+          query getFeeds($limit: Int!, $offset: Int!, $category: String!) {
+            feeds(limit: $limit, offset: $offset, category: $category) {
               id
               title
               author
@@ -122,8 +122,10 @@ export class FeedEffects {
         `,
         variables: {
           limit: action.payload.limit,
-          offset: action.payload.offset
-        }
+          offset: action.payload.offset,
+          category: action.payload.category
+        },
+        fetchPolicy: 'network-only'
       });
     }),
     map(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>

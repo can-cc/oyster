@@ -1,10 +1,10 @@
 import {
   ActionTypes,
-  AddFeeds,
   MarkFeedFavoriteSuccess,
   RemoveFeedMarkSuccess,
   GetSourcesSuccess,
-  GetFeedsSuccess
+  GetFeedsSuccess,
+  CleanFeeds
 } from './feed.actions';
 import { Feed } from '../../typing/feed';
 
@@ -17,11 +17,11 @@ export const initialState = {
 export function feedReducer(
   state = initialState,
   action:
-    | AddFeeds
-    | MarkFeedFavoriteSuccess
+      MarkFeedFavoriteSuccess
     | RemoveFeedMarkSuccess
     | GetFeedsSuccess
     | GetSourcesSuccess
+    | CleanFeeds
 ) {
   switch (action.type) {
     case ActionTypes.GET_SOURCES_SUCCESS:
@@ -67,6 +67,13 @@ export function feedReducer(
             marks: []
           }
         }
+      };
+
+    case ActionTypes.CLEAN_FEEDS:
+      return {
+        ...state,
+        feedMap: {},
+        feedIds: []
       };
 
     default:

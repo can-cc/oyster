@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { faDiceSix, faStar, faDotCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { Feed, StoreType, FeedSource } from '../../typing/feed';
+import { StoreType, FeedSource } from '../../typing/feed';
 import { map } from 'rxjs/operators';
 import { GetSources } from '../state/feed.actions';
 import { Router } from '@angular/router';
@@ -29,8 +29,8 @@ export class CategoryComponent implements OnInit {
   constructor(private store: Store<StoreType>, private router: Router) {
     this.store
       .pipe(
-        map((store: StoreType) => {
-          return store.feed.feedSources;
+        map((storeValue: StoreType) => {
+          return storeValue.feed.feedSources;
         })
       )
       .subscribe((sources: FeedSource[]) => {

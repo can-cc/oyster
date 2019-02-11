@@ -1,5 +1,12 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {
+  Routes,
+  RouterModule,
+  UrlSegment,
+  UrlSegmentGroup,
+  Route,
+  UrlMatchResult
+} from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.component';
@@ -22,11 +29,29 @@ const routes: Routes = [
     redirectTo: '/feed/all'
   },
   {
-    path: 'feed/:category',
-    component: FeedsPageComponent
-  },
-  {
-    path: 'feed/:category/:feedId',
+    matcher: (segments: UrlSegment[], group: UrlSegmentGroup, route: Route): UrlMatchResult => {
+      if (segments[0].path !== 'feed') {
+        return null;
+      }
+      if (segments.length === 2) {
+        return {
+          consumed: segments,
+          posParams: {
+            category: segments[1]
+          }
+        };
+      }
+      if (segments.length === 3) {
+        return {
+          consumed: segments,
+          posParams: {
+            feedId: segments[2],
+            category: segments[1]
+          }
+        };
+      }
+      return null;
+    },
     component: FeedsPageComponent
   },
   {

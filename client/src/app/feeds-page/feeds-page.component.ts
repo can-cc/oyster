@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
 import { Store } from '@ngrx/store';
-import { ApolloQueryResult } from 'apollo-client';
 import { Feed } from '../../typing/feed';
-import { AddFeeds, GetFeeds } from '../state/feed.actions';
+import { GetFeeds, CleanFeeds } from '../state/feed.actions';
 import { Observable, Subject } from 'rxjs';
-import { map, take, takeUntil } from 'rxjs/operators';
+import { map, take, takeUntil, distinctUntilChanged } from 'rxjs/operators';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -22,7 +19,7 @@ export class FeedsPageComponent implements OnInit {
   public urlFeedId$: Observable<string>;
 
   private complete$: Subject<void> = new Subject();
-  public category: string;
+  private category: string;
 
   constructor(
     private store: Store<{
@@ -43,15 +40,26 @@ export class FeedsPageComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
-    this.queryFeeds();
-  }
+  ngOnInit() {}
 
   private setUrlListener() {
     this.urlFeedId$ = this.route.paramMap.pipe(
       takeUntil(this.complete$),
       map((params: ParamMap) => params.get('feedId'))
     );
+
+    this.route.paramMap.pipe(
+      takeUntil(this.complete$),
+      map((params: ParamMap) => params.get('category')),
+      distinctUntilChanged((a: string, b: string) => {
+        return a === b;
+      }),
+    ).subscribe((category: string) => {
+      this.category = category;
+      this.offset = 0;
+      this.store.dispatch(new CleanFeeds());
+      this.queryFeeds();
+    });
   }
 
   public queryFeeds(): void {

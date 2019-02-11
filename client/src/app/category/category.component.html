@@ -1,10 +1,8 @@
 <mat-list>
-  <mat-list-item
-    (click)="onCategoryClick(category)"
-    *ngFor="let category of categorys"
-    [disableRipple]="false"
-  >
-    <fa-icon size="1x" [icon]="category.icon"></fa-icon>
-    <span>{{ category.name }}</span>
-  </mat-list-item>
+
+  <a mat-list-item *ngFor="let category of categorys" [routerLink]="'/feed/' + category.id">
+      <fa-icon size="1x" [icon]="category.icon"></fa-icon>
+      <span>{{ category.name }}</span>
+  </a>
+
 </mat-list>

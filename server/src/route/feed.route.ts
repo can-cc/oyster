@@ -11,22 +11,8 @@ feedRouter.get('/api/feeds/:limit', async (req, res, next) => {
     const feeds = await feedService.getFeeds({
       userId,
       limit: req.params.limit,
-      offset: req.query.offset
-    });
-    return res.status(200).json(feeds);
-  } catch (error) {
-    next(error);
-  }
-});
-
-feedRouter.get('/api/source/:sourceId/feeds', async (req, res, next) => {
-  try {
-    const userId = req.auth.id;
-    const feeds = await feedService.getSourceFeeds({
-      userId,
-      sourceId: req.params.sourceId,
-      limit: req.params.limit,
-      offset: req.query.offset
+      offset: req.query.offset,
+      category: req.query.category
     });
     return res.status(200).json(feeds);
   } catch (error) {
