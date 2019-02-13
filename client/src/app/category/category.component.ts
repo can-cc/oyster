@@ -11,6 +11,7 @@ interface Category {
   id: string;
   name: string;
   icon: IconDefinition;
+  color: string;
 }
 
 @Component({
@@ -20,8 +21,8 @@ interface Category {
 })
 export class CategoryComponent implements OnInit {
   readonly fixedCategorys: Category[] = [
-    { type: 'ALL', id: 'all', name: 'All', icon: faDiceSix },
-    { type: 'STAR', id: 'favorite', name: 'Favorite', icon: faStar }
+    { type: 'ALL', id: 'all', name: 'All', icon: faDiceSix, color: '#92a1a9' },
+    { type: 'STAR', id: 'favorite', name: 'Favorite', icon: faStar, color: '#fedfbb' }
   ];
 
   categorys: Category[] = this.fixedCategorys;
@@ -40,7 +41,8 @@ export class CategoryComponent implements OnInit {
               type: 'SOURCE',
               id: source.id,
               name: source.name,
-              icon: faDotCircle
+              icon: faDotCircle,
+              color: '#92a1a9'
             };
           })
         );
