@@ -57,7 +57,6 @@ export class AddSourcesSuccess implements Action {
   readonly type = ActionTypes.ADD_SOURCE_SUCCESS;
 }
 
-
 export class MarkFeedFavorite implements Action {
   readonly type = ActionTypes.MARK_FEED_FAVORITE;
 

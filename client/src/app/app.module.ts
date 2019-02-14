@@ -34,13 +34,11 @@ import { ArticlePreviewComponent } from './article-preview/article-preview.compo
 import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
 
 import { environment } from '../environments/environment';
-import { PushControlComponent } from './push-control/push-control.component';
 
 import { WebPushService } from './web-push.service';
 import { ColorService } from './color.service';
 import { ConfigService } from './config.service';
 import { AuthInterceptor } from './auth.interceptor';
-import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { AppRoutingModule } from './app.routing';
@@ -58,6 +56,7 @@ import { ArticlePreviewStarComponent } from './article-preview/article-preview-s
 import { FeedEffects } from './state/feed.effect';
 import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
+import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +66,6 @@ import { NotificationPageComponent } from './notification-page/notification-page
     CategoryComponent,
     ArticlePreviewComponent,
     ArticleAvatarComponent,
-    PushControlComponent,
     PingDialogComponent,
     LoginPageComponent,
     FeedsPageComponent,

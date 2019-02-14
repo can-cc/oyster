@@ -128,8 +128,8 @@ export class FeedEffects {
         fetchPolicy: 'network-only'
       });
     }),
-    map(({ data }: ApolloQueryResult<{ feeds: Feed[] }>) =>
-      new GetFeedsSuccess({ feeds: data.feeds })
+    map(
+      ({ data }: ApolloQueryResult<{ feeds: Feed[] }>) => new GetFeedsSuccess({ feeds: data.feeds })
     )
   );
 }

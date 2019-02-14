@@ -17,7 +17,7 @@ export const initialState = {
 export function feedReducer(
   state = initialState,
   action:
-      MarkFeedFavoriteSuccess
+    | MarkFeedFavoriteSuccess
     | RemoveFeedMarkSuccess
     | GetFeedsSuccess
     | GetSourcesSuccess

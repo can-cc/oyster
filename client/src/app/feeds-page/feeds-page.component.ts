@@ -48,18 +48,20 @@ export class FeedsPageComponent implements OnInit {
       map((params: ParamMap) => params.get('feedId'))
     );
 
-    this.route.paramMap.pipe(
-      takeUntil(this.complete$),
-      map((params: ParamMap) => params.get('category')),
-      distinctUntilChanged((a: string, b: string) => {
-        return a === b;
-      }),
-    ).subscribe((category: string) => {
-      this.category = category;
-      this.offset = 0;
-      this.store.dispatch(new CleanFeeds());
-      this.queryFeeds();
-    });
+    this.route.paramMap
+      .pipe(
+        takeUntil(this.complete$),
+        map((params: ParamMap) => params.get('category')),
+        distinctUntilChanged((a: string, b: string) => {
+          return a === b;
+        })
+      )
+      .subscribe((category: string) => {
+        this.category = category;
+        this.offset = 0;
+        this.store.dispatch(new CleanFeeds());
+        this.queryFeeds();
+      });
   }
 
   public queryFeeds(): void {

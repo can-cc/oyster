@@ -5,9 +5,3 @@
   overflow: hidden;
   overflow-x: auto;
 }
-
-app-push-control {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-}
