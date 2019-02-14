@@ -14,7 +14,8 @@ import {
   MatIconRegistry,
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatCardModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MAT_RIPPLE_GLOBAL_OPTIONS
 } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
@@ -24,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatRippleModule} from '@angular/material/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -99,6 +101,7 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatRippleModule,
     InfiniteScrollModule,
     AppRoutingModule,
     FontAwesomeModule,
@@ -112,6 +115,9 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: {}
     },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],

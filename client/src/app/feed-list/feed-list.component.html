@@ -1,5 +1,7 @@
 <mat-nav-list>
   <mat-list-item
+    matRipple
+    matRippleColor="rgba(146, 161, 169, 0.3)"
     *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
     (click)="select.emit(feed); selectIndex = i"
   >
