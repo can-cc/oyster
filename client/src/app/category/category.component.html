@@ -1,7 +1,14 @@
 <mat-list>
-
-  <a mat-list-item *ngFor="let category of categorys" [routerLink]="'/feed/' + category.id">
-    <fa-icon size="1x" [icon]="category.icon" [style.color]="category.color"></fa-icon>
+  <a
+    mat-list-item
+    *ngFor="let category of categorys"
+    [routerLink]="'/feed/' + category.id"
+  >
+    <fa-icon
+      size="1x"
+      [icon]="category.icon"
+      [style.color]="category.color"
+    ></fa-icon>
     <span>{{ category.name }}</span>
   </a>
 

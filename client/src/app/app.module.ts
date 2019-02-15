@@ -14,7 +14,8 @@ import {
   MatIconRegistry,
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatCardModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MAT_RIPPLE_GLOBAL_OPTIONS
 } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
@@ -24,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatRippleModule} from '@angular/material/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -34,13 +36,11 @@ import { ArticlePreviewComponent } from './article-preview/article-preview.compo
 import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
 
 import { environment } from '../environments/environment';
-import { PushControlComponent } from './push-control/push-control.component';
 
 import { WebPushService } from './web-push.service';
 import { ColorService } from './color.service';
 import { ConfigService } from './config.service';
 import { AuthInterceptor } from './auth.interceptor';
-import { PingDialogComponent } from './push-control/ping-dialog/ping-dialog.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { FeedsPageComponent } from './feeds-page/feeds-page.component';
 import { AppRoutingModule } from './app.routing';
@@ -58,6 +58,7 @@ import { ArticlePreviewStarComponent } from './article-preview/article-preview-s
 import { FeedEffects } from './state/feed.effect';
 import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
+import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,6 @@ import { NotificationPageComponent } from './notification-page/notification-page
     CategoryComponent,
     ArticlePreviewComponent,
     ArticleAvatarComponent,
-    PushControlComponent,
     PingDialogComponent,
     LoginPageComponent,
     FeedsPageComponent,
@@ -101,6 +101,7 @@ import { NotificationPageComponent } from './notification-page/notification-page
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatRippleModule,
     InfiniteScrollModule,
     AppRoutingModule,
     FontAwesomeModule,
@@ -114,6 +115,9 @@ import { NotificationPageComponent } from './notification-page/notification-page
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
+    },
+    {
+      provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: {}
     },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
