@@ -61,7 +61,7 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: '/feed/source'
+        redirectTo: '/setting/source'
       },
       {
         path: 'source',
