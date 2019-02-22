@@ -1,8 +1,12 @@
 <div>
-  <app-feed-source-item
-    *ngFor="let source of feedSources"
-    [source]="source"
-  ></app-feed-source-item>
+  <mat-list>
+    <mat-list-item *ngFor="let source of feedSources"> 
+        <app-feed-source-item
+        [source]="source"
+      ></app-feed-source-item>
+    </mat-list-item>
+    
+  </mat-list>
 </div>
 
 <app-feed-source-creater></app-feed-source-creater>
