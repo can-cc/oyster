@@ -13,4 +13,8 @@ export class FeedSourceItemComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  remove() {
+    
+  }
 }
