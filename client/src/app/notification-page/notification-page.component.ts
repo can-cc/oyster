@@ -12,7 +12,6 @@ import { WebPushService } from '../web-push.service';
 })
 export class NotificationPageComponent implements OnInit {
   private swScope = './web-push-service-worker.js';
-  public hasSubscription: boolean;
 
   constructor(
     private configService: ConfigService,
@@ -22,16 +21,6 @@ export class NotificationPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
-
-  public async checkSubscription(): Promise<void> {
-    try {
-      const registration = await navigator.serviceWorker.getRegistration(this.swScope);
-      const subscription = await registration.pushManager.getSubscription();
-      this.hasSubscription = !!subscription;
-    } catch (error) {
-      /* ignore */
-    }
-  }
 
   public async subscribeToPush(): Promise<void> {
     try {

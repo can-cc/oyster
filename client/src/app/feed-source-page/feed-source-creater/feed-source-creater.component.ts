@@ -15,6 +15,7 @@ import { AddSources } from '../../state/feed.actions';
 export class FeedSourceCreaterComponent implements OnInit {
   public form: FormGroup;
   public faPlus = faPlus;
+  public showForm: boolean = false;
 
   constructor(
     fb: FormBuilder,

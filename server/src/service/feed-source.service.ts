@@ -31,6 +31,17 @@ class FeedSourceService {
     await this.refreshFeedSource();
     return savedFeedSource;
   }
+
+  public async removeFeedSource({ id }): Promise<string> {
+    const feedSource = new FeedSource();
+    feedSource.id = id;
+    try {
+      await getRepository(FeedSource).remove(feedSource);
+      return 'OK';
+    } catch (error) {
+      throw error;
+    }
+  }
 }
 
 export default new FeedSourceService();

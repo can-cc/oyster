@@ -20,7 +20,7 @@ export class FeedSource {
   @UpdateDateColumn()
   public updatedAt: Date;
 
-  constructor(feedSourceData) {
+  constructor(feedSourceData?: any) {
     if (!feedSourceData) {
       return;
     }

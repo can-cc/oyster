@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FeedSource } from '../../../typing/feed';
+import { FeedSource, StoreType } from '../../../typing/feed';
+import { Store } from '@ngrx/store';
+import { RemoveSource } from '../../state/feed.actions';
 
 @Component({
   selector: 'app-feed-source-item',
@@ -10,11 +12,11 @@ export class FeedSourceItemComponent implements OnInit {
   @Input()
   source: FeedSource;
 
-  constructor() {}
+  constructor(private store: Store<StoreType>) {}
 
   ngOnInit() {}
 
-  remove() {
-    
+  public remove(): void {
+    this.store.dispatch(new RemoveSource({id: this.source.id}));
   }
 }

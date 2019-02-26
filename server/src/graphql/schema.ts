@@ -7,7 +7,11 @@ const typeDefs = gql`
     sources: [FeedSource]
   }
   type Mutation {
-    source(name: String!, url: String!): FeedSource
+    addSource(name: String!, url: String!): FeedSource
+    removeSource(id: String!): Result
+  }
+  type Result {
+    result: String
   }
   type FeedSource {
     id: String

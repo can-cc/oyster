@@ -16,8 +16,12 @@ export const resolvers = {
     }
   },
   Mutation: {
-    source: async (root, { name, url }) => {
+    addSource: async (root, { name, url }) => {
       return await feedSourceService.saveFeedSource({ name, url });
+    },
+    removeSource: async (root, { id }) => {
+      const result: string =  await feedSourceService.removeFeedSource({id});
+      return {result};
     }
   }
 };

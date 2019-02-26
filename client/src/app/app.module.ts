@@ -25,7 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatRippleModule} from '@angular/material/core';
+import { MatRippleModule } from '@angular/material/core';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppComponent } from './app.component';
@@ -117,7 +117,8 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
       multi: true
     },
     {
-      provide: MAT_RIPPLE_GLOBAL_OPTIONS, useValue: {}
+      provide: MAT_RIPPLE_GLOBAL_OPTIONS,
+      useValue: {}
     },
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],

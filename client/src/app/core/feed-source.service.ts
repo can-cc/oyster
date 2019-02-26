@@ -18,10 +18,18 @@ const FeedSourcesQuery = gql`
 
 const FeedSourceCreateMutation = gql`
   mutation mutationFeedSource($name: String!, $url: String!) {
-    source(name: $name, url: $url) {
+    addSource(name: $name, url: $url) {
       id
       name
       url
+    }
+  }
+`;
+
+const FeedSourceRemoveMutation = gql`
+  mutation mutationFeedSource($id: String!) {
+    removeSource(id: $id) {
+      result
     }
   }
 `;
@@ -52,5 +60,14 @@ export class FeedSourceService {
         variables: { name, url }
       })
       .pipe(map(({ data }: FetchResult<{ source: FeedSource }>) => data.source));
+  }
+
+  public removeFeedSource({ id }): Observable<string> {
+    return this.apollo
+      .mutate({
+        mutation: FeedSourceRemoveMutation,
+        variables: { id }
+      })
+      .pipe(map(({ data }: FetchResult<{ result: string }>) => data.result));
   }
 }

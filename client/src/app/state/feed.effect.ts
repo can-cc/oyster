@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap, concatMap } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, concatMap, mapTo } from 'rxjs/operators';
 import { FeedMarkService } from '../core/feed-mark.service';
 import {
   ActionTypes,
@@ -14,7 +14,9 @@ import {
   AddSources,
   AddSourcesSuccess,
   GetFeeds,
-  GetFeedsSuccess
+  GetFeedsSuccess,
+  RemoveSource,
+  RemoveSourceSuccess
 } from './feed.actions';
 import { Action } from '@ngrx/store';
 import { FeedMark, FeedSource, Feed } from '../../typing/feed';
@@ -81,6 +83,17 @@ export class FeedEffects {
     }),
     map(() => {
       return new AddSourcesSuccess();
+    })
+  );
+
+  @Effect()
+  removeFeedSource$ = this.actions$.pipe(
+    ofType(ActionTypes.REMOVE_SOURCE),
+    mergeMap((action: RemoveSource) => {
+      return this.feedSourceService.removeFeedSource({ id: action.payload.id }).pipe(mapTo({id: action.payload.id}));
+    }),
+    map(({id}) => {
+      return new RemoveSourceSuccess({ id });
     })
   );
 

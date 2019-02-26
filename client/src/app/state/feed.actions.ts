@@ -7,8 +7,12 @@ export enum ActionTypes {
   CLEAN_FEEDS = '[Feed Component] Clean all feeds',
   GET_FEEDS = '[Source Component] Get feeds',
   GET_FEEDS_SUCCESS = '[Source Component] Get feeds success',
+
   GET_SOURCES = '[Source Component] Get sources',
   GET_SOURCES_SUCCESS = '[Source Component] Get sources success',
+  REMOVE_SOURCE = '[Source Component] Remove sources',
+  REMOVE_SOURCE_SUCCESS = '[Source Component] Remove sources success',
+
   MARK_FEED_FAVORITE = '[Feed Component] Mark feed favorite',
   MARK_FEED_FAVORITE_SUCCESS = '[Feed Component] Mark feed favorite success',
   REMOVE_FEED_MARK = '[Feed Component] Remove feed mark',
@@ -55,6 +59,18 @@ export class AddSources implements Action {
 
 export class AddSourcesSuccess implements Action {
   readonly type = ActionTypes.ADD_SOURCE_SUCCESS;
+}
+
+export class RemoveSource implements Action {
+  readonly type = ActionTypes.REMOVE_SOURCE;
+
+  constructor(public payload: { id: string }) {}
+}
+
+export class RemoveSourceSuccess implements Action {
+  readonly type = ActionTypes.REMOVE_SOURCE_SUCCESS;
+
+  constructor(public payload: { id: string }) {}
 }
 
 export class MarkFeedFavorite implements Action {
