@@ -1,11 +1,9 @@
 <div>
   <mat-list>
-    <mat-list-item *ngFor="let source of feedSources"> 
-        <app-feed-source-item
-        [source]="source"
-      ></app-feed-source-item>
+    <mat-list-item *ngFor="let source of feedSources; let i = index">
+      <app-feed-source-item [source]="source"></app-feed-source-item>
+      <mat-divider *ngIf="i < feedSources.length - 1"></mat-divider>
     </mat-list-item>
-    
   </mat-list>
 </div>
 

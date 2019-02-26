@@ -1,0 +1,14 @@
+:host {
+  display: block;
+}
+
+.container:hover {
+  background-color: azure;
+}
+
+.name {
+  display: inline-block;
+  width: 150px;
+  overflow: hidde;
+  text-overflow: ellipsis;
+}

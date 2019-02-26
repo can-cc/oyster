@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { FeedSourceService } from '../../core/feed-source.service';
 import { FeedSource, StoreType } from '../../../typing/feed';
@@ -12,6 +14,7 @@ import { AddSources } from '../../state/feed.actions';
 })
 export class FeedSourceCreaterComponent implements OnInit {
   public form: FormGroup;
+  public faPlus = faPlus;
 
   constructor(
     fb: FormBuilder,
