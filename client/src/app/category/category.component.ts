@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { faDiceSix, faStar, faDotCircle, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import {
+  faDiceSix,
+  faStar,
+  faDotCircle,
+  IconDefinition,
+  faCog
+} from '@fortawesome/free-solid-svg-icons';
 import { StoreType, FeedSource } from '../../typing/feed';
 import { map } from 'rxjs/operators';
 import { GetSources } from '../state/feed.actions';
@@ -24,8 +30,9 @@ export class CategoryComponent implements OnInit {
     { type: 'ALL', id: 'all', name: 'All', icon: faDiceSix, color: '#92a1a9' },
     { type: 'STAR', id: 'favorite', name: 'Favorite', icon: faStar, color: '#fedfbb' }
   ];
-
   categorys: Category[] = this.fixedCategorys;
+
+  faCog = faCog;
 
   constructor(private store: Store<StoreType>, private router: Router) {
     this.store

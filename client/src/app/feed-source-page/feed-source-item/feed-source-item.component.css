@@ -4,9 +4,6 @@
   align-items: center;
 }
 
-:host:hover {
-}
-
 .url {
   width: 100%;
 }
@@ -21,4 +18,5 @@
 
 .remove-button {
   flex-shrink: 0;
+  color: #777;
 }

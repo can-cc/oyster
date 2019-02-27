@@ -13,7 +13,11 @@ class FeedSourceService {
   }
 
   public async refreshFeedSource(): Promise<void> {
-    const sources: FeedSource[] = await getRepository(FeedSource).find();
+    const sources: FeedSource[] = await getRepository(FeedSource).find({
+      where: {
+        isDeleted: 'FALSE'
+      }
+    });
     this.source$.next(sources);
   }
 
@@ -33,10 +37,11 @@ class FeedSourceService {
   }
 
   public async removeFeedSource({ id }): Promise<string> {
-    const feedSource = new FeedSource();
-    feedSource.id = id;
     try {
-      await getRepository(FeedSource).remove(feedSource);
+      await getRepository(FeedSource).update(id, {
+        isDeleted: true
+      });
+      await this.refreshFeedSource();
       return 'OK';
     } catch (error) {
       throw error;

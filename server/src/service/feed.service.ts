@@ -11,7 +11,6 @@ class FeedService {
       case null:
         return this.getAllFeeds({userId, limit, offset});
       case 'favorite':
-        console.log('--------------->>');
         return this.getFavoriteFeeds({userId, limit, offset});
       default:
         return this.getSourceFeeds({userId, limit, offset, sourceId: category});

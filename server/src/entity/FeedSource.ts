@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Feed } from './Feed';
 
 @Entity()
 export class FeedSource {
@@ -19,6 +20,11 @@ export class FeedSource {
 
   @UpdateDateColumn()
   public updatedAt: Date;
+
+  @Column({
+    default: false
+  })
+  public isDeleted: boolean;
 
   constructor(feedSourceData?: any) {
     if (!feedSourceData) {

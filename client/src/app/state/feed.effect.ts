@@ -90,9 +90,11 @@ export class FeedEffects {
   removeFeedSource$ = this.actions$.pipe(
     ofType(ActionTypes.REMOVE_SOURCE),
     mergeMap((action: RemoveSource) => {
-      return this.feedSourceService.removeFeedSource({ id: action.payload.id }).pipe(mapTo({id: action.payload.id}));
+      return this.feedSourceService
+        .removeFeedSource({ id: action.payload.id })
+        .pipe(mapTo({ id: action.payload.id }));
     }),
-    map(({id}) => {
+    map(({ id }) => {
       return new RemoveSourceSuccess({ id });
     })
   );

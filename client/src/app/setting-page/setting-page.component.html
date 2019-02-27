@@ -1,8 +1,10 @@
 <mat-drawer-container class="app-container">
   <mat-drawer mode="side" opened>
-    <a class="go-back-link" routerLink="/">
-      <fa-icon [icon]="faArrowLeft"></fa-icon>
-      Go back
+    <a class="back-link" routerLink="/">
+      <button mat-mini-fab>
+          <fa-icon size="1x" [icon]="faArrowLeft"></fa-icon>
+      
+      </button>
     </a>
     <ul class="side-links">
       <li>
@@ -20,5 +22,7 @@
     </ul>
   </mat-drawer>
 
-  <mat-drawer-content> <router-outlet></router-outlet> </mat-drawer-content>
+  <mat-drawer-content>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
 </mat-drawer-container>

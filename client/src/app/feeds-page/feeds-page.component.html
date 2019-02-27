@@ -2,7 +2,7 @@
 
 <app-feed-list
   [feeds]="feeds$ | async"
-  (select)="onFeedListSelect($event)"
+  [categoryId]="category"
   infiniteScroll
   [infiniteScrollDistance]="2"
   [scrollWindow]="false"

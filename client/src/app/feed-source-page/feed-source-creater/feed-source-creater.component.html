@@ -1,19 +1,22 @@
-<button mat-fab (click)="showForm = true;">
-    <fa-icon class="plus" [icon]="faPlus"></fa-icon>
+<button *ngIf="!showForm" class="create-button" mat-mini-fab (click)="showForm = true">
+  <fa-icon class="plus" [icon]="faPlus"></fa-icon>
 </button>
 
 <div *ngIf="showForm">
-    <form [formGroup]="form">
-        <mat-form-field class="">
-          <input matInput placeholder="Name" formControlName="name" />
-        </mat-form-field>
-      
-        <mat-form-field class="">
-          <input type="text" matInput placeholder="Url" formControlName="url" />
-        </mat-form-field>
-      
-        <button mat-button mat-raised-button (click)="handleCreate()" color="primary">
-        </button>
-      </form>
-      
+  <form [formGroup]="form">
+    <mat-form-field class="">
+      <input matInput placeholder="Name" formControlName="name" />
+    </mat-form-field>
+
+    <mat-form-field class="">
+      <input type="text" matInput placeholder="Url" formControlName="url" />
+    </mat-form-field>
+
+    <button
+      mat-button
+      mat-raised-button
+      (click)="handleCreate()"
+      color="primary"
+    ></button>
+  </form>
 </div>

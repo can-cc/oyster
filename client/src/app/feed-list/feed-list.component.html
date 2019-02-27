@@ -1,9 +1,10 @@
 <mat-nav-list>
   <mat-list-item
     matRipple
-    matRippleColor="rgba(146, 161, 169, 0.3)"
+    routerLinkActive="active"
+    [routerLink]="'/feed/' + categoryId + '/' + feed.id"
+    matRippleColor="rgba(248, 157, 106, 0.4)"
     *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
-    (click)="select.emit(feed); selectIndex = i"
   >
     <app-article-avatar matListAvatar [feed]="feed"></app-article-avatar>
 

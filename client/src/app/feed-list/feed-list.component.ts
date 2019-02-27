@@ -10,10 +10,12 @@ import { Feed } from '../../typing/feed';
 export class FeedListComponent implements OnInit {
   @Input()
   feeds: Feed[];
-  @Output()
-  select: EventEmitter<Feed> = new EventEmitter();
+  @Input()
+  categoryId: string;
+  // @Output()
+  // select: EventEmitter<Feed> = new EventEmitter();
 
-  selectIndex: number;
+  // selectIndex: number;
 
   constructor(private el: ElementRef) {}
 

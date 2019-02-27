@@ -24,19 +24,19 @@
   margin-bottom: 8px;
 }
 
+:host .side-links a {
+  color: #3c4447 !important;
+}
+
 :host .side-links li .ng-fa-icon {
   width: 22px;
   display: inline-block;
 }
 
-.go-back-link {
-  border: 1px solid #bbb;
-  border-radius: 3px;
-  padding: 3px 5px;
-}
-
-.go-back-link:hover {
-  background-color: #f8f8f8;
+.back-link button {
+  box-shadow: none;
+  background-color: #f89d6a;
+  color: white;
 }
 
 .mat-drawer a {

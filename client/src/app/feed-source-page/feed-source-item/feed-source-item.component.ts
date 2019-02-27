@@ -17,6 +17,6 @@ export class FeedSourceItemComponent implements OnInit {
   ngOnInit() {}
 
   public remove(): void {
-    this.store.dispatch(new RemoveSource({id: this.source.id}));
+    this.store.dispatch(new RemoveSource({ id: this.source.id }));
   }
 }

@@ -75,14 +75,14 @@ export class FeedsPageComponent implements OnInit {
     this.offset = 0;
   }
 
-  public onFeedListSelect(feed: Feed) {
-    this.route.paramMap
-      .pipe(
-        take(1),
-        map((params: ParamMap) => params.get('category'))
-      )
-      .subscribe((category: string) => {
-        this.router.navigate([`/feed/${category}/${feed.id}`]);
-      });
-  }
+  // public onFeedListSelect(feed: Feed) {
+  //   this.route.paramMap
+  //     .pipe(
+  //       take(1),
+  //       map((params: ParamMap) => params.get('category'))
+  //     )
+  //     .subscribe((category: string) => {
+  //       this.router.navigate([`/feed/${category}/${feed.id}`]);
+  //     });
+  // }
 }

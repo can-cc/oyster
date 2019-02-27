@@ -1,9 +1,41 @@
 :host {
+  display: flex;
   flex-shrink: 0;
   width: 130px;
-  flex-basis: 1;
+  height: 100%;
+  flex-direction: column;
+}
+
+.active {
+  background-color: #fff0e1;
 }
 
 .ng-fa-icon {
   width: 25px;
+}
+
+.mat-list {
+  padding-top: 0;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.mat-list-item {
+  padding-left: 12px;
+  text-decoration: none;
+}
+
+.mat-list-item:hover {
+  background-color: #fff6e4 !important;
+}
+
+::ng-deep .mat-list-item-content {
+  padding-left: 0!important;
+}
+
+.setting {
+  height: 30px;
+  line-height: 30px;
+  color: #3c4447;
 }
