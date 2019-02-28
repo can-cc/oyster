@@ -13,7 +13,7 @@ services:
     environment:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
-      - ./docker-data/pgdata:/var/lib/postgresql/data
+      - ~/docker-data/pgdata:/var/lib/postgresql/data
   nginx:
     restart: always
     build: ./client/
