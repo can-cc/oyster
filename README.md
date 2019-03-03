@@ -1,3 +1,6 @@
+# oyster
+a rss reader.
+
 ## Deploy
 
 ``` bash
