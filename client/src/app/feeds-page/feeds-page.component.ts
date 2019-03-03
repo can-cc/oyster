@@ -19,7 +19,7 @@ export class FeedsPageComponent implements OnInit {
   public urlFeedId$: Observable<string>;
 
   private complete$: Subject<void> = new Subject();
-  private category: string;
+  public category: string;
 
   constructor(
     private store: Store<{

@@ -15,11 +15,12 @@ export interface FeedSource {
 export interface Feed {
   id?: string;
   title: string;
-  source?: string;
+  source?: FeedSource;
   originHref: string;
   content: string;
   author: string;
-  createdAt: number;
+  publishedDate: string;
+  createdAt: string;
   marks: FeedMark[];
 }
 

@@ -17,7 +17,7 @@ export class ArticleAvatarComponent implements OnInit {
   constructor(private colorService: ColorService) {}
 
   ngOnInit() {
-    this.bgColor = this.colorService.getSourceColor(this.feed.source);
+    this.bgColor = this.colorService.getSourceColor(this.feed.source.name);
 
     this.checkContentImage();
   }
