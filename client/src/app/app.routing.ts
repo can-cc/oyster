@@ -13,6 +13,30 @@ import { FeedSourcePageComponent } from './feed-source-page/feed-source-page.com
 import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
 
+export function feedsPageMatcher(segments: UrlSegment[]): UrlMatchResult {
+  if (segments[0].path !== 'feed') {
+    return null;
+  }
+  if (segments.length === 2) {
+    return {
+      consumed: segments,
+      posParams: {
+        category: segments[1]
+      }
+    };
+  }
+  if (segments.length === 3) {
+    return {
+      consumed: segments,
+      posParams: {
+        feedId: segments[2],
+        category: segments[1]
+      }
+    };
+  }
+  return null;
+};
+
 const routes: Routes = [
   {
     path: '',
@@ -29,29 +53,7 @@ const routes: Routes = [
     redirectTo: '/feed/all'
   },
   {
-    matcher: (segments: UrlSegment[], group: UrlSegmentGroup, route: Route): UrlMatchResult => {
-      if (segments[0].path !== 'feed') {
-        return null;
-      }
-      if (segments.length === 2) {
-        return {
-          consumed: segments,
-          posParams: {
-            category: segments[1]
-          }
-        };
-      }
-      if (segments.length === 3) {
-        return {
-          consumed: segments,
-          posParams: {
-            feedId: segments[2],
-            category: segments[1]
-          }
-        };
-      }
-      return null;
-    },
+    matcher: feedsPageMatcher,
     component: FeedsPageComponent
   },
   {
@@ -75,6 +77,7 @@ const routes: Routes = [
   },
   { path: '**', redirectTo: '/feed/all' }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
