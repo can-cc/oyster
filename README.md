@@ -12,7 +12,7 @@ docker-compose up
 example to create new user foo/password
 
 ```bash
- docker-compose exec backend /bin/bash
+docker-compose exec backend /bin/bash
 ```
 
 ``` bash
