@@ -15,7 +15,8 @@ import {
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatCardModule,
   MatSidenavModule,
-  MAT_RIPPLE_GLOBAL_OPTIONS
+  MAT_RIPPLE_GLOBAL_OPTIONS,
+  MatTooltipModule
 } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
@@ -59,6 +60,7 @@ import { FeedEffects } from './state/feed.effect';
 import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
 import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog.component';
+import { ClampDirective } from './clamp.directive';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
     ArticlePreviewInfoAreaComponent,
     ArticlePreviewStarComponent,
     SettingPageComponent,
-    NotificationPageComponent
+    NotificationPageComponent,
+    ClampDirective
   ],
   entryComponents: [PingDialogComponent],
   imports: [
@@ -98,6 +101,7 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
     MatSidenavModule,
     MatSnackBarModule,
     MatDialogModule,
+    MatTooltipModule,
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,

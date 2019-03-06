@@ -10,7 +10,7 @@
       [icon]="category.icon"
       [style.color]="category.color"
     ></fa-icon>
-    <span>{{ category.name }}</span>
+    <span class="category-name" [matTooltip]="category.name">{{ category.name }}</span>
   </a>
 </mat-list>
 

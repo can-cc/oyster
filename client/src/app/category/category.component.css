@@ -4,6 +4,7 @@
   width: 130px;
   height: 100%;
   flex-direction: column;
+  background-color: #f8f8f8;
 }
 
 .active {
@@ -12,6 +13,7 @@
 
 .ng-fa-icon {
   width: 25px;
+  flex-shrink: 0;
 }
 
 .mat-list {
@@ -26,6 +28,12 @@
   text-decoration: none;
 }
 
+.category-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .mat-list-item:hover {
   background-color: #fff6e4 !important;
 }
@@ -35,7 +43,7 @@
 }
 
 .setting {
-  height: 30px;
+  height: 50px;
   line-height: 30px;
   color: #3c4447;
 }

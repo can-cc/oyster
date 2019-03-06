@@ -6,16 +6,16 @@
     matRippleColor="rgba(248, 157, 106, 0.4)"
     *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
   >
-    <app-article-avatar matListAvatar [feed]="feed"></app-article-avatar>
+  <app-article-avatar matListAvatar [feed]="feed"></app-article-avatar>
 
-    <h3 matLine>{{ feed.title }}</h3>
-    <div matLine>
-      <p class="info">
-        <span>{{ feed.author }}</span>
-        <span class="time-distance"
-          >{{ calcPublishedDistance(feed.publishedDate) }} ago</span
-        >
-      </p>
-    </div>
+  <h3 matLine [appClamp]="2">{{ feed.title }}</h3>
+  <div matLine>
+    <p class="info">
+      <span>{{ feed.author }}</span>
+      <span class="time-distance"
+        >{{ calcPublishedDistance(feed.publishedDate) }} ago</span
+      >
+    </p>
+  </div>
   </mat-list-item>
 </mat-nav-list>

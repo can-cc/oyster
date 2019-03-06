@@ -1,6 +1,7 @@
 :host .app-container {
-  padding: 20px;
   background-color: white;
+  height: 100%;
+  padding: 0 20px;  
 }
 
 :host .mat-drawer {
@@ -8,11 +9,15 @@
 }
 
 :host .mat-drawer-content {
+  margin: 20px;
   background-color: white;
   margin-left: 160px !important;
   padding: 20px;
   border: 1px solid #e8e8e8;
   border-radius: 10px;
+  height: calc(100% - 40px);
+  overflow: auto;
+  box-sizing: border-box;
 }
 
 :host .side-links {

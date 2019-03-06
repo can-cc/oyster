@@ -4,7 +4,8 @@
   overflow: auto;
   flex-shrink: 0;
   flex-basis: 1;
-  border: 1px solid #eee;
+  border: 1px solid #e8e8e8;
+  border-left: none;
   border-bottom-width: 0;
   border-top-width: 0;
 }
@@ -18,9 +19,7 @@ h3 {
   font-weight: 600 !important;
   overflow: hidden;
   text-overflow: ellipsis;
-  -webkit-line-clamp: 2;
-  display: -webkit-box !important;
-  -webkit-box-orient: vertical;
+  display: block !important;
   white-space: initial !important;
   color: #777;
 }
@@ -58,6 +57,10 @@ h3 {
 
 .mat-list-item:last-child {
   border-bottom: none;
+}
+
+app-article-avatar {
+  margin-left: 10px !important;
 }
 
 .info {

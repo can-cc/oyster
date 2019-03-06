@@ -6,13 +6,16 @@
 
 .url {
   width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .name {
   flex-shrink: 0;
   display: inline-block;
   width: 150px;
-  overflow: hidde;
+  padding-right: 5px;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
