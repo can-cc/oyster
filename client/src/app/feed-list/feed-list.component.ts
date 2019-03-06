@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ElementRef } from '@angular/core';
-import * as formatDistance from 'date-fns/formatDistance';
+import formatDistance from 'date-fns/formatDistance';
 import { Feed } from '../../typing/feed';
 
 @Component({
@@ -12,11 +12,6 @@ export class FeedListComponent implements OnInit {
   feeds: Feed[];
   @Input()
   categoryId: string;
-  // @Output()
-  // select: EventEmitter<Feed> = new EventEmitter();
-
-  // selectIndex: number;
-
   constructor(private el: ElementRef) {}
 
   ngOnInit() {}
