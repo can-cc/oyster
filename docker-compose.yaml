@@ -16,7 +16,7 @@ services:
       - ~/docker-data/pgdata:/var/lib/postgresql/data
   nginx:
     restart: always
-    build: ./client/
+    image: fwchen/oyster-client:latest
     ports:
       - "8070:80"
     networks: 
