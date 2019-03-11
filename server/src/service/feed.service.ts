@@ -5,10 +5,10 @@ type Category = 'all' | 'favorite' | string;
 
 class FeedService {
   public async getFeeds({ userId, limit, offset, category }): Promise<Feed[]> {
-    console.log('category', category);
     switch (category as Category) {
       case 'all':
       case null:
+      case undefined:
         return this.getAllFeeds({userId, limit, offset});
       case 'favorite':
         return this.getFavoriteFeeds({userId, limit, offset});
