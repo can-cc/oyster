@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  height: 40px;
+  line-height: 40px;
+}
+
+.add {
+    color: #4f9cf4;
+    cursor: pointer;
+    padding-left: 12px;
+
+}
+.add span {
+    margin-left: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}

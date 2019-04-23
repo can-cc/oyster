@@ -1,0 +1,24 @@
+
+:host {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 12px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+}
+
+
+.item {
+    height: 50px;
+    line-height: 50px;
+    width: 35%;
+    border-right: 1px solid #eee;
+    cursor: pointer;
+}
+
+.item:last-child {
+    border-right: none;
+}

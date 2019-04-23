@@ -1,0 +1,25 @@
+<app-aside-top-bar></app-aside-top-bar>
+
+<app-aside-status-switch></app-aside-status-switch>
+
+
+<mat-list>
+  <a
+    mat-list-item
+    *ngFor="let category of categorys"
+    routerLinkActive="active"
+    [routerLink]="'/feed/' + category.id"
+  >
+    <fa-icon
+      size="1x"
+      [icon]="category.icon"
+      [style.color]="category.color"
+    ></fa-icon>
+    <span class="category-name" [matTooltip]="category.name">{{ category.name }}</span>
+  </a>
+</mat-list>
+
+<a mat-list-item routerLink="/setting" class="setting">
+  <fa-icon size="1x" [icon]="faCog"></fa-icon>
+  setting
+</a>

@@ -61,6 +61,10 @@ import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
 import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog.component';
 import { ClampDirective } from './clamp.directive';
+import { AsideComponent } from './aside/aside.component';
+import { AsideTopBarComponent } from './aside/aside-top-bar/aside-top-bar.component';
+import { AsideStatusSwitchComponent } from './aside/aside-status-switch/aside-status-switch.component';
+import { CategoryItemComponent } from './aside/category-item/category-item.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +84,11 @@ import { ClampDirective } from './clamp.directive';
     ArticlePreviewStarComponent,
     SettingPageComponent,
     NotificationPageComponent,
-    ClampDirective
+    ClampDirective,
+    AsideComponent,
+    AsideTopBarComponent,
+    AsideStatusSwitchComponent,
+    CategoryItemComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [

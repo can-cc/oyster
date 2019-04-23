@@ -9,7 +9,7 @@ export function getPostgresConfig(): ConnectionOptions {
     password: configure.getConfig('POSTGRES_PASSWORD'),
     database: configure.getConfig('POSTGRES_DB'),
     synchronize: true,
-    logging: true,
+    logging: false,
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
     subscribers: ['src/subscriber/**/*.ts'],
