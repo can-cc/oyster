@@ -24,8 +24,8 @@ services:
     links:
       - backend:backend
   backend:
-    restart: "no"
-    build: ./server/
+    restart: always
+    image: fwchen/oyster-server:latest
     networks: 
       - app
     environment:
