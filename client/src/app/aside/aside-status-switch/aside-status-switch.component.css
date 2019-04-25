@@ -10,10 +10,9 @@
     border-bottom: 1px solid #eee;
 }
 
-
 .item {
-    height: 50px;
-    line-height: 50px;
+    height: 35px;
+    line-height: 35px;
     width: 35%;
     border-right: 1px solid #eee;
     cursor: pointer;
