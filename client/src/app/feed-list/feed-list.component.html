@@ -3,17 +3,18 @@
     matRipple
     routerLinkActive="active"
     [routerLink]="'/feed/' + categoryId + '/' + feed.id"
-    matRippleColor="rgba(248, 157, 106, 0.4)"
+    matRippleColor="rgba(79, 157, 244, 0.4)"
     *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
   >
     <app-article-avatar [feed]="feed"></app-article-avatar>
-    <div>
-      <h3 [appClamp]="3">{{ feed.title }}</h3>
+    <div class="item-inner-container">
+      <div class="source-name">{{feed.source.name}}</div>
+      <div [appClamp]="3">{{ feed.title }}</div>
       <div>
         <p class="info">
           <span>{{ feed.author }}</span>
           <span class="time-distance"
-            >{{ calcPublishedDistance(feed.publishedDate) }} ago</span
+            >{{ calcPublishedDistance(feed.publishedDate) }}</span
           >
         </p>
       </div>

@@ -17,7 +17,9 @@ export class FeedListComponent implements OnInit {
   ngOnInit() {}
 
   public calcPublishedDistance(time: number) {
-    return formatDistance(new Date(), new Date(time));
+    return formatDistance(new Date(), new Date(time), {
+      includeSeconds: false
+    });
   }
 
   public trackByFeed(index: number, feed: Feed): string {
