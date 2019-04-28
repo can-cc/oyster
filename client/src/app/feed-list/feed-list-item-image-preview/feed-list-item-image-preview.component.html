@@ -1,0 +1,7 @@
+<div
+  *ngIf="hasImage"
+  class="article-avatar"
+  [style.backgroundColor]="hasImage ? 'transparent' : bgColor"
+>
+  <img #image  [src]="imgSrc" (error)="hasImage = false" />
+</div>

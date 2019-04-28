@@ -1,7 +1,7 @@
 .article-avatar {
   position: relative;
-  height: 80px;
-  width: 80px;
+  height: 24px;
+  width: 24px;
   border-radius: 50%;
   overflow: hidden;
 }

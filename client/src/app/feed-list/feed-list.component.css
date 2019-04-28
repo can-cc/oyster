@@ -17,11 +17,9 @@
 h3 {
   font-size: 18px;
   font-weight: 600 !important;
-  overflow: hidden;
-  text-overflow: ellipsis;
   display: block !important;
   white-space: initial !important;
-  color: #777;
+  margin: 0;
 }
 
 .mat-nav-list {
@@ -40,8 +38,13 @@ h3 {
   box-sizing: border-box;
 }
 
+::ng-deep .mat-list-item-content {
+  align-items: flex-start !important;
+}
+
 .mat-list-item:hover {
-  background-color: #fff6e4 !important;
+  background-color: #4f9cf4 !important;
+  color: white !important;
 }
 
 .mat-list-item:after {
@@ -60,11 +63,10 @@ h3 {
 }
 
 app-article-avatar {
-  margin-left: 10px !important;
+  margin: 0px !important;
 }
 
 .info {
-  color: #999;
   display: flex;
   justify-content: space-between;
   align-items: center;

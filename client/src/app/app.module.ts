@@ -65,6 +65,7 @@ import { AsideComponent } from './aside/aside.component';
 import { AsideTopBarComponent } from './aside/aside-top-bar/aside-top-bar.component';
 import { AsideStatusSwitchComponent } from './aside/aside-status-switch/aside-status-switch.component';
 import { CategoryItemComponent } from './aside/category-item/category-item.component';
+import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-image-preview/feed-list-item-image-preview.component';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { CategoryItemComponent } from './aside/category-item/category-item.compo
     AsideComponent,
     AsideTopBarComponent,
     AsideStatusSwitchComponent,
-    CategoryItemComponent
+    CategoryItemComponent,
+    FeedListItemImagePreviewComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
