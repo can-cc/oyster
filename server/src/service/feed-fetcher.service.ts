@@ -10,7 +10,7 @@ import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
 import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements } from 'rxjs/operators';
 import { Observable, interval, of, empty, Observer } from 'rxjs';
-import { parseFeed } from '../util/parser';
+import { parseFeedData } from '../util/parser';
 import { FeedData, FeedResult } from '../typing/feed';
 
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
@@ -39,9 +39,9 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
 function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
   return Observable.create((observer: Observer<FeedData[]>) => {
     const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe(async (result: FeedResult) => {
+    const subscription = feed$.subscribe((result: FeedResult) => {
       try {
-        const feedDatas: FeedData[] = await parseFeed(result.feedRawData).map(f => ({ ...f, source: result.source }));
+        const feedDatas: FeedData[] = parseFeedData(result.feedRawData).map(f => ({ ...f, source: result.source }));
         observer.next(feedDatas);
       } catch (error) {
         logger.error(`parse and save feed error. ${error}`);
@@ -110,7 +110,10 @@ class FeedFetcher {
   }
 
   private genFeedIdentifyStr(feed: Feed): string {
-    return feed.title + feed.content;
+    if (feed.id) {
+      return feed.source.name + feed.id;
+    }
+    return feed.source.name + feed.title + feed.content;
   }
 }
 export default new FeedFetcher();
