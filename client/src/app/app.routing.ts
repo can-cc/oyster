@@ -35,7 +35,7 @@ export function feedsPageMatcher(segments: UrlSegment[]): UrlMatchResult {
     };
   }
   return null;
-};
+}
 
 const routes: Routes = [
   {

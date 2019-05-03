@@ -26,9 +26,7 @@ interface Category {
   styleUrls: ['./aside.component.css']
 })
 export class AsideComponent implements OnInit {
-  readonly fixedCategorys: Category[] = [
-  ];
-  categorys: Category[] = this.fixedCategorys;
+  categorys: Category[] = [];
 
   faCog = faCog;
 
@@ -40,12 +38,13 @@ export class AsideComponent implements OnInit {
         })
       )
       .subscribe((sources: FeedSource[]) => {
-        this.categorys = this.fixedCategorys.concat(
+        this.categorys = [].concat(
           sources.map((source: FeedSource) => {
             return {
               type: 'SOURCE',
               id: source.id,
               name: source.name,
+              faviconUrl: this.getSourceUrlFaviconUrl(source.url),
               icon: faDotCircle,
               color: '#92a1a9'
             };
@@ -60,5 +59,10 @@ export class AsideComponent implements OnInit {
 
   onCategoryClick(category: Category) {
     this.router.navigate([`/feed/${category.id}/`]);
+  }
+
+  private getSourceUrlFaviconUrl(sourceUrl: string): string {
+    console.log(sourceUrl.split('/')[0] + '//' + sourceUrl.split('/')[2] + '/favicon.ico');
+    return sourceUrl.split('/')[0] + '//' + sourceUrl.split('/')[2] + '/favicon.ico';
   }
 }

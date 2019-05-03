@@ -66,6 +66,9 @@ import { AsideTopBarComponent } from './aside/aside-top-bar/aside-top-bar.compon
 import { AsideStatusSwitchComponent } from './aside/aside-status-switch/aside-status-switch.component';
 import { CategoryItemComponent } from './aside/category-item/category-item.component';
 import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-image-preview/feed-list-item-image-preview.component';
+import { FeedListToolbarComponent } from './feed-list/feed-list-toolbar/feed-list-toolbar.component';
+import { SettingModalComponent } from '../setting-modal/setting-modal.component';
+import { AddFeedSourceModalComponent } from '../add-feed-source-modal/add-feed-source-modal.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +93,10 @@ import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-im
     AsideTopBarComponent,
     AsideStatusSwitchComponent,
     CategoryItemComponent,
-    FeedListItemImagePreviewComponent
+    FeedListItemImagePreviewComponent,
+    FeedListToolbarComponent,
+    SettingModalComponent,
+    AddFeedSourceModalComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [

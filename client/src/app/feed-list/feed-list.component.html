@@ -1,3 +1,4 @@
+<app-feed-list-toolbar></app-feed-list-toolbar>
 <mat-nav-list>
   <mat-list-item
     matRipple
@@ -8,14 +9,14 @@
   >
     <app-article-avatar [feed]="feed"></app-article-avatar>
     <div class="item-inner-container">
-      <div class="source-name">{{feed.source.name}}</div>
+      <div class="source-name">{{ feed.source.name }}</div>
       <div [appClamp]="3">{{ feed.title }}</div>
       <div>
         <p class="info">
           <span>{{ feed.author }}</span>
-          <span class="time-distance"
-            >{{ calcPublishedDistance(feed.publishedDate) }}</span
-          >
+          <span class="time-distance">{{
+            calcPublishedDistance(feed.publishedDate)
+          }}</span>
         </p>
       </div>
 

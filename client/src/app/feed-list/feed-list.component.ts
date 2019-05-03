@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output, ElementRef } from '@angular/core';
-import { formatDistance } from 'date-fns'
+import { formatDistance } from 'date-fns';
 import { Feed } from '../../typing/feed';
 
 @Component({
@@ -10,8 +10,10 @@ import { Feed } from '../../typing/feed';
 export class FeedListComponent implements OnInit {
   @Input()
   feeds: Feed[];
+
   @Input()
   categoryId: string;
+
   constructor(private el: ElementRef) {}
 
   ngOnInit() {}

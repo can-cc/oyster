@@ -8,9 +8,8 @@ describe('FeedListItemImagePreviewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FeedListItemImagePreviewComponent ]
-    })
-    .compileComponents();
+      declarations: [FeedListItemImagePreviewComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

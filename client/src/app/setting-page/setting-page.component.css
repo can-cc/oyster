@@ -1,7 +1,7 @@
 :host .app-container {
   background-color: white;
   height: 100%;
-  padding: 0 20px;  
+  padding: 0 20px;
 }
 
 :host .mat-drawer {

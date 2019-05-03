@@ -1,17 +1,20 @@
 :host {
   width: 300px;
   height: 100%;
-  overflow: auto;
+  /* overflow: auto; */
   flex-shrink: 0;
   flex-basis: 1;
   border: 1px solid #e8e8e8;
   border-left: none;
   border-bottom-width: 0;
   border-top-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
-
 .mat-nav-list {
+  overflow: auto;
+  height: 100%;
   padding: 0px 0 20px;
 }
 
@@ -30,7 +33,7 @@
 .mat-list-item {
   position: relative;
   height: auto !important;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   cursor: pointer;
 }
 
@@ -39,12 +42,16 @@
   padding: 8px 12px 8px 8px !important;
 }
 
-.mat-list-item:hover, .active {
+.mat-list-item:hover,
+.active {
   background-color: #4f9cf4 !important;
   color: white !important;
 }
 
-.mat-list-item:hover .info, .mat-list-item:hover .source-name, .active .info, .active .source-name {
+.mat-list-item:hover .info,
+.mat-list-item:hover .source-name,
+.active .info,
+.active .source-name {
   color: #eee;
 }
 

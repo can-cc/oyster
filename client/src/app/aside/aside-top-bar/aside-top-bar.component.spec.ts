@@ -8,9 +8,8 @@ describe('AsideTopBarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsideTopBarComponent ]
-    })
-    .compileComponents();
+      declarations: [AsideTopBarComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

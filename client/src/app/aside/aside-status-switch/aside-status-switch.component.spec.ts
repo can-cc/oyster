@@ -8,9 +8,8 @@ describe('AsideStatusSwitchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AsideStatusSwitchComponent ]
-    })
-    .compileComponents();
+      declarations: [AsideStatusSwitchComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

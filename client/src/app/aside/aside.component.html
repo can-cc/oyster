@@ -9,12 +9,9 @@
     routerLinkActive="active"
     [routerLink]="'/feed/' + category.id"
   >
-    <fa-icon
-      size="1x"
-      [icon]="category.icon"
-      [style.color]="category.color"
-    ></fa-icon>
-    <span class="category-name" [matTooltip]="category.name">{{ category.name }}</span>
+    <img [src]="category.faviconUrl" />
+    <span class="category-name" [matTooltip]="category.name">{{
+      category.name
+    }}</span>
   </a>
 </mat-list>
-

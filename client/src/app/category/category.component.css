@@ -39,7 +39,7 @@
 }
 
 ::ng-deep .mat-list-item-content {
-  padding-left: 0!important;
+  padding-left: 0 !important;
 }
 
 .setting {

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  faPlus
-} from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aside-top-bar',
@@ -11,9 +9,7 @@ import {
 export class AsideTopBarComponent implements OnInit {
   faPlus = faPlus;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

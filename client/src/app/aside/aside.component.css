@@ -1,50 +1,49 @@
 :host {
-    display: flex;
-    flex-shrink: 0;
-    width: 230px;
-    height: 100%;
-    flex-direction: column;
-    background-color: #f8f8f8;
-  }
-  
-  .active {
-    background-color: #fff0e1;
-  }
-  
-  .ng-fa-icon {
-    width: 25px;
-    flex-shrink: 0;
-  }
-  
-  .mat-list {
-    padding-top: 0;
-    height: 100%;
-    overflow: auto;
-    overflow-x: hidden;
-  }
-  
-  .mat-list-item {
-    padding-left: 12px;
-    text-decoration: none;
-  }
-  
-  .category-name {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
-  .mat-list-item:hover {
-    background-color: #fff6e4 !important;
-  }
-  
-  ::ng-deep .mat-list-item-content {
-    padding-left: 0!important;
-  }
-  
-  .setting {
-    height: 50px;
-    line-height: 30px;
-    color: #3c4447;
-  }
-  
+  display: flex;
+  flex-shrink: 0;
+  width: 230px;
+  height: 100%;
+  flex-direction: column;
+  background-color: #f8f8f8;
+}
+
+.active {
+  background-color: #fff0e1;
+}
+
+.ng-fa-icon {
+  width: 25px;
+  flex-shrink: 0;
+}
+
+.mat-list {
+  padding-top: 0;
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+}
+
+.mat-list-item {
+  padding-left: 12px;
+  text-decoration: none;
+}
+
+.category-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mat-list-item:hover {
+  background-color: #fff6e4 !important;
+}
+
+::ng-deep .mat-list-item-content {
+  padding-left: 0 !important;
+}
+
+.setting {
+  height: 50px;
+  line-height: 30px;
+  color: #3c4447;
+}

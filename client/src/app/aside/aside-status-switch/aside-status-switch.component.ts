@@ -12,10 +12,7 @@ enum status {
   styleUrls: ['./aside-status-switch.component.css']
 })
 export class AsideStatusSwitchComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }
