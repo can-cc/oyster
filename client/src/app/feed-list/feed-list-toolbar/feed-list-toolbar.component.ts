@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-feed-list-toolbar',
@@ -6,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./feed-list-toolbar.component.css']
 })
 export class FeedListToolbarComponent implements OnInit {
+  faSearch = faSearch;
+
   constructor() {}
 
   ngOnInit() {}
