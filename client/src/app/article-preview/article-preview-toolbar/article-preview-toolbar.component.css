@@ -1,0 +1,17 @@
+:host {
+    display: block;
+    height: 36px;
+    border-bottom: 1px solid #eee;
+    overflow: hidden;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.right-container{
+    height: 100%;
+    overflow: hidden;
+    float: right;
+    display: flex;
+    align-items: center;
+    padding-right: 12px;
+}

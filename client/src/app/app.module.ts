@@ -16,7 +16,8 @@ import {
   MatCardModule,
   MatSidenavModule,
   MAT_RIPPLE_GLOBAL_OPTIONS,
-  MatTooltipModule
+  MatTooltipModule,
+  MatMenuModule
 } from '@angular/material';
 
 import { MatListModule } from '@angular/material/list';
@@ -69,6 +70,7 @@ import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-im
 import { FeedListToolbarComponent } from './feed-list/feed-list-toolbar/feed-list-toolbar.component';
 import { SettingModalComponent } from '../setting-modal/setting-modal.component';
 import { AddFeedSourceModalComponent } from '../add-feed-source-modal/add-feed-source-modal.component';
+import { ArticlePreviewToolbarComponent } from './article-preview/article-preview-toolbar/article-preview-toolbar.component';
 
 @NgModule({
   declarations: [
@@ -96,7 +98,8 @@ import { AddFeedSourceModalComponent } from '../add-feed-source-modal/add-feed-s
     FeedListItemImagePreviewComponent,
     FeedListToolbarComponent,
     SettingModalComponent,
-    AddFeedSourceModalComponent
+    AddFeedSourceModalComponent,
+    ArticlePreviewToolbarComponent
   ],
   entryComponents: [PingDialogComponent],
   imports: [
@@ -115,6 +118,7 @@ import { AddFeedSourceModalComponent } from '../add-feed-source-modal/add-feed-s
     MatIconModule,
     MatButtonModule,
     MatSidenavModule,
+    MatMenuModule,
     MatSnackBarModule,
     MatDialogModule,
     MatTooltipModule,

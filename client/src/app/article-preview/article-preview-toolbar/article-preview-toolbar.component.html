@@ -1,0 +1,18 @@
+<div class="right-container">
+    <app-article-preview-star
+    [isStar]="feed.marks.length"
+    (click)="handleMarkFavorite()"
+    ></app-article-preview-star>
+    
+    <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>Help</button>
+      </mat-menu>
+      
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <fa-icon class="bookmark" size="1x" [icon]="faEllipsisH"></fa-icon>
+      </button>
+
+</div>
+
+

@@ -1,22 +1,9 @@
 :host {
   display: block;
-  position: absolute;
-  z-index: 1;
-  right: 30px;
-  top: 0;
   cursor: pointer;
   user-select: none;
 }
 
-:host .bookmark {
-  color: #92a1a9;
-  position: relative;
-  top: -2px;
-}
-
 :host .star {
-  position: absolute;
   color: #fedfbb;
-  left: 3px;
-  top: 1px;
 }

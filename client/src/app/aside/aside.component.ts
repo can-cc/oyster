@@ -62,7 +62,6 @@ export class AsideComponent implements OnInit {
   }
 
   private getSourceUrlFaviconUrl(sourceUrl: string): string {
-    console.log(sourceUrl.split('/')[0] + '//' + sourceUrl.split('/')[2] + '/favicon.ico');
     return sourceUrl.split('/')[0] + '//' + sourceUrl.split('/')[2] + '/favicon.ico';
   }
 }

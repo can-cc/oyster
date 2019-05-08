@@ -1,8 +1,7 @@
 <div *ngIf="!!feed">
-  <app-article-preview-star
-    [isStar]="feed.marks.length"
-    (click)="handleMarkFavorite()"
-  ></app-article-preview-star>
+  <app-article-preview-toolbar [feed]="feed"></app-article-preview-toolbar>
+
+
 
   <h2>{{ feed.title }}</h2>
 
