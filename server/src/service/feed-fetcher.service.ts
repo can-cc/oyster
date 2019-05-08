@@ -111,7 +111,7 @@ class FeedFetcher {
 
   private genFeedIdentifyStr(feed: Feed): string {
     if (feed.id) {
-      return feed.source.name + feed.id;
+      return feed.id;
     }
     return feed.source.name + feed.title + feed.content;
   }
