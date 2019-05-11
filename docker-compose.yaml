@@ -37,6 +37,20 @@ services:
       - ./log:/log
     depends_on:
       - postgres
+  backup:
+    restart: always
+    image: fwchen/fwchen/postgreseafile-backup:latest
+    links:
+      - postgres:postgres
+    networks: 
+      - app
+    environment:
+      BACKUP_HOST: postgres
+      PGPASSWORD: mysecretpassword
+      SEAFILE_API: ${SEAFILE_API}
+      BACKUP_TIME: ${BACKUP_TIME}
+    depends_on:
+      - postgres
 
 networks:
   app:

@@ -16,13 +16,17 @@ def save_file_to_seafile(filename):
     print('upload link is' + upload_link)
 
     data = {'file': open(filename, 'rb'), 'replace': 0,'parent_dir': '/db',}
-
     
     headers = {'Authorization': 'Token %s' % os.environ['SEAFILE_TOKEN']}
     upload_request = requests.post(upload_link, files=data, headers=headers)
     print('response code = ' + str(upload_request.status_code))
     if (upload_request.status_code == 200):
         print('backup to seafile successful')
+    remove_file(filename)
+
+def remove_file(filename):
+    os.remove(filename)
+    print('file removed')
 
 def backup_postgres():
     today = "{:%Y-%m-%d}".format(datetime.now())
@@ -41,7 +45,7 @@ def start_backup():
         time.sleep(1)
 
 def main():
-    backup_postgres()
+    start_backup()
 
 if __name__ == '__main__':
     main()
