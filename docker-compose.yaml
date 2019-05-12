@@ -39,7 +39,7 @@ services:
       - postgres
   backup:
     restart: always
-    image: fwchen/fwchen/postgreseafile-backup:latest
+    image: fwchen/postgreseafile-backup:latest
     links:
       - postgres:postgres
     networks: 
