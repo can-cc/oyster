@@ -24,7 +24,7 @@
     "graphql-tools": "^2.23.1",
     "html-to-text": "^4.0.0",
     "isomorphic-fetch": "^2.2.1",
-    "js-yaml": "^3.11.0",
+    "js-yaml": "^3.13.1",
     "jsonwebtoken": "^8.2.1",
     "knex": "^0.14.4",
     "md5": "^2.2.1",
@@ -39,7 +39,7 @@
     "sqlite3": "^4.0.4",
     "typeorm": "^0.2.9",
     "web-push": "^3.3.0",
-    "winston": "^3.0.0-rc4",
+    "winston": "^3.2.1",
     "xml2json": "^0.11.2"
   },
   "devDependencies": {

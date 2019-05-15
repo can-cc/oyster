@@ -1,5 +1,6 @@
 import { getRepository } from 'typeorm';
 import { Feed } from '../entity/Feed';
+import { fetchLogger } from '../logger';
 
 type Category = 'all' | 'favorite' | string;
 
@@ -19,6 +20,7 @@ class FeedService {
 
   public async saveFeed(feed: Feed): Promise<Feed> {
     const savedFeed: Feed = await getRepository(Feed).save(feed);
+    fetchLogger.info(`save feed ${feed.title}`, feed);
     return savedFeed;
   }
 

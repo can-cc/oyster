@@ -1,7 +1,7 @@
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
-import { logger } from '../logger';
+import { logger, fetchLogger } from '../logger';
 import webPushService from '../service/web-push.service';
 import feedService from './feed.service';
 import { FeedSource } from '../entity/FeedSource';
@@ -16,7 +16,7 @@ import { FeedData, FeedResult } from '../typing/feed';
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue).pipe(
     startWith(0),
-    switchMap(() =>
+    concatMap(() =>
       of(...sources).pipe(
         concatMap(s => {
           return of(s).pipe(
@@ -72,6 +72,7 @@ class FeedFetcher {
           feedDatas.map(
             async (feedData: FeedData): Promise<void> => {
               const feed: Feed = new Feed(feedData);
+              fetchLogger.info(`save feed ${feed.title}`);
               if (!(await this.isFeedExist(feed))) {
                 await this.handleParsedFeedData(feed);
               }
@@ -85,8 +86,8 @@ class FeedFetcher {
   }
 
   private async handleParsedFeedData(feed: Feed): Promise<void> {
-    await feedService.saveFeed(feed);
     await this.markFeedExist(feed);
+    await feedService.saveFeed(feed);
     webPushService.noticeNewFeed(feed).then();
   }
 
