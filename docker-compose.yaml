@@ -49,6 +49,7 @@ services:
       PGPASSWORD: mysecretpassword
       SEAFILE_API: ${SEAFILE_API}
       BACKUP_TIME: ${BACKUP_TIME}
+      SEAFILE_TOKEN: ${SEAFILE_TOKEN}
     depends_on:
       - postgres
 
