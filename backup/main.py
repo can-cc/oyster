@@ -9,19 +9,18 @@ import subprocess
 
 def save_file_to_seafile(filename):
     print('start upload backup file to seafile')
-    get_upload_api_request = requests.get(os.environ['SEAFILE_API'])
+    get_upload_api_request = requests.get()
     upload_link = get_upload_api_request.json().get('upload_link')
 
     print('upload link is' + upload_link)
 
-    data = {'file': open(filename, 'rb'), 'replace': 0, 'parent_dir': '/db',}
-    
-    headers = {'Authorization': 'Token %s' % os.environ['SEAFILE_TOKEN']}
-    upload_request = requests.post(upload_link, files=data, headers=headers)
-    print('response code = ' + str(upload_request.status_code))
-    if (upload_request.status_code == 200):
-        print('backup to seafile successful')
+    subprocess.run([
+      'curl', '-H', 'Authorization: Token %s' % os.environ['SEAFILE_TOKEN'], '-F', ('file=@%s' % filename), '-F', 'parent_dir=/db', '-F', 'replace=0', 
+      upload_link
+    ])
+    print('backup to seafile successful')
 
+        
 def remove_file(filename):
     os.remove(filename)
     print('file removed')

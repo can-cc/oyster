@@ -9,6 +9,7 @@ docker build .
 - BACKUP_HOST
 - PGPASSWORD
 - SEAFILE_API (example: https://seafile.com/api/v2.1/upload-links/xxxxx/upload/)
+- SEAFILE_TOKEN seafile auth token
 - BACKUP_TIME (example: 00:30)
 
 # how get token
