@@ -18,7 +18,7 @@ def save_file_to_seafile(filename):
       'curl', '-H', 'Authorization: Token %s' % os.environ['SEAFILE_TOKEN'], '-F', ('file=@%s' % filename), '-F', 'parent_dir=/db', '-F', 'replace=0', 
       upload_link
     ])
-    print('backup to seafile successful')
+    print('backup to seafile done')
 
         
 def remove_file(filename):
@@ -43,11 +43,14 @@ def backup_postgres():
     remove_file(filename)
 
 def start_backup():
-    schedule.every().day.at(os.environ['BACKUP_TIME']).do(backup_postgres)
+    if os.environ['RUN_NOW'] != '':
+        schedule.every().day.at(os.environ['BACKUP_TIME']).do(backup_postgres)
 
-    while 1:
-        schedule.run_pending()
-        time.sleep(1)
+        while 1:
+            schedule.run_pending()
+            time.sleep(1)
+    else:
+        backup_postgres()
 
 def main():
     start_backup()

@@ -11,6 +11,7 @@ docker build .
 - SEAFILE_API (example: https://seafile.com/api/v2.1/upload-links/xxxxx/upload/)
 - SEAFILE_TOKEN seafile auth token
 - BACKUP_TIME (example: 00:30)
+- RUN_NOW 
 
 # how get token
 
