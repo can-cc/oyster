@@ -1,0 +1,31 @@
+2019-05-12T15:35:51.962+0800	INFO	instance/beat.go:571	Home path: [/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64] Config path: [/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64] Data path: [/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64/data] Logs path: [/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64/logs]
+2019-05-12T15:35:51.963+0800	INFO	instance/beat.go:579	Beat ID: 63f6cc59-f42b-4f84-af91-b224fcabe5cb
+2019-05-12T15:35:51.964+0800	INFO	[index-management.ilm]	ilm/ilm.go:129	Policy name: filebeat-7.0.1
+2019-05-12T15:35:51.965+0800	INFO	[beat]	instance/beat.go:827	Beat info	{"system_info": {"beat": {"path": {"config": "/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64", "data": "/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64/data", "home": "/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64", "logs": "/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64/logs"}, "type": "filebeat", "uuid": "63f6cc59-f42b-4f84-af91-b224fcabe5cb"}}}
+2019-05-12T15:35:51.965+0800	INFO	[beat]	instance/beat.go:836	Build info	{"system_info": {"build": {"commit": "cbffb4dcc8d1d2b0ef2078cb7d7546092ee86e57", "libbeat": "7.0.1", "time": "2019-04-29T12:09:22.000Z", "version": "7.0.1"}}}
+2019-05-12T15:35:51.965+0800	INFO	[beat]	instance/beat.go:839	Go runtime info	{"system_info": {"go": {"os":"darwin","arch":"amd64","max_procs":4,"version":"go1.11.5"}}}
+2019-05-12T15:35:51.966+0800	INFO	[beat]	instance/beat.go:843	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2019-04-27T00:10:14.827307+08:00","name":"CFW-MBP.local","ip":["127.0.0.1/8","::1/128","fe80::1/64","fe80::1ca1:48ca:f3a4:299d/64","192.168.50.77/24","fe80::a0a3:79ff:feff:74eb/64","fe80::7a6b:aab:c7a9:4714/64","fe80::4b7:4999:7748:3794/64","fe80::9c78:495e:e7c6:6b8f/64","192.168.203.117/23"],"kernel_version":"18.5.0","mac":["ac:bc:32:d4:3f:63","0e:bc:32:d4:3f:63","a2:a3:79:ff:74:eb","4a:00:04:5b:ed:60","4a:00:04:5b:ed:61","4a:00:04:5b:ed:60","0a:00:27:00:00:00"],"os":{"family":"darwin","platform":"darwin","name":"Mac OS X","version":"10.14.4","major":10,"minor":14,"patch":4,"build":"18E226"},"timezone":"CST","timezone_offset_sec":28800,"id":"3900F5A1-2CF7-5D5E-886A-0999FDF0AD0D"}}}
+2019-05-12T15:35:51.966+0800	INFO	[beat]	instance/beat.go:872	Process info	{"system_info": {"process": {"cwd": "/Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64", "exe": "./filebeat", "name": "filebeat", "pid": 28152, "ppid": 89178, "start_time": "2019-05-12T15:35:51.920+0800"}}}
+2019-05-12T15:35:51.966+0800	INFO	instance/beat.go:280	Setup Beat: filebeat; Version: 7.0.1
+2019-05-12T15:35:51.967+0800	INFO	[index-management]	idxmgmt/std.go:165	Set output.elasticsearch.index to 'filebeat-7.0.1' as ILM is enabled.
+2019-05-12T15:35:51.967+0800	INFO	elasticsearch/client.go:165	Elasticsearch url: http://localhost:9200
+2019-05-12T15:35:51.967+0800	INFO	[publisher]	pipeline/module.go:97	Beat name: CFW-MBP.local
+2019-05-12T15:35:51.968+0800	INFO	[monitoring]	log/log.go:117	Starting metrics logging every 30s
+2019-05-12T15:35:51.968+0800	INFO	instance/beat.go:391	filebeat start running.
+2019-05-12T15:35:51.968+0800	INFO	registrar/registrar.go:145	Loading registrar data from /Users/fwchen/workspace/oyster/filebeat/filebeat-7.0.1-darwin-x86_64/data/registry/filebeat/data.json
+2019-05-12T15:35:51.969+0800	INFO	registrar/registrar.go:152	States Loaded from registrar: 0
+2019-05-12T15:35:51.969+0800	INFO	crawler/crawler.go:72	Loading Inputs: 1
+2019-05-12T15:35:51.969+0800	INFO	crawler/crawler.go:106	Loading and starting Inputs completed. Enabled inputs: 0
+2019-05-12T15:35:51.969+0800	INFO	cfgfile/reload.go:150	Config reloader started
+2019-05-12T15:35:51.969+0800	INFO	cfgfile/reload.go:205	Loading of config files completed.
+2019-05-12T15:35:53.387+0800	INFO	beater/filebeat.go:432	Stopping filebeat
+2019-05-12T15:35:53.387+0800	INFO	crawler/crawler.go:139	Stopping Crawler
+2019-05-12T15:35:53.387+0800	INFO	crawler/crawler.go:149	Stopping 0 inputs
+2019-05-12T15:35:53.387+0800	INFO	cfgfile/reload.go:208	Dynamic config reloader stopped
+2019-05-12T15:35:53.387+0800	INFO	crawler/crawler.go:165	Crawler stopped
+2019-05-12T15:35:53.387+0800	INFO	registrar/registrar.go:367	Stopping Registrar
+2019-05-12T15:35:53.387+0800	INFO	registrar/registrar.go:293	Ending Registrar
+2019-05-12T15:35:53.391+0800	INFO	[monitoring]	log/log.go:152	Total non-zero metrics	{"monitoring": {"metrics": {"beat":{"cpu":{"system":{"ticks":21,"time":{"ms":21}},"total":{"ticks":54,"time":{"ms":54},"value":54},"user":{"ticks":33,"time":{"ms":33}}},"info":{"ephemeral_id":"11424755-d0dc-4d09-b550-b98dcf76e72a","uptime":{"ms":1443}},"memstats":{"gc_next":4194304,"memory_alloc":2540880,"memory_total":6340888,"rss":20942848}},"filebeat":{"harvester":{"open_files":0,"running":0}},"libbeat":{"config":{"module":{"running":0},"reloads":1},"output":{"type":"elasticsearch"},"pipeline":{"clients":0,"events":{"active":0}}},"registrar":{"states":{"current":0},"writes":{"success":1,"total":1}},"system":{"cpu":{"cores":4},"load":{"1":2.3916,"15":3.0869,"5":3.5532,"norm":{"1":0.5979,"15":0.7717,"5":0.8883}}}}}}
+2019-05-12T15:35:53.391+0800	INFO	[monitoring]	log/log.go:153	Uptime: 1.445088575s
+2019-05-12T15:35:53.391+0800	INFO	[monitoring]	log/log.go:130	Stopping metrics logging.
+2019-05-12T15:35:53.391+0800	INFO	instance/beat.go:401	filebeat stopped.

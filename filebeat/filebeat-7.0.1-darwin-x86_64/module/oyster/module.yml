@@ -1,0 +1,3 @@
+dashboards:
+- id: Filebeat-oyster-fetcher-Dashboard
+  file: Filebeat-oyster-fetcher.json
