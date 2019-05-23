@@ -1,0 +1,201 @@
+{
+    "objects": [
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Activity Types over Time [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"histogram\", \"params\": {\"seriesParams\": [{\"showCircles\": true, \"show\": \"true\", \"data\": {\"id\": \"1\", \"label\": \"Count\"}, \"mode\": \"stacked\", \"drawLinesBetweenPoints\": true, \"valueAxis\": \"ValueAxis-1\", \"type\": \"histogram\"}], \"type\": \"histogram\", \"categoryAxes\": [{\"style\": {}, \"scale\": {\"type\": \"linear\"}, \"show\": true, \"title\": {}, \"labels\": {\"truncate\": 100, \"show\": true}, \"position\": \"bottom\", \"type\": \"category\", \"id\": \"CategoryAxis-1\"}], \"legendPosition\": \"right\", \"addTimeMarker\": false, \"addLegend\": true, \"grid\": {\"style\": {\"color\": \"#eee\"}, \"categoryLines\": false}, \"times\": [], \"addTooltip\": true, \"valueAxes\": [{\"style\": {}, \"scale\": {\"type\": \"linear\", \"mode\": \"normal\"}, \"name\": \"LeftAxis-1\", \"show\": true, \"title\": {\"text\": \"Count\"}, \"labels\": {\"filter\": false, \"rotate\": 0, \"truncate\": 100, \"show\": true}, \"position\": \"left\", \"type\": \"value\", \"id\": \"ValueAxis-1\"}]}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"customInterval\": \"2h\", \"field\": \"@timestamp\", \"interval\": \"auto\", \"min_doc_count\": 1, \"extended_bounds\": {}}, \"type\": \"date_histogram\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"missingBucketLabel\": \"Missing\", \"field\": \"event.type\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 20}, \"type\": \"terms\", \"enabled\": true, \"id\": \"3\", \"schema\": \"group\"}], \"title\": \"Activity Types over Time [Suricata]\"}"
+            }, 
+            "id": "c7d46c60-86da-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:25:34.250Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Event Types [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"pie\", \"params\": {\"isDonut\": true, \"addTooltip\": true, \"labels\": {\"values\": true, \"last_level\": true, \"truncate\": 100, \"show\": false}, \"legendPosition\": \"bottom\", \"addLegend\": true, \"type\": \"pie\"}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"missingBucketLabel\": \"Missing\", \"field\": \"event.type\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 20}, \"type\": \"terms\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}], \"title\": \"Event Types [Suricata]\"}"
+            }, 
+            "id": "0a0aa630-86db-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:26:45.879Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Top Application Protocols [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"pie\", \"params\": {\"isDonut\": true, \"addTooltip\": true, \"labels\": {\"values\": true, \"last_level\": true, \"truncate\": 100, \"show\": false}, \"legendPosition\": \"bottom\", \"addLegend\": true, \"type\": \"pie\"}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"missingBucketLabel\": \"Missing\", \"field\": \"suricata.eve.app_proto\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 10}, \"type\": \"terms\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}], \"title\": \"Top Application Protocols [Suricata]\"}"
+            }, 
+            "id": "728f64c0-86db-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:28:56.796Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Top Hosts Generating Events [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"histogram\", \"params\": {\"seriesParams\": [{\"showCircles\": true, \"show\": \"true\", \"data\": {\"id\": \"1\", \"label\": \"Count\"}, \"mode\": \"stacked\", \"drawLinesBetweenPoints\": true, \"valueAxis\": \"ValueAxis-1\", \"type\": \"histogram\"}], \"type\": \"histogram\", \"categoryAxes\": [{\"style\": {}, \"scale\": {\"type\": \"linear\"}, \"show\": true, \"title\": {}, \"labels\": {\"truncate\": 100, \"show\": true}, \"position\": \"bottom\", \"type\": \"category\", \"id\": \"CategoryAxis-1\"}], \"legendPosition\": \"right\", \"addTimeMarker\": false, \"addLegend\": true, \"grid\": {\"style\": {\"color\": \"#eee\"}, \"categoryLines\": false}, \"times\": [], \"addTooltip\": true, \"valueAxes\": [{\"style\": {}, \"scale\": {\"type\": \"linear\", \"mode\": \"normal\"}, \"name\": \"LeftAxis-1\", \"show\": true, \"title\": {\"text\": \"Count\"}, \"labels\": {\"filter\": false, \"rotate\": 0, \"truncate\": 100, \"show\": true}, \"position\": \"left\", \"type\": \"value\", \"id\": \"ValueAxis-1\"}]}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"customInterval\": \"2h\", \"field\": \"@timestamp\", \"interval\": \"auto\", \"min_doc_count\": 1, \"extended_bounds\": {}}, \"type\": \"date_histogram\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"missingBucketLabel\": \"Missing\", \"field\": \"host.name\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 10}, \"type\": \"terms\", \"enabled\": true, \"id\": \"3\", \"schema\": \"group\"}], \"title\": \"Top Hosts Generating Events [Suricata]\"}"
+            }, 
+            "id": "9d5b5b50-86db-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:26:06.499Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "columns": [
+                    "host.name", 
+                    "event.type", 
+                    "suricata.eve.flow_id", 
+                    "suricata.eve.proto", 
+                    "source_ecs.ip", 
+                    "suricata.eve.src_port", 
+                    "suricata.eve.dest_ip", 
+                    "suricata.eve.dest_port", 
+                    "destination.geo.region_name", 
+                    "destination.geo.country_iso_code"
+                ], 
+                "description": "", 
+                "hits": 0, 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"match\": {\"event.type\": {\"query\": \"stats\", \"type\": \"phrase\"}}}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"stats\", \"disabled\": false, \"alias\": null, \"params\": {\"query\": \"stats\", \"type\": \"phrase\"}, \"key\": \"event.type\", \"negate\": true, \"type\": \"phrase\"}, \"$state\": {\"store\": \"appState\"}}, {\"query\": {\"match\": {\"fileset.module\": {\"query\": \"suricata\", \"type\": \"phrase\"}}}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"suricata\", \"disabled\": false, \"alias\": null, \"params\": {\"query\": \"suricata\", \"type\": \"phrase\"}, \"key\": \"fileset.module\", \"negate\": false, \"type\": \"phrase\"}, \"$state\": {\"store\": \"appState\"}}], \"index\": \"filebeat-*\", \"version\": true, \"highlightAll\": true, \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "sort": [
+                    "@timestamp", 
+                    "desc"
+                ], 
+                "title": "Events [Suricata]", 
+                "version": 1
+            }, 
+            "id": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+            "type": "search", 
+            "updated_at": "2018-10-22T11:32:43.869Z", 
+            "version": 3
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Top Connection Source Countries [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"tagcloud\", \"params\": {\"maxFontSize\": 72, \"showLabel\": true, \"minFontSize\": 18, \"orientation\": \"single\", \"scale\": \"linear\"}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"customLabel\": \"Top Connection Source Countries\", \"missingBucketLabel\": \"Missing\", \"field\": \"source_ecs.geo.country_iso_code\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 10}, \"type\": \"terms\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}], \"title\": \"Top Connection Source Countries [Suricata]\"}"
+            }, 
+            "id": "5f99eb50-86dc-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:31:03.468Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Top Connection Destination Countries [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"tagcloud\", \"params\": {\"maxFontSize\": 72, \"showLabel\": true, \"minFontSize\": 18, \"orientation\": \"single\", \"scale\": \"linear\"}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"customLabel\": \"Top Connection Destination Countries\", \"missingBucketLabel\": \"Missing\", \"field\": \"destination.geo.country_iso_code\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 10}, \"type\": \"terms\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}], \"title\": \"Top Connection Destination Countries [Suricata]\"}"
+            }, 
+            "id": "8e7f88d0-86dc-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:31:56.335Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "", 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "savedSearchId": "13dd22f0-86cc-11e8-b59d-21efb914e65c", 
+                "title": "Top Network Protocols [Suricata]", 
+                "uiStateJSON": "{}", 
+                "version": 1, 
+                "visState": "{\"type\": \"pie\", \"params\": {\"isDonut\": true, \"addTooltip\": true, \"labels\": {\"values\": true, \"last_level\": true, \"truncate\": 100, \"show\": false}, \"legendPosition\": \"bottom\", \"addLegend\": true, \"type\": \"pie\"}, \"aggs\": [{\"params\": {}, \"type\": \"count\", \"enabled\": true, \"id\": \"1\", \"schema\": \"metric\"}, {\"params\": {\"orderBy\": \"1\", \"missingBucket\": false, \"missingBucketLabel\": \"Missing\", \"field\": \"suricata.eve.proto\", \"otherBucketLabel\": \"Other\", \"otherBucket\": false, \"order\": \"desc\", \"size\": 10}, \"type\": \"terms\", \"enabled\": true, \"id\": \"2\", \"schema\": \"segment\"}], \"title\": \"Top Network Protocols [Suricata]\"}"
+            }, 
+            "id": "0a363820-86dd-11e8-b59d-21efb914e65c", 
+            "type": "visualization", 
+            "updated_at": "2018-10-22T11:27:45.760Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "columns": [
+                    "host.name", 
+                    "suricata.eve.stats.detect.alert", 
+                    "suricata.eve.stats.app_layer.flow.dns_udp", 
+                    "suricata.eve.stats.app_layer.flow.tls", 
+                    "suricata.eve.stats.app_layer.flow.http", 
+                    "suricata.eve.stats.app_layer.flow.ssh", 
+                    "suricata.eve.stats.tcp.sessions"
+                ], 
+                "description": "", 
+                "hits": 0, 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [{\"query\": {\"match\": {\"fileset.module\": {\"query\": \"suricata\", \"type\": \"phrase\"}}}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"suricata\", \"disabled\": false, \"alias\": null, \"params\": {\"query\": \"suricata\", \"type\": \"phrase\"}, \"key\": \"fileset.module\", \"negate\": false, \"type\": \"phrase\"}, \"$state\": {\"store\": \"appState\"}}, {\"query\": {\"match\": {\"event.type\": {\"query\": \"stats\", \"type\": \"phrase\"}}}, \"meta\": {\"index\": \"filebeat-*\", \"value\": \"stats\", \"disabled\": false, \"alias\": null, \"params\": {\"query\": \"stats\", \"type\": \"phrase\"}, \"key\": \"event.type\", \"negate\": false, \"type\": \"phrase\"}, \"$state\": {\"store\": \"appState\"}}], \"index\": \"filebeat-*\", \"version\": true, \"highlightAll\": true, \"query\": {\"query\": \"\", \"language\": \"kuery\"}}"
+                }, 
+                "sort": [
+                    "@timestamp", 
+                    "desc"
+                ], 
+                "title": "Host Stats [Suricata]", 
+                "version": 1
+            }, 
+            "id": "d57a2db0-86ca-11e8-b59d-21efb914e65c", 
+            "type": "search", 
+            "updated_at": "2018-10-22T11:33:41.467Z", 
+            "version": 4
+        }, 
+        {
+            "attributes": {
+                "description": "Overview of the Surcata events dashboard.", 
+                "hits": 0, 
+                "kibanaSavedObjectMeta": {
+                    "searchSourceJSON": "{\"filter\": [], \"query\": {\"query\": \"\", \"language\": \"kuery\"}, \"version\": true, \"highlightAll\": true}"
+                }, 
+                "optionsJSON": "{\"useMargins\": true, \"darkTheme\": false, \"hidePanelTitles\": false}", 
+                "panelsJSON": "[{\"gridData\": {\"i\": \"1\", \"h\": 10, \"y\": 0, \"w\": 48, \"x\": 0}, \"embeddableConfig\": {}, \"panelIndex\": \"1\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"c7d46c60-86da-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"2\", \"h\": 14, \"y\": 20, \"w\": 9, \"x\": 0}, \"embeddableConfig\": {}, \"panelIndex\": \"2\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"0a0aa630-86db-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"3\", \"h\": 14, \"y\": 20, \"w\": 11, \"x\": 19}, \"embeddableConfig\": {}, \"panelIndex\": \"3\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"728f64c0-86db-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"4\", \"h\": 10, \"y\": 10, \"w\": 48, \"x\": 0}, \"embeddableConfig\": {}, \"panelIndex\": \"4\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"9d5b5b50-86db-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"5\", \"h\": 19, \"y\": 34, \"w\": 48, \"x\": 0}, \"embeddableConfig\": {}, \"panelIndex\": \"5\", \"version\": \"6.3.0\", \"type\": \"search\", \"id\": \"13dd22f0-86cc-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"6\", \"h\": 14, \"y\": 20, \"w\": 9, \"x\": 30}, \"embeddableConfig\": {}, \"panelIndex\": \"6\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"5f99eb50-86dc-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"7\", \"h\": 14, \"y\": 20, \"w\": 9, \"x\": 39}, \"embeddableConfig\": {}, \"panelIndex\": \"7\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"8e7f88d0-86dc-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"8\", \"h\": 14, \"y\": 20, \"w\": 10, \"x\": 9}, \"embeddableConfig\": {}, \"panelIndex\": \"8\", \"version\": \"6.3.0\", \"type\": \"visualization\", \"id\": \"0a363820-86dd-11e8-b59d-21efb914e65c\"}, {\"gridData\": {\"i\": \"9\", \"h\": 16, \"y\": 53, \"w\": 48, \"x\": 0}, \"embeddableConfig\": {}, \"panelIndex\": \"9\", \"version\": \"6.3.0\", \"type\": \"search\", \"id\": \"d57a2db0-86ca-11e8-b59d-21efb914e65c\"}]", 
+                "timeRestore": false, 
+                "title": "[Suricata] Events Overview", 
+                "version": 1
+            }, 
+            "id": "78289c40-86da-11e8-b59d-21efb914e65c", 
+            "type": "dashboard", 
+            "updated_at": "2018-10-22T11:34:16.665Z", 
+            "version": 4
+        }
+    ], 
+    "version": "6.4.2"
+}
