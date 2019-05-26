@@ -1,0 +1,41 @@
+2019-05-23T23:12:53.807+0800	INFO	instance/beat.go:611	Home path: [C:\Users\chenf\workspace\oyster\filebeat\filebeat-6.7.2-windows-x86_64] Config path: [C:\Users\chenf\workspace\oyster\filebeat\filebeat-6.7.2-windows-x86_64] Data path: [C:\Users\chenf\workspace\oyster\filebeat\filebeat-6.7.2-windows-x86_64\data] Logs path: [C:\Users\chenf\workspace\oyster\filebeat\filebeat-6.7.2-windows-x86_64\logs]
+2019-05-23T23:12:53.846+0800	INFO	instance/beat.go:618	Beat UUID: 4b899ebf-e879-49c3-8743-c596179e1d10
+2019-05-23T23:12:53.846+0800	INFO	[beat]	instance/beat.go:931	Beat info	{"system_info": {"beat": {"path": {"config": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64", "data": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64\\data", "home": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64", "logs": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64\\logs"}, "type": "filebeat", "uuid": "4b899ebf-e879-49c3-8743-c596179e1d10"}}}
+2019-05-23T23:12:53.846+0800	INFO	[beat]	instance/beat.go:940	Build info	{"system_info": {"build": {"commit": "a8ab26dd1f818d27c17c3049f643652c6a789d88", "libbeat": "6.7.2", "time": "2019-04-29T08:06:34.000Z", "version": "6.7.2"}}}
+2019-05-23T23:12:53.846+0800	INFO	[beat]	instance/beat.go:943	Go runtime info	{"system_info": {"go": {"os":"windows","arch":"amd64","max_procs":8,"version":"go1.10.8"}}}
+2019-05-23T23:12:53.945+0800	INFO	[beat]	instance/beat.go:947	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2019-05-23T18:34:05.01+08:00","name":"DESKTOP-LK6UIM2","ip":["fe80::5a8:6f4e:50b9:70f5/64","169.254.112.245/16","fe80::89fe:5a67:54:67e4/64","169.254.103.228/16","fe80::40ea:5389:f112:8cf7/64","10.0.75.1/24","fe80::598b:340b:1789:1d1c/64","192.168.56.1/24","fe80::651b:3a6d:5359:819/64","169.254.8.25/16","fe80::b87b:acfd:9d35:8878/64","169.254.136.120/16","fe80::a97f:690f:89f3:480c/64","192.168.50.173/24","fe80::d891:38df:cc45:6cca/64","169.254.108.202/16","::1/128","127.0.0.1/8","fe80::f41e:e332:7a99:a2b9/64","172.17.217.81/28"],"kernel_version":"10.0.17763.503 (WinBuild.160101.0800)","mac":["54:b2:03:08:27:3b","54:b2:03:08:27:3c","00:15:5d:2b:b1:01","0a:00:27:00:00:06","74:70:fd:72:1f:c4","76:70:fd:72:1f:c3","74:70:fd:72:1f:c3","74:70:fd:72:1f:c7","b2:15:e2:3d:87:d3"],"os":{"family":"windows","platform":"windows","name":"Windows 10 Pro","version":"10.0","major":10,"minor":0,"patch":0,"build":"17763.503"},"timezone":"CST","timezone_offset_sec":28800,"id":"91b22fbd-8211-4a9b-b6f9-915034377567"}}}
+2019-05-23T23:12:53.948+0800	INFO	[beat]	instance/beat.go:976	Process info	{"system_info": {"process": {"cwd": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64", "exe": "C:\\Users\\chenf\\workspace\\oyster\\filebeat\\filebeat-6.7.2-windows-x86_64\\filebeat.exe", "name": "filebeat.exe", "pid": 9644, "ppid": 9840, "start_time": "2019-05-23T23:12:53.603+0800"}}}
+2019-05-23T23:12:53.948+0800	INFO	instance/beat.go:280	Setup Beat: filebeat; Version: 6.7.2
+2019-05-23T23:12:54.046+0800	INFO	elasticsearch/client.go:164	Elasticsearch url: https://es.chenfangwei.xyz:443
+2019-05-23T23:12:54.046+0800	INFO	[publisher]	pipeline/module.go:110	Beat name: DESKTOP-LK6UIM2
+2019-05-23T23:12:54.049+0800	INFO	instance/beat.go:402	filebeat start running.
+2019-05-23T23:12:54.049+0800	INFO	[monitoring]	log/log.go:117	Starting metrics logging every 30s
+2019-05-23T23:12:54.050+0800	INFO	registrar/registrar.go:134	Loading registrar data from C:\Users\chenf\workspace\oyster\filebeat\filebeat-6.7.2-windows-x86_64\data\registry
+2019-05-23T23:12:54.050+0800	INFO	registrar/registrar.go:141	States Loaded from registrar: 1
+2019-05-23T23:12:54.050+0800	INFO	crawler/crawler.go:72	Loading Inputs: 1
+2019-05-23T23:12:54.050+0800	INFO	log/input.go:138	Configured paths: [C:\Users\fwchen\workspace\oyster\log\fetch.log]
+2019-05-23T23:12:54.050+0800	INFO	input/input.go:114	Starting input of type: log; ID: 4051317173871619706 
+2019-05-23T23:12:54.052+0800	INFO	log/input.go:138	Configured paths: [C:\Users\chenf\workspace\oyster\log\fetch.log]
+2019-05-23T23:12:54.053+0800	INFO	crawler/crawler.go:106	Loading and starting Inputs completed. Enabled inputs: 1
+2019-05-23T23:12:54.053+0800	INFO	cfgfile/reload.go:150	Config reloader started
+2019-05-23T23:12:54.061+0800	INFO	log/input.go:138	Configured paths: [C:\Users\chenf\workspace\oyster\log\fetch.log]
+2019-05-23T23:12:54.061+0800	INFO	elasticsearch/client.go:164	Elasticsearch url: https://es.chenfangwei.xyz:443
+2019-05-23T23:12:54.137+0800	INFO	elasticsearch/client.go:739	Attempting to connect to Elasticsearch version 6.6.1
+2019-05-23T23:12:54.339+0800	INFO	input/input.go:114	Starting input of type: log; ID: 17320888647414863404 
+2019-05-23T23:12:54.339+0800	INFO	cfgfile/reload.go:205	Loading of config files completed.
+2019-05-23T23:12:55.235+0800	INFO	beater/filebeat.go:442	Stopping filebeat
+2019-05-23T23:12:55.236+0800	INFO	crawler/crawler.go:139	Stopping Crawler
+2019-05-23T23:12:55.236+0800	INFO	crawler/crawler.go:149	Stopping 1 inputs
+2019-05-23T23:12:55.236+0800	INFO	cfgfile/reload.go:208	Dynamic config reloader stopped
+2019-05-23T23:12:55.236+0800	INFO	input/input.go:149	input ticker stopped
+2019-05-23T23:12:55.236+0800	INFO	[reload]	cfgfile/list.go:118	Stopping 1 runners ...
+2019-05-23T23:12:55.236+0800	INFO	input/input.go:167	Stopping Input: 4051317173871619706
+2019-05-23T23:12:55.236+0800	INFO	input/input.go:149	input ticker stopped
+2019-05-23T23:12:55.236+0800	INFO	input/input.go:167	Stopping Input: 17320888647414863404
+2019-05-23T23:12:55.236+0800	INFO	crawler/crawler.go:165	Crawler stopped
+2019-05-23T23:12:55.236+0800	INFO	registrar/registrar.go:356	Stopping Registrar
+2019-05-23T23:12:55.236+0800	INFO	registrar/registrar.go:282	Ending Registrar
+2019-05-23T23:12:55.308+0800	INFO	[monitoring]	log/log.go:152	Total non-zero metrics	{"monitoring": {"metrics": {"beat":{"cpu":{"system":{"ticks":359,"time":{"ms":359}},"total":{"ticks":421,"time":{"ms":421},"value":421},"user":{"ticks":62,"time":{"ms":62}}},"handles":{"open":400},"info":{"ephemeral_id":"21a42cf6-cd3d-4811-bc73-c8f27afed3c3","uptime":{"ms":1516}},"memstats":{"gc_next":4656272,"memory_alloc":2489000,"memory_total":6466720,"rss":27504640}},"filebeat":{"events":{"added":2,"done":2},"harvester":{"open_files":0,"running":0}},"libbeat":{"config":{"module":{"running":0},"reloads":1},"output":{"type":"elasticsearch"},"pipeline":{"clients":0,"events":{"active":0,"filtered":2,"total":2}}},"registrar":{"states":{"current":1,"update":2},"writes":{"success":3,"total":3}},"system":{"cpu":{"cores":8}}}}}
+2019-05-23T23:12:55.308+0800	INFO	[monitoring]	log/log.go:153	Uptime: 1.5781955s
+2019-05-23T23:12:55.308+0800	INFO	[monitoring]	log/log.go:130	Stopping metrics logging.
+2019-05-23T23:12:55.308+0800	INFO	instance/beat.go:412	filebeat stopped.

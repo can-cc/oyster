@@ -1,0 +1,1 @@
+# how create custom filebeat
