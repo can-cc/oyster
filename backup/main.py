@@ -47,7 +47,7 @@ def start_backup():
     if os.environ.get('RUN_NOW') == 'true':
         run_now = True
 
-    if run_now == True:
+    if run_now != True:
         print('start scheme backup')
         schedule.every().day.at(os.environ['BACKUP_TIME']).do(backup_postgres)
         while 1:
