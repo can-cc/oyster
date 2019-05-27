@@ -44,7 +44,7 @@ def backup_postgres():
 
 def start_backup():
     run_now = False
-    if os.environ.get('TRIGGER') == 'true':
+    if os.environ.get('RUN_NOW') == 'true':
         run_now = True
 
     if run_now == True:
