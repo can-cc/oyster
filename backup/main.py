@@ -7,9 +7,12 @@ import time
 from datetime import datetime
 import subprocess
 
+seafile_api = os.environ['SEAFILE_API']
+backup_host = os.environ['BACKUP_HOST']
+
 def save_file_to_seafile(filename):
     print('start upload backup file to seafile')
-    get_upload_api_request = requests.get()
+    get_upload_api_request = requests.get(seafile_api)
     upload_link = get_upload_api_request.json().get('upload_link')
 
     print('upload link is' + upload_link)
@@ -44,15 +47,17 @@ def backup_postgres():
 
 def start_backup():
     if os.environ['RUN_NOW'] != '':
+        print('start scheme backup')
         schedule.every().day.at(os.environ['BACKUP_TIME']).do(backup_postgres)
-
         while 1:
             schedule.run_pending()
             time.sleep(1)
     else:
+        print('start backup once')
         backup_postgres()
 
 def main():
+    print('start backup service')
     start_backup()
 
 if __name__ == '__main__':
