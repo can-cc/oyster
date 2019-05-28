@@ -17,6 +17,9 @@ export class Feed {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
+  @Column({ nullable: true })
+  public rssId: string;
+
   @Column()
   public title: string;
 
@@ -49,6 +52,7 @@ export class Feed {
     if (!feedData) {
       return;
     }
+    this.rssId = feedData.rssId;
     this.title = feedData.title;
     this.content = feedData.content;
     this.source = feedData.source;

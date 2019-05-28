@@ -7,18 +7,18 @@ import { AdvancedConsoleLogger } from 'typeorm';
 const parseFeed = (entrys: any[], feed): FeedData[] => {
   return entrys.map(
     (entry): FeedData => {
-      const id = entry.id;
+      const rssId = entry.id;
       const title = entry.title;
       const originHref = entry.link.href;
       const content = entry.content.$t;
       const published = moment(entry.published).toDate() || moment(entry.updated).toDate();
       const author = R.path(['author', 'name'])(entry) || R.path(['author', 'name'])(feed);
-      return { id, title, originHref, content, publishedDate: published, author };
+      return { rssId, title, originHref, content, publishedDate: published, author };
     }
   );
 }
 
-const parseYahaooFeed = (entrys: any[], feed): FeedData[] => {
+const parseYahaooVersionFeed = (entrys: any[], feed): FeedData[] => {
   return entrys.map(
     (entry): FeedData => {
       const title = entry.title.$t;
@@ -30,8 +30,6 @@ const parseYahaooFeed = (entrys: any[], feed): FeedData[] => {
     }
   );
 }
-  
-  
 
 const parseRSS2 = (entrys: any[], channel: any): FeedData[] =>
   entrys.map(
@@ -65,7 +63,7 @@ export function parseFeedData(rawData: string): FeedData[] {
     case 'RSS2':
       return R.flatten(parseRSS2(parsedXml.rss.channel.item, parsedXml.rss.channel));
     case 'YAHOO_FEED':
-      return R.flatten(parseYahaooFeed(parsedXml.feed.entry, parsedXml.feed))
+      return R.flatten(parseYahaooVersionFeed(parsedXml.feed.entry, parsedXml.feed))
     case 'FEED':
       return R.flatten(parseFeed(parsedXml.feed.entry, parsedXml.feed));
     default:

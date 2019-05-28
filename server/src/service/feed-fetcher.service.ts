@@ -72,9 +72,16 @@ class FeedFetcher {
           feedDatas.map(
             async (feedData: FeedData): Promise<void> => {
               const feed: Feed = new Feed(feedData);
-              fetchLogger.info(`save feed ${feed.title}`);
+
               if (!(await this.isFeedExist(feed))) {
+              
                 await this.handleParsedFeedData(feed);
+                fetchLogger.info(`feed saved`, {
+                  id: feed.id,
+                  title: feed.title,
+                  sourceName: feedData.source.name,
+                  time: new Date()
+                });
               }
             }
           )

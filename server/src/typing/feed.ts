@@ -2,6 +2,7 @@ import { FeedSource } from '../entity/FeedSource';
 
 export interface FeedData {
   id?: string;
+  rssId?: string;
   title: string;
   content: string;
   originHref: string;

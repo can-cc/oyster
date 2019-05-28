@@ -26,6 +26,7 @@ const typeDefs = gql`
   }
   type Feed {
     id: String
+    rssId: String
     title: String
     author: String
     originHref: String
