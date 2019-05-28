@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
-import { map, mergeMap, catchError, tap, concatMap, mapTo } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, mapTo, switchMap } from 'rxjs/operators';
 import { FeedMarkService } from '../core/feed-mark.service';
 import {
   ActionTypes,
@@ -110,12 +110,13 @@ export class FeedEffects {
   @Effect()
   getFeeds$ = this.actions$.pipe(
     ofType(ActionTypes.GET_FEEDS),
-    concatMap((action: GetFeeds) => {
+    switchMap((action: GetFeeds) => {
       return this.apollo.query({
         query: gql`
           query getFeeds($limit: Int!, $offset: Int!, $category: String!) {
             feeds(limit: $limit, offset: $offset, category: $category) {
               id
+              rssId
               title
               author
               originHref

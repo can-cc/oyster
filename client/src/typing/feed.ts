@@ -14,6 +14,7 @@ export interface FeedSource {
 
 export interface Feed {
   id?: string;
+  rssId?: string;
   title: string;
   source?: FeedSource;
   originHref: string;

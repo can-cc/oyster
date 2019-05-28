@@ -52,7 +52,7 @@ def start_backup():
         schedule.every().day.at(os.environ['BACKUP_TIME']).do(backup_postgres)
         while 1:
             schedule.run_pending()
-            time.sleep(10)
+            time.sleep(1)
     else:
         print('start backup once')
         backup_postgres()
