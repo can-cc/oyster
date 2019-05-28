@@ -13,12 +13,17 @@
 
 :host .inner-container {
   display: inline-block;
+  text-align: center;
   position: relative;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: white;
   padding: 0 10px;
+}
+
+.source-name {
+  user-select: none;
 }
 
 :host .read-source {

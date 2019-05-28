@@ -1,7 +1,8 @@
 <div class="line-container">
   <div class="inner-container">
     <span>{{ feed.publishedDate | date: "EEEE MMMM dd,yyyy h:mm aa" }}</span>
-    <span> via {{ feed.source.name }}</span>
+    <span class="source-name" (click)="onSpecClick()"> via {{ feed.source.name }}</span>
+    <div *ngIf="showExtraInfo">{{ feed.rssId }}</div>
 
     <div class="read-source" (click)="openSourceHref()">Read Source</div>
   </div>

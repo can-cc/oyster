@@ -8,6 +8,9 @@ import { Feed } from '../../../typing/feed';
   styleUrls: ['./article-preview-info-area.component.css']
 })
 export class ArticlePreviewInfoAreaComponent implements OnInit {
+  private specClickCount = 0;
+  public showExtraInfo = false;
+
   @Input()
   feed: Feed;
 
@@ -15,7 +18,16 @@ export class ArticlePreviewInfoAreaComponent implements OnInit {
 
   ngOnInit() {}
 
-  openSourceHref() {
+  public openSourceHref() {
     window.open(this.feed.originHref, '_blank');
   }
+
+  public onSpecClick():void {
+    this.specClickCount++;
+    if (this.specClickCount > 4) {
+      this.showExtraInfo = true;
+    }
+  }
+
+
 }
