@@ -3,6 +3,9 @@ services:
   redis:
     restart: always
     image: redis
+    command: redis-server --appendonly yes
+    volumes:
+      - ~/docker-data/redis:/data
     networks: 
       - app
   postgres:

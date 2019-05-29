@@ -35,3 +35,15 @@ otherwise, you can change config in env variables, it will override
 ### Log
 log file write to ./log dir
 
+
+## Docker
+
+### login into postgres container
+
+``` bash
+docker exec -it [container name]  sudo -u postgres psql
+```
+
+``` bash
+su - postgres && psql
+```
