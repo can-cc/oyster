@@ -65,6 +65,7 @@ export class FeedsPageComponent implements OnInit {
   }
 
   public queryFeeds(): void {
+    console.log('queryFeeds');
     this.store.dispatch(
       new GetFeeds({ offset: this.offset, limit: this.pageLimit, category: this.category })
     );
@@ -74,15 +75,4 @@ export class FeedsPageComponent implements OnInit {
   public resetOffset(): void {
     this.offset = 0;
   }
-
-  // public onFeedListSelect(feed: Feed) {
-  //   this.route.paramMap
-  //     .pipe(
-  //       take(1),
-  //       map((params: ParamMap) => params.get('category'))
-  //     )
-  //     .subscribe((category: string) => {
-  //       this.router.navigate([`/feed/${category}/${feed.id}`]);
-  //     });
-  // }
 }
