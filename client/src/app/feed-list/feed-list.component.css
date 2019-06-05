@@ -33,6 +33,7 @@
   height: auto !important;
   box-sizing: border-box;
   cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 ::ng-deep .mat-list-item-content {
