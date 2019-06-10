@@ -68,9 +68,13 @@ import { AsideStatusSwitchComponent } from './aside/aside-status-switch/aside-st
 import { CategoryItemComponent } from './aside/category-item/category-item.component';
 import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-image-preview/feed-list-item-image-preview.component';
 import { FeedListToolbarComponent } from './feed-list/feed-list-toolbar/feed-list-toolbar.component';
-import { SettingModalComponent } from '../setting-modal/setting-modal.component';
-import { AddFeedSourceModalComponent } from '../add-feed-source-modal/add-feed-source-modal.component';
+import { SettingModalComponent } from './setting-modal/setting-modal.component';
+import { AddFeedSourceModalComponent } from './add-feed-source-modal/add-feed-source-modal.component';
 import { ArticlePreviewToolbarComponent } from './article-preview/article-preview-toolbar/article-preview-toolbar.component';
+import { ButtonComponent } from './component/button/button.component';
+import { InputComponent } from './component/input/input.component';
+import { FormFieldComponent } from './component/form-field/form-field.component';
+import { DialogHeaderComponent } from './component/dialog-header/dialog-header.component';
 
 @NgModule({
   declarations: [
@@ -99,9 +103,13 @@ import { ArticlePreviewToolbarComponent } from './article-preview/article-previe
     FeedListToolbarComponent,
     SettingModalComponent,
     AddFeedSourceModalComponent,
-    ArticlePreviewToolbarComponent
+    ArticlePreviewToolbarComponent,
+    ButtonComponent,
+    InputComponent,
+    FormFieldComponent,
+    DialogHeaderComponent
   ],
-  entryComponents: [PingDialogComponent],
+  entryComponents: [PingDialogComponent, AddFeedSourceModalComponent ,SettingModalComponent],
   imports: [
     CoreModule.forRoot(),
     StoreModule.forRoot({ feed: feedReducer }),
