@@ -9,10 +9,10 @@ import { Feed } from '../../typing/feed';
 })
 export class ArticleAvatarComponent implements OnInit {
   @Input()
-  feed: Feed;
-  hasImage: boolean;
-  imgSrc: string;
-  bgColor: string;
+  public feed: Feed;
+  public hasImage: boolean;
+  public imgSrc: string;
+  public bgColor: string;
 
   constructor(private colorService: ColorService) {}
 

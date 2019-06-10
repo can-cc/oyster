@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faLink, faRegistered } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-add-feed-source-modal',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-feed-source-modal.component.css']
 })
 export class AddFeedSourceModalComponent implements OnInit {
+  public faLink = faLink;
+  public faRegistered = faRegistered;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }
