@@ -74,6 +74,7 @@ import { ArticlePreviewToolbarComponent } from './article-preview/article-previe
 import { ButtonComponent } from './component/button/button.component';
 import { InputComponent } from './component/input/input.component';
 import { FormFieldComponent } from './component/form-field/form-field.component';
+import { DialogHeaderComponent } from './component/dialog-header/dialog-header.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { FormFieldComponent } from './component/form-field/form-field.component'
     ArticlePreviewToolbarComponent,
     ButtonComponent,
     InputComponent,
-    FormFieldComponent
+    FormFieldComponent,
+    DialogHeaderComponent
   ],
   entryComponents: [PingDialogComponent, AddFeedSourceModalComponent ,SettingModalComponent],
   imports: [
