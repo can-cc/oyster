@@ -17,7 +17,9 @@ export class AsideTopBarComponent implements OnInit {
 
   public openAddFeedSourceDialog(): void {
     const dialogRef = this.dialog.open(AddFeedSourceModalComponent, {
-      width: '250px',
+      width: '450px',
+      autoFocus: true,
+      hasBackdrop: true
     });
 
     dialogRef.afterClosed().subscribe();

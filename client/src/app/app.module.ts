@@ -72,6 +72,8 @@ import { SettingModalComponent } from './setting-modal/setting-modal.component';
 import { AddFeedSourceModalComponent } from './add-feed-source-modal/add-feed-source-modal.component';
 import { ArticlePreviewToolbarComponent } from './article-preview/article-preview-toolbar/article-preview-toolbar.component';
 import { ButtonComponent } from './component/button/button.component';
+import { InputComponent } from './component/input/input.component';
+import { FormFieldComponent } from './component/form-field/form-field.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +103,9 @@ import { ButtonComponent } from './component/button/button.component';
     SettingModalComponent,
     AddFeedSourceModalComponent,
     ArticlePreviewToolbarComponent,
-    ButtonComponent
+    ButtonComponent,
+    InputComponent,
+    FormFieldComponent
   ],
   entryComponents: [PingDialogComponent, AddFeedSourceModalComponent ,SettingModalComponent],
   imports: [
