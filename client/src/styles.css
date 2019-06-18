@@ -6,4 +6,10 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden;
+  font-family: 'Roboto',arial,sans-serif;
+}
+
+.mat-dialog-container {
+  border-radius: 6px !important;
+  margin-top: -100px;
 }

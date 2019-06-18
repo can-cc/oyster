@@ -37,7 +37,6 @@ import { CategoryComponent } from './category/category.component';
 import { ArticlePreviewComponent } from './article-preview/article-preview.component';
 import { ArticleAvatarComponent } from './article-avatar/article-avatar.component';
 
-import { environment } from '../environments/environment';
 
 import { WebPushService } from './web-push.service';
 import { ColorService } from './color.service';
@@ -159,9 +158,7 @@ import { DialogHeaderComponent } from './component/dialog-header/dialog-header.c
 export class AppModule {
   constructor(
     apollo: Apollo,
-    httpLink: HttpLink,
-    iconRegistry: MatIconRegistry,
-    sanitizer: DomSanitizer
+    httpLink: HttpLink
   ) {
     apollo.create({
       link: httpLink.create({ uri: '/api/v1/graphql' }),

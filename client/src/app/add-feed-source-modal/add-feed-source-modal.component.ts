@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faLink, faRegistered } from '@fortawesome/free-solid-svg-icons';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-add-feed-source-modal',
@@ -9,9 +13,31 @@ import { faLink, faRegistered } from '@fortawesome/free-solid-svg-icons';
 export class AddFeedSourceModalComponent implements OnInit {
   public faLink = faLink;
   public faRegistered = faRegistered;
+  public form = new FormGroup({
+    name: new FormControl('', [Validators.required]),
+    url: new FormControl('', [Validators.required]),
+    faviconUrl: new FormControl('', [Validators.required])
+  });
 
-  constructor() { }
+  complete$ = new Subject();
 
-  ngOnInit() {}
+  constructor(private dialogRef: MatDialogRef<AddFeedSourceModalComponent>) {}
 
+  ngOnInit() {
+    this.form
+      .get('url')
+      .valueChanges.pipe(takeUntil(this.complete$))
+      .subscribe((url: string) => {
+        this.form.get('faviconUrl').setValue(url + '/favicon.ico');
+      });
+  }
+
+  handleClose = () => {
+    this.dialogRef.close();
+  };
+
+  ngOnDestory() {
+    this.complete$.next();
+    this.complete$.complete();
+  }
 }

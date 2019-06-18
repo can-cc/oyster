@@ -63,4 +63,8 @@ export class CategoryComponent implements OnInit {
   onCategoryClick(category: Category) {
     this.router.navigate([`/feed/${category.id}/`]);
   }
+
+  trackCategory(index: number, item: Category): string {
+    return item.id;
+  }
 }

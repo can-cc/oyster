@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 
 @Component({
   selector: 'app-dialog-header',
@@ -6,10 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dialog-header.component.css']
 })
 export class DialogHeaderComponent implements OnInit {
+  @Input() title?: string;
+  @Input() closeable?: boolean;
+  @Input() onClose?: () => void;
 
-  constructor() { }
+  faTimesCircle = faTimesCircle;
 
-  ngOnInit() {
+  constructor() {}
+
+  ngOnInit() {}
+
+  handleClose() {
+    if (this.onClose) {
+      this.onClose();
+    }
   }
-
 }

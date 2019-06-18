@@ -1,3 +1,8 @@
-<p>
-  dialog-header works!
-</p>
+<span>{{ title }}</span>
+
+<fa-icon
+  (click)="handleClose()"
+  *ngIf="closeable"
+  size="1x"
+  [icon]="faTimesCircle"
+></fa-icon>

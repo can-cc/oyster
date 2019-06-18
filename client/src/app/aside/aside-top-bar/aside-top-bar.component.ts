@@ -13,7 +13,9 @@ export class AsideTopBarComponent implements OnInit {
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.openAddFeedSourceDialog();
+  }
 
   public openAddFeedSourceDialog(): void {
     const dialogRef = this.dialog.open(AddFeedSourceModalComponent, {

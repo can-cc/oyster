@@ -1,0 +1,8 @@
+:host {
+  display: block;
+  margin-bottom: 12px;
+}
+
+:host ::ng-deep > * {
+  vertical-align: middle;
+}

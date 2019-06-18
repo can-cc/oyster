@@ -1,7 +1,7 @@
 <mat-list>
   <a
     mat-list-item
-    *ngFor="let category of categorys"
+    *ngFor="let category of categorys; trackBy: trackCategory"
     routerLinkActive="active"
     [routerLink]="'/feed/' + category.id"
   >

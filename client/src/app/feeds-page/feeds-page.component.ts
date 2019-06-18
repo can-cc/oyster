@@ -65,7 +65,6 @@ export class FeedsPageComponent implements OnInit {
   }
 
   public queryFeeds(): void {
-    console.log('queryFeeds');
     this.store.dispatch(
       new GetFeeds({ offset: this.offset, limit: this.pageLimit, category: this.category })
     );

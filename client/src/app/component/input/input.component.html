@@ -1,2 +1,8 @@
-<fa-icon *ngIf="icon" size="1x" [icon]="iconMap[icon]"></fa-icon>
-<input type="text" [formControl]="control" />
+<fa-icon
+  *ngIf="icon"
+  size="1x"
+  [icon]="iconMap[icon]"
+  [style.color]="iconColor"
+></fa-icon>
+
+<input type="text" [formControl]="control" [placeholder]="placeholder" />

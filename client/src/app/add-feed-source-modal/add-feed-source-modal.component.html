@@ -1,15 +1,42 @@
-<form action="">
-    
-    <div>
-        <fa-icon size="1x" [icon]="faLink"></fa-icon>
-        <input type="text">
-      </div>
+<app-dialog-header
+  title="Add feed"
+  [closeable]="true"
+  [onClose]="handleClose"
+></app-dialog-header>
 
-      <div>
-        <fa-icon size="1x" [icon]="faRegistered"></fa-icon>
-        <input type="text">
-      </div>
+<form [formGroup]="form">
+  <app-form-field>
+    <app-input
+      placeholder="Rss name"
+      formControlName="name"
+      icon="faLink"
+      iconColor="#fa9d65"
+    ></app-input>
+  </app-form-field>
 
-      <app-button>OK</app-button>
-  
-  </form>
+  <app-form-field>
+    <app-input
+      placeholder="Url"
+      formControlName="url"
+      icon="faRegistered"
+      iconColor="#fa9d65"
+    ></app-input>
+  </app-form-field>
+
+  <app-form-field>
+    <app-input
+      class="favicon-url-input"
+      placeholder="Favicon Url"
+      formControlName="faviconUrl"
+      icon="faAtom"
+      iconColor="#fa9d65"
+    ></app-input>
+
+    <img class="favicon-preview" [src]="form.get('faviconUrl').value" alt="" />
+  </app-form-field>
+
+  <div class="dialog-footer">
+    <app-button (click)="handleClose()">Cancel</app-button>
+    <app-button type="primary" (click)="submit()">OK</app-button>
+  </div>
+</form>

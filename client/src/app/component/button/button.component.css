@@ -1,0 +1,23 @@
+:host {
+  border-radius: 4px;
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  padding: 0 18px;
+  min-width: 46px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  background-color: #e8e8e8;
+  color: #333;
+}
+
+:host.primary {
+  background-color: #4f9cf4;
+  color: white;
+}
+
+:host.primary:active {
+  background-color: #2a8dff;
+}

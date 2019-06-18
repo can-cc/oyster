@@ -1,28 +1,26 @@
-
-
 :host {
-    border: 1px solid #e8e8e8;
-    border-radius: 6px;
-    position: relative;
-    width: 100%;
-    height: 42px;
+  border: 1px solid #e8e8e8;
+  border-radius: 6px;
+  position: relative;
+  width: 100%;
+  height: 42px;
+  display: inline-block;
+  overflow: hidden;
+
+  fa-icon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translate(0, -50%);
+  }
+
+  input {
+    border: 0;
     display: block;
-    overflow: hidden;
-
-    fa-icon {
-        position: absolute;
-        top: 50%;
-        left: 8px;
-        transform: translate(0, -50%);
-
-    }
-    input {
-        border: 0;
-        display: block;
-        height: 100%;
-        width: 100%;
-        outline: none;
-        box-sizing: border-box;
-        padding-left: 32px;
-    }
+    height: 100%;
+    width: 100%;
+    outline: none;
+    box-sizing: border-box;
+    padding-left: 40px;
+  }
 }
