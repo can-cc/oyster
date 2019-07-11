@@ -21,7 +21,10 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
         concatMap(s => {
           return of(s).pipe(
             mergeMap(async source => {
-              logger.info(`fetch ${source.name}`);
+              fetchLogger.info(`fetch source`, {
+                sourceName: source.name,
+                time: new Date()
+              });
               const feedRawData = await (await fetch(source.url)).text();
               return { source, feedRawData };
             }),
