@@ -47,6 +47,8 @@ services:
       ES_HOSTS: ${OYSTER_FILEBEAT_ES_HOSTS} 
       ES_USERNAME: ${OYSTER_FILEBEAT_ES_USERNAME}
       ES_PASSWORD: ${OYSTER_FILEBEAT_ES_PASSWORD}
+    volumes:
+      - ./log:/var/log/oyster
   backup:
     restart: always
     image: fwchen/postgreseafile-backup:latest
