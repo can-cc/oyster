@@ -40,6 +40,13 @@ services:
       - ./log:/log
     depends_on:
       - postgres
+  filebeat:
+    restart: always
+    image: fwchen/oyster-filebeat:latest
+    environment:
+      ES_HOSTS: ${OYSTER_FILEBEAT_ES_HOSTS} 
+      ES_USERNAME: ${OYSTER_FILEBEAT_ES_USERNAME}
+      ES_PASSWORD: ${OYSTER_FILEBEAT_ES_PASSWORD}
   backup:
     restart: always
     image: fwchen/postgreseafile-backup:latest
