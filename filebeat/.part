@@ -1,0 +1,4 @@
+file:///home/fwchen/go/src/github.com/elastic/beats/filebeat/module
+file:///home/fwchen/go/src/github.com/elastic/beats/filebeat/modules.d
+file:///home/fwchen/go/src/github.com/elastic/beats/filebeat/filebeat.yml
+file:///home/fwchen/go/src/github.com/elastic/beats/filebeat/Dockerfile

@@ -1,9 +1,14 @@
-# how create custom filebeat
+# how build image
+
+[https://www.elastic.co/guide/en/beats/devguide/current/filebeat-modules-devguide.html]
+
+# how use docker image
 
 ``` bash
-./filebeat export template > filebeat.template.json
-```
-
-``` bash
- curl -X PUT "http://192.168.50.xxx:9200/_template/filebeat-mactest" -H 'Content-Type: application/json' -d@filebeat.template.json
+docker run --rm \
+-e ES_HOSTS="'es.xx.com:443'" \
+-e ES_USERNAME="basic username" \
+-e ES_PASSWORD="basic password" \
+-v ../log:/var/log/oyster \
+2418200a2d13
 ```
