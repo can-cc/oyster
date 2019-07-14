@@ -49,6 +49,7 @@ services:
       ES_PASSWORD: ${OYSTER_FILEBEAT_ES_PASSWORD}
     volumes:
       - ./log:/var/log/oyster
+      - ~/docker-data/filebeat-data:/filebeat/data
   backup:
     restart: always
     image: fwchen/postgreseafile-backup:latest
