@@ -6,7 +6,8 @@ import {
   UpdateDateColumn,
   ManyToOne,
   JoinColumn,
-  OneToMany
+  OneToMany,
+  Index
 } from 'typeorm';
 import { FeedData } from '../typing/feed';
 import { FeedSource } from './FeedSource';
@@ -26,6 +27,7 @@ export class Feed {
   @Column()
   public content: string;
 
+  @Index()
   @ManyToOne(() => FeedSource, { nullable: true })
   @JoinColumn()
   public source: FeedSource;
@@ -39,6 +41,7 @@ export class Feed {
   @CreateDateColumn()
   public publishedDate: Date;
 
+  @Index()
   @CreateDateColumn()
   public createdAt: Date;
 
