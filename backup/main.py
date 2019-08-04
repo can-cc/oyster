@@ -9,15 +9,22 @@ import subprocess
 
 def save_file_to_seafile(filename):
     print('start upload backup file to seafile')
-    get_upload_api_request = requests.get(os.environ['SEAFILE_API'])
-    upload_link = get_upload_api_request.json().get('upload_link')
+    print(filename)
+    print()
+    get_upload_api_request = requests.get(os.environ['SEAFILE_API'], headers={
+        'Authorization': 'Token ' + os.environ['SEAFILE_TOKEN']
+    })
+    upload_link = get_upload_api_request.text.replace('"', '')
 
-    print('upload link is' + upload_link)
+    print('upload link is ' + upload_link)
 
-    subprocess.run([
+    result = subprocess.run([
       'curl', '-H', 'Authorization: Token %s' % os.environ['SEAFILE_TOKEN'], '-F', ('file=@%s' % filename), '-F', 'parent_dir=/db', '-F', 'replace=0', 
       upload_link
-    ])
+    ], stdout=subprocess.PIPE)
+
+    print(result.stdout.decode('utf-8'))
+
     print('backup to seafile done')
 
         
@@ -31,7 +38,7 @@ def backup_postgres():
     filename = '%s.gz' % today
 
     with gzip.open(filename, 'wb') as f:
-        popen = subprocess.Popen(["pg_dump", "-h", (os.environ['BACKUP_HOST']), "-U", "postgres", "postgres"], stdout=subprocess.PIPE, universal_newlines=True)
+        popen = subprocess.Popen(["pg_dump", "-h", (os.environ['BACKUP_HOST']), "-U", (os.environ['PGUSER']), (os.environ['PGDBNAME'])], stdout=subprocess.PIPE, universal_newlines=True)
 
         for stdout_line in iter(popen.stdout.readline, ""):
             f.write(stdout_line.encode("utf-8"))

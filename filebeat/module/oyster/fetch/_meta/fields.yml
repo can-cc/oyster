@@ -1,0 +1,9 @@
+- name: fetch
+  type: group
+  description: >
+    Contains fields for the fetch logs.
+  fields:
+    - name: oyster.fetch.message
+      type: alias
+    - name: oyster.fetch.type
+      type: alias

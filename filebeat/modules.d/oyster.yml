@@ -1,0 +1,4 @@
+- module: oyster
+  fetch:
+    enabled: true
+
