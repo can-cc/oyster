@@ -30,9 +30,9 @@ class FeedService {
   private async getAllFeeds({ userId, limit, offset}): Promise<Feed[]>  {
     return await getRepository(Feed)
     .createQueryBuilder('feed')
+    .orderBy('"feed"."createdAt"', 'DESC')
     .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
     .leftJoinAndSelect("feed.source", "feed_source")
-    .orderBy('"feed"."createdAt"', 'DESC')
     .limit(limit)
     .offset(offset)
     .getMany();

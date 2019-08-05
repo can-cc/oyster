@@ -6,7 +6,8 @@ import {
   JoinColumn,
   UpdateDateColumn,
   ManyToOne,
-  Unique
+  Unique,
+  Index
 } from 'typeorm';
 import { Feed } from './Feed';
 import { User } from './User';
@@ -21,6 +22,7 @@ export class FeedMark {
   @JoinColumn()
   public user: User;
 
+  @Index()
   @ManyToOne(() => Feed)
   @JoinColumn()
   public feed: Feed;
