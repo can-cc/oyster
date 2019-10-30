@@ -30,7 +30,7 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
             }),
             catchError((error, caught) => {
               logger.error(`fetch failure : ${error.message}`);
-              return empty().pipe(ignoreElements());
+              return empty();
             })
           );
         })
