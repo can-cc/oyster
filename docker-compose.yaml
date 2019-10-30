@@ -10,7 +10,7 @@ services:
       - app
   postgres:
     restart: always
-    image: postgres
+    image: postgres:11.5
     networks: 
       - app
     environment:
