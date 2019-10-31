@@ -8,7 +8,7 @@ import { FeedSource } from '../entity/FeedSource';
 import { Feed } from '../entity/Feed';
 import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
-import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements } from 'rxjs/operators';
+import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements, tap } from 'rxjs/operators';
 import { Observable, interval, of, empty, Observer } from 'rxjs';
 import { parseFeedData } from '../util/parser';
 import { FeedData, FeedResult } from '../typing/feed';
@@ -16,6 +16,7 @@ import { FeedData, FeedResult } from '../typing/feed';
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue).pipe(
     startWith(0),
+    tap(_ => console.log(_)),
     concatMap(() =>
       of(...sources).pipe(
         concatMap(s => {
@@ -29,13 +30,17 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
               return { source, feedRawData };
             }),
             catchError((error, caught) => {
-              logger.error(`fetch failure : ${error.message}`);
-              return empty();
+              logger.error(`fetch failure in interval : ${error}`);
+              return empty().pipe(ignoreElements());
             })
           );
         })
       )
-    )
+    ),
+    catchError((value) => {
+      console.log('Fetch source error in cancat', value);
+      return empty();
+    })
   );
 }
 
@@ -77,7 +82,6 @@ class FeedFetcher {
               const feed: Feed = new Feed(feedData);
 
               if (!(await this.isFeedExist(feed))) {
-              
                 await this.handleParsedFeedData(feed);
                 fetchLogger.info(`feed saved`, {
                   id: feed.id,
