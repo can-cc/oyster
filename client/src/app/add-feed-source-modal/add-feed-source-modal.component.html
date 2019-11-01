@@ -23,18 +23,6 @@
     ></app-input>
   </app-form-field>
 
-  <app-form-field>
-    <app-input
-      class="favicon-url-input"
-      placeholder="Favicon Url"
-      formControlName="faviconUrl"
-      icon="faAtom"
-      iconColor="#fa9d65"
-    ></app-input>
-
-    <img class="favicon-preview" [src]="form.get('faviconUrl').value" alt="" />
-  </app-form-field>
-
   <div class="dialog-footer">
     <app-button (click)="handleClose()">Cancel</app-button>
     <app-button type="primary" (click)="submit()">OK</app-button>

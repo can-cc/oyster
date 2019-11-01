@@ -4,6 +4,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { MatDialogRef } from '@angular/material';
+import { AddSources } from '../state/feed.actions';
+import { StoreType } from '../../typing/feed';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-add-feed-source-modal',
@@ -16,20 +19,14 @@ export class AddFeedSourceModalComponent implements OnInit {
   public form = new FormGroup({
     name: new FormControl('', [Validators.required]),
     url: new FormControl('', [Validators.required]),
-    faviconUrl: new FormControl('', [Validators.required])
   });
 
   complete$ = new Subject();
 
-  constructor(private dialogRef: MatDialogRef<AddFeedSourceModalComponent>) {}
+  constructor(private dialogRef: MatDialogRef<AddFeedSourceModalComponent>, private store: Store<StoreType>) {}
 
   ngOnInit() {
-    this.form
-      .get('url')
-      .valueChanges.pipe(takeUntil(this.complete$))
-      .subscribe((url: string) => {
-        this.form.get('faviconUrl').setValue(url + '/favicon.ico');
-      });
+   
   }
 
   handleClose = () => {
@@ -39,5 +36,13 @@ export class AddFeedSourceModalComponent implements OnInit {
   ngOnDestory() {
     this.complete$.next();
     this.complete$.complete();
+  }
+
+  submit() {
+    const formData = this.form.value;
+    const resetFormFn = () => {
+      this.form.reset();
+    };
+    this.store.dispatch(new AddSources({ formData }, { resetFormFn }));
   }
 }

@@ -1,5 +1,6 @@
 import configure from '../configure';
 import * as redis from 'redis';
+import * as os from 'os';
 import * as bloom from 'bloom-redis';
 import { logger, fetchLogger } from '../logger';
 import webPushService from '../service/web-push.service';
@@ -16,7 +17,11 @@ import { FeedData, FeedResult } from '../typing/feed';
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue).pipe(
     startWith(0),
-    tap(_ => console.log(_)),
+    tap(_ => {
+      console.log(_);
+      console.log(new Date())
+      console.log(os.freemem() / os.totalmem() * 100 + '%');
+    }),
     concatMap(() =>
       of(...sources).pipe(
         concatMap(s => {
@@ -30,8 +35,8 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
               return { source, feedRawData };
             }),
             catchError((error, caught) => {
-              logger.error(`fetch failure in interval : ${error}`);
-              return empty().pipe(ignoreElements());
+              fetchLogger.error(`fetch failure in interval : ${error}`);
+              return empty();
             })
           );
         })
@@ -52,7 +57,7 @@ function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
         const feedDatas: FeedData[] = parseFeedData(result.feedRawData).map(f => ({ ...f, source: result.source }));
         observer.next(feedDatas);
       } catch (error) {
-        logger.error(`parse and save feed error. ${error}`);
+        fetchLogger.error(`parse and save feed error. ${error}`);
       }
     });
     return () => subscription.unsubscribe();
@@ -80,7 +85,6 @@ class FeedFetcher {
           feedDatas.map(
             async (feedData: FeedData): Promise<void> => {
               const feed: Feed = new Feed(feedData);
-
               if (!(await this.isFeedExist(feed))) {
                 await this.handleParsedFeedData(feed);
                 fetchLogger.info(`feed saved`, {
@@ -95,7 +99,7 @@ class FeedFetcher {
         );
       });
     } catch (error) {
-      logger.error(error);
+      fetchLogger.error(error);
     }
   }
 
