@@ -1,35 +1,44 @@
 import * as moment from 'moment';
 import * as R from 'ramda';
-import * as xml2json from 'xml2json';
 import { FeedData } from '../typing/feed';
-import { AdvancedConsoleLogger } from 'typeorm';
+
+var parseString = require('xml2js').parseString;
 
 const parseFeed = (entrys: any[], feed): FeedData[] => {
   return entrys.map(
-    (entry): FeedData => {
-      const rssId = entry.id;
-      const title = entry.title;
-      const originHref = entry.link.href;
-      const content = entry.content.$t;
-      const published = moment(entry.published).toDate() || moment(entry.updated).toDate();
-      const author = R.path(['author', 'name'])(entry) || R.path(['author', 'name'])(feed);
-      return { rssId, title, originHref, content, publishedDate: published, author };
+    (entry, index): FeedData => {
+      try {
+        const rssId = entry.id[0];
+        const title = entry.title[0];
+        const originHref = entry.link[0].$.href;
+        const content = entry.content[0]._;
+        const published = moment.utc(entry.updated[0]).toDate();
+        const author = R.path(['author', 0, 'name', 0])(entry);
+        return { id: rssId, title, originHref, content, publishedDate: published, author };
+      } catch (error) {
+        return null;
+      }
     }
   );
-}
+};
 
+// TODO 重构，像 author 还是可以存储多个
 const parseYahaooVersionFeed = (entrys: any[], feed): FeedData[] => {
   return entrys.map(
-    (entry): FeedData => {
-      const title = entry.title.$t;
-      const originHref = entry.link.href;
-      const content = entry.content.$t;
-      const published = moment(entry.published).toDate() || moment(entry.updated).toDate();
-      const author = R.path(['author', 'name'])(entry) || R.path(['author', 'name'])(feed);
-      return { id: entry.id, title, originHref, content, publishedDate: published, author };
+    (entry, index): FeedData => {
+      try {
+        const title = entry.title[0]._;
+        const originHref = entry.link[0].$.href;
+        const content = entry.content[0]._;
+        const published = moment.utc(entry.published).toDate();
+        const author = R.path(['author', 0, 'name', 0])(entry);
+        return { id: entry.id[0], title, originHref, content, publishedDate: published, author };
+      } catch (error) {
+        return null;
+      }
     }
   );
-}
+};
 
 const parseRSS2 = (entrys: any[], channel: any): FeedData[] =>
   entrys.map(
@@ -43,29 +52,39 @@ const parseRSS2 = (entrys: any[], channel: any): FeedData[] =>
     }
   );
 
-const checkFeedStandard = (xml: any): 'RSS2' | 'FEED' | 'YAHOO_FEED' | 'UNKNOWN' => {
-  if (xml.rss) {
-    return 'RSS2';
+const checkFeedStandard = (getParsedData: any): 'RSS2' | 'FEED' | 'YAHOO_FEED' | 'UNKNOWN' => {
+  try {
+    if (getParsedData.rss) {
+      return 'RSS2';
+    }
+    if (getParsedData.feed.$['xmlns:media'] === 'http://search.yahoo.com/mrss/') {
+      return 'YAHOO_FEED';
+    }
+    if (getParsedData.feed && getParsedData.feed.entry) {
+      return 'FEED';
+    }
+  } catch (error) {
+    return 'UNKNOWN';
   }
-  if (xml.feed['xmlns:media'] === 'http://search.yahoo.com/mrss/') {
-    return 'YAHOO_FEED';
-  }
-  if (xml.feed && xml.feed.entry) {
-    return 'FEED';
-  }
-  return 'UNKNOWN';
 };
 
-export function parseFeedData(rawData: string): FeedData[] {
-  const parsedXml: any = JSON.parse(xml2json.toJson(rawData));
+export async function parseFeedData(rawData: string): Promise<FeedData[]> {
+  const getParsedData: any = await new Promise((resolve, reject) => {
+    parseString(rawData, function(err, result) {
+      if (err) {
+        return reject(rawData);
+      }
+      return resolve(result);
+    });
+  });
 
-  switch (checkFeedStandard(parsedXml)) {
+  switch (checkFeedStandard(getParsedData)) {
     case 'RSS2':
-      return R.flatten(parseRSS2(parsedXml.rss.channel.item, parsedXml.rss.channel));
+      return R.flatten(parseRSS2(getParsedData.rss.channel.item, getParsedData.rss.channel));
     case 'YAHOO_FEED':
-      return R.flatten(parseYahaooVersionFeed(parsedXml.feed.entry, parsedXml.feed))
+      return R.flatten(parseYahaooVersionFeed(getParsedData.feed.entry, getParsedData.feed)).filter(_ => !!_);
     case 'FEED':
-      return R.flatten(parseFeed(parsedXml.feed.entry, parsedXml.feed));
+      return R.flatten(parseFeed(getParsedData.feed.entry, getParsedData.feed)).filter(_ => !!_);
     default:
       return [];
   }
