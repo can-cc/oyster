@@ -43,7 +43,7 @@
     "ngx-infinite-scroll": "^7.0.1",
     "rxjs": "^6.4.0",
     "text-overflow-clamp": "^1.0.0",
-    "yarn": "^1.13.0",
+    "yarn": "^1.17.3",
     "zone.js": "^0.8.29"
   },
   "devDependencies": {
