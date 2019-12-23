@@ -10,8 +10,6 @@ import webpushSubscriberService from './webpush-subscriber.service';
 import { WebpushSubscriber } from 'src/entity/WebpushSubscriber';
 
 class WebPushService {
-  // constructor() {}
-
   public async setup() {
     await webpushSubscriberService.refreshSubsribers();
 

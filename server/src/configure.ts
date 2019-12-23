@@ -24,9 +24,10 @@ class Configure {
   }
 
   private overrideConfigKeyFromEnv() {
+    const appPrefixKey = 'OY_'
     this.config = R.mapObjIndexed((value: string, key: string, config: any) => {
-      if (process.env[key]) {
-        config[key] = process.env[key];
+      if (process.env[appPrefixKey + key]) {
+        config[key] =  process.env[ appPrefixKey + key];
       }
       return config[key];
     }, this.config);

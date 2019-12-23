@@ -30,3 +30,7 @@ test('test reddit parser(FEED)', async () => {
   expect(feeds[0].source).toEqual(undefined);
   expect(feeds.length).toEqual(26);
 });
+
+// test('test parse(RSS2)', async () => {
+
+// });

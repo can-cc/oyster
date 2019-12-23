@@ -1,6 +1,5 @@
 import configure from '../configure';
 import * as redis from 'redis';
-import * as os from 'os';
 import * as bloom from 'bloom-redis';
 import { logger, fetchLogger } from '../logger';
 import webPushService from '../service/web-push.service';
@@ -17,11 +16,6 @@ import { FeedData, FeedResult } from '../typing/feed';
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue).pipe(
     startWith(0),
-    tap(_ => {
-      console.log(_);
-      console.log(new Date())
-      console.log(os.freemem() / os.totalmem() * 100 + '%');
-    }),
     concatMap(() =>
       of(...sources).pipe(
         concatMap(s => {
@@ -31,6 +25,7 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
                 sourceName: source.name,
                 time: new Date()
               });
+              fetchLogger.info(`fetching source [url] = ${source.url}`);
               const feedRawData = await (await fetch(source.url)).text();
               return { source, feedRawData };
             }),
@@ -52,9 +47,9 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
 function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
   return Observable.create((observer: Observer<FeedData[]>) => {
     const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe((result: FeedResult) => {
+    const subscription = feed$.subscribe(async (result: FeedResult) => {
       try {
-        const feedDatas: FeedData[] = parseFeedData(result.feedRawData).map(f => ({ ...f, source: result.source }));
+        const feedDatas: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({ ...f, source: result.source }));
         observer.next(feedDatas);
       } catch (error) {
         fetchLogger.error(`parse and save feed error. ${error}`);
