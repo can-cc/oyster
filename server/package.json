@@ -37,7 +37,7 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.3.3",
     "sqlite3": "^4.0.4",
-    "typeorm": "^0.2.9",
+    "typeorm": "^0.2.21",
     "web-push": "^3.3.0",
     "winston": "^3.2.1",
     "xml2js": "^0.4.22"
