@@ -22,7 +22,6 @@ const parseFeed = (entrys: any[], feed): FeedData[] => {
   );
 };
 
-// TODO 重构，像 author 还是可以存储多个
 const parseYahaooVersionFeed = (entrys: any[], feed): FeedData[] => {
   return entrys.map(
     (entry, index): FeedData => {
@@ -43,11 +42,11 @@ const parseYahaooVersionFeed = (entrys: any[], feed): FeedData[] => {
 const parseRSS2 = (entrys: any[], channel: any): FeedData[] =>
   entrys.map(
     (entry: any): FeedData => {
-      const title = entry.title;
-      const originHref = entry.link;
-      const content = entry.description;
-      const published = moment(entry.pubDate).toDate();
-      const author = entry.author || R.path(['dc:creator'])(entry);
+      const title = entry.title[0];
+      const originHref = entry.link[0];
+      const content = entry.description[0];
+      const published = entry.pubDate[0] ? moment(entry.pubDate[0]).toDate() : null;
+      const author = entry.author[0];
       return { title, originHref, content, publishedDate: published, author };
     }
   );
@@ -80,7 +79,7 @@ export async function parseFeedData(rawData: string): Promise<FeedData[]> {
 
   switch (checkFeedStandard(getParsedData)) {
     case 'RSS2':
-      return R.flatten(parseRSS2(getParsedData.rss.channel.item, getParsedData.rss.channel));
+      return R.flatten(parseRSS2(getParsedData.rss.channel[0].item, getParsedData.rss.channel[0]));
     case 'YAHOO_FEED':
       return R.flatten(parseYahaooVersionFeed(getParsedData.feed.entry, getParsedData.feed)).filter(_ => !!_);
     case 'FEED':

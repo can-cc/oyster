@@ -31,6 +31,14 @@ test('test reddit parser(FEED)', async () => {
   expect(feeds.length).toEqual(26);
 });
 
-// test('test parse(RSS2)', async () => {
+test('test reddit parser(RSS)', async () => {
+  const mockXmlData = fs.readFileSync(path.join(__dirname, './__mock_data__/_mock_dingxiangyisheng.xml'), 'utf-8');
+  const feeds: FeedData[] = await parseFeedData(mockXmlData);
 
-// });
+  expect(feeds[0].content.length).toEqual(7686);
+  expect(feeds[0].originHref).toEqual('https://zhuanlan.zhihu.com/p/99354729');
+  expect(feeds[0].title).toEqual('科普 | 即使害怕也该做的检查，不然得了癌症都不知道');
+  expect(feeds[0].author).toEqual('丁香医生');
+  expect(feeds[0].publishedDate).toEqual(new Date('2019-12-25T09:24:23.000Z'));
+  expect(feeds.length).toEqual(20);
+});
