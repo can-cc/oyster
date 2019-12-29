@@ -4,6 +4,9 @@ pipeline {
             image 'node:12.14.0-stretch'
         }
     }
+    triggers {
+        pollSCM('*/1 * * * *')
+    }
     environment {
         CI = 'true' 
     }
