@@ -47,3 +47,4 @@ docker exec -it [container name]  sudo -u postgres psql
 ``` bash
 su - postgres && psql
 ```
+
