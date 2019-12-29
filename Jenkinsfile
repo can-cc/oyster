@@ -10,14 +10,12 @@ pipeline {
     stages {
         stage('Server Build') {
             steps {
-                sh "cd server"
-                sh 'npm install'
+                sh 'cd server && npm install'
             }
         }
         stage('Server Test') { 
             steps {
-                sh "cd server"
-                sh 'npm run test' 
+                sh 'cd server && npm run test' 
             }
         }
     }
