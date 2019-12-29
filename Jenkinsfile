@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image '12.14.0-stretch'
+            image 'node:12.14.0-stretch'
         }
     }
     environment {
