@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedListComponent } from './feed-list.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FeedListComponent', () => {
   let component: FeedListComponent;
@@ -8,7 +9,8 @@ describe('FeedListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FeedListComponent]
+      declarations: [FeedListComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 

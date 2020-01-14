@@ -1,27 +1,28 @@
 <div class="container">
   <mat-card>
     <form [formGroup]="form">
-      <mat-form-field class="">
-        <input matInput placeholder="Username" formControlName="username" />
-      </mat-form-field>
+      <app-form-field>
+        <app-input
+          placeholder="Username"
+          formControlName="username"
+          icon="faLink"
+          iconColor="#fa9d65"
+        ></app-input>
+      </app-form-field>
 
-      <mat-form-field class="">
-        <input
-          type="password"
-          matInput
+      <app-form-field>
+        <app-input
           placeholder="Password"
           formControlName="password"
-        />
-      </mat-form-field>
+          type="password"
+          icon="faLink"
+          iconColor="#fa9d65"
+        ></app-input>
+      </app-form-field>
 
-      <button
-        mat-button
-        mat-raised-button
-        (click)="handleLogin()"
-        color="primary"
-      >
+      <app-button type="primary" (click)="handleLogin()">
         Login
-      </button>
+      </app-button>
     </form>
   </mat-card>
 </div>

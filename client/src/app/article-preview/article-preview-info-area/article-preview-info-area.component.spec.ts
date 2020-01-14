@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ArticlePreviewInfoAreaComponent } from './article-preview-info-area.component';
+import { Feed } from '../../../typing/feed';
 
 describe('ArticlePreviewInfoAreaComponent', () => {
   let component: ArticlePreviewInfoAreaComponent;
@@ -15,6 +16,7 @@ describe('ArticlePreviewInfoAreaComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ArticlePreviewInfoAreaComponent);
     component = fixture.componentInstance;
+    component.feed = {source: {}} as Feed;
     fixture.detectChanges();
   });
 

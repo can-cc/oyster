@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FeedListToolbarComponent } from './feed-list-toolbar.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FeedListToolbarComponent', () => {
   let component: FeedListToolbarComponent;
@@ -8,7 +9,8 @@ describe('FeedListToolbarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FeedListToolbarComponent]
+      declarations: [FeedListToolbarComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 

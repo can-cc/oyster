@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AddFeedSourceModalComponent } from './add-feed-source-modal.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { ColorService } from '../color.service';
 
 describe('AddFeedSourceModalComponent', () => {
   let component: AddFeedSourceModalComponent;
@@ -8,7 +12,19 @@ describe('AddFeedSourceModalComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddFeedSourceModalComponent ]
+      declarations: [ AddFeedSourceModalComponent ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        {
+          provide: MatDialogRef,
+          useValue: {}
+        },
+        {
+          provide: Store,
+          useValue: {}
+        },
+        ColorService
+      ]
     })
     .compileComponents();
   }));

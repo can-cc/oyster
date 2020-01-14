@@ -9,7 +9,7 @@ import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 export class DialogHeaderComponent implements OnInit {
   @Input() title?: string;
   @Input() closeable?: boolean;
-  @Input() onClose?: () => void;
+  @Input() closeFn?: () => void;
 
   faTimesCircle = faTimesCircle;
 
@@ -18,8 +18,8 @@ export class DialogHeaderComponent implements OnInit {
   ngOnInit() {}
 
   handleClose() {
-    if (this.onClose) {
-      this.onClose();
+    if (this.closeFn) {
+      this.closeFn();
     }
   }
 }

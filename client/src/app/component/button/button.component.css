@@ -1,5 +1,11 @@
 :host {
+  display: inline-block;
+} 
+
+.button-wrapper {
   border-radius: 4px;
+  border: none;
+  box-shadow: none;
   display: inline-block;
   height: 32px;
   line-height: 32px;
@@ -11,13 +17,14 @@
   user-select: none;
   background-color: #e8e8e8;
   color: #333;
+  -webkit-appearance: none;
 }
 
-:host.primary {
+:host.primary .button-wrapper {
   background-color: #4f9cf4;
   color: white;
 }
 
-:host.primary:active {
+:host.primary:active .button-wrapper {
   background-color: #2a8dff;
 }

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ArticlePreviewStarComponent } from './article-preview-star.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('ArticlePreviewStarComponent', () => {
   let component: ArticlePreviewStarComponent;
@@ -7,7 +8,8 @@ describe('ArticlePreviewStarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ArticlePreviewStarComponent]
+      declarations: [ArticlePreviewStarComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     }).compileComponents();
   }));
 

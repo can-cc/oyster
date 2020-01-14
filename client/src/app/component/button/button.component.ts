@@ -11,7 +11,6 @@ export type ButtonType = 'primary' | 'danger';
 })
 export class ButtonComponent implements OnInit, OnChanges {
   @Input() size: ButtonSize = 'middle';
-
   @Input() class: string;
   @Input() type: ButtonType;
 

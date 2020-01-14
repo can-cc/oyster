@@ -1,11 +1,13 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { FeedMarkService } from './feed-mark.service';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('FeedMarkService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FeedMarkService]
+      providers: [FeedMarkService],
+      imports: [HttpClientModule]
     });
   });
 

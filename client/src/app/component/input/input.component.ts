@@ -27,6 +27,7 @@ export class InputComponent implements OnInit, ControlValueAccessor, OnDestroy {
   @Input() icon: string;
   @Input() placeholder = '';
   @Input() iconColor?: string;
+  @Input() type = 'text';
 
   control = new FormControl('');
   iconMap = faIconMap;
