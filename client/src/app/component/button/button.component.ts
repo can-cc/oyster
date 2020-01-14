@@ -13,6 +13,7 @@ export class ButtonComponent implements OnInit, OnChanges {
   @Input() size: ButtonSize = 'middle';
   @Input() class: string;
   @Input() type: ButtonType;
+  @Input() htmlType = 'button'
 
   @HostBinding('class') ngClass: string;
 
