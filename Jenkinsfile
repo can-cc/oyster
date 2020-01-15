@@ -37,7 +37,6 @@ pipeline {
             }
         }
     }
-
     post {
         always {
             rocketSend currentBuild.currentResult
