@@ -73,6 +73,7 @@ import { ButtonComponent } from './component/button/button.component';
 import { InputComponent } from './component/input/input.component';
 import { FormFieldComponent } from './component/form-field/form-field.component';
 import { DialogHeaderComponent } from './component/dialog-header/dialog-header.component';
+import { FieldMessageComponent } from './component/field-message/field-message.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { DialogHeaderComponent } from './component/dialog-header/dialog-header.c
     ButtonComponent,
     InputComponent,
     FormFieldComponent,
-    DialogHeaderComponent
+    DialogHeaderComponent,
+    FieldMessageComponent
   ],
   entryComponents: [PingDialogComponent, AddFeedSourceModalComponent, SettingModalComponent],
   imports: [

@@ -25,7 +25,6 @@ export class ButtonComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.type) {
-      console.log(changes);
       this.buildClass();
     }
   }
