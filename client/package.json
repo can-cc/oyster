@@ -62,6 +62,7 @@
     "karma-jasmine": "^3.1.0",
     "karma-jasmine-html-reporter": "^1.5.1",
     "prettier": "^1.19.1",
+    "puppeteer": "^2.0.0",
     "typescript": "3.5.3"
   }
 }
