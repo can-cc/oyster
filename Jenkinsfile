@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Client test') {
             steps {
-                sh 'cd client && npm run test  -- --no-watch --no-progress --browsers=ChromeHeadlessCI' 
+                sh 'cd client && npm run test:ci' 
             }
         }
         stage('Client build') {
