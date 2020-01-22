@@ -1,7 +1,6 @@
 import configure from '../configure';
-import { ConnectionOptions } from 'typeorm';
 
-export function getPostgresConfig(): ConnectionOptions {
+export function getPostgresConfig(): any {
   return {
     type: 'postgres',
     host: configure.getConfig('POSTGRES_HOST'),

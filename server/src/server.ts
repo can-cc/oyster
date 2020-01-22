@@ -1,5 +1,3 @@
-import 'reflect-metadata';
-
 import * as express from 'express';
 import * as colors from 'colors';
 import * as morgan from 'morgan';
