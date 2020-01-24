@@ -37,7 +37,6 @@ class FeedSourceService {
   public async saveFeedSource({ name, url }): Promise<FeedSource> {
     const domain = 'www.ithme.com';
     const favicon = await faviconGrabberService.getFavicon(domain);
-    console.log('favicon', favicon);
     const feedSource = new FeedSource({ name, url, favicon });
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
     await this.refreshFeedSource();

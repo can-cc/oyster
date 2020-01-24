@@ -5,9 +5,10 @@ import feedFetcherService from './service/feed-fetcher.service';
 import webPushService from './service/web-push.service';
 import { getPostgresConfig } from './util/db-config';
 import * as colors from 'colors';
-
+import { setAxiosGlobalProxy } from './helper/axios-helper';
 
 function main() {
+  setAxiosGlobalProxy();
   const dbConfig = getPostgresConfig();
   createConnection(dbConfig)
     .then(() => {
