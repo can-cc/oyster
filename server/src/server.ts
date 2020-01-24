@@ -10,6 +10,7 @@ import { feedRouter } from './route/feed.route';
 import { pignRouter } from './route/ping.route';
 import { webpushRouter } from './route/webpush.route';
 import { feedSourceRouter } from './route/feed-source.route';
+import { feedSourceFaviconRouter } from './route/feed-source-favicon.route';
 
 export function setupServer() {
   const app = express();
@@ -20,6 +21,7 @@ export function setupServer() {
   app.use(useragent.express());
 
   app.use('/api', authRouter);
+  app.use('/api', feedSourceFaviconRouter)
 
   app.use(authMiddle);
 

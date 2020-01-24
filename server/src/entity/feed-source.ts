@@ -35,5 +35,6 @@ export class FeedSource {
     }
     this.name = feedSourceData.name;
     this.url = feedSourceData.url;
+    this.favicon = feedSourceData.favicon;
   }
 }

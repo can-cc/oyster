@@ -22,8 +22,12 @@ class FeedSourceService {
     this.source$.next(sources);
   }
 
-  public getFeedSources(): FeedSource[] {
+  public  getFeedSources(): FeedSource[] {
     return this.sources;
+  }
+
+  public async getFeedSourceFavicon(id): Promise<any> {
+    return (await getRepository(FeedSource).findOne(id)).favicon;
   }
 
   public getFeedSources$(): Observable<FeedSource[]> {
@@ -33,6 +37,7 @@ class FeedSourceService {
   public async saveFeedSource({ name, url }): Promise<FeedSource> {
     const domain = 'www.ithme.com';
     const favicon = await faviconGrabberService.getFavicon(domain);
+    console.log('favicon', favicon);
     const feedSource = new FeedSource({ name, url, favicon });
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
     await this.refreshFeedSource();

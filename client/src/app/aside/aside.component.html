@@ -9,7 +9,7 @@
     routerLinkActive="active"
     [routerLink]="'/feed/' + category.id"
   >
-    <img class="source-favicon" [src]="category.faviconUrl" />
+    <img class="source-favicon" [src]="'/api/feed-source/' + category.id + '/favicon'" />
     <span class="category-name" [matTooltip]="category.name">{{
       category.name
     }}</span>

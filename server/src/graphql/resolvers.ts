@@ -3,7 +3,7 @@ import feedSourceService from '../service/feed-source.service';
 
 export const resolvers = {
   Query: {
-    feeds: async (root, args: { limit: number; offset: number, category: string }, context) => {
+    feeds: async (root, args: { limit: number; offset: number; category: string }, context) => {
       return await feedService.getFeeds({
         userId: 1,
         limit: args.limit,
@@ -20,8 +20,8 @@ export const resolvers = {
       return await feedSourceService.saveFeedSource({ name, url });
     },
     removeSource: async (root, { id }) => {
-      const result: string =  await feedSourceService.removeFeedSource({id});
-      return {result};
+      const result: string = await feedSourceService.removeFeedSource({ id });
+      return { result };
     }
   }
 };
