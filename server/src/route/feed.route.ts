@@ -1,7 +1,7 @@
 import * as express from 'express';
 import feedService from '../service/feed.service';
 import feedMarkerService from '../service/feed-marker.service';
-import { FeedMark } from '../entity/FeedMark';
+import { FeedMark } from '../entity/feed-mark';
 
 const feedRouter = express.Router();
 

@@ -18,16 +18,17 @@ export class AddFeedSourceModalComponent implements OnInit {
   public faRegistered = faRegistered;
   public form = new FormGroup({
     name: new FormControl('', [Validators.required]),
-    url: new FormControl('', [Validators.required]),
+    url: new FormControl('', [Validators.required])
   });
 
   complete$ = new Subject();
 
-  constructor(private dialogRef: MatDialogRef<AddFeedSourceModalComponent>, private store: Store<StoreType>) {}
+  constructor(
+    private dialogRef: MatDialogRef<AddFeedSourceModalComponent>,
+    private store: Store<StoreType>
+  ) {}
 
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
 
   handleClose = () => {
     this.dialogRef.close();

@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { WebpushSubscriber } from '../entity/WebpushSubscriber';
+import { WebpushSubscriber } from '../entity/webpush-subscriber';
 import { Subject } from 'rxjs';
 
 class WebpushSubscriberService {

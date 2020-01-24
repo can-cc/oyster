@@ -1,4 +1,4 @@
-import { FeedSource } from '../entity/FeedSource';
+import { FeedSource } from '../entity/feed-source';
 
 export interface FeedData {
   id?: string;

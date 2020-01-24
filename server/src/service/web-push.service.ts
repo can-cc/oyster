@@ -1,13 +1,13 @@
 import * as htmlToText from 'html-to-text';
 import { logger } from '../logger';
-import { Feed } from '../entity/Feed';
+import { Feed } from '../entity/feed';
 import { WebPushNotification } from '../typing/notification';
 import configure from '../configure';
 import * as webpush from 'web-push';
 import { getRepository } from 'typeorm';
-import { VapidKey } from '../entity/VapidKey';
+import { VapidKey } from '../entity/vapid-key';
 import webpushSubscriberService from './webpush-subscriber.service';
-import { WebpushSubscriber } from 'src/entity/WebpushSubscriber';
+import { WebpushSubscriber } from 'src/entity/webpush-subscriber';
 
 class WebPushService {
   public async setup() {

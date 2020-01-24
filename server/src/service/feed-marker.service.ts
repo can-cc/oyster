@@ -1,8 +1,8 @@
 import { getRepository } from 'typeorm';
-import { FeedMark } from '../entity/FeedMark';
+import { FeedMark } from '../entity/feed-mark';
 import authService from './auth.service';
-import { User } from '../entity/User';
-import { Feed } from '../entity/Feed';
+import { User } from '../entity/user';
+import { Feed } from '../entity/feed';
 import feedService from './feed.service';
 
 class FeedMarkerService {

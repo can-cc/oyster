@@ -10,8 +10,8 @@ import {
   Index
 } from 'typeorm';
 import { FeedData } from '../typing/feed';
-import { FeedSource } from './FeedSource';
-import { FeedMark } from './FeedMark';
+import { FeedSource } from './feed-source';
+import { FeedMark } from './feed-mark';
 
 @Entity({ name: 'feed' })
 export class Feed {

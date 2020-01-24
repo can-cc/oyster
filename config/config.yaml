@@ -12,4 +12,4 @@ POSTGRES_USERNAME: "postgres"
 POSTGRES_PASSWORD: "mysecretpassword"
 POSTGRES_DB: "postgres"
 
-VAPID_DETAIL_EMAIL: 'me@chenfangwei.com'
+VAPID_DETAIL_EMAIL: 'me@oyster'

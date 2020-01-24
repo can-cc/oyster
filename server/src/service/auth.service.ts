@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import configure from '../configure';
 import { getRepository } from 'typeorm';
-import { User } from '../entity/User';
+import { User } from '../entity/user';
 import * as bcrypt from 'bcryptjs';
 
 export class AuthService {

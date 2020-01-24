@@ -9,8 +9,8 @@ import {
   Unique,
   Index
 } from 'typeorm';
-import { Feed } from './Feed';
-import { User } from './User';
+import { Feed } from './feed';
+import { User } from './user';
 
 @Entity()
 @Unique(['user', 'feed'])

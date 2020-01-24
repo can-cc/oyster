@@ -1,5 +1,5 @@
 import { getRepository } from 'typeorm';
-import { Feed } from '../entity/Feed';
+import { Feed } from '../entity/feed';
 import { fetchLogger } from '../logger';
 
 type Category = 'all' | 'favorite' | string;

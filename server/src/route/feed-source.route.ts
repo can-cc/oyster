@@ -1,5 +1,5 @@
 import * as express from 'express';
-import { FeedSource } from '../entity/FeedSource';
+import { FeedSource } from '../entity/feed-source';
 import feedSourceService from '../service/feed-source.service';
 import { feedRouter } from './feed.route';
 

@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { User } from '../entity/User';
+import { User } from '../entity/user';
 import { getRepository, createConnection } from 'typeorm';
 import { getPostgresConfig } from '../util/db-config';
 

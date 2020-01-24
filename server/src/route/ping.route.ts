@@ -2,7 +2,7 @@ import * as express from 'express';
 import * as htmlToText from 'html-to-text';
 import webPushService from '../service/web-push.service';
 import webpushSubscriberService from '../service/webpush-subscriber.service';
-import { WebpushSubscriber } from '../entity/WebpushSubscriber';
+import { WebpushSubscriber } from '../entity/webpush-subscriber';
 
 const pignRouter = express.Router();
 

@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Feed } from './Feed';
+import { Feed } from './feed';
 
 @Entity()
 export class FeedSource {
@@ -14,6 +14,9 @@ export class FeedSource {
 
   @Column({ nullable: true })
   public logoUrl: string;
+
+  @Column({ type: 'bytea',  nullable: true })
+  public favicon: any;
 
   @CreateDateColumn()
   public createdAt: Date;
