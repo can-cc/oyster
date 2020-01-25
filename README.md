@@ -49,4 +49,5 @@ su - postgres && psql
 ```
 
 ## Proxy
-set `HTTP_PROXY` and `HTTPS_PROXY` or set `PROXY_URL` in `config.yaml`
+just set `HTTP_PROXY` and `HTTPS_PROXY`env in shell (linux or mac).
+Or set `PROXY_URL` in `config.yaml`
