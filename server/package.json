@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
+    "test:ci": "jest --ci",
     "start": "ts-node src/main.ts"
   },
   "author": "",

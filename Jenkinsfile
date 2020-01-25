@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Server test') { 
             steps {
-                sh 'cd server && npm run test' 
+                sh 'cd server && npm run test:ci' 
             }
         }
         stage('Client install') {
