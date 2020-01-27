@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm';
 import { FeedMark } from '../entity/feed-mark';
 import authService from './auth.service';
-import { User } from '../entity/user';
+import { User } from '../entity/app-user';
 import { Feed } from '../entity/feed';
 import feedService from './feed.service';
 

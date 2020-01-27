@@ -10,7 +10,7 @@ import {
   Index
 } from 'typeorm';
 import { Feed } from './feed';
-import { User } from './user';
+import { User } from './app-user';
 
 @Entity()
 @Unique(['user', 'feed'])
