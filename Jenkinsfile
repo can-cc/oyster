@@ -11,6 +11,13 @@ pipeline {
         CI = 'true' 
     }
     stages {
+        stage('Getsource') { // for display purposes
+            checkout([$class: 'GitSCM',
+                branches: [[name: "${TARGET_BRANCH}"]],
+                extensions: [[$class: 'CloneOption', timeout: 120]],
+                gitTool: 'Default'
+            ])
+        }
         stage('Server build') {
             steps {
                 sh 'cd server && npm install'
