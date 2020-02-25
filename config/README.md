@@ -1,4 +1,1 @@
-
-``` shell
-git update-index --skip-worktree config.custom.yaml
-```
+create `config.custom.yaml` can overwrite config

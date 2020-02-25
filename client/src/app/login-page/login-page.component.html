@@ -1,6 +1,8 @@
 <div class="container">
-  <mat-card>
+  <div class="panel">
     <form [formGroup]="form">
+      <h2>Login:</h2>
+
       <app-form-field>
         <app-input
           placeholder="Username"
@@ -20,9 +22,11 @@
         ></app-input>
       </app-form-field>
 
-      <app-button htmlType="submit" type="primary" (click)="handleLogin()">
-        Login
-      </app-button>
+      <div class="operation">
+        <app-button htmlType="submit" type="primary" (click)="handleLogin()">
+          Login
+        </app-button>
+      </div>
     </form>
-  </mat-card>
+  </div>
 </div>

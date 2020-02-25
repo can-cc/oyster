@@ -1,4 +1,4 @@
-SERCERT_KEY: oyster # !IMPORTANT please replace this key
+SECRET_KEY: oyster # !IMPORTANT please replace this key
 JWT_EXP: 2592000 # 30d
 FEED_FILE_PATH: 'config/feeds.yml'
 
@@ -13,3 +13,6 @@ POSTGRES_PASSWORD: "mysecretpassword"
 POSTGRES_DB: "oyster"
 
 VAPID_DETAIL_EMAIL: 'me@oyster'
+
+# set proxy url
+# PROXY_URL: "127.0.0.1:8888"

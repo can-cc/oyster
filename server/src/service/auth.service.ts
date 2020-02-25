@@ -11,12 +11,12 @@ export class AuthService {
         data,
         exp: Math.floor(Date.now() / 1000) + configure.getConfig('JWT_EXP')
       },
-      configure.getConfig('SERCERT_KEY')
+      configure.getConfig('SECRET_KEY')
     );
   }
 
   public static unsignJwt(token: string): any {
-    return jwt.verify(token, configure.getConfig('SERCERT_KEY'));
+    return jwt.verify(token, configure.getConfig('SECRET_KEY'));
   }
 
   public async findUser(useId: number): Promise<User> {

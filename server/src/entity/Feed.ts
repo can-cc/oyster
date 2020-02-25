@@ -13,7 +13,7 @@ import { FeedData } from '../typing/feed';
 import { FeedSource } from './feed-source';
 import { FeedMark } from './feed-mark';
 
-@Entity({ name: 'feed' })
+@Entity()
 export class Feed {
   @PrimaryGeneratedColumn('uuid')
   public id: string;

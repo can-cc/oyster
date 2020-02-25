@@ -1,9 +1,25 @@
+h2 {
+  color: #555;
+}
+
 .container {
   width: 500px;
   margin: auto;
   padding-top: 100px;
 }
 
+.panel {
+  border-radius: 6px;
+  border: 1px solid #eee;
+  padding: 28px;
+}
+
 mat-form-field {
   display: block;
+}
+
+.operation {
+  margin-top: 26px;
+  display: flex;
+  justify-content: flex-end;
 }
