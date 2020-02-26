@@ -1,3 +1,11 @@
-<p>
-  category-item works!
-</p>
+<a routerLinkActive="active" [routerLink]="'/tag/' + category.id">
+  <span class="icon-container">
+    <fa-icon *ngIf="category.icon" size="1x" [icon]="category.icon"></fa-icon>
+    <img
+      *ngIf="category.type === 'source'"
+      class="source-favicon"
+      [src]="'/api/feed-source/' + category.id + '/favicon'"
+    />
+  </span>
+  <span class="category-name">{{ category.name }}</span>
+</a>

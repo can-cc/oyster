@@ -1,17 +1,9 @@
-<app-aside-top-bar></app-aside-top-bar>
+<app-aside-top-bar [selectedCategoryName]="selectedCategoryName"></app-aside-top-bar>
 
-<app-aside-status-switch></app-aside-status-switch>
+<div class="category-container">
+  <app-default-tags></app-default-tags>
 
-<mat-list>
-  <a
-    mat-list-item
-    *ngFor="let category of categorys"
-    routerLinkActive="active"
-    [routerLink]="'/feed/' + category.id"
-  >
-    <img class="source-favicon" [src]="'/api/feed-source/' + category.id + '/favicon'" />
-    <span class="category-name" [matTooltip]="category.name">{{
-      category.name
-    }}</span>
-  </a>
-</mat-list>
+  <app-source-tags [categories]="categories"></app-source-tags>
+</div>
+
+<app-aside-footer></app-aside-footer>

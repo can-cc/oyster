@@ -1,0 +1,9 @@
+:host {
+  display: block;
+  margin-bottom: 18px;
+}
+
+.mat-list-item {
+  padding-left: 12px;
+  text-decoration: none;
+}

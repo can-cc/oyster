@@ -1,24 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CategoryItemComponent } from './category-item.component';
+
+import { AsideFooterComponent } from './aside-footer.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { CategoryItemProps } from '../../../typing/feed';
 import { MatDialogModule } from '@angular/material';
 
-describe('CategoryItemComponent', () => {
-  let component: CategoryItemComponent;
-  let fixture: ComponentFixture<CategoryItemComponent>;
+describe('AsideFooterComponent', () => {
+  let component: AsideFooterComponent;
+  let fixture: ComponentFixture<AsideFooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CategoryItemComponent],
-      schemas: [NO_ERRORS_SCHEMA]
+      declarations: [AsideFooterComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [MatDialogModule]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CategoryItemComponent);
+    fixture = TestBed.createComponent(AsideFooterComponent);
     component = fixture.componentInstance;
-    component.category = {} as CategoryItemProps;
     fixture.detectChanges();
   });
 

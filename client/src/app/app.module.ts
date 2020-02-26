@@ -11,7 +11,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloModule, Apollo } from 'apollo-angular';
 
 import {
-  MatIconRegistry,
   MAT_DIALOG_DEFAULT_OPTIONS,
   MatCardModule,
   MatSidenavModule,
@@ -62,10 +61,8 @@ import { PingDialogComponent } from './notification-page/ping-dialog/ping-dialog
 import { ClampDirective } from './clamp.directive';
 import { AsideComponent } from './aside/aside.component';
 import { AsideTopBarComponent } from './aside/aside-top-bar/aside-top-bar.component';
-import { AsideStatusSwitchComponent } from './aside/aside-status-switch/aside-status-switch.component';
 import { CategoryItemComponent } from './aside/category-item/category-item.component';
 import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-image-preview/feed-list-item-image-preview.component';
-import { FeedListToolbarComponent } from './feed-list/feed-list-toolbar/feed-list-toolbar.component';
 import { SettingModalComponent } from './setting-modal/setting-modal.component';
 import { AddFeedSourceModalComponent } from './add-feed-source-modal/add-feed-source-modal.component';
 import { ArticlePreviewToolbarComponent } from './article-preview/article-preview-toolbar/article-preview-toolbar.component';
@@ -74,6 +71,9 @@ import { InputComponent } from './component/input/input.component';
 import { FormFieldComponent } from './component/form-field/form-field.component';
 import { DialogHeaderComponent } from './component/dialog-header/dialog-header.component';
 import { FieldMessageComponent } from './component/field-message/field-message.component';
+import { AsideFooterComponent } from './aside/aside-footer/aside-footer.component';
+import { DefaultTagsComponent } from './aside/default-tags/default-tags.component';
+import { SourceCategoriesComponent } from './aside/source-tags/source-categories.component';
 
 @NgModule({
   declarations: [
@@ -96,10 +96,8 @@ import { FieldMessageComponent } from './component/field-message/field-message.c
     ClampDirective,
     AsideComponent,
     AsideTopBarComponent,
-    AsideStatusSwitchComponent,
     CategoryItemComponent,
     FeedListItemImagePreviewComponent,
-    FeedListToolbarComponent,
     SettingModalComponent,
     AddFeedSourceModalComponent,
     ArticlePreviewToolbarComponent,
@@ -107,7 +105,10 @@ import { FieldMessageComponent } from './component/field-message/field-message.c
     InputComponent,
     FormFieldComponent,
     DialogHeaderComponent,
-    FieldMessageComponent
+    FieldMessageComponent,
+    AsideFooterComponent,
+    DefaultTagsComponent,
+    SourceCategoriesComponent
   ],
   entryComponents: [PingDialogComponent, AddFeedSourceModalComponent, SettingModalComponent],
   imports: [

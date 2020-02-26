@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { MatDialog } from '@angular/material';
-import { AddFeedSourceModalComponent } from '../../add-feed-source-modal/add-feed-source-modal.component';
+import { Component, OnInit, Input } from '@angular/core';
+import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aside-top-bar',
@@ -9,19 +7,11 @@ import { AddFeedSourceModalComponent } from '../../add-feed-source-modal/add-fee
   styleUrls: ['./aside-top-bar.component.css']
 })
 export class AsideTopBarComponent implements OnInit {
-  faPlus = faPlus;
+  faSearch = faSearch;
+  faAngleDown = faAngleDown;
+  @Input() selectedCategoryName = '';
 
-  constructor(public dialog: MatDialog) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  public openAddFeedSourceDialog(): void {
-    const dialogRef = this.dialog.open(AddFeedSourceModalComponent, {
-      width: '450px',
-      autoFocus: true,
-      hasBackdrop: true
-    });
-
-    dialogRef.afterClosed().subscribe();
-  }
 }

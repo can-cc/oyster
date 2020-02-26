@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  padding-bottom: 28px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.item {
+  padding: 18px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+  color: #666;
+}
+
+.item fa-icon {
+  font-size: 20px;
+}
+
+.item div {
+  margin-top: 8px;
+}
+
+.item .add-icon {
+  color: #ffc565;
+}

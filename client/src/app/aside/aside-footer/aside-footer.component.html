@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="item">
+    <fa-icon
+      class="edit-icon"
+      size="1x"
+      color="#f89d6a"
+      [icon]="faEdit"
+    ></fa-icon>
+    <div>Edit</div>
+  </div>
+
+  <div class="item" (click)="openAddFeedSourceDialog()">
+    <fa-icon class="add-icon" size="2x" [icon]="faPlusCircle"></fa-icon>
+    <div>Add</div>
+  </div>
+
+  <div class="item">
+    <fa-icon
+      class="read-icon"
+      size="1x"
+      color="#f89d6a"
+      [icon]="faCheckSquare"
+    ></fa-icon>
+    <div>Read</div>
+  </div>
+</div>

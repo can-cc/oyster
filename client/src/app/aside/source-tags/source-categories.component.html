@@ -1,0 +1,6 @@
+<div class="heading"><fa-icon size="1x" [icon]="faTag"></fa-icon>FEEDS:</div>
+<mat-list>
+  <ng-template ngFor let-category [ngForOf]="categories">
+    <app-category-item mat-list-item [category]="category"> </app-category-item>
+  </ng-template>
+</mat-list>

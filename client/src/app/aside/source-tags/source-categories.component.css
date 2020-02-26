@@ -1,0 +1,9 @@
+.heading {
+  padding-left: 12px;
+  font-weight: 900;
+  color: #888;
+}
+
+.heading fa-icon {
+  margin-right: 12px;
+}

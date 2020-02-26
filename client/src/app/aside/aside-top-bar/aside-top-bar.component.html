@@ -1,4 +1,10 @@
-<div class="add" (click)="openAddFeedSourceDialog()">
-  <fa-icon size="1x" [icon]="faPlus"></fa-icon>
-  <span>ADD</span>
+<div class="container">
+  <div class="heading">
+    {{ selectedCategoryName }}
+    <fa-icon size="1x" [icon]="faAngleDown"></fa-icon>
+  </div>
+
+  <div class="search-container">
+    <fa-icon class="search-icon" size="1x" [icon]="faSearch"></fa-icon>
+  </div>
 </div>

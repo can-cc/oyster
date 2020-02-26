@@ -1,3 +1,5 @@
+import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 export interface StoreType {
   feed: {
     feedSources: FeedSource[];
@@ -33,4 +35,11 @@ export interface FeedMark {
 export interface CreateFeedSourceInput {
   name: string;
   url: string;
+}
+
+export interface CategoryItemProps {
+  type: 'source' | 'tag';
+  id: string | number;
+  name: string;
+  icon?: IconDefinition;
 }

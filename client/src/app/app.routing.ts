@@ -3,8 +3,6 @@ import {
   Routes,
   RouterModule,
   UrlSegment,
-  UrlSegmentGroup,
-  Route,
   UrlMatchResult
 } from '@angular/router';
 import { LoginPageComponent } from './login-page/login-page.component';
@@ -14,7 +12,7 @@ import { SettingPageComponent } from './setting-page/setting-page.component';
 import { NotificationPageComponent } from './notification-page/notification-page.component';
 
 export function feedsPageMatcher(segments: UrlSegment[]): UrlMatchResult {
-  if (segments[0].path !== 'feed') {
+  if (segments[0].path !== 'tag') {
     return null;
   }
   if (segments.length === 2) {
@@ -41,16 +39,16 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: '/feed/all'
+    redirectTo: '/tag/_all'
   },
   {
     path: 'login',
     component: LoginPageComponent
   },
   {
-    path: 'feed',
+    path: 'tag',
     pathMatch: 'full',
-    redirectTo: '/feed/all'
+    redirectTo: '/tag/_all'
   },
   {
     matcher: feedsPageMatcher,

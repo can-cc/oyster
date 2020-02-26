@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+:host:hover {
+  background-color: #fdad28 !important;
+  color: white;
+}
+
+a {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+  padding: 6px 12px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+a.active {
+  background-color: #fdad28 !important;
+  color: white;
+}
+
+.icon-container {
+  display: inline-block;
+  height: 18px;
+  margin-right: 10px;
+  padding-top: 1px;
+  box-sizing: border-box;
+}
+
+.source-favicon {
+  height: 16px;
+  width: 16px;
+}
+
+.category-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: normal;
+}
