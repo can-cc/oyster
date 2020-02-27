@@ -1,9 +1,0 @@
-- key: oyster
-  title: "oyster"
-  description: >
-    oyster Module
-  fields:
-    - name: oyster
-      type: group
-      description: >
-      fields:
