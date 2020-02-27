@@ -39,15 +39,21 @@ const parseYahaooVersionFeed = (entrys: any[], feed): FeedData[] => {
   );
 };
 
-const parseRSS2 = (entrys: any[], channel: any): FeedData[] =>
+const parseRSS2 = (entrys: any[], parsedObject: any): FeedData[] =>
   entrys.map(
     (entry: any): FeedData => {
       const title = entry.title[0];
       const originHref = entry.link[0];
       const content = entry.description[0];
-      const published = entry.pubDate[0] ? moment(entry.pubDate[0]).toDate() : null;
-      const author = entry.author[0];
-      return { title, originHref, content, publishedDate: published, author };
+      const published = entry.pubDate[0] ? moment.utc(entry.pubDate[0].replace('  ', ' ')).toDate() : null;
+      let author: string;
+      if (R.path(['rss', '$', 'xmlns:dc'], parsedObject) === 'http://purl.org/dc/elements/1.1/') {
+        author = R.path(['dc:creator', 0], entry);
+      } else {
+        author = R.path(['author', 0], entry);
+      }
+      const guid = R.path(['guid', 0, "_"], entry);
+      return { title, originHref, content, publishedDate: published, author, guid };
     }
   );
 
@@ -68,7 +74,7 @@ const checkFeedStandard = (getParsedData: any): 'RSS2' | 'FEED' | 'YAHOO_FEED' |
 };
 
 export async function parseFeedData(rawData: string): Promise<FeedData[]> {
-  const getParsedData: any = await new Promise((resolve, reject) => {
+  const parsedObject: any = await new Promise((resolve, reject) => {
     parseString(rawData, function(err, result) {
       if (err) {
         return reject(rawData);
@@ -77,13 +83,13 @@ export async function parseFeedData(rawData: string): Promise<FeedData[]> {
     });
   });
 
-  switch (checkFeedStandard(getParsedData)) {
+  switch (checkFeedStandard(parsedObject)) {
     case 'RSS2':
-      return R.flatten(parseRSS2(getParsedData.rss.channel[0].item, getParsedData.rss.channel[0]));
+      return R.flatten(parseRSS2(parsedObject.rss.channel[0].item, parsedObject));
     case 'YAHOO_FEED':
-      return R.flatten(parseYahaooVersionFeed(getParsedData.feed.entry, getParsedData.feed)).filter(_ => !!_);
+      return R.flatten(parseYahaooVersionFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
     case 'FEED':
-      return R.flatten(parseFeed(getParsedData.feed.entry, getParsedData.feed)).filter(_ => !!_);
+      return R.flatten(parseFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
     default:
       return [];
   }

@@ -1,17 +1,17 @@
 import { getRepository } from 'typeorm';
 import { Feed } from '../entity/feed';
-import { fetchLogger } from '../logger';
+import { logger } from '../logger';
 
 type Category = 'all' | 'favorite' | string;
 
 class FeedService {
   public async getFeeds({ userId, limit, offset, category }): Promise<Feed[]> {
     switch (category as Category) {
-      case 'all':
+      case '_all':
       case null:
       case undefined:
         return this.getAllFeeds({userId, limit, offset});
-      case 'favorite':
+      case '_favorite':
         return this.getFavoriteFeeds({userId, limit, offset});
       default:
         return this.getSourceFeeds({userId, limit, offset, sourceId: category});

@@ -13,13 +13,14 @@ import { FeedData } from '../typing/feed';
 import { FeedSource } from './feed-source';
 import { FeedMark } from './feed-mark';
 
+// make sure filename `feed.ts`
 @Entity()
 export class Feed {
   @PrimaryGeneratedColumn('uuid')
   public id: string;
 
   @Column({ nullable: true })
-  public rssId: string;
+  public guid: string;
 
   @Column()
   public title: string;
@@ -55,7 +56,7 @@ export class Feed {
     if (!feedData) {
       return;
     }
-    this.rssId = feedData.rssId;
+    this.guid = feedData.guid;
     this.title = feedData.title;
     this.content = feedData.content;
     this.source = feedData.source;

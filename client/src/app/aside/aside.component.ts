@@ -24,7 +24,7 @@ export class AsideComponent implements OnInit {
       })
     );
 
-    sources$.subscribe((sources: FeedSource[]) => {});
+    // sources$.subscribe((sources: FeedSource[]) => {});
 
     combineLatest(sources$, this.route.params).subscribe(([sources, paramsMap]) => {
       this.categories = sources.map((source: FeedSource) => {

@@ -2,6 +2,8 @@ import { FeedSource } from '../entity/feed-source';
 import { getRepository } from 'typeorm';
 import { Observable, BehaviorSubject } from 'rxjs';
 import faviconGrabberService from './favicon-grabber.service';
+const psl = require('psl');
+
 
 class FeedSourceService {
   private sources: FeedSource[];
@@ -35,8 +37,7 @@ class FeedSourceService {
   }
 
   public async saveFeedSource({ name, url }): Promise<FeedSource> {
-    const domain = 'www.ithme.com';
-    const favicon = await faviconGrabberService.getFavicon(domain);
+    const favicon =   await faviconGrabberService.getFavicon(url);
     const feedSource = new FeedSource({ name, url, favicon });
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
     await this.refreshFeedSource();

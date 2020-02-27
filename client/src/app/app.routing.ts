@@ -73,7 +73,7 @@ const routes: Routes = [
       }
     ]
   },
-  { path: '**', redirectTo: '/feed/all' }
+  { path: '**', redirectTo: '/feed/_all' }
 ];
 
 @NgModule({

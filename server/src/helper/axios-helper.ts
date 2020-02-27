@@ -2,10 +2,10 @@ import configure from '../configure';
 import Axios from 'axios';
 
 export function setAxiosGlobalProxy() {
-  if (!configure.getConfig('PROXY_URL')) {
+  if (!configure.getConfig('proxy_url')) {
     return;
   }
-  Axios.defaults.proxy = parseProxyConfig(configure.getConfig('PROXY_URL'));
+  Axios.defaults.proxy = parseProxyConfig(configure.getConfig('proxy_url'));
 }
 
 export function parseProxyConfig(url: string) {

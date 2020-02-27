@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?><rss version="2.0" xml:base="https://ithome.com.tw/latest" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iThome 新聞</title>
+    <link>https://ithome.com.tw/latest</link>
+    <description>iThome 最新新聞</description>
+    <language>zh-hant</language>
+     <atom:link href="https://ithome.com.tw/rss" rel="self" type="application/rss+xml" />
+      <item>
+    <title>結合區塊鏈技術，BlockChain Security推雲端郵件存證與真偽驗證方案</title>
+    <link>https://ithome.com.tw/review/135973</link>
+    <description> 近年來，關於商業電子郵件詐騙（BEC）的威脅不斷發生，一次就為企業帶來數百萬元的損失，因此，過去幾年已有許多郵件安全業者，都在專用的閘道產品中開發BEC相關的防護功能，特別的是，最近我們看到一家以區塊鏈為技術主軸的業者，提出異於以往的作法，那就是由國內新創區塊科技（BlockChain Security）公司推出的ChkSender。
+基本上，它是針對雲端郵件平臺的一項服務，而且是利用電腦上的Chrome瀏覽器外掛模組來執行，強調從使用者端的寄送與接收階段來驗證郵件真偽，原廠並表示將結合全球詐騙情資，以及AI機器學習技術，提供進階防詐能力。現階段，可針對的是Gmail使用者（包含G Suite用戶），目前他們也正開發相容Office 365郵件平臺的應用。</description>
+     <pubDate>2020-02-25  09:02:51</pubDate>
+ <dc:creator>羅正漢</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/review/135973</guid>
+  </item>
+  <item>
+    <title>綁Google Pay的Paypal帳戶遭盜刷，美、德及俄國用戶遭殃</title>
+    <link>https://ithome.com.tw/news/135997</link>
+    <description> 綁Google Pay的Paypal服務出現漏洞，導致美國、德國和俄羅斯多名用戶上周遭到不明人士盜刷購物。</description>
+     <pubDate>2020-02-25  04:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135997</guid>
+  </item>
+  <item>
+    <title>Google發布Android Studio 3.6，可讓開發者操作Google地圖測試App</title>
+    <link>https://ithome.com.tw/news/135994</link>
+    <description> Google釋出了Android開發工具Android Studio 3.6，這是IDE改善計畫Marble專案結束後的第一個版本，3.6版本更新的內容非常多，主要在於改善程式碼編輯和除錯的體驗。開發者現在可以使用XML快速設計應用程式介面，也能用到開發和預覽的新方法。</description>
+     <pubDate>2020-02-25  03:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135994</guid>
+  </item>
+  <item>
+    <title>FBI：以長密詞取代密碼、不應設定密碼變更期間或次數上限</title>
+    <link>https://ithome.com.tw/news/135993</link>
+    <description> 有鑒於密碼難記造成的反效果，FBI建議用戶，最好改用15字元以上的密詞（passphrase）取代複雜的密碼，且不應設定多久變更一次或密碼輸入錯誤幾次就鎖定。</description>
+     <pubDate>2020-02-25  03:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135993</guid>
+  </item>
+  <item>
+    <title>微軟更新Azure Security Center現可偵測Linux上的無檔案攻擊</title>
+    <link>https://ithome.com.tw/news/135991</link>
+    <description> 微軟在Azure Security Center加入對Linux無檔案攻擊的防禦能力，該功能會掃描記憶體中的所有程序，以尋找無檔案攻擊的蹤跡，每次掃瞄花費約5秒鐘時間，目前這項功能還在預覽階段。
+無檔案攻擊是一種惡意程式會試圖隱藏足跡的駭客攻擊手法，常見的方式為攻擊者利用磁碟上的惡意程式，將惡意負載注射到記憶體中，接著將磁碟上的檔案刪除，這技術能大幅減少或是完全消除，磁碟上惡意軟體存在過的痕跡，且降低被磁碟惡意軟體掃描程式偵測到的機會。</description>
+     <pubDate>2020-02-25  01:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135991</guid>
+  </item>
+  <item>
+    <title>Google Cloud釋出Chronicle威脅偵測、企業版reCAPTCHA</title>
+    <link>https://ithome.com.tw/news/135992</link>
+    <description> Google雲端部門周一在RSA大會上宣布多項安全服務，包括更新的Chronicle威脅偵測及時序分析服務、企業版reCAPTCHA，以及偵測不安全網站URL的警示服務。</description>
+     <pubDate>2020-02-25  12:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135992</guid>
+  </item>
+  <item>
+    <title>因應居家檢疫隔離就醫需求，衛福部擴大遠距醫療適用範圍，全臺支援醫院準備好了</title>
+    <link>https://ithome.com.tw/news/135990</link>
+    <description> 隨著武漢肺炎疫情逐漸升溫，衛福部早在2月10日和19日發文，將居家隔離和檢疫民眾的就醫需求，擴大列入通訊診療的適用範圍，讓醫生在醫院可透過電腦、手機或平板上的視訊，來診療，甚至開藥給居家檢疫或隔離的民眾。而各縣市衛生局也展開盤點，募集可提供通訊醫療的醫院診所，最近陸續在各地開始提供這項遠距服務。</description>
+     <pubDate>2020-02-25  12:02:26</pubDate>
+ <dc:creator>王若樸</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135990</guid>
+  </item>
+  <item>
+    <title>企業IT要有顧命之計</title>
+    <link>https://ithome.com.tw/voice/135950</link>
+    <description> 面對武漢肺炎疫情持續延燒，中國許多城市進入封城或封閉式管理的狀態，當地工廠停產、停工，雖然2月10日號稱全面復工，但人員活動、交通運輸、產能均未完全恢復，後續造成交叉感染、大規模感染的風險仍高，除了掌握疫情的最新發展，設法應變，也讓我們重新思考企業營運的韌性（resilience），為此我們特地製作了《武漢肺炎長期抗疫怎麼做？》的封面故事，從企業持續營運（Business Continuity）的角度，探討公司如何在IT做好相關的整備。</description>
+     <pubDate>2020-02-25  09:02:00</pubDate>
+ <dc:creator>李宗翰</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/voice/135950</guid>
+  </item>
+  <item>
+    <title>Visual Studio 2019讓開發者打造團隊專屬的程式碼建議模型</title>
+    <link>https://ithome.com.tw/news/135986</link>
+    <description> 開發者已經可使用Visual Studio 2019 16.5第3預覽版，以團隊的程式碼庫儲存庫，訓練自定義IntelliCode團隊程式碼完成模型，能夠依據團隊的程式開發模式，提供自動完成推薦。</description>
+     <pubDate>2020-02-25  08:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135986</guid>
+  </item>
+  <item>
+    <title>中信銀揭露三大AI發展方向，更攜手臺大研發人臉情緒與微表情識別</title>
+    <link>https://ithome.com.tw/news/135988</link>
+    <description> 擁有900萬客戶的中國信託銀行（簡稱中信銀），如何推翻金融業既有的思維，朝向金融科技化邁進？「中信銀接下來的重點是，把服務與產品更為智能化，並結合生活場景，讓金融產品融入民眾的生活中，而要達到這兩個境界，大數據、AI的應用至關重要。」中國信託銀行總經理陳佳文給出答案。
+為此，中信銀在2018年初正式成立數據研發中心，負責用AI來加值業務場景的服務與產品，在今年初擴大成數據暨科技研發處。而這個負責中信AI研發的團隊，更要將自然語言處理、電腦視覺等研發的能量，延伸到學界，並將研發成果應用在多樣的金融場景。</description>
+     <pubDate>2020-02-25  12:02:57</pubDate>
+ <dc:creator>李靜宜</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135988</guid>
+  </item>
+  <item>
+    <title>Office 365支援臺灣教育雲帳號，250萬中小學生都能快速申請免費教育版</title>
+    <link>https://ithome.com.tw/news/135987</link>
+    <description> 趕在明天國內中小學校開學前夕，教育部宣布和台灣微軟合作，微軟Office 365教育版（A1）串接教育部的教育雲端帳號，讓國內中小學的師生使用教育雲端帳號登入Office 365，免費使用Office及Microsoft Teams，加速中小學的數位學習普及。
+因應武漢肺炎疫情的發展，國內各級學校延後開學，為鼓勵學習不中斷，教育部在2月初集合教育部因材網、臺北市酷課雲、均一教育平台、PaGamO線上學習平台等公私線上學習資源，鼓勵學校老師、學生在延後開學期間，透過這些平臺服務線上學習或自主學習，降低疫情對學習權益的影響。</description>
+     <pubDate>2020-02-24  07:02:26</pubDate>
+ <dc:creator>蘇文彬</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135987</guid>
+  </item>
+  <item>
+    <title>Google釋出可簡單為模型加入公平性限制的函式庫TFCO</title>
+    <link>https://ithome.com.tw/news/135981</link>
+    <description> Google發布了TensorFlow受限最佳化（TensorFlow Constrained Optimization，TFCO）函式庫，這是一個監督式學習函式庫，可用多指標增加機器學習模型的限制，解決模型公平性的問題。</description>
+     <pubDate>2020-02-24  04:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135981</guid>
+  </item>
+  <item>
+    <title>Check Point：Haken惡意程式成功進駐Google Play上的8款Android程式</title>
+    <link>https://ithome.com.tw/news/135983</link>
+    <description> 資安業者Check Point在本周揭露一個新的Android惡意程式家族Haken，它被歸類為「點擊」（clicker）惡意程式，因為它有能力掌控使用者的裝置，並點選任何出現在螢幕上的內容。它成功進駐了Google Play上的8款Android程式，總計有5萬個Android裝置安裝了感染Haken的程式。</description>
+     <pubDate>2020-02-24  04:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135983</guid>
+  </item>
+  <item>
+    <title>麥肯錫研究：2030年時中低頻段5G將觸及80%人口，高頻段覆蓋率只有25%</title>
+    <link>https://ithome.com.tw/news/135982</link>
+    <description> 知名管理顧問公司麥肯錫（McKinsey &amp;amp; Company）最近發表了一研究報告《連網世界：超越5G的連結演進》（Connected World: An evolution in connectivity beyond the 5G evolution），藉由以5G為首所帶動的全球網路連結能力，分析在頻</description>
+     <pubDate>2020-02-24  03:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135982</guid>
+  </item>
+  <item>
+    <title>乙太坊程式語言Nim社群建議：請官方優先修臭蟲、完善說明文件</title>
+    <link>https://ithome.com.tw/news/135971</link>
+    <description> 用來開發Ethereum 2.0分片客戶端Nimbus的程式語言Nim，其官方對社群進行了大調查，以了解社群整體狀況。Nim語言的開發，可以回溯到2005年，Andreas Rumpf開始了這個專案，到了2008年Nim已經可以自我編譯，不過，一直到去年9月的時候，才終於發布了正式版本1.0，Nim的發展受多種語言影響，具C、Python和Lisp等語言的優點，其執行速度跟C一樣快速，程式碼可讀性與Python不相上下，而可擴充性則與Lisp一樣靈活。</description>
+     <pubDate>2020-02-24  03:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135971</guid>
+  </item>
+  <item>
+    <title>Google警告華為用戶勿側載Gmail、YouTube等App</title>
+    <link>https://ithome.com.tw/news/135980</link>
+    <description> 去年Google中止了提供華為手機Android 及Google服務套件授權。或許鋌而走險的用戶太多，Google上周再次呼籲用戶為免安全風險，不要側載Gmail、YouTube、Google Maps等Google App。</description>
+     <pubDate>2020-02-24  03:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135980</guid>
+  </item>
+  <item>
+    <title>Alphabet、軟銀、電信業者共組HAPS聯盟以推動高空通訊</title>
+    <link>https://ithome.com.tw/news/135979</link>
+    <description> 包括Alphabet、軟銀、Nokia、Ericsson等科技業者，AeroVironment、Airbus Defence and Space，與Bharti Airtel Limited等航空業者，以及中國電信、德意志電信與西班牙電信等電信業者，在上周宣布成立HAPS聯盟（HAPS Alliance），以共同推動在地球的平流層透過高空飛行器來提供通訊服務，以消弭全球的數位落差。</description>
+     <pubDate>2020-02-24  03:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135979</guid>
+  </item>
+  <item>
+    <title>Safari 9月1日起將拒絕效期超過398天的新網站SSL憑證</title>
+    <link>https://ithome.com.tw/news/135978</link>
+    <description> 蘋果於上周宣布，自9月1日起，Safari瀏覽器將不再接受憑證效期超過398天的新網站憑證。</description>
+     <pubDate>2020-02-24  02:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135978</guid>
+  </item>
+  <item>
+    <title>Canalys：受武漢肺炎衝擊，2020年全球PC出貨可能重跌近8.5%</title>
+    <link>https://ithome.com.tw/news/135972</link>
+    <description> 受到武漢肺炎（COVID-19）疫情擴散，IT分析機構Canalys預估，2020年全年的全球PC出貨量，可能最多衰退8.5% 。
+武漢肺炎感染情形在全球各地蔓延，特別在中國導致消費者購物意願大跌、工廠停工及原料商品運輸備受管制。Canalys認為，依據全球疫情控制及中國復工情形所需時間長短，針對PC業今年出貨做出樂觀與悲觀預測。其中又以PC生產製造、通路運作及消費者需求能否快速回穩，為最重要因素。</description>
+     <pubDate>2020-02-24  02:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135972</guid>
+  </item>
+  <item>
+    <title>IE記憶體毁損漏洞傳有攻擊發生，迫使微軟對Windows 7發出例外修補</title>
+    <link>https://ithome.com.tw/news/135970</link>
+    <description> 微軟Internet Explorer（IE）瀏覽器一項記憶體毁損漏洞，可能引發遠端程式碼執行，並已傳出有攻擊碼流傳，促使微軟對Windows發出修補程式，包括已不支援的Windows 7及Windows Server 2008。
+編號CVE-2020-0674的漏洞，存在於IE JavaScript腳本引擎（scripting engine）記憶體處理物件的過程中。攻擊者可以誘使用戶連上有惡意內容的網站或點選App觸發，造成電腦記憶體毁損，藉此取得用戶相同權限。如果用戶具備管理員權限，則攻擊者就可以接管該電腦，進而安裝程式、執行任意程式碼，或是修改、變更及刪除資料，及新增用戶帳號。</description>
+     <pubDate>2020-02-24  01:02:00</pubDate>
+ <dc:creator>林妍溱</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135970</guid>
+  </item>
+  <item>
+    <title>研究：7家BLE系統單晶片的SDK含有眾多安全漏洞</title>
+    <link>https://ithome.com.tw/news/135969</link>
+    <description> 新加坡科技設計大學近日揭露了，藏匿在低功耗藍牙（Bluetooth Low Energy，BLE）軟體開發套件（SDK）中的12個安全漏洞，並把它們統稱為SweynTooth漏洞，涉及多家業者所生產的BLE系統單晶片，可能造成採用BLE技術的IoT裝置當機、鎖死或允許駭客繞過安全機制，至少有480款IoT裝置受到影響。</description>
+     <pubDate>2020-02-24  01:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135969</guid>
+  </item>
+  <item>
+    <title>歐盟警方提議建立泛歐人臉辨識資料庫</title>
+    <link>https://ithome.com.tw/news/135968</link>
+    <description> The Intercept近日取得了歐盟的內部文件，顯示歐盟可能很快就會建立一個泛歐的人臉辨識資料庫，除了專供歐盟國家的警方使用之外，也可能與美國分享。
+該專案主要是由奧地利的警方主導，而且總計已取得10個歐盟國家的認同，希望每個歐盟會員國能夠共享人臉辨識資料庫，還呼籲歐洲刑警組織（Europol）出面，促成歐盟與其它非歐盟國家的生物辨識資料交換，例如美國。</description>
+     <pubDate>2020-02-24  12:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135968</guid>
+  </item>
+  <item>
+    <title>AWS Lambda也支援承諾用量打折計畫了</title>
+    <link>https://ithome.com.tw/news/135961</link>
+    <description> AWS Lambda函式消耗的計算時間，提供更多折扣模式，支援AWS承諾使用節省計畫（Savings Plans）。承諾使用節省計畫是一種彈性定價模式，當使用者承諾在一到三年間，使用一定數量AWS運算服務，則可以得到一定比例的折扣。
+Lambda是AWS的無伺服器運算服務，可讓用戶以簡單的方式建立後端服務，而不需要自行維護伺服器，並能在流量上升時，自動擴展規模。</description>
+     <pubDate>2020-02-24  12:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135961</guid>
+  </item>
+  <item>
+    <title>Qt開發者將可用Visual Studio開發Linux專案</title>
+    <link>https://ithome.com.tw/news/135960</link>
+    <description> 熱門的跨平臺應用程式開發和使用者介面設計框架Qt，計畫在Visual Studio工具擴充套件中，開始支援Linux專案。微軟提到，這項工作奠基於Qt對MSBuild Windows專案的支援，可讓開發者在Windows和Linux上，都可建置和執行Qt專案。</description>
+     <pubDate>2020-02-24  12:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135960</guid>
+  </item>
+  <item>
+    <title>Google從Play商店刪除600個廣告詐欺App</title>
+    <link>https://ithome.com.tw/news/135957</link>
+    <description> Google開發了全新應用機器學習技術的應用程式廣告偵測技術，從Google Play商店中刪除了將近600個違反中斷性廣告政策的應用程式，並從AdMob和Ad Manager等獲利平臺封鎖這些帳號，而這是Google近期打擊中斷性行動廣告和廣告詐欺的行動之一。</description>
+     <pubDate>2020-02-24  12:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135957</guid>
+  </item>
+  <item>
+    <title>Netgear推出兩款PoE++交換器，網路埠可提供60瓦電力</title>
+    <link>https://ithome.com.tw/review/135965</link>
+    <description> 隨著智慧建築、智慧家庭等應用的崛起，若要簡化各種相關設備的連網與供電部署，許多人會考慮建置PoE（Power over Ethernet）的環境，而這樣的需求也影響了園區式網路交換器的規格，市面上，有不少產品提供支援PoE的網路埠。然而，這些埠能供應的電力大小，取決於支援的PoE標準，目前可區分為3種：802.3af（PoE）、802.3at（PoE+）、802.3bt（PoE++），最大供應電力分別是15.4瓦、30瓦、60瓦。</description>
+     <pubDate>2020-02-24  10:02:52</pubDate>
+ <dc:creator>李宗翰</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/review/135965</guid>
+  </item>
+  <item>
+    <title>本是同根生！以新版Edge造訪Chrome Store會被推銷Chrome</title>
+    <link>https://ithome.com.tw/news/135964</link>
+    <description> Windows Latest最近發現，當民眾以微軟基於Chromium的新版Microsoft Edge瀏覽器，造訪Chrome Web Store時，會跳出一個警告，建議使用者切換至Chrome，才能更安全地使用Chrome擴充程式，並附上一個下載Chrome瀏覽器的連結。</description>
+     <pubDate>2020-02-23  09:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135964</guid>
+  </item>
+  <item>
+    <title>瑞士最高法院：在臉書上按讚或分享違法文章可能觸法</title>
+    <link>https://ithome.com.tw/news/135963</link>
+    <description> 有一名瑞士男子在2015年於臉書上，針對批評動物保護人士Erwin Kessler的文章按讚及分享，之後便被告上法院，2016年時瑞士地方法院判決被告誹謗，並判罰4千瑞士法郎（4,100美元），被告之後上訴至高等及最高法院，瑞士最高法院在本周宣布維持原判。
+相關的誹謗文章攻擊Kessler是反猶太人、新納粹主義者，被告雖非文章作者，但按讚並分享了相關文章。</description>
+     <pubDate>2020-02-23  09:02:00</pubDate>
+ <dc:creator>陳曉莉</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135963</guid>
+  </item>
+  <item>
+    <title>Clojure 2020大調查：用於企業應用程式開發比例上升</title>
+    <link>https://ithome.com.tw/news/135953</link>
+    <description> 程式語言Clojure官方對Clojure的使用狀態進行調查，釋出了2020年的報告，他們發現，Clojure的使用分布有一些改變，被用在工作的比例上升，而且使用Clojure的企業規模分布也發生變化，擁有千名員工以上的公司使用Clojure的比例，上升了3％，而員工人數只有1到10人的企業，使用比例縮減。</description>
+     <pubDate>2020-02-23  08:02:00</pubDate>
+ <dc:creator>李建興</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/news/135953</guid>
+  </item>
+  <item>
+    <title>麗臺整合Nvidia GPU與深度學習軟體套件，新款AI工作站上陣</title>
+    <link>https://ithome.com.tw/review/135842</link>
+    <description> 企業若要在內部環境當中，開發深度學習、人工智慧的應用，需仰賴高性能的電腦或伺服器，並且搭配GPU、FPGA、VPU、TPU加速裝置，而就個人端的工作環境而言，市面上，已有一些搭配GPU、打著AI Workstation旗幟的產品。</description>
+     <pubDate>2020-02-22  04:02:04</pubDate>
+ <dc:creator>李宗翰</dc:creator>
+ <guid isPermaLink="true">https://ithome.com.tw/review/135842</guid>
+  </item>
+  </channel>
+</rss>
+220.130.119.130

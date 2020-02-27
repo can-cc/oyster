@@ -3,8 +3,7 @@
   <mat-list-item
     matRipple
     routerLinkActive="active"
-    [routerLink]="'/feed/' + categoryId + '/' + feed.id"
-    matRippleColor="rgba(79, 157, 244, 0.4)"
+    [routerLink]="'/tag/' + categoryId + '/' + feed.id"
     *ngFor="let feed of feeds; let i = index; trackBy: trackByFeed"
   >
     <app-article-avatar [feed]="feed"></app-article-avatar>

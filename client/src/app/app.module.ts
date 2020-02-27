@@ -1,5 +1,5 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable, ErrorHandler } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -63,7 +63,6 @@ import { AsideComponent } from './aside/aside.component';
 import { AsideTopBarComponent } from './aside/aside-top-bar/aside-top-bar.component';
 import { CategoryItemComponent } from './aside/category-item/category-item.component';
 import { FeedListItemImagePreviewComponent } from './feed-list/feed-list-item-image-preview/feed-list-item-image-preview.component';
-import { SettingModalComponent } from './setting-modal/setting-modal.component';
 import { AddFeedSourceModalComponent } from './add-feed-source-modal/add-feed-source-modal.component';
 import { ArticlePreviewToolbarComponent } from './article-preview/article-preview-toolbar/article-preview-toolbar.component';
 import { ButtonComponent } from './component/button/button.component';
@@ -74,6 +73,23 @@ import { FieldMessageComponent } from './component/field-message/field-message.c
 import { AsideFooterComponent } from './aside/aside-footer/aside-footer.component';
 import { DefaultTagsComponent } from './aside/default-tags/default-tags.component';
 import { SourceCategoriesComponent } from './aside/source-tags/source-categories.component';
+import { environment } from '../environments/environment';
+import * as Sentry from '@sentry/browser';
+
+if (environment.oysterWebSentryDsn) {
+  Sentry.init({
+    dsn: 'https://0b1dba4815ac464980cad6f53c2f4ace@sentry.chenfangwei.xyz/6'
+  });
+}
+
+@Injectable()
+export class SentryErrorHandler implements ErrorHandler {
+  constructor() {}
+  handleError(error) {
+    Sentry.captureException(error.originalError || error);
+    console.error(error);
+  }
+}
 
 @NgModule({
   declarations: [
@@ -98,7 +114,6 @@ import { SourceCategoriesComponent } from './aside/source-tags/source-categories
     AsideTopBarComponent,
     CategoryItemComponent,
     FeedListItemImagePreviewComponent,
-    SettingModalComponent,
     AddFeedSourceModalComponent,
     ArticlePreviewToolbarComponent,
     ButtonComponent,
@@ -110,7 +125,7 @@ import { SourceCategoriesComponent } from './aside/source-tags/source-categories
     DefaultTagsComponent,
     SourceCategoriesComponent
   ],
-  entryComponents: [PingDialogComponent, AddFeedSourceModalComponent, SettingModalComponent],
+  entryComponents: [PingDialogComponent, AddFeedSourceModalComponent],
   imports: [
     CoreModule.forRoot(),
     StoreModule.forRoot({ feed: feedReducer }),
@@ -151,8 +166,13 @@ import { SourceCategoriesComponent } from './aside/source-tags/source-categories
     },
     {
       provide: MAT_RIPPLE_GLOBAL_OPTIONS,
-      useValue: {}
+      useValue: {
+        color: '#00ff00' // not work?
+      }
     },
+    ...(environment.oysterWebSentryDsn
+      ? [{ provide: ErrorHandler, useClass: SentryErrorHandler }]
+      : []),
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [AppComponent]

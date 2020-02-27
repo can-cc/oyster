@@ -1,7 +1,7 @@
 import configure from '../configure';
 import * as redis from 'redis';
 import * as bloom from 'bloom-redis';
-import { logger, fetchLogger } from '../logger';
+import { logger } from '../logger';
 import webPushService from '../service/web-push.service';
 import feedService from './feed.service';
 import { FeedSource } from '../entity/feed-source';
@@ -21,16 +21,16 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
         concatMap(s => {
           return of(s).pipe(
             mergeMap(async source => {
-              fetchLogger.info(`fetch source`, {
+              logger.info(`fetch source`, {
                 sourceName: source.name,
                 time: new Date()
               });
-              fetchLogger.info(`fetching source [url] = ${source.url}`);
+              logger.info(`fetching source [url] = ${source.url}`);
               const feedRawData = await (await fetch(source.url)).text();
               return { source, feedRawData };
             }),
             catchError((error, caught) => {
-              fetchLogger.error(`fetch failure in interval : ${error}`);
+              logger.error(`fetch failure in interval : ${error}`);
               return empty();
             })
           );
@@ -49,10 +49,10 @@ function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
     const feed$ = loop(feedSources);
     const subscription = feed$.subscribe(async (result: FeedResult) => {
       try {
-        const feedDatas: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({ ...f, source: result.source }));
-        observer.next(feedDatas);
+        const feedDataList: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({ ...f, source: result.source }));
+        observer.next(feedDataList);
       } catch (error) {
-        fetchLogger.error(`parse and save feed error. ${error}`);
+        logger.error(`[parse and save feed error] `, error);
       }
     });
     return () => subscription.unsubscribe();
@@ -82,7 +82,7 @@ class FeedFetcher {
               const feed: Feed = new Feed(feedData);
               if (!(await this.isFeedExist(feed))) {
                 await this.handleParsedFeedData(feed);
-                fetchLogger.info(`feed saved`, {
+                logger.info(`feed saved`, {
                   id: feed.id,
                   title: feed.title,
                   sourceName: feedData.source.name,
@@ -94,7 +94,7 @@ class FeedFetcher {
         );
       });
     } catch (error) {
-      fetchLogger.error(error);
+      logger.error(error);
     }
   }
 

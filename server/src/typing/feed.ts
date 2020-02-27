@@ -1,8 +1,8 @@
 import { FeedSource } from '../entity/feed-source';
 
 export interface FeedData {
-  id?: string;
-  rssId?: string;
+  id?: string; // TODO remove
+  guid?: string;
   title: string;
   content: string;
   originHref: string;

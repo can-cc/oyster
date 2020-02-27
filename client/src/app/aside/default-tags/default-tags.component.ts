@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faListUl, faCircleNotch, faClock, faBoxes } from '@fortawesome/free-solid-svg-icons';
+import { faListUl, faCircleNotch, faClock, faBoxes, faStar } from '@fortawesome/free-solid-svg-icons';
 import { CategoryItemProps } from '../../../typing/feed';
 
 const tags: CategoryItemProps[] = [
@@ -17,16 +17,17 @@ const tags: CategoryItemProps[] = [
   },
   {
     type: 'tag',
-    id: '_recently',
-    name: 'Recently Read',
-    icon: faCircleNotch
+    id: '_favorite',
+    name: 'Favorite',
+    icon: faStar
   },
   {
     type: 'tag',
     id: '_updated',
     name: 'Updated',
     icon: faClock
-  }
+  },
+
 ];
 
 @Component({

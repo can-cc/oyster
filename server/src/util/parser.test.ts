@@ -31,7 +31,7 @@ test('test reddit parser(FEED)', async () => {
   expect(feeds.length).toEqual(26);
 });
 
-test('test reddit parser(RSS)', async () => {
+test('test reddit parser(RSS2)', async () => {
   const mockXmlData = fs.readFileSync(path.join(__dirname, './__mock_data__/_mock_dingxiangyisheng.xml'), 'utf-8');
   const feeds: FeedData[] = await parseFeedData(mockXmlData);
 
@@ -41,4 +41,18 @@ test('test reddit parser(RSS)', async () => {
   expect(feeds[0].author).toEqual('丁香医生');
   expect(feeds[0].publishedDate).toEqual(new Date('2019-12-25T09:24:23.000Z'));
   expect(feeds.length).toEqual(20);
+});
+
+test('test ithome parser(RSS2)', async () => {
+  const mockXmlData = fs.readFileSync(path.join(__dirname, './__mock_data__/_mock_ithome.xml'), 'utf-8');
+  const feeds: FeedData[] = await parseFeedData(mockXmlData);
+
+  expect(feeds[0].content.length).toEqual(333);
+  expect(feeds[0].originHref).toEqual('https://ithome.com.tw/review/135973');
+  expect(feeds[0].guid).toEqual('https://ithome.com.tw/review/135973');
+  expect(feeds[0].title).toEqual('結合區塊鏈技術，BlockChain Security推雲端郵件存證與真偽驗證方案');
+  expect(feeds[0].author).toEqual('羅正漢');
+  expect(feeds[0].publishedDate).toEqual(new Date('2020-02-25T09:02:51.000Z'));
+
+  expect(feeds.length).toEqual(30);
 });

@@ -1,7 +1,10 @@
 <div
   class="article-avatar"
-  [style.backgroundColor]="hasImage ? 'transparent' : bgColor"
+  [style.backgroundColor]="bgColor"
 >
   <div class="source-name">{{ feed.source.name }}</div>
-  <img #image *ngIf="hasImage" [src]="imgSrc" (error)="hasImage = false" />
+  <img
+    class="source-favicon"
+    [src]="'/api/feed-source/' + feed.source.id + '/favicon'"
+  />
 </div>

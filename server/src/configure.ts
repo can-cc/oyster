@@ -4,8 +4,8 @@ import * as fs from 'fs';
 import * as R from 'ramda';
 
 class Configure {
-  private config: { [key: string]: string; SECRET_KEY: string };
-  
+  private config: { [key: string]: string };
+
   constructor() {
     const configDoc: any = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../config/config.yaml'), 'utf8'));
 

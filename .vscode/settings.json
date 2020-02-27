@@ -1,3 +1,7 @@
 {
-    "python.pythonPath": "C:\\Users\\chenf\\AppData\\Local\\Programs\\Python\\Python37\\python3.exe"
+    "python.pythonPath": "C:\\Users\\chenf\\AppData\\Local\\Programs\\Python\\Python37\\python3.exe",
+    "cSpell.words": [
+        "arraybuffer",
+        "favicon"
+    ]
 }

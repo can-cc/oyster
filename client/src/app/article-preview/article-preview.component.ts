@@ -3,8 +3,6 @@ import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 import { Feed } from '../../typing/feed';
-import { FeedMarkService } from '../core/feed-mark.service';
-import { MarkFeedFavorite, RemoveFeedMark } from '../state/feed.actions';
 
 @Component({
   selector: 'app-article-preview',
@@ -47,8 +45,6 @@ export class ArticlePreviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {}
-
-
 
   ngOnDestroy() {
     this.complete$.next();

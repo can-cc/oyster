@@ -48,6 +48,6 @@ docker exec -it [container name]  sudo -u postgres psql
 su - postgres && psql
 ```
 
-## Proxy
+## Proxy (Experimental)
 just set `HTTP_PROXY` and `HTTPS_PROXY`env in shell (linux or mac).
-Or set `PROXY_URL` in `config.yaml`
+Or set `proxy_url` in `config.yaml`

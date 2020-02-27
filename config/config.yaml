@@ -15,4 +15,4 @@ POSTGRES_DB: "oyster"
 VAPID_DETAIL_EMAIL: 'me@oyster'
 
 # set proxy url
-# PROXY_URL: "127.0.0.1:8888"
+# proxy_url: "http://127.0.0.1:8888"

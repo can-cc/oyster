@@ -7,7 +7,7 @@ feedSourceFaviconRouter.get('/feed-source/:sourceID/favicon', async (req, res, n
   try {
     const favicon = await feedSourceService.getFeedSourceFavicon(req.params.sourceID);
     feedSourceService
-    return res.status(200).send(favicon);
+    return res.status(200).header('Cache-Control', 'public,max-age=86400').send(favicon);
   } catch (error) {
     next(error);
   }

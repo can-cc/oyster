@@ -22,12 +22,10 @@ export class ArticlePreviewInfoAreaComponent implements OnInit {
     window.open(this.feed.originHref, '_blank');
   }
 
-  public onSpecClick():void {
+  public onSpecClick(): void {
     this.specClickCount++;
     if (this.specClickCount > 4) {
       this.showExtraInfo = true;
     }
   }
-
-
 }
