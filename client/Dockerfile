@@ -1,4 +1,4 @@
-FROM node:8.9.0-alpine as builder
+FROM node:12.14.0-stretch as builder
 
 # COPY package.json package-lock.json ./
 
