@@ -28,7 +28,7 @@ services:
       - server:server
   server:
     restart: always
-    image: fwchen/oyster-server:1.0.3
+    image: fwchen/oyster-server:latest
     networks: 
       - oyster
     volumes:
