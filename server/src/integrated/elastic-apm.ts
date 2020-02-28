@@ -7,7 +7,8 @@ export function startApmIfConfigured() {
   var apm = require('elastic-apm-node').start({
     serviceName: configure.getConfig('apm_service_name'),
     secretToken: configure.getConfig('apm_secret_token'),
-    serverUrl: configure.getConfig('apm_server_url')
+    serverUrl: configure.getConfig('apm_server_url'),
+    environment: configure.getConfig('apm_server_environment')
   });
   return apm;
 }
