@@ -5,7 +5,7 @@ services:
     image: redis
     command: redis-server --appendonly yes
     volumes:
-      - ./redis:/data
+      - ./docker-data/redis:/data
     networks: 
       - oyster
   # postgres:
@@ -31,10 +31,6 @@ services:
     image: fwchen/oyster-server:1.0.3
     networks: 
       - oyster
-    environment:
-      REDIS_HOST: redis
-      POSTGRES_HOST: postgres
-      VAPID_DETAIL_EMAIL: ${VAPID_DETAIL_EMAIL}
     volumes:
       - ./config:/config
       - ./log:/log
