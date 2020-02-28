@@ -130,4 +130,5 @@ class FeedFetcher {
     return feed.source.name + feed.title + feed.content;
   }
 }
+
 export default new FeedFetcher();

@@ -19,6 +19,7 @@
     "bloom-redis": "0.0.1",
     "body-parser": "^1.18.2",
     "colors": "^1.2.1",
+    "elastic-apm-node": "^3.4.0",
     "es6-promise": "^4.2.5",
     "express": "^4.16.3",
     "express-useragent": "^1.0.12",
@@ -43,6 +44,7 @@
     "web-push": "^3.3.0",
     "winston": "^3.2.1",
     "winston-daily-rotate-file": "^4.4.2",
+    "winston-elasticsearch": "^0.8.4",
     "xml2js": "^0.4.22"
   },
   "devDependencies": {

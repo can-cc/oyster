@@ -1,6 +1,6 @@
 SECRET_KEY: oyster # !IMPORTANT please replace this key
 JWT_EXP: 2592000 # 30d
-FEED_FILE_PATH: 'config/feeds.yml'
+FEED_FILE_PATH: "config/feeds.yml"
 
 # redis
 REDIS_HOST: "localhost"
@@ -12,7 +12,17 @@ POSTGRES_USERNAME: "postgres"
 POSTGRES_PASSWORD: "mysecretpassword"
 POSTGRES_DB: "oyster"
 
-VAPID_DETAIL_EMAIL: 'me@oyster'
-
+VAPID_DETAIL_EMAIL: "me@oyster"
 # set proxy url
 # proxy_url: "http://127.0.0.1:8888"
+
+# elasticsearch log
+# elasticsearch_index: 'oyster_server_dev'
+# elasticsearch_node: 'http://localhost:9200'
+# elasticsearch_auth_username: 'oyster'
+# elasticsearch_auth_password: 'oyster_pw'
+
+# elastic apm
+# apm_service_name: 'oyster_dev'
+# apm_secret_token: '**********'
+# apm_server_url: 'http:/localhost:8200'

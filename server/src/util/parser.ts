@@ -52,8 +52,8 @@ const parseRSS2 = (entrys: any[], parsedObject: any): FeedData[] =>
       } else {
         author = R.path(['author', 0], entry);
       }
-      const guid = R.path(['guid', 0, "_"], entry);
-      return { title, originHref, content, publishedDate: published, author, guid };
+      const guid = R.path(['guid', 0, '_'], entry);
+      return { title, originHref, content, publishedDate: published, author, globalID: guid };
     }
   );
 

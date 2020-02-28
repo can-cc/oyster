@@ -6,13 +6,17 @@ import webPushService from './service/web-push.service';
 import { getPostgresConfig } from './util/db-config';
 import * as colors from 'colors';
 import { setAxiosGlobalProxy } from './helper/axios-helper';
+import { startApmIfConfigured } from './integrated/elastic-apm';
 
 function main() {
+  startApmIfConfigured();
+
   setAxiosGlobalProxy();
   const dbConfig = getPostgresConfig();
+
   createConnection(dbConfig)
     .then(() => {
-      console.log(colors.yellow(`connect postgres ${dbConfig.host}:5432/${dbConfig.database}`))
+      console.log(colors.yellow(`connect postgres ${dbConfig.host}:5432/${dbConfig.database}`));
       console.log('database connection successful.');
 
       feedFetcherService.pollFetch().then();

@@ -49,7 +49,7 @@ test('test ithome parser(RSS2)', async () => {
 
   expect(feeds[0].content.length).toEqual(333);
   expect(feeds[0].originHref).toEqual('https://ithome.com.tw/review/135973');
-  expect(feeds[0].guid).toEqual('https://ithome.com.tw/review/135973');
+  expect(feeds[0].globalID).toEqual('https://ithome.com.tw/review/135973');
   expect(feeds[0].title).toEqual('結合區塊鏈技術，BlockChain Security推雲端郵件存證與真偽驗證方案');
   expect(feeds[0].author).toEqual('羅正漢');
   expect(feeds[0].publishedDate).toEqual(new Date('2020-02-25T09:02:51.000Z'));

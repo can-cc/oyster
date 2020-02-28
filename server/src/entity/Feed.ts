@@ -20,7 +20,7 @@ export class Feed {
   public id: string;
 
   @Column({ nullable: true })
-  public guid: string;
+  public globalID: string;
 
   @Column()
   public title: string;
@@ -56,7 +56,7 @@ export class Feed {
     if (!feedData) {
       return;
     }
-    this.guid = feedData.guid;
+    this.globalID = feedData.globalID;
     this.title = feedData.title;
     this.content = feedData.content;
     this.source = feedData.source;
