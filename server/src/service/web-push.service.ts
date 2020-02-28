@@ -1,6 +1,6 @@
 import * as htmlToText from 'html-to-text';
 import { logger } from '../logger';
-import { Feed } from '../entity/feed';
+import { Feed } from '../entity/feed2';
 import { WebPushNotification } from '../typing/notification';
 import configure from '../configure';
 import * as webpush from 'web-push';

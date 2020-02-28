@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Feed } from './feed';
+import { Feed } from './feed2';
 
 @Entity()
 export class FeedSource {

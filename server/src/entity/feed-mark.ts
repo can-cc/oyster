@@ -9,7 +9,7 @@ import {
   Unique,
   Index
 } from 'typeorm';
-import { Feed } from './feed';
+import { Feed } from './feed2';
 import { User } from './app-user';
 
 @Entity()
