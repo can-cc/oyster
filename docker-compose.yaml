@@ -5,32 +5,32 @@ services:
     image: redis
     command: redis-server --appendonly yes
     volumes:
-      - ~/docker-data/redis:/data
+      - ./redis:/data
     networks: 
-      - app
-  postgres:
+      - oyster
+  # postgres:
+  #   restart: always
+  #   image: postgres:11.5
+  #   networks: 
+  #     - app
+  #   environment:
+  #     POSTGRES_PASSWORD: mysecretpassword
+  #   volumes:
+  #     - ~/docker-data/pgdata:/var/lib/postgresql/data
+  web:
     restart: always
-    image: postgres:11.5
-    networks: 
-      - app
-    environment:
-      POSTGRES_PASSWORD: mysecretpassword
-    volumes:
-      - ~/docker-data/pgdata:/var/lib/postgresql/data
-  nginx:
-    restart: always
-    image: fwchen/oyster-client:latest
+    image: fwchen/oyster-web:latest
     ports:
       - "8070:80"
     networks: 
-      - app
+      - oyster
     links:
-      - backend:backend
-  backend:
+      - server:server
+  server:
     restart: always
     image: fwchen/oyster-server:1.0.3
     networks: 
-      - app
+      - oyster
     environment:
       REDIS_HOST: redis
       POSTGRES_HOST: postgres
@@ -38,23 +38,8 @@ services:
     volumes:
       - ./config:/config
       - ./log:/log
-    depends_on:
-      - postgres
-  backup:
-    restart: always
-    image: fwchen/postgreseafile-backup:latest
-    links:
-      - postgres:postgres
-    networks: 
-      - app
-    environment:
-      BACKUP_HOST: postgres
-      PGPASSWORD: mysecretpassword
-      SEAFILE_API: ${SEAFILE_API}
-      BACKUP_TIME: ${BACKUP_TIME}
-      SEAFILE_TOKEN: ${SEAFILE_TOKEN}
-    depends_on:
-      - postgres
+    # depends_on:
+    #   - postgres
 
 networks:
-  app:
+  oyster:
