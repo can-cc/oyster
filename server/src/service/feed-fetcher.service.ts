@@ -5,7 +5,7 @@ import { logger } from '../logger';
 import webPushService from '../service/web-push.service';
 import feedService from './feed.service';
 import { FeedSource } from '../entity/feed-source';
-import { Feed } from '../entity/feed2';
+import { Feed } from '../entity/feed';
 import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
 import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements, tap } from 'rxjs/operators';
