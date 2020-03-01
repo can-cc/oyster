@@ -78,7 +78,7 @@ import * as Sentry from '@sentry/browser';
 
 if (environment.oysterWebSentryDsn) {
   Sentry.init({
-    dsn: 'https://0b1dba4815ac464980cad6f53c2f4ace@sentry.chenfangwei.xyz/6'
+    dsn: environment.oysterWebSentryDsn
   });
 }
 

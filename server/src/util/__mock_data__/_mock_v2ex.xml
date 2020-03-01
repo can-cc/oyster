@@ -1,0 +1,932 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+<title>V2EX - 技术</title>
+<subtitle>way to explore</subtitle>
+
+
+<link rel="alternate" type="text/html" href="https://www.v2ex.com/" />
+<link rel="self" type="application/atom+xml" href="https://www.v2ex.com/feed/tab/tech.xml" />
+<id>https://www.v2ex.com/</id>
+
+<updated>2020-03-01T08:25:08Z</updated>
+
+<rights>Copyright © 2010-2018, V2EX</rights>
+<entry>
+	<title>大家会去 stackoverflow 回答问题吗？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648847#reply5" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648847</id>
+	<published>2020-03-01T08:03:04Z</published>
+	<updated>2020-03-01T08:25:08Z</updated>
+	<author>
+		<name>wxd92</name>
+		<uri>https://www.v2ex.com/member/wxd92</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	我们经常性的搜索问题会去 stackoverflow, 好奇 大家有没有习惯去上面回答问题？就像习惯性的在 V2EX 回答问题
+	]]></content>
+</entry><entry>
+	<title>最近自底向上学习网络模型，看到 TCP 层经常有人提到&#34;粘包&#34;，我笑了</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648625#reply74" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648625</id>
+	<published>2020-02-29T07:52:34Z</published>
+	<updated>2020-03-01T08:22:49Z</updated>
+	<author>
+		<name>asilin</name>
+		<uri>https://www.v2ex.com/member/asilin</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>那些探讨所谓 TCP 层“粘包”问题的同学们，你们为什么不问问他的兄弟第一层的“物理层”，是如何在物理介质里面处理载波信号的“粘包”的？</p>
+<p>对于网络基础同学比较扎实的同学，就应该知道所谓的 TCP“粘包”是不存在的，数据要在 TCP 层流式传播，首先就应该做好“表示层”的边界定位工作，而且数据本身就应该是结构化的。</p>
+<p>大部分探讨“粘包”问题的案例，都是直接 nc 一个 TCP 端口，开始灌入 ASCII 码文本，但数据的传输并不是这么用的，就算在 C 语言里面，复杂数据也得用结构体来存储吧，就算是 HTTP，也使用了“\r\n”来进行分隔，你就直接往里面灌，能不出现问题嘛。</p>
+
+	]]></content>
+</entry><entry>
+	<title>springcloud 全家桶 or springcloud alibaba?</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648848#reply1" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648848</id>
+	<published>2020-03-01T08:06:17Z</published>
+	<updated>2020-03-01T08:22:42Z</updated>
+	<author>
+		<name>kaigong</name>
+		<uri>https://www.v2ex.com/member/kaigong</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>公司既有的碎片化服务群准备微服务化。原有项目大部分都是 springboot1.5 左右。用 springcloud 全家桶，担心现在核心的 netfix 的组件已经闭源不在维护了，后面遇到问题无法解决。用 alibaba 那套呢，现在看，社区倒是挺活跃的，但是不了解稳定性怎么样？现在用的多不多。第二，担心被阿里劫持，不得不使用他的商业云服务。请大家说说自己的看法？</p>
+
+	]]></content>
+</entry><entry>
+	<title>据说最近电报群比较火，索性申请了一个电报群的聊天机器人，用 Golang 玩了它一下 ：)</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648799#reply12" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648799</id>
+	<published>2020-03-01T04:11:07Z</published>
+	<updated>2020-03-01T08:20:34Z</updated>
+	<author>
+		<name>outmanone</name>
+		<uri>https://www.v2ex.com/member/outmanone</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>Telegram 的聊天机器人一直比较有特色，每个人都可以申请并创建属于自己的聊天机器人。可以和它私聊，也可以把它加到群组里面和其他群友聊天。想详细了解电报的机器人，比如如何创建机器人，可以移步到 <a href="https://core.telegram.org/bots" rel="nofollow">这里</a> ，
+所以我索性用 Golang 写了一个通用的电报机器人，然后把它接入 <a href="http://www.turingapi.com/" rel="nofollow">图灵</a>的聊天 API，这样你就可以通过简单的配置并立刻拥有自己的电报机器人，当然你也可以移除图灵的聊天 API，接入你自己的聊天程序。源代码，我已经放到这里：<a href="https://github.com/0RaymondJiang0/tonycat" rel="nofollow">github.com/0RaymondJiang0/tonycat</a>  目前实现的功能有：</p>
+<ul>
+<li>私聊</li>
+<li>群聊，通过 @ 它  和它聊天</li>
+</ul>
+<p>Have fun!</p>
+
+	]]></content>
+</entry><entry>
+	<title>国产 App 的吃相为什么这么难看?</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648812#reply75" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648812</id>
+	<published>2020-03-01T05:31:00Z</published>
+	<updated>2020-03-01T08:17:39Z</updated>
+	<author>
+		<name>Pichai</name>
+		<uri>https://www.v2ex.com/member/Pichai</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>微博的各种广告，卖粉行为，给用户瞎关注博主，还有各种卖热搜行为。
+手机网页搜索查看有些内容，会提示打开 app 查看内容。体验非常糟糕。
+还有电视盒子，和国产知名品牌的手机，广告也都超级多。</p>
+<p>国外的 Quora 和推特上的广告都比较少，信息流也比较简洁。</p>
+<p>国内的人工成本相对于国外是比较低的，为什么会出现吃相这么难看的情况呢？
+盈利压力真的就比国外企业压力大吗？</p>
+<p>希望大家能从自身行业，自己对行业的理解来回答下我的困惑。</p>
+
+	]]></content>
+</entry><entry>
+	<title>一个野生程序员的阿里外包</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648844#reply1" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648844</id>
+	<published>2020-03-01T07:54:09Z</published>
+	<updated>2020-03-01T08:12:11Z</updated>
+	<author>
+		<name>wangbenjun5</name>
+		<uri>https://www.v2ex.com/member/wangbenjun5</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>之前写过几篇文章，主要讲一个野生程序员的北漂之路, 很多人应该看过</p>
+<p>最近又想写点后续，聊了聊进阿里外包的一些事情: <a href="https://wangbjun.site/2020/life/2019-4.html" rel="nofollow">谈一谈阿里外包工作</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>2020 年了，哪个 Android 手机买了可以实现一键 root？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648617#reply60" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648617</id>
+	<published>2020-02-29T07:30:53Z</published>
+	<updated>2020-03-01T08:04:31Z</updated>
+	<author>
+		<name>kpppp</name>
+		<uri>https://www.v2ex.com/member/kpppp</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我前几天弄了一个锤子手机想 root，想模拟定位打卡。
+然后下载了 10 多个一键 root 软件，都 root 不了。后来跑去找电脑版的，后来发现都被和谐了。</p>
+
+	]]></content>
+</entry><entry>
+	<title>如何让 Macvim 和 vim 分别使用不同的配置文件</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648815#reply4" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648815</id>
+	<published>2020-03-01T05:45:46Z</published>
+	<updated>2020-03-01T08:00:10Z</updated>
+	<author>
+		<name>lanceadd</name>
+		<uri>https://www.v2ex.com/member/lanceadd</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我想让 macvim 用.gvimrc，brew 安装的 vim 用.vimrc，这两都是放到$HOME 下的，但是 macvim 好像默认读取.vimrc，请问各位巨佬有办法吗</p>
+
+	]]></content>
+</entry><entry>
+	<title>大家有遇到小米笔记本充电 100%，关机放一晚上起来 0%的情况么</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648769#reply44" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648769</id>
+	<published>2020-03-01T02:38:15Z</published>
+	<updated>2020-03-01T07:43:31Z</updated>
+	<author>
+		<name>should</name>
+		<uri>https://www.v2ex.com/member/should</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	如题，有老哥遇到过么，准备下午去售后了
+	]]></content>
+</entry><entry>
+	<title>安卓小白请教一下,调用安卓的 api 例如查看内存什么的一定要用 adb 吗?还有没有什么其他的办法?</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648840#reply0" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648840</id>
+	<published>2020-03-01T07:46:23Z</published>
+	<updated>2020-03-01T07:43:23Z</updated>
+	<author>
+		<name>w2bgopher</name>
+		<uri>https://www.v2ex.com/member/w2bgopher</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	
+	]]></content>
+</entry><entry>
+	<title>百度网盘辅助下载工具</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648788#reply2" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648788</id>
+	<published>2020-03-01T03:43:24Z</published>
+	<updated>2020-03-01T07:42:04Z</updated>
+	<author>
+		<name>how2ex</name>
+		<uri>https://www.v2ex.com/member/how2ex</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p><a href="http://pandownload.com/" rel="nofollow">http://pandownload.com/</a></p>
+<p><a href="https://github.com/proxyee-down-org/proxyee-down" rel="nofollow">https://github.com/proxyee-down-org/proxyee-down</a></p>
+<p><a href="https://github.com/liuzhuoling2011/baidupcs-web" rel="nofollow">https://github.com/liuzhuoling2011/baidupcs-web</a></p>
+<p><a href="https://github.com/acgotaku/BaiduExporter#usage" rel="nofollow">https://github.com/acgotaku/BaiduExporter#usage</a></p>
+<p><a href="https://github.com/syhyz1990/baiduyun" rel="nofollow">https://github.com/syhyz1990/baiduyun</a></p>
+<p><a href="https://www.iplaysoft.com/bnd.html" rel="nofollow">https://www.iplaysoft.com/bnd.html</a></p>
+
+	]]></content>
+</entry><entry>
+	<title>PowerShell 与 Windows Terminal 增强配置</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648742#reply19" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648742</id>
+	<published>2020-02-29T19:50:56Z</published>
+	<updated>2020-03-01T07:40:22Z</updated>
+	<author>
+		<name>raawaa</name>
+		<uri>https://www.v2ex.com/member/raawaa</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>双系统切换来切换去还是挺麻烦的。加上 Windows Terminal + PowerShell 的体验越来越好于是去年年底把 Arch Linux 彻底卸掉了。本身不是专业的，在终端里最多就是批处理一下文件，PowerShell 开箱即用虽然挺糟糕，但是调教一下还是够用了。</p>
+<h1>PSReadLine</h1>
+<p>PSReadLine 是 PowerShell 的官方模块，为 PowerShell 提供了缺失的交互特性。例如像 zsh/fish 那样的交互式的补全、语法高亮、emacs 按键模式等等。有了 PSReadLIne 之后的 PowerShell 才终于像点样了。</p>
+<p>安装（<a href="https://github.com/PowerShell/PSReadLine" rel="nofollow">详见官方项目 README</a>）：</p>
+<pre><code class="language-powershell">Install-Module PSReadLine
+</code></pre>
+<p>安装之后，PSReadLine 的一些特性并不会自动启用，可以在 PowerShell 的 profile 配置文件里自己按需配置。但是自己从头搞毕竟很烦，直接白嫖官方提供的<a href="https://github.com/PowerShell/PSReadLine/blob/master/PSReadLine/SamplePSReadLineProfile.ps1" rel="nofollow">配置样例</a>就可以，已经非常好用了。</p>
+<h1>posh-git 与 oh-my-posh</h1>
+<p>posh-git 可以为 PowerShell 提供 git 命令补全。oh-my-posh 可以美化 prompt，提供各种主题。直接把两个一起安上:</p>
+<pre><code class="language-powershell">Install-Module posh-git -Scope CurrentUser
+Install-Module oh-my-posh -Scope CurrentUser
+</code></pre>
+<p>在 profile 配置文件中启用模块并选择 prompt 样式主题：</p>
+<pre><code class="language-powershell">Import-Module posh-git
+Import-Module oh-my-posh
+Set-Theme Powerlevel10k-Lean
+</code></pre>
+<h1>Windows Terminal 美化</h1>
+<p>主要是配置字体和配色方案。配色方案可以在 <a href="https://github.com/mbadolato/iTerm2-Color-Schemes" rel="nofollow">iTerm2-Color-Schemes</a> 这个项目中挑选。个人比较喜欢 Gruvbox Dark 配色。</p>
+<p><img alt="Gruvbox Dark 配色预览" src="https://upload-images.jianshu.io/upload_images/2590359-4892021da965c693.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+<p>在 Windows Terminal 配置文件中加入 Gruvbox Dark 配色方案。</p>
+<pre><code class="language-json">"schemes": [
+    {
+        "name": "Gruvbox Dark",
+        "black": "#1e1e1e",
+        "red": "#be0f17",
+        "green": "#868715",
+        "yellow": "#cc881a",
+        "blue": "#377375",
+        "purple": "#a04b73",
+        "cyan": "#578e57",
+        "white": "#978771",
+        "brightBlack": "#7f7061",
+        "brightRed": "#f73028",
+        "brightGreen": "#aab01e",
+        "brightYellow": "#f7b125",
+        "brightBlue": "#719586",
+        "brightPurple": "#c77089",
+        "brightCyan": "#7db669",
+        "brightWhite": "#e6d4a3",
+        "background": "#1e1e1e",
+        "foreground": "#e6d4a3"
+   }
+]
+</code></pre>
+<p>在 PowerShell 的 profile 部分选择 Gruvbox Dark 作为配色方案。同时做一些其他调整（因为 Windows Terminal 支持字体 ligature，所以选择了 Fira Code 字体）：</p>
+<pre><code class="language-json">{
+    // Make changes here to the powershell.exe profile
+    "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+    "name": "Windows PowerShell",
+    "commandline": "powershell.exe",
+    "hidden": false,
+    "fontFace": "Fira Code",  
+    "fontSize": 11,
+    "colorScheme": "Gruvbox Dark",
+    "cursorShape": "vintage"
+}
+</code></pre>
+<p><img alt="最终效果" src="https://upload-images.jianshu.io/upload_images/2590359-7dbc33942d9acb49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>你们还记得去年到重庆工地的那个码农不？ 现在上来和各位聊聊</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648753#reply10" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648753</id>
+	<published>2020-03-01T01:36:05Z</published>
+	<updated>2020-03-01T06:50:30Z</updated>
+	<author>
+		<name>ucun</name>
+		<uri>https://www.v2ex.com/member/ucun</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>本来说的半年后和各位见面的，没想到现在还差十几天就一年了。</p>
+<p>上来和各位说说</p>
+<p>找工作是没大希望了，所以只好自己创业了。</p>
+<p>得益于小程序的发展，靠着小程序现在勉强存活。</p>
+<p>===========</p>
+<p>关于这一年来的历程，我只能说自己的运气还不算太差。</p>
+<p>有着愿意相信自己的亲人，毕竟我很长一段时间没有上班，也没有通过学习到的编程知识赚取到一分钱。</p>
+<p>也刚好赶上小程序的爆发，在靠着亲人的支撑下，从接到第一个单子，到后面更多的单子。</p>
+<p>===========</p>
+<p>写感性的文章还是不擅长，流水账也不是大家所喜欢的。</p>
+<p>所以就写到这里吧，相比写文章，回答问题更简单一点。</p>
+<p>有什么问题，可以发贴问我。</p>
+<p>最后，带点私货。</p>
+<p>公众号：ikeeplearn</p>
+<p>github: <a href="http://github.com/ikeeplearn" rel="nofollow">github.com/ikeeplearn</a></p>
+<p>有兴趣也可以加个人微信：qwertyax 最好备注一下来自 V2</p>
+
+	]]></content>
+</entry><entry>
+	<title>Spacevim 主题怎么去除代码块空白区域中的背景色</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648748#reply9" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648748</id>
+	<published>2020-03-01T00:36:31Z</published>
+	<updated>2020-03-01T05:51:11Z</updated>
+	<author>
+		<name>skyroam</name>
+		<uri>https://www.v2ex.com/member/skyroam</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>本身用的是 gruvbox 这个主题，但是不知道为什么无字符的空白区域会有这个背景色，但是如果光标到那一行就会消失，怎么直接关闭这种设置？
+<img alt="捕获.PNG" src="https://ws1.sinaimg.cn/mw690/006CYpBYgy1gce4kyixvyj30t708bjs0.jpg"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>android6 如何在 adb 里调试，共享 4G 网络给以太网口</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648816#reply0" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648816</id>
+	<published>2020-03-01T05:48:53Z</published>
+	<updated>2020-03-01T05:47:53Z</updated>
+	<author>
+		<name>Ranh</name>
+		<uri>https://www.v2ex.com/member/Ranh</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	系统版本：Android6<br />环境：以太网口默认 wan 功能（添加路由可让 wan 接口变成 lan 接口）<br />系统调试权限：adb / root<br /><br />我需要把设备的 4G 流量共享给以太网卡，让其他设备连网线上网，前期经过添加路由+iptables 转发 无法成功<br /><br />故请教下各位大佬下一步该如何操作<br /><br />调试脚本:<br /><br />#!/system/bin/sh<br /><br />#取 4G 网卡名字<br />ppp_0=$(ifconfig|sed -n "20p");<br />#echo $ppp_0;<br />ppp_0=${ppp_0:0:4};<br /><br />svc wifi disable //前面开启了 wifi，然后 adb 连接进去后，执行该脚本，关闭 wifi,设备会跳到 4G 拨号<br />echo 0 &gt; /proc/sys/net/ipv4/ip_forward<br />busybox ifconfig eth0 up<br />busybox ifconfig eth0 192.168.33.100 netmask 255.255.255.0<br />/system/bin/iptables -t nat -A natctrl_nat_POSTROUTING -o $ppp_0 -j MASQUERADE<br />/system/bin/iptables -A natctrl_FORWARD -i $ppp_0 -o eth0 -m state --state ESTABLISHED,RELATED -g natctrl_tether_counters<br />/system/bin/iptables -A natctrl_FORWARD -i eth0 -o $ppp_0 -m state --state INVALID -j DROP<br />/system/bin/iptables -A natctrl_FORWARD -i eth0 -o $ppp_0 -g natctrl_tether_counters<br />/system/bin/iptables -A natctrl_tether_counters -i eth0 -o $ppp_0 -j RETURN<br />/system/bin/iptables -A natctrl_tether_counters -i $ppp_0 -o eth0 -j RETURN<br />/system/bin/iptables -D natctrl_FORWARD -j DROP<br />/system/bin/iptables -A natctrl_FORWARD -j DROP<br />ip route add 192.168.33.0/24 dev eth0 table local_network proto static scope link<br />echo 1 &gt; /proc/sys/net/ipv4/ip_forward
+	]]></content>
+</entry><entry>
+	<title>跨平台 c 开发库 tbox v1.6.5 发布，改进协程调度支持</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648759#reply8" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648759</id>
+	<published>2020-03-01T02:10:10Z</published>
+	<updated>2020-03-01T05:45:46Z</updated>
+	<author>
+		<name>waruqi</name>
+		<uri>https://www.v2ex.com/member/waruqi</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>这个版本功能和特性改动并不多，主要是改进了下协程的调度模块，实现对 process, socket，pipe 这三种对象间的统一调度支持，我们可以在协程中同时操作进程，socket 还有管道。</p>
+<p>这有赖于 tbox 提供的 poller 模块，统一封装了对 epoll/kqueue/select/poll/iocp 等接口，实现跨平台的等待 socket/pipe 对象事件。</p>
+<ul>
+<li><a href="https://github.com/tboox/tbox" rel="nofollow">项目源码</a></li>
+<li><a href="https://tboox.io/#/zh-cn/" rel="nofollow">官方文档</a></li>
+</ul>
+<p>相关 poller 接口主要有下面四个，其中 object 可以是 process/pipe/socket 对象，然后设置上对应的事件就可以去同时 wait 了。</p>
+<pre><code class="language-c">tb_bool_t tb_poller_insert(tb_poller_ref_t poller, tb_poller_object_ref_t object, tb_size_t events, tb_cpointer_t priv);
+tb_bool_t tb_poller_remove(tb_poller_ref_t poller, tb_poller_object_ref_t object);
+tb_bool_t tb_poller_modify(tb_poller_ref_t poller, tb_poller_object_ref_t object, tb_size_t events, tb_cpointer_t priv);
+tb_long_t tb_poller_wait(tb_poller_ref_t poller,   tb_poller_event_func_t func, tb_long_t timeout);
+</code></pre>
+<p>另外，poller 还对进程事件的等待也加上了支持，可以通过相同的 wait 接口同时对 process 的退出事件进行等待，关于这块内部其实还是做了很多事的。</p>
+<p>例如：</p>
+<ol>
+<li>win 上通过 thread+WaitForMultipleObjects 的方式来对接到 poller</li>
+<li>unix 上通过 thread/waitpid 的方式来对接到 poller</li>
+</ol>
+<h2>更新内容</h2>
+<h3>新特性</h3>
+<ul>
+<li><a href="https://github.com/tboox/tbox/issues/112" rel="nofollow">#112</a>: 新增 unix socket 支持，感谢<a href="https://github.com/codehz" rel="nofollow">@Codehz</a>的贡献</li>
+<li>在协程和 poller 中支持同时等待和调度 socket，pipe io 和 process</li>
+</ul>
+<h3>改进</h3>
+<ul>
+<li>改进 uuid 生成，实现 uuid v4</li>
+<li>支持 msys/mingw 和 cygwin/gcc 上编译</li>
+</ul>
+<h2>特性</h2>
+<h4>流库</h4>
+<p>针对 http、file、socket、data 等流数据，实现统一接口进行读写，并且支持: 阻塞、非阻塞、异步 三种读写模式。
+支持中间增加多层 filter 流进行流过滤，实现边读取，内部边进行解压、编码转换、加密等操作，极大的减少了内存使用。</p>
+<p>主要提供以下模块：</p>
+<ul>
+<li><code>stream</code>：通用非阻塞流，用于一般的单独 io 处理，同时支持协程以实现异步传输。</li>
+<li><code>transfer</code>：流传输器，维护两路流的传输。</li>
+<li><code>static_stream</code>：针对静态数据 buffer 优化的静态流，用于轻量快速的数据解析。</li>
+</ul>
+<h4>协程库</h4>
+<ul>
+<li>快速高效的协程切换支持</li>
+<li>提供跨平台支持，核心切换算法参考 boost，并且对其进行重写和优化，目前支持架构：x86, x86_64, arm, arm64, mips32</li>
+<li>提供 channel 协程间数据通信支持，基于生产、消费者模型</li>
+<li>提供信号量、协程锁支持</li>
+<li>socket、stream 都模块原生支持协程，并且可在线程和协程间进行无缝切换</li>
+<li>提供 http、file 等基于协程的简单服务器实例，只需几百行代码，就可以从 socket 开始写个高性能 io 服务器，代码逻辑比异步回调模式更加清晰</li>
+<li>同时提供 stackfull, stackless 两种协程模式支持，stackless 协程更加的轻量（每个协程只占用几十个 bytes ），切换更快（会牺牲部分易用性）</li>
+<li>支持 epoll, kqueue, poll, select 和 IOCP</li>
+<li>在协程和 poller 中支持同时等待和调度 socket，pipe io 和 process</li>
+</ul>
+<h4>数据库</h4>
+<ul>
+<li>统一并简化数据库操作接口，适配各种数据源，通过统一的 url 来自动连接打开支持的数据库，数据的枚举采用迭代器模型。</li>
+<li>目前支持 sqlite3 以及 mysql 两种关系型数据库，也可自定义扩展使用其他关系型数据库。</li>
+</ul>
+<h4>xml 库</h4>
+<ul>
+<li>针对 xml 提供 DOM 和 SAX 两种解析模式，SAX 方式采用外部迭代模式，灵活性和性能更高，并且可以选择指定路径，进行解析。</li>
+<li>解析过程完全基于 stream，所以是高度流化的，可以实现边下载、边解压、边转码、边解析一条龙服务，使用较低的内存也可以解析大规模数据。</li>
+<li>提供 xml writer 以支持对 xml 生成</li>
+</ul>
+<h4>内存库</h4>
+<ul>
+<li>参考 linux 内核内存管理机制的实现，并对其进行各种改造和优化，所实现的 TBOX 独有的一整套内存池管理架构。</li>
+<li>调试模式下，可以轻松检测并定位内存泄露、内存越界溢出、内存重叠覆盖等常见内存问题，并对整体内存的使用进行了统计和简要分析。</li>
+<li>针对大块数据、小块数据、字符串数据进行了充分的利用，避免了大量外部碎片和内部碎片的产生。分配操作进行了各种优化，96%的情况下，效率都是在 O(1)。</li>
+</ul>
+<h4>容器库</h4>
+<ul>
+<li>提供哈希、链表、数组、队列、堆栈、最小最大堆等常用容器。</li>
+<li>支持各种常用成员类型，在原有的容器期初上，其成员类型还可以完全自定义扩展。</li>
+<li>所有容器都支持迭代器操作。</li>
+<li>大部分容器都可以支持基于 stream 的序列化和反序列化操作。</li>
+</ul>
+<h4>算法库</h4>
+<ul>
+<li>提供各种排序算法：冒泡排序、堆排序、快速排序、插入排序。</li>
+<li>提供各种查找算法：线性遍历、二分法搜索。</li>
+<li>提供各种遍历、删除、统计算法。</li>
+<li>以迭代器为接口，实现算法和容器的分离，类似 stl，但是 c 实现的，更加轻量。</li>
+</ul>
+<h4>网络库</h4>
+<ul>
+<li>实现 http 客户端模块</li>
+<li>实现 cookies</li>
+<li>实现 dns 解析与缓存</li>
+<li>实现 ssl(支持 openssl, polarssl, mbedtls)</li>
+<li>支持 ipv4、ipv6</li>
+<li>支持通过协程实现异步模式</li>
+</ul>
+<h4>数学运算库</h4>
+<ul>
+<li>提供各种精度的定点运算支持</li>
+<li>提供随机数生成器</li>
+</ul>
+<h4>libc 库</h4>
+<ul>
+<li>libc 的一个轻量级实现，完全跨平台，并且针对不同架构进行了优化。</li>
+<li>支持大部分字符串、宽字符串操作。</li>
+<li>扩展字符串、宽字符串的各种大小写不敏感操作接口</li>
+<li>扩展<code>memset_u16</code>、<code>memset_u32</code>等接口，并对其进行高度优化，尤其适合图形渲染程序</li>
+</ul>
+<h4>libm 库</h4>
+<ul>
+<li>libm 部分接口的一个轻量级实现，以及对常用系统接口的封装。（目前只实现了部分，之后有时间会完全实现掉）</li>
+<li>扩展部分常用接口，增加对 sqrt、log2 等常用函数的整数版本计算，进行高度优化，不涉及浮点运算，适合嵌入式环境使用。</li>
+</ul>
+<h4>object 库</h4>
+<ul>
+<li>轻量级类 apple 的 CoreFoundation 库，支持 object、dictionary、array、string、number、date、data 等常用对象，并且可以方便扩展自定义对象的序列化。</li>
+<li>支持对 xml、json、binary 以及 apple 的 plist(xplist/bplist)格式序列化和反序列化。
+并且实现自有的 binary 序列化格式， 针对明文进行了简单的加密，在不影响性能的前提下，序列化后的大小比 bplist 节省 30%。</li>
+</ul>
+<h4>平台库</h4>
+<ul>
+<li>提供 file、directory、socket、thread、time 等常用系统接口</li>
+<li>提供 atomic、atomic64 接口</li>
+<li>提供高精度、低精度定时器</li>
+<li>提供高性能的线程池操作</li>
+<li>提供 event、mutex、semaphore、spinlock 等事件、互斥、信号量、自旋锁操作</li>
+<li>提供获取函数堆栈信息的接口，方便调试和错误定位</li>
+<li>提供跨平台动态库加载接口（如果系统支持的话）</li>
+<li>提供 io 轮询器，针对 epoll, poll, select, kqueue 进行跨平台封装</li>
+<li>提供跨平台上下文切换接口，主要用于协程实现，切换效率非常高</li>
+</ul>
+<h4>压缩库</h4>
+<ul>
+<li>支持 zlib/zlibraw/gzip 的压缩与解压（需要第三方 zlib 库支持）。</li>
+</ul>
+<h4>字符编码库</h4>
+<ul>
+<li>支持 utf8、utf16、gbk、gb2312、uc2、uc4 之间的互相转码，并且支持大小端格式。</li>
+</ul>
+<h4>实用工具库</h4>
+<ul>
+<li>实现 base64/32 编解码</li>
+<li>实现 crc32、adler32、md5、sha1 等常用 hash 算法</li>
+<li>实现日志输出、断言等辅助调试工具</li>
+<li>实现 url 编解码</li>
+<li>实现位操作相关接口，支持各种数据格式的解析，可以对 8bits、16bits、32bits、64bits、float、double 以及任意 bits 的字段进行解析操作，并且同时支持大端、小端和本地端模式，并针对部分操作进行了优化，像 static_stream、stream 都有相关接口对其进行了封装，方便在流上进行快速数据解析。</li>
+<li>实现 swap16、swap32、swap64 等位交换操作，并针对各个平台进行了优化。</li>
+<li>实现一些高级的位处理接口，例如：位 0 的快速统计、前导 0 和前导 1 的快速位计数、后导 01 的快速位计数</li>
+<li>实现单例模块，可以对静态对象、实例对象进行快速的单例封装，实现全局线程安全</li>
+<li>实现 option 模块，对命令行参数进行解析，提供快速方便的命令行选项建立和解析操作，对于写终端程序还是很有帮助的</li>
+</ul>
+<h4>正则表达式库</h4>
+<ul>
+<li>支持匹配和替换操作</li>
+<li>支持全局、多行、大小写不敏感等模式</li>
+<li>使用 pcre, pcre2 和 posix 正则库</li>
+</ul>
+<h2>一些使用 tbox 的项目：</h2>
+<ul>
+<li><a href="https://github.com/tboox/gbox" rel="nofollow">gbox</a></li>
+<li><a href="https://github.com/tboox/vm86" rel="nofollow">vm86</a></li>
+<li><a href="http://www.xmake.io/cn" rel="nofollow">xmake</a></li>
+<li><a href="https://github.com/tboox/itrace" rel="nofollow">itrace</a></li>
+<li><a href="https://github.com/tboox/tbox/wiki/%E4%BD%BF%E7%94%A8tbox%E7%9A%84%E5%BC%80%E6%BA%90%E5%BA%93" rel="nofollow">更多项目</a></li>
+</ul>
+
+	]]></content>
+</entry><entry>
+	<title>商品多级分类数据库怎么设计</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648772#reply8" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648772</id>
+	<published>2020-03-01T02:47:08Z</published>
+	<updated>2020-03-01T05:33:19Z</updated>
+	<author>
+		<name>onice</name>
+		<uri>https://www.v2ex.com/member/onice</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p><img alt="www.erdangjiade.com.png" src="https://i.loli.net/2020/03/01/Cbw3VlrMXR9IqgO.png"/></p>
+<p>如图所示的商品分类，数据库应该怎么设计？</p>
+<p>我自己的思路是用一张表来设计。</p>
+<p>字段有：id,category_name,parent_id</p>
+<p>其中放一个字段来存放父级分类的 ID。</p>
+<p>还有个简单的做法，每一层分类都设计成一张表。</p>
+<p>项目需求只涉及到三层分类，那么就三个表：一级分类表-&gt;二级分类表-&gt;三级分类表，从左至右，他们是一对多的关系。</p>
+<p>但需求要求分类和商品是多对多的关系。一个商品可以有多种分类，一个分类对应多种商品。</p>
+<p>这个时候，例如查询父级分类，要把所有该分类和子分类下的商品都查询出来，</p>
+<p>像 ORM 的话，该怎么去查询呢？</p>
+<p>请大家多多指教。</p>
+
+	]]></content>
+</entry><entry>
+	<title>求教 win10 电脑怎么卸载腾讯御点</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648794#reply10" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648794</id>
+	<published>2020-03-01T03:59:07Z</published>
+	<updated>2020-03-01T05:07:45Z</updated>
+	<author>
+		<name>elsonwx</name>
+		<uri>https://www.v2ex.com/member/elsonwx</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>朋友要用他们公司的一款软件，用了后被安装了腾讯御点</p>
+<p>卸载腾讯御点时需要输入管理员密码，输了开机密码无效</p>
+<p>求教有什么好的强力卸载方式？</p>
+<p><img alt="915DD994-A57F-4EF5-A292-B0E33C4BD1ED_1_105_c.jpeg" src="https://i.loli.net/2020/03/01/mMuvHwzy9OYWcZe.jpg"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>mongo 分页优化问题求教</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648756#reply6" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648756</id>
+	<published>2020-03-01T01:51:31Z</published>
+	<updated>2020-03-01T03:56:30Z</updated>
+	<author>
+		<name>a627795061</name>
+		<uri>https://www.v2ex.com/member/a627795061</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	看到 mongodb 的 skip 数据量大后会慢，如果排序字段是 id，或者是以时间排序，排序字段值唯一可以用 find 代替 skip。但如果我的排序字段不是 id 甚至字段值不唯一呢，怎么能用 find 代替 skip 分页？那还是绕不开 skip 吗？
+	]]></content>
+</entry><entry>
+	<title>同是 1920 X 1080 分辨率，为何效果不一样呢？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648757#reply9" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648757</id>
+	<published>2020-03-01T02:00:50Z</published>
+	<updated>2020-03-01T02:58:50Z</updated>
+	<author>
+		<name>hello2019</name>
+		<uri>https://www.v2ex.com/member/hello2019</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>前段时间一直在家忙工作，敲代码。</p>
+<p>因为觉得笔记本的字体太小了，所以一直通过 HDMI 连接到一台 21.5 存 显示器(1920 X 1080)，就这样用了大约两周，感觉很舒服。（字体大小合适）
+家里一共三台电脑，除了两台笔记本，还有一台 2014 年买的台式机（集成自带显卡）
+当我把同样的显示器接入台式机之后，发现了一个事实：同样是 1920 X 1080，两者根本就安全不一个效果。
+与笔记本相连时：（通过 HDMI 转 DVI ）字体比较大，清晰，看起来比较舒服，当然视野范围比较小一些
+与台式机相连时：（通过 VGA ）字体很小，还有些模糊，看起来很难受
+（通过 DVI ）字体很小，也不如和笔记本相连时清晰，但是效果还是比 VGA 好一些。</p>
+<p>同样是 1920 X 1080 分辨率（确认过好多次），但是同样的显示器，和笔记本 /台式机相连时，是截然不同的结果，好奇怪。。。</p>
+<p>当然，我个人分析，这应该是“显卡”的原因（笔记本带有独立显卡）；我还有一台另外笔记本 huawei Magic Book，大家都知道，3800 元买的机器，集成显卡，也通过 HDMA 转 DVI 连接这台显示器，效果也蛮好，两个笔记本的效果是相同的，都比台式机好。</p>
+<p>我怎么样才能让台式机也具有和笔记本相同的显示效果？加个普通的独立显卡？（只是办公使用）</p>
+
+	]]></content>
+</entry><entry>
+	<title>小程序前端开发兼技术合伙人</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648793#reply3" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648793</id>
+	<published>2020-03-01T03:57:06Z</published>
+	<updated>2020-03-01T02:57:06Z</updated>
+	<author>
+		<name>Leehaha</name>
+		<uri>https://www.v2ex.com/member/Leehaha</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>项目简介：校园匿名类社区</p>
+<p>项目进展：1、产品原型图（算高保真）已经基本完善（ 95%） 2、后端接口已经写完</p>
+<p>需求：现在有后端技术和产品 UI 小伙伴各一个，急需前端开发小伙伴，负责前端小程序页面的开发；其他小伙伴也缺如产品运营，UI 之类的，人多点也是好事</p>
+<p>1、有小程序项目经验；
+2、熟悉 js 和 css ；
+3、能根据 ui 设计图全面实现 1:1 开发</p>
+<p>报酬：股权（都是没钱惹的祸），我也不画大饼了，反正像腾讯的有记、朋友、岛；阿里的 real 如我都是校园市场；头条的 biu 校园。这是算是一个巨头看中的市场，为啥不把握这次机会呢？
+wechat：puti212</p>
+
+	]]></content>
+</entry><entry>
+	<title>吃个瓜，微盟四不四对恢复这个词有误解。</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648635#reply56" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648635</id>
+	<published>2020-02-29T08:26:57Z</published>
+	<updated>2020-03-01T02:29:17Z</updated>
+	<author>
+		<name>Quoo</name>
+		<uri>https://www.v2ex.com/member/Quoo</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p><a href="https://xueqiu.com/3869166879/142540366" rel="nofollow">https://xueqiu.com/3869166879/142540366</a></p>
+<p>这水平简直就是把大家的智商按在地上摩擦。</p>
+
+	]]></content>
+</entry><entry>
+	<title>Examples For Using io.Pipe in Go</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648767#reply0" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648767</id>
+	<published>2020-03-01T02:24:35Z</published>
+	<updated>2020-03-01T02:24:35Z</updated>
+	<author>
+		<name>lcj2class</name>
+		<uri>https://www.v2ex.com/member/lcj2class</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<ul>
+<li><a href="https://zupzup.org/io-pipe-go/" rel="nofollow">https://zupzup.org/io-pipe-go/</a></li>
+</ul>
+<p>真的很喜欢这个功能，小巧精悍。最近在一个项目中用到了，大概是这样的：</p>
+<blockquote>
+<p>项目中有一个自定义的 http.RoundTripper，之前都是纯文本发送数据，现在想加上 gzip 压缩。</p>
+</blockquote>
+<pre><code class="language-go">func (crt roundTripper) RoundTrip(r *http.Request) (*http.Response, error) {
+	if crt.compress {
+		r.Header.Add(headerContentEncoding, "gzip")
+		raw := r.Body
+		pr, pw := io.Pipe()
+		go func() {
+			defer pw.Close()
+			gw := gzip.NewWriter(pw)
+			defer gw.Close()
+			if n, err := io.Copy(gw, raw); err != nil {
+				crt.log.Logf("gzip body failed. written: %d, err: %v ", n, err)
+			}
+		}()
+		// set 0 enable Transfer-Encoding:chunked
+		r.ContentLength = 0
+		r.Body = pr
+	}
+	return crt.r.RoundTrip(r)
+}
+</code></pre>
+
+	]]></content>
+</entry><entry>
+	<title>请问用 flask 写微服务项目该如何组织？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648750#reply4" />
+	<id>tag:www.v2ex.com,2020-03-01:/t/648750</id>
+	<published>2020-03-01T00:42:10Z</published>
+	<updated>2020-03-01T02:16:51Z</updated>
+	<author>
+		<name>unknowfly</name>
+		<uri>https://www.v2ex.com/member/unknowfly</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>一个新项目被要求使用微服务形式，以前没有接触过，看了一些资料后还不是很清楚，问得有点啰嗦，见谅</p>
+<ol>
+<li>不同的服务，是不是应该各自写成一个完整的 flask 项目</li>
+<li>各个服务之间公用的基础模块、枚举之类的应该如何处理</li>
+<li>部署的话就是各个服务的容器用一个 docker-compose 管理吗</li>
+<li>什么情况下需要用到 ZooKeeper 或者 Consul</li>
+</ol>
+
+	]]></content>
+</entry><entry>
+	<title>10 亿用户数据分库分表设计</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648471#reply37" />
+	<id>tag:www.v2ex.com,2020-02-28:/t/648471</id>
+	<published>2020-02-28T15:34:48Z</published>
+	<updated>2020-03-01T00:48:57Z</updated>
+	<author>
+		<name>pabno</name>
+		<uri>https://www.v2ex.com/member/pabno</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>使用 mysql 存储 10 亿的用户数据，用户表的设计是 (bigint user_id, bigint phone, varchar email)</p>
+<p>查询分为两类 case：</p>
+<ol>
+<li>用户登陆，可能会使用 phone 登陆，也可能使用 email 登陆</li>
+<li>登陆后操作用户数据</li>
+</ol>
+<p>目前方案：使用 user_id  &gt;&gt; 32 % 2 分库，user_id &gt;&gt; 22 % 20 分表。user_id 由雪花算法生成</p>
+<p>针对 case 2，直接用 user_id 取模就很容易定位到具体到库和表，但是 case 2 需要使用 email 或者 phone 反查 user_id. 暂时想到的就是在对 email，phone 分别进行分库分表再做查询，然后将数据缓存到 redis 中。当用户使用 phone 或者 email 进行登陆时，先查询缓存中有没有数据，没有再计算相应当分片库和分片表进行查询</p>
+<p>不知道还有没有什么比较好的方案</p>
+
+	]]></content>
+</entry><entry>
+	<title>Macbook 的隔空播放到盒子，总是卡顿</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648735#reply5" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648735</id>
+	<published>2020-02-29T17:55:14Z</published>
+	<updated>2020-02-29T20:52:55Z</updated>
+	<author>
+		<name>KratosOmega</name>
+		<uri>https://www.v2ex.com/member/KratosOmega</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>连接的创维盒子 T2，兼容模式、普通模式都试过，720p 也试过，也改成 30fps，其他蓝牙啥都关了，手机 wifi 也关了</p>
+<p>但是还是间歇性卡顿，10s 左右稍微卡一下，用起来很不爽，总不会是盒子性能问题吧？ 1080p 都解不了？</p>
+<p>有没有老哥遇到过这种情况？</p>
+
+	]]></content>
+</entry><entry>
+	<title>[提问] dd 后 每次开机卡 grub2/grub lagency 界面怎么破</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648705#reply6" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648705</id>
+	<published>2020-02-29T14:08:54Z</published>
+	<updated>2020-02-29T20:24:21Z</updated>
+	<author>
+		<name>wowplayer</name>
+		<uri>https://www.v2ex.com/member/wowplayer</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>每次重启都得 vnc 进去 修改 /boot/grub2/grub.cfg 为 /boot/grub/grub.cfg....如何解决这个问题  同时也导致我每次进去 时间都会恢复慢五分钟的状态... 如何永久保存这个修改  搜遍了 似乎没有找到
+<img alt="avatar" src="https://files.catbox.moe/ssjyy7.png"/>
+<img alt="avatar" src="https://files.catbox.moe/rmwdak.png"/></p>
+
+	]]></content>
+</entry><entry>
+	<title>如何正确使用 smartdns 解析国外域名</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648656#reply4" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648656</id>
+	<published>2020-02-29T10:14:43Z</published>
+	<updated>2020-02-29T19:55:42Z</updated>
+	<author>
+		<name>ceclinux</name>
+		<uri>https://www.v2ex.com/member/ceclinux</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	这方面折腾小白，如果哪里理解有误，请多指教。<br /><br />最近试着折腾下 smartdns，在解析国内域名的时候比较简单，直接按照官方说明指定上游的几个 dns 服务器即可。按照官方说明 nslookup -querytype=ptr smartdns 返回正确。我用 tcpdump 专门抓了下 dns 包，发现确实在客户端请求一个域名的时候，smartdns 会向上游 dns 服务器都发送请求。符合我的预期。<br /><br />但是配置解析国外域名的时候我就迷糊了。因为国外域名我是通过 vps 建立隧道，间接通过 vps 来访问国外网站。那么我理解 smartdns 的 dns 查询也要转发到 vps 上，由 vps 来间接发送 dns 查询，来选择最快的 ip。但是我在梅林固件里面的插件发现的是 smartdns 运行在路由器本地，但是找不到把 dns 转发到 vps 的工具（没有发现 ss-tunnel，dns2socks 类似的工具）。我到我的 dns 上试着用 tcpdump 抓了下 dns 包，发现 dns 并没有发送请求给我指定的所有上游，而是只发一个请求给一个奇怪的 dns 服务器（然而这个 dns 服务器并不是我制定的上游）。<br /><br />所以很有可能我哪里理解或者配置错了。请问如何正确使用 smartdns 解析国外域名呢？
+	]]></content>
+</entry><entry>
+	<title>关于 freeBSD 从 KDE 退回到终端的方法问题</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648644#reply8" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648644</id>
+	<published>2020-02-29T09:12:33Z</published>
+	<updated>2020-02-29T18:57:56Z</updated>
+	<author>
+		<name>Darkoe8910</name>
+		<uri>https://www.v2ex.com/member/Darkoe8910</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	问下 2B 问题， 在家没事折腾 freeBSD， 用 VMware 安装好了， 建立了一个账户， 安装好了 KDE 图形环境，进去了。问题来了。由于新建的账户没有 root 权限，也无法使用 su 命令， 什么软件也安装不了。网上也没找到退出图形环境的方法。请问，如何退出 KDE 环境，回到系统原来的终端，我好切换到 root 账户，提升普通账户的权限。 注网上的快捷键均不好使（比如 Control + Alt + F2 等等）
+	]]></content>
+</entry><entry>
+	<title>大佬们，推荐下 node.js 的论坛框架吧</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648700#reply8" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648700</id>
+	<published>2020-02-29T13:44:08Z</published>
+	<updated>2020-02-29T18:55:23Z</updated>
+	<author>
+		<name>xrr2016</name>
+		<uri>https://www.v2ex.com/member/xrr2016</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>只有 <a href="https://nodebb.org/" rel="nofollow">NodeBB</a> 吗？</p>
+
+	]]></content>
+</entry><entry>
+	<title>现在写代码还有快感吗</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648613#reply43" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648613</id>
+	<published>2020-02-29T07:20:43Z</published>
+	<updated>2020-02-29T18:47:40Z</updated>
+	<author>
+		<name>xiaotianhu</name>
+		<uri>https://www.v2ex.com/member/xiaotianhu</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最开始写代码，特别享受那种『造物主』式的快感</p>
+<p>现在这种快感越来越少了。机械麻木，不是别人逼你写，就是自己逼自己写。</p>
+<p>做出来的东西也不酷炫，自己都看不上，更谈不上『造物的快感』了。</p>
+<p>咋办，好想找回快感</p>
+
+	]]></content>
+</entry><entry>
+	<title>生气！腾讯把我一个 qq 回收了！</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648470#reply63" />
+	<id>tag:www.v2ex.com,2020-02-28:/t/648470</id>
+	<published>2020-02-28T15:34:16Z</published>
+	<updated>2020-02-29T17:48:53Z</updated>
+	<author>
+		<name>zs8861</name>
+		<uri>https://www.v2ex.com/member/zs8861</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>我那个 qq 是只用来收邮件和登录其他平台用，估计是很久没有登录了，今天登陆发现已经被回收，好气啊……简直就是流氓！！！</p>
+
+	]]></content>
+</entry><entry>
+	<title>你们面试前或平常会刷面试题吗</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648501#reply37" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648501</id>
+	<published>2020-02-29T00:29:00Z</published>
+	<updated>2020-02-29T16:13:41Z</updated>
+	<author>
+		<name>jdz</name>
+		<uri>https://www.v2ex.com/member/jdz</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	感觉不刷面试题好吃亏啊
+	]]></content>
+</entry><entry>
+	<title>部署推特爬虫求云服务器推荐</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648711#reply2" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648711</id>
+	<published>2020-02-29T14:43:17Z</published>
+	<updated>2020-02-29T16:09:51Z</updated>
+	<author>
+		<name>HelixG</name>
+		<uri>https://www.v2ex.com/member/HelixG</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	因为谷歌云有注册羊毛可以薅，我尝试了下谷歌的 VM，发现操作是很方便但是有点贵，照这个用法 3 万多日元一个月就没了。我的需求就是部署爬虫，请问各位大佬有没有物美价廉的云服务器推荐呀
+	]]></content>
+</entry><entry>
+	<title>怎么用一句 sql 同时查询两张完全不同的表里的不同字段，合并为一条记录</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648719#reply1" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648719</id>
+	<published>2020-02-29T15:18:54Z</published>
+	<updated>2020-02-29T15:25:23Z</updated>
+	<author>
+		<name>Damon4V</name>
+		<uri>https://www.v2ex.com/member/Damon4V</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	a 表结构：<br />name count<br />aa      10<br />bb      11<br />cc      12<br /><br />b 表结构：<br />userid  nickname<br />1         bob<br />2         damon<br /><br />怎么查出 a 表 name=aa 的 count 数据和 b 表 userid=1 的 nickname 数据<br />如：<br />count     nickname<br />10         bob<br /><br />使用 INNER JOIN 可以查出，但是遇到个问题，如果 a 表没有符合 name=aa 的记录，那么这时会查出 a 表所有的记录；<br /><br />为什么使用 LEFT JOIN 不能使用
+	]]></content>
+</entry><entry>
+	<title>关于广告投放扣款业务方面问题</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648638#reply3" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648638</id>
+	<published>2020-02-29T08:37:34Z</published>
+	<updated>2020-02-29T14:30:56Z</updated>
+	<author>
+		<name>awanganddong</name>
+		<uri>https://www.v2ex.com/member/awanganddong</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>1.广告计划有广告日预算
+2.广告计划下边有多个广告投放，而且广告投放有日预算或者总预算。
+3.现在扣减时候需要校验广告计划日预算，广告投放日预算。还要校验广告主账户余额。</p>
+<p>现在对扣款这里需要下思路。</p>
+
+	]]></content>
+</entry><entry>
+	<title>请教下大家，为什么 Python 的申请新进程 Process start() 后没能打开 tkinter 的新窗口？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648729#reply1" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648729</id>
+	<published>2020-02-29T16:40:11Z</published>
+	<updated>2020-02-29T13:40:11Z</updated>
+	<author>
+		<name>neroransom</name>
+		<uri>https://www.v2ex.com/member/neroransom</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>用 tkinter 写了个聊天小软件，想试试多进程。但是调用 p.start() 函数后，虽然调用成功了，（有输出结果），但是 target 的函数中，申请 GUI 窗口的函数 Tk() 似乎没有正常工作。如果我把 start()，改成 run()，他还是能够正常工作，似乎还是进程问题，有朋友能指点一下吗。</p>
+<pre><code>def startchat(self,account):
+     p = Process(target = chat.main,args=(account,self.udpCliSock,self.ADDR))
+     p. start()
+</code></pre>
+<pre><code>def main(account, udpCliSock, ADDR):
+ Chat(account, udpCliSock, ADDR)
+</code></pre>
+<pre><code>class Chat:
+    def __init__(self,account,udpCliSock,ADDR):
+        self.ADDR = ADDR
+        self.udpCliSock=udpCliSock
+        root = Tk()
+</code></pre>
+
+	]]></content>
+</entry><entry>
+	<title>Flask 通过子域名启动多应用 APP（应用间想独立配置），切换时响应时间很慢</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648606#reply4" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648606</id>
+	<published>2020-02-29T07:07:24Z</published>
+	<updated>2020-02-29T13:31:22Z</updated>
+	<author>
+		<name>sunhk25</name>
+		<uri>https://www.v2ex.com/member/sunhk25</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>一个 WB 系统下有多个应用，有些设置是共通的，有些需要按应用单独配置。</p>
+<ul>
+<li>方案 1：通过子域名管理多应用 APP，每个应用都有自己的 current_app，找到了下面的示例。
+但是在「 dev 」和「 qa 」间却换时，非常耗时。难道多应用进程会很消耗吗？</li>
+</ul>
+<blockquote>
+<blockquote>
+<p><a href="https://github.com/saltycrane/flask-subdomain-dispatcher-example" rel="nofollow">https://github.com/saltycrane/flask-subdomain-dispatcher-example</a></p>
+</blockquote>
+</blockquote>
+<ul>
+<li>方案 2：通过蓝图的来 subdomain，子域名间切换很快，但是配置文件如何动态分配到 current_app 呢？
+是不应该在 before_request 里面加一个子域名跟应用的判断，然后更新到 current_app ？</li>
+</ul>
+<blockquote>
+<blockquote>
+<p>app.register_blueprint(dev_bp, subdomain='dev')</p>
+</blockquote>
+</blockquote>
+
+	]]></content>
+</entry><entry>
+	<title>帮忙 android UI 设计</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648670#reply2" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648670</id>
+	<published>2020-02-29T10:49:41Z</published>
+	<updated>2020-02-29T13:24:12Z</updated>
+	<author>
+		<name>gaotianbao</name>
+		<uri>https://www.v2ex.com/member/gaotianbao</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	寻人 android UI 设计, 有 TV APP 开发经验优先, QQ 报价, QQ2243442430
+	]]></content>
+</entry><entry>
+	<title>tk mapper 和 mybatis-plus 在企业或者大厂中的使用情况如何？</title>
+	<link rel="alternate" type="text/html" href="https://www.v2ex.com/t/648555#reply19" />
+	<id>tag:www.v2ex.com,2020-02-29:/t/648555</id>
+	<published>2020-02-29T04:14:00Z</published>
+	<updated>2020-02-29T12:57:38Z</updated>
+	<author>
+		<name>yongliu</name>
+		<uri>https://www.v2ex.com/member/yongliu</uri>
+	</author>
+	<content type="html" xml:base="https://www.v2ex.com/" xml:lang="en"><![CDATA[
+	<p>最近才转做后台开发，一个项目中甲方爸爸要求数据库使用 mybatis，作为一个偷懒的程序员自然不愿意每个 mapper 都重复劳动力，手写增删改查的方法，google 之后发现了 tk mapper，大喜用之。</p>
+<p>后来和同事聊，居然说没听过这个，建议不要在项目中用。</p>
+<p>话说这些开源轮子普及情况怎么样？</p>
+
+	]]></content>
+</entry>
+</feed>
+104.20.9.218

@@ -1,7 +1,6 @@
 import { FeedSource } from '../entity/feed-source';
 
 export interface FeedData {
-  id?: string; // TODO remove
   globalID?: string;
   title: string;
   content: string;
