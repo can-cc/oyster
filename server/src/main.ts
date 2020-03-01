@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { createConnection } from 'typeorm';
+import { createConnection, Connection } from 'typeorm';
 import { setupServer } from './server';
 import feedFetcherService from './service/feed-fetcher.service';
 import webPushService from './service/web-push.service';
@@ -15,7 +15,9 @@ function main() {
   const dbConfig = getPostgresConfig();
 
   createConnection(dbConfig)
-    .then(() => {
+    .then((connection:Connection) => {
+      connection.runMigrations();
+      
       console.log(colors.yellow(`connect postgres ${dbConfig.host}:5432/${dbConfig.database}`));
       console.log('database connection successful.');
 
