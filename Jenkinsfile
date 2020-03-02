@@ -40,9 +40,7 @@ pipeline {
                 }
                 stage('Client build') {
                     steps {
-                        sh "cd client && sed '1 a   oysterWebSentryDsn: \"$oyster_web_sentry_dsn\",' src/environments/environment.prod.ts && npm run build"
-                        sh "cd client && cat src/environments/environment.prod.ts"
-                        sh "cd client &&  git checkout src/environments/environment.prod.ts"
+                        sh "cd client && npm run build"
                     }
                 }
             }
