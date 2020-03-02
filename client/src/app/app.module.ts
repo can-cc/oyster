@@ -74,22 +74,6 @@ import { AsideFooterComponent } from './aside/aside-footer/aside-footer.componen
 import { DefaultTagsComponent } from './aside/default-tags/default-tags.component';
 import { SourceCategoriesComponent } from './aside/source-tags/source-categories.component';
 import { environment } from '../environments/environment';
-import * as Sentry from '@sentry/browser';
-
-if (environment.oysterWebSentryDsn) {
-  Sentry.init({
-    dsn: environment.oysterWebSentryDsn
-  });
-}
-
-@Injectable()
-export class SentryErrorHandler implements ErrorHandler {
-  constructor() {}
-  handleError(error) {
-    Sentry.captureException(error.originalError || error);
-    console.error(error);
-  }
-}
 
 @NgModule({
   declarations: [
@@ -170,9 +154,6 @@ export class SentryErrorHandler implements ErrorHandler {
         color: '#00ff00' // not work?
       }
     },
-    ...(environment.oysterWebSentryDsn
-      ? [{ provide: ErrorHandler, useClass: SentryErrorHandler }]
-      : []),
     { provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: { hasBackdrop: false } }
   ],
   bootstrap: [AppComponent]
