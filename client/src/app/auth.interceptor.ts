@@ -11,10 +11,15 @@ import {
 
 import { MatSnackBar } from '@angular/material';
 import { AuthService } from './core/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar, private authService: AuthService) {}
+  constructor(
+    private snackBar: MatSnackBar,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const authReq = req.clone({
@@ -25,8 +30,11 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error, caught) => {
         if (error instanceof HttpErrorResponse) {
           if (error.status === 401 && error.url.indexOf('/api/login') === -1) {
-            this.snackBar.open('auth failure, please set localStorage [Authorization]', null, {
+            this.snackBar.open('Please login', null, {
               duration: 2000
+            });
+            this.router.navigate(['/login'], {
+              replaceUrl: true
             });
           }
         }

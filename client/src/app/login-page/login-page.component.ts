@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AuthService } from '../core/auth.service';
 import { User } from '../../typing/auth';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login-page',
@@ -15,6 +16,7 @@ export class LoginPageComponent implements OnInit {
 
   constructor(
     fb: FormBuilder,
+    private snackBar: MatSnackBar,
     private httpClient: HttpClient,
     private router: Router,
     private authService: AuthService
@@ -33,13 +35,18 @@ export class LoginPageComponent implements OnInit {
       .pipe()
       .subscribe(
         response => {
-          this.router.navigate(['/feed'], { replaceUrl: false });
+          this.router.navigate(['/tag'], { replaceUrl: false });
           this.authService.handleLoginSuccess(
             response.body as User,
             response.headers.get('Authorization')
           );
         },
-        () => {}
+        () => {
+          this.snackBar.open('Username or password incorrectly Please retry', null, {
+            duration: 2000,
+            verticalPosition: 'top'
+          });
+        }
       );
   }
 }
