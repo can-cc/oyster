@@ -73,7 +73,6 @@ import { FieldMessageComponent } from './component/field-message/field-message.c
 import { AsideFooterComponent } from './aside/aside-footer/aside-footer.component';
 import { DefaultTagsComponent } from './aside/default-tags/default-tags.component';
 import { SourceCategoriesComponent } from './aside/source-tags/source-categories.component';
-import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
