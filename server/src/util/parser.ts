@@ -14,7 +14,7 @@ const parseFeed = (entrys: any[], feed): FeedData[] => {
         const content = entry.content[0]._;
         const published = moment.utc(entry.updated[0]).toDate();
         const author = R.path(['author', 0, 'name', 0])(entry);
-        return {  globalID: rssId, title, originHref, content, publishedDate: published, author };
+        return { globalID: rssId, title, originHref, content, publishedDate: published, author };
       } catch (error) {
         return null;
       }
@@ -52,7 +52,7 @@ const parseRSS2 = (entrys: any[], parsedObject: any): FeedData[] =>
       } else {
         author = R.path(['author', 0], entry);
       }
-      const guid = R.path(['guid', 0], entry) ||  R.path(['guid', 0, '_'], entry);
+      const guid = R.path(['guid', 0, '_'], entry) || R.path(['guid', 0], entry);
       return { title, originHref, content, publishedDate: published, author, globalID: guid };
     }
   );
@@ -89,7 +89,7 @@ export async function parseFeedData(rawData: string): Promise<FeedData[]> {
     case 'YAHOO_FEED':
       return R.flatten(parseYahaooVersionFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
     case 'FEED':
-        return R.flatten(parseFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
+      return R.flatten(parseFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
     default:
       return [];
   }
