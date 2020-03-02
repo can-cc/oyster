@@ -1,0 +1,169 @@
+<rss version="2.0">
+  <channel>
+    <title>InfoQ - 促进软件开发领域知识与创新的传播</title>
+    <link>https://www.infoq.cn</link>
+    <description>InfoQ 是一个实践驱动的社区资讯站点，致力于促进软件开发领域知识与创新的传播。</description>
+    <pubDate>Mon, 02 Mar 2020 12:04:54 GMT</pubDate>
+    <copyright>Copyright © 2019, Geekbang Technology Ltd. All rights reserved. 极客邦控股（北京）有限公司</copyright>
+    <item>
+      <title>Apache Tomcat被曝重大漏洞，影响过去13年的所有版本</title>
+      <link>https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/19/04/19085f6cc77ca299225bbca68a7b1004.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;近日，国内安全公司长亭科技&lt;a href=&#34;https://www.chaitin.cn/zh/ghostcat#timeline&#34;&gt;披露&lt;/a&gt;一个在 Tomcat中潜伏十多年的安全漏洞——Ghostcat （幽灵猫），其编号为&lt;a href=&#34;http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2020-1938&#34;&gt;CVE-2020-1938&lt;/a&gt;。&lt;/p&gt;&#xA;&lt;p&gt;据悉，Ghostcat（幽灵猫）由长亭科技安全研究员发现，它是存在于&lt;a href=&#34;https://zh.wikipedia.org/zh-tw/Apache_Tomcat&#34;&gt;Tomcat&lt;/a&gt;中的安全漏洞。&lt;/p&gt;&#xA;&lt;p&gt;由于 Tomcat AJP 协议设计上存在缺陷，攻击者通过 Tomcat AJP Connector 可以读取或包含 Tomcat 上所有 webapp 目录下的任意文件，例如可以读取 webapp 配置文件或源代码。&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Tomcat Connector 是 Tomcat 与外部连接的通道，它使得 Catalina 能够接收来自外部的请求，传递给对应的 Web 应用程序处理，并返回请求的响应结果。默认情况下，Tomcat 配置了两个 Connector，它们分别是 HTTP Connector 和 AJP Connector。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>万佳</author>
+      <guid>https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 11:55:22 GMT</pubDate>
+    </item>
+    <item>
+      <title>Flutter在字节跳动的现状与工程实践</title>
+      <link>https://www.infoq.cn/article/EYYIY7tp133QAC4U3Y5R?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;Flutter 是当前跨平台技术中最火的一项，在提供极好的用户体验的同时，还能解决多端一致性问题，并有效降低人力成本。字节跳动希望把 Flutter 打造成下一代研发体系，支撑众多 App 的各种使用场景，为此，团队在 Flutter 上大力投入，覆盖了引擎技术、平台服务、开发框架等多个维度。本次将详细介绍字节跳动在 Flutter 技术上的进展和工程实践，内容整理自字节跳动高级研发工程师林帅斌在 GMTC 深圳 2019 的演讲。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;今天主要分享 Flutter 在字节跳动的现状以及工程实践的经验。先介绍一下我所在的移动平台部，移动平台部是字节跳动的基础技术部门之一，服务于公司的各个 App。几乎所有的主流 App 都是我们的客户，所以我们的方案更专注于通用性以及工程实施的难度，主要是为了方便各种 App 的接入。移动平台部所涵盖的方向包括：基础架构、研发体系、APM 、端智能、跨平台等，而 Flutter 就是 APM 端智能跨平台下的研究方向之一。&lt;/p&gt;&#xA;&lt;h2&gt;Flutter 在字节跳动的现状&lt;/h2&gt;&#xA;&lt;h3&gt;Flutter 的优势与业务现状&lt;/h3&gt;&#xA;&lt;h4&gt;为什么选择 Flutter&lt;/h4&gt;&#xA;&lt;p&gt;选择 Flutter 主要有以下四个原因：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;性能体验&lt;/li&gt;&#xA;&lt;li&gt;开发效率&lt;/li&gt;&#xA;&lt;li&gt;高度一致性&lt;/li&gt;&#xA;&lt;li&gt;高可控制性&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;性能体验与开发效率作为官方一直在宣传的两个重点，这里就不过多赘述。除此之外，我们还看中了 Flutter 的高度一致性，这里的高度一致性不仅仅指各平台 UI 一致，更重要的是各个平台运行的是同一份代码。以前一份需求在 iOS 与 Android 上需要各实现一份，在迭代的时候就会带来额外的协商成本，对于迭代速度很快的字节跳动来说，Flutter 可以很好地抹平这个成本。&lt;/p&gt;&#xA;&lt;p&gt;什么是高可控制性？Flutter 对宿主的依赖很低，宿主提供一个画布就可以自己运行起来，还有渲染流程和时间派发都是自行运作的。换句话说，无论是修改内部实现还是优化内部逻辑，我们都可以很轻松地做到，这点和过去的 Native 应用开发有很大区别，使用 Native 开发需要各种 Hook，API 还有较高的风险。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/EYYIY7tp133QAC4U3Y5R?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>林帅斌</author>
+      <guid>https://www.infoq.cn/article/EYYIY7tp133QAC4U3Y5R?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 10:35:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>前端周报：谷歌新系统钦定Dart语言；微盟删库程序员系因深陷网络贷？受疫情影响 Facebook 取消年度开发者大会</title>
+      <link>https://www.infoq.cn/article/Eyc75oUKfcdJqmTQeds3?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;前端周报专注大前端领域内容，以对外文资料的搜集为主，帮助开发者了解一周前端热点，分为新闻热点、深度阅读、开源项目 &amp;amp; 工具等栏目。欢迎关注【前端之巅】微信公众号（ID: frontshow），及时获取前端周报内容。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2&gt;前端新闻&lt;/h2&gt;&#xA;&lt;h4&gt;Arch Linux 选出了新的项目领导人 Levente Polyak&lt;/h4&gt;&#xA;&lt;p&gt;Aaron Griffin 近日在 Arch Linux 社区上表示辞去项目负责人一职，同时表示将由 Levente Polyak 接任这一职位。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.archlinux.org/&#34;&gt;https://www.archlinux.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h4&gt;Fuchsia 编程语言政策：前端用 Dart&lt;/h4&gt;&#xA;&lt;p&gt;近日，谷歌新一代开源操作系统 Fuchsia 的开发者网站上公布了一份 Fuchsia 编辑语言政策，&lt;/p&gt;&#xA;&lt;p&gt;文档中分析了各个前后端语言的优劣，并明确指出未来在 Fuchsia 开发中哪些语言会得到支持，哪些语言会被退出。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/Eyc75oUKfcdJqmTQeds3?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>李俊辰</author>
+      <guid>https://www.infoq.cn/article/Eyc75oUKfcdJqmTQeds3?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 10:16:27 GMT</pubDate>
+    </item>
+    <item>
+      <title>机器翻译是如何炼成的（上）</title>
+      <link>https://www.infoq.cn/article/mUuVMkVHDBcmzvst6R82?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;strong&gt;语言的分歧是使人类大家庭破裂、分化成敌对阵营的唯一原因，或至少是主要原因。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;——语言学家柴门霍夫&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;文字，是人类为了表达信息而创建的一套符号系统。文字的使用，使人类知识更新的速度产生了翻天覆地的变化，人类通过文字来表达信息、交换信息，一代一代不断积累、升级自己对世界的认知，从而进一步改造世界。其他动物可能比人类身体更强壮、块头更高大、嗅觉更敏锐、听觉更灵敏，视觉更清晰，甚至部分动物也会制造和使用工具。但它们无一例外，都没有创造和使用文字的能力，因此，在进化的漫漫千万年中它们都无法&lt;strong&gt;积聚充分的认识世界的知识和改造世界的能力&lt;/strong&gt;。&lt;/p&gt;&#xA;&lt;p&gt;文字就像魔法一样，使得柔弱的人类拥有了不断迭代、增强的智慧。但是，使用不同的文字，宛如“鸡同鸭讲”，也造成了人类之间信息甚至文明的隔阂，极大得阻碍了人类社会的和谐发展。&lt;/p&gt;&#xA;&lt;p&gt;世界上一共有多少种人类语言？&lt;/p&gt;&#xA;&lt;p&gt;专家们的估计是4000-8000种。德国出版的《语言学及语言交际工具问题手册》提供了比较具体的数字：5561种，其中约2000种有书面文字。&lt;/p&gt;&#xA;&lt;p&gt;在世界各国，文字的创建、演变、合并、消亡一直都在进行中。比如秦王朝统一六国后，进行的轰轰烈烈的“书同文、车同轨”运动。秦统一六国前，诸侯国各自为政，文字的形体极其紊乱。给政令的推行和文化交流造成了严重障碍。因此在统一六国后，以秦国文字为基础，参照六国文字，创造出一种形体匀圆齐整、笔画简略的新文字，称为“秦篆”，又称“小篆”，作为官方规范文字，同时废除其他异体字。下图的七“马”归一，就是齐楚燕韩赵魏秦的文字统一的缩影。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/mUuVMkVHDBcmzvst6R82?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>百分点认知智能实验室</author>
+      <guid>https://www.infoq.cn/article/mUuVMkVHDBcmzvst6R82?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 10:15:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>超长可视化指南！你必须了解的K8S部署的调试思路</title>
+      <link>https://www.infoq.cn/article/URYYcobSvbmQ5AlgkLlN?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;本文将帮助你厘清在Kubernetes中调试 deployment的思路。下图是完整的故障排查思路，如果你想获得更清晰的图片，请在公众号后台（非评论区/非小助手）回复“&lt;strong&gt;troubleshooting&lt;/strong&gt;”。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/6b/5d/6bf9b14f212097454f41ede766eb455d.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;当你希望在Kubernetes中部署一个应用程序，你通常需要定义三个组件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Deployment——这是创建名为Pods的应用程序副本的方法&lt;/li&gt;&#xA;&lt;li&gt;Serivce——内部负载均衡器，将流量路由到Pods&lt;/li&gt;&#xA;&lt;li&gt;Ingress——可以描述流量如何从集群外部流向Service&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;接下来，我们通过图片快速回顾一下。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/f5/d9/f50741a56a37ac629f8b1bc044d14ed9.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;在Kubernetes中，你的应用程序通过两层负载均衡器暴露：内部和外部。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/90/f9/9026b25dd8ea72661fca7749dbb476f9.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/URYYcobSvbmQ5AlgkLlN?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>RancherLabs</author>
+      <guid>https://www.infoq.cn/article/URYYcobSvbmQ5AlgkLlN?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 09:45:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>区块链周报：百度发布财报，BaaS 平台成新战略重点；嘉楠科技遭集体诉讼</title>
+      <link>https://www.infoq.cn/article/NbRFz3VJjBd9sYCOVoAe?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/30/47/30795e566a9157ec926aba42c3ec2f47.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;区块链周报栏目从产业、监管和技术等方面，总结了本周区块链领域发生的大事件，让您更快速了解行业最新动态。&lt;br /&gt;&#xA;更多信息关注公众号：区块链前哨（ID：blockchain-666）&lt;/preface&gt;&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;h2&gt;本周头条&lt;/h2&gt;&#xA;&lt;h3&gt;SEC已否决Wilshire Phoenix的比特币ETF提案&lt;/h3&gt;&#xA;&lt;p&gt;美国证券交易委员会（SEC）已否决了Wilshire Phoenix关于在NYSE Arca推出比特币ETF的申请。在周三发布的文件中，SEC称，Wilshire尚未证明比特币市场足以抵抗市场操纵。迄今为止，SEC已拒绝了多家公司提交的所有比特币ETF提案。受此影响，比特币价格当日跌至8600美元&lt;/p&gt;&#xA;&lt;h3&gt;嘉楠科技遭集体诉讼，被指违反证券法&lt;/h3&gt;&#xA;&lt;p&gt;2 月 21 日，洛杉矶一家股东权利诉讼公司Schall律师事务所宣布，它正在代表嘉楠科技（NASDAQ：CAN）的投资者进行调查索赔，嘉楠科技被指控违反证券法。日前，一位名为Marcus Aurelius的投资分析师撰写了一份看空嘉楠科技的调查报告，主要内容有：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;嘉楠科技存在众多未向监管机构披露的与关联方以及虚假实体的交易，涉嫌人为地增加收入或伪造其财务状况。&lt;/li&gt;&#xA;&lt;li&gt;嘉楠科技此前的主要客户涉及重大商业诈骗与违规行为。&lt;/li&gt;&#xA;&lt;li&gt;嘉楠科技删除了7个主要的分销商信息，因为这些信息表明，嘉楠科技的业务情况比投资者们认为的要糟糕得多。&lt;/li&gt;&#xA;&lt;li&gt;与比特大陆以及神马矿机相比，嘉楠科技旗下产品缺乏竞争力。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h3&gt;杭州当地公安局不重复受理FCoin维权者案件，需回北京受理&lt;/h3&gt;&#xA;&lt;p&gt;杭州市湖滨区公安局通报称，杭州不重新受理FCoin维权者案件，因北京博晨技术有限公司非法经营案已于2019年3月由北京市公安局朝阳分局立案侦查，投资平台相关17名受害人已在我所自述损失情况并登记，我所将把收集到的相关材料转递给北京市公安局朝阳分局。报警人向我所反馈的事项与北京市公安局朝阳分局正在办理的北京博晨技术有限公司非法经营一案属于同一事项，按照相关法律规定，我所不再对该案重复受理。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/NbRFz3VJjBd9sYCOVoAe?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>褚杏娟</author>
+      <guid>https://www.infoq.cn/article/NbRFz3VJjBd9sYCOVoAe?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 09:29:29 GMT</pubDate>
+    </item>
+    <item>
+      <title>App后端服务，你是选择AWS还是Firebase？</title>
+      <link>https://www.infoq.cn/article/OMW3mldLvUNDH3ZAlu2o?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/ed/33/edb76e062c1ec3d000dffd9770cae133.jpeg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;我开发原生Android应用程序有很长一段时间，最近开始用&lt;a href=&#34;https://flutter.dev/&#34;&gt;Flutter&lt;/a&gt;开发移动应用程序，并同时使用&lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt;和AWS作为后端服务。但最近，我不得不为一个移动应用程序找到一个解决方案，这花费我很多时间来选择合适的后端服务。&lt;/p&gt;&#xA;&lt;p&gt;那App的后端服务，你是选择AWS还是Firebase。当然，并不是说&lt;a href=&#34;https://www.amazonaws.cn/&#34;&gt;AWS&lt;/a&gt;就比Firebase好，或Firebase比AWS好。正确的问题应该是：哪种解决方案最适合我的需求？&lt;/p&gt;&#xA;&lt;p&gt;在此，我分享自己的观点和理解，或许能帮你选择正确服务。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/52/05/52e1aa6c99f525d41639afada98efe05.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2&gt;1.服务共同点&lt;/h2&gt;&#xA;&lt;p&gt;核心功能有：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;身份验证&lt;/li&gt;&#xA;&lt;li&gt;推送通知&lt;/li&gt;&#xA;&lt;li&gt;存储&lt;/li&gt;&#xA;&lt;li&gt;托管&lt;/li&gt;&#xA;&lt;li&gt;分析&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;这些功能，它们都有。因此，你可以用这些平台轻松部署无服务器解决方案。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/OMW3mldLvUNDH3ZAlu2o?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>Dhananjay Trivedi</author>
+      <guid>https://www.infoq.cn/article/OMW3mldLvUNDH3ZAlu2o?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Mon, 02 Mar 2020 07:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>AI周报：Reddit CEO认为抖音是间谍软件；华为斥资2亿欧元在法国新建5G工厂；微盟涉事运维深陷网贷</title>
+      <link>https://www.infoq.cn/article/SxVubpMm4m0KRajsvovl?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;h2&gt;资讯&lt;/h2&gt;&#xA;&lt;h4&gt;美国对华为的新限制措施推迟至三月&lt;/h4&gt;&#xA;&lt;p&gt;据纽约/华盛顿（路透社）消息，特朗普政府官员将原本定于当地时间2月28召开的，讨论对华为新的出口限制的会议延期至3月11日。据路透社一周前援引两位知情人士消息称，美国正考虑改变法规，使其能够阻止台积电等公司向华为出售芯片。对华为的一些新禁令原本是此次会议的主要议题之一，但由于会议推迟，该提议暂时搁置。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/83/c4/83c558529ecc4cc872b56627c372d1c4.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;据知情人士称，商务部长Wilbur Ross，国防部长Mark Esper，国务卿Mike Pompeo和财政部长Steve Mnuchin都将参加此次会议，会议定于三月举行。&lt;/p&gt;&#xA;&lt;p&gt;据消息称，上周许多机构的代表开会讨论了会议议程，在关于如何处理与中国、华为电信设备和商用飞机零件的相关问题上，他们没有给出任何建议。&lt;/p&gt;&#xA;&lt;h4&gt;Reddit CEO认为抖音是间谍软件&lt;/h4&gt;&#xA;&lt;p&gt;Reddit首席执行官Steve Huffman在周三（2月26日）硅谷会议上发表的讲话中称，这种广受欢迎的短视频应用程序“根本就是一种寄生程序”。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/SxVubpMm4m0KRajsvovl?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>李冬梅</author>
+      <guid>https://www.infoq.cn/article/SxVubpMm4m0KRajsvovl?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sun, 01 Mar 2020 13:33:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>华为王俊：企业协作办公只是华为云WeLink 版图的 1/4</title>
+      <link>https://www.infoq.cn/article/mNSlWFkB3XFDtVxu4XRA?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;比 Elon Musk 更早实现太空梦的，不是 Jeff Bezos，而是 Word 之父 Charles Simonyi；&lt;/p&gt;&#xA;&lt;p&gt;让 Satya Nadella 有底气让 Win7 免费升级 Win10 的，不是 Xbox One，而是 Office 365；&lt;/p&gt;&#xA;&lt;p&gt;让 Stewart Butterfield 成为亿万富翁的，不是被雅虎收购的 Flickr，而是企业协同办公工具 Slack。&lt;/p&gt;&#xA;&lt;p&gt;这就是 To B 企业级软件市场的魅力。当你能从一个强需求切入其中的时候，即使有人已经开疆拓土多年，但这个蓝海市场疆域之大，能让你在很短的时间内成为巨头，并且投资者也会对你长期看好。&lt;/p&gt;&#xA;&lt;p&gt;企业智能工作平台市场也是如此。在大家都以为钉钉已经领先所有对手 10 公里的时候，却发现华为云 WeLink 的加速度已经远超想象，而且还在另一个维度上无人能及。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/mNSlWFkB3XFDtVxu4XRA?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>宋文喆</author>
+      <guid>https://www.infoq.cn/article/mNSlWFkB3XFDtVxu4XRA?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sun, 01 Mar 2020 13:22:32 GMT</pubDate>
+    </item>
+    <item>
+      <title>自动驾驶重卡在规划和控制中的技术难点与挑战</title>
+      <link>https://www.infoq.cn/article/Qp4arONKFcpgQWD1W4Dp?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;strong&gt;导读&lt;/strong&gt;：自动驾驶重卡本身系统模型复杂，高速场景对系统的实时，安全和稳定性有更高的要求。在有限感知，定位以及计算能力情况下，如何在动态变化的环境中，满足安全，舒适，节油等多种目标条件，规划和控制重型卡车的运动，是一个巨大的挑战，同时带来了很多有趣的问题值得研究和探索。今天分享题目是自动驾驶重卡在规划和控制上的技术难点与挑战。&lt;/p&gt;&#xA;&lt;p&gt;分享的内容包括：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;概述&lt;/li&gt;&#xA;&lt;li&gt;挑战&lt;/li&gt;&#xA;&lt;li&gt;尝试&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2&gt;一、 概述&lt;/h2&gt;&#xA;&lt;p&gt;相信浏览本文的读者都是自动驾驶领域的，或是对自动驾驶感兴趣的爱好者，对自动驾驶领域已经有了一定的了解，前面我们的同事也分享了很多自动驾驶基本的概念、软件架构、硬件架构，这里主要聚焦在Planning和Control方面。Planning在学界不同的领域有着不同的视角，比如：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;在机器人学领域，Planning问题可以定义为：在机器人的位形空间内寻找一个满足约束条件的，从起点到终点的一条最优路径；&lt;/li&gt;&#xA;&lt;li&gt;在人工智能领域，Planning问题又可以定义为：给定系统的state action寻找最优的policy；&lt;/li&gt;&#xA;&lt;li&gt;在自动驾驶领域，规划和控制问题，相当于一个人的脑和身体，在给定感知和定位的情况下，自动驾驶车辆需要知道如何地实现安全和舒适的自主运动。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;strong&gt;传统规划框架&lt;/strong&gt;：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/01/3d/014a7a471ab652f19baae3fe5bf7fa3d.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;典型的自动驾驶规划模块一般采用分层结构，主要层级分为global级和local级。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Global级和目前的导航软件一样，主要提供全局路由的规划，属于路级别的规划信息；&lt;/li&gt;&#xA;&lt;li&gt;Local级的规划又可以分为Behavioral Layer和Motion Planning。&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Behavioral Layer的等级比较高一点，主要提供一些描述性的策略，比如向左转还是向右转，亦或加速减速，它并不提供具体的像Motion级别车的state描述。&lt;/li&gt;&#xA;&lt;li&gt;Motion Planning，提供的是车当前的状态序列，比如车在t刻要以速度v和加速度a到达s位置，最后，Planning生成的动作序列发给Control模块，Control再对Planning的序列进行跟踪。&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;strong&gt;行为规划方法&lt;/strong&gt;：&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/Qp4arONKFcpgQWD1W4Dp?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>DataFunTalk</author>
+      <guid>https://www.infoq.cn/article/Qp4arONKFcpgQWD1W4Dp?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sun, 01 Mar 2020 10:15:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Swift和Objective-C混编在有赞移动的实践</title>
+      <link>https://www.infoq.cn/article/HAVxxNIyNGjqG5Ss0qtD?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;h2&gt;一、概述&lt;/h2&gt;&#xA;&lt;p&gt;随着 Xcode 11、Swift 5.1 的正式发布，Swift 目前已经实现了 ABI 稳定及模块稳定，语法及实现也比以往更加成熟稳定，所以我们在微商城和零售等业务线中尝试使用 Swift 开发部分业务，并在二方库中进行混编开发，在此我们将一些混编经验分享出来。&lt;/p&gt;&#xA;&lt;h2&gt;二、现状&lt;/h2&gt;&#xA;&lt;p&gt;同一工程内的混编，通常来讲有两种方式：&lt;/p&gt;&#xA;&lt;p&gt;1、在宿主工程利用桥接文件（Bridging-Header.h）进行混编&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Swift 访问 Objective-C&lt;/p&gt;&#xA;&lt;p&gt;只需要在桥接文件中（Bridging-Header.h）中导入需要暴露给 Swift 模块的 Objective-C 类，即可在 Swift 中访问相应 Objective-C 的类和方法&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Objective-C 访问 Swift&lt;/p&gt;&#xA;&lt;p&gt;在 Objective-C 类中导入 &lt;code&gt;ProductName-Swift.h&lt;/code&gt;，即可访问 Swift 中暴露给 Objective-C 的类和方法&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;2、利用 cocoapods 包管理工具，进行二/三方库混编&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Swift 访问 Objective-C&lt;/p&gt;&#xA;&lt;p&gt;用 Swift Module 系统，需要用到的 Objective-C 类用 import xxx 进行引用，即可在 Swift 中访问相应的 Objective-C 的类和方法&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Objective-C 访问 Swift&lt;/p&gt;&#xA;&lt;p&gt;在 Objective-C 类中导入 &lt;code&gt;ProductName-Swift.h&lt;/code&gt;，即可访问 Swift 中暴露给 Objective-C 的类和方法&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/HAVxxNIyNGjqG5Ss0qtD?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>杨彬,米广</author>
+      <guid>https://www.infoq.cn/article/HAVxxNIyNGjqG5Ss0qtD?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sun, 01 Mar 2020 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>28岁退休的非典型程序员：我的人生不需要别人来设计 | 人物特写</title>
+      <link>https://www.infoq.cn/article/e0c8HXcsy2Ht8V4CMzhz?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;离开的路就在前方，但还有更长的路等在远方。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;2月12日，字节跳动前端工程师郭宇在朋友圈发出了一封告别信，宣布正式“退休”。这条消息在一个小圈子内广泛传播，原因并非郭宇是什么名人，而是因为他的年龄和经历。&lt;/p&gt;&#xA;&lt;p&gt;要退休的他今年28岁，大三就拿到阿里的Offer，两年后在别人本该大学毕业的年纪，跳槽到字节跳动又当了6年程序员。&lt;/p&gt;&#xA;&lt;p&gt;他在相当长的一段时间内，利用每个双周末（字节跳动实行双周末制）飞往日本，在那里旅游、投资房产、经营自己的旅行社，周一到周五再回到办公室上班。&lt;/p&gt;&#xA;&lt;p&gt;他开着保时捷上班被有些人“酸”成是富二代，他明明不是但也懒得解释什么，就想开开心心开敞篷跑车无拘无束。&lt;/p&gt;&#xA;&lt;p&gt;提（现在）前（立刻）过上退休生活，是多少人梦寐以求的理想，但囿于现（没）实（钱）无法实现，郭宇却做了很多人敢想却不敢干的事儿。而8年的程序员生涯对他来说只是一份随时可以放弃的职业，因为他的人生清单上有不同的 Check List，这段经历结束，这一项就被勾掉、该开始下一项了。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/e0c8HXcsy2Ht8V4CMzhz?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>刘燕</author>
+      <guid>https://www.infoq.cn/article/e0c8HXcsy2Ht8V4CMzhz?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sun, 01 Mar 2020 04:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>BERT的正确使用姿势</title>
+      <link>https://www.infoq.cn/article/tWXDvtX0m9oqlaFJgKUO?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;自2018年google发布开源预训练模型BERT之后，一时席卷业内十余项任务的state-of-art，引得无数NLPer聚焦于此。对于自然语言处理领域而言，BERT的出现，彻底改变了预训练词向量与下游具体NLP任务的关系，因此BERT被称为改变了NLP游戏规则的工作。然而，究竟如何最好的使用BERT呢？&lt;/p&gt;&#xA;&lt;p&gt;一种自然的方法当然是改变BERT的预训练过程，从而造出更好的预训练语言模型。这种方法可以简单的引入更多的语料、采用不同的预训练任务、采用多任务学习、采用在特定领域的语料上进行fine-tune等等。然而，从头训练甚至fine-tune BERT均需要大量的算力才可实现。那么另一种自然而然的想法是，我们是否可以将已有模型（LSTM或者CNN）接入到BERT之上，从而发挥二者各自的优势呢？这是本文介绍的重点。&lt;/p&gt;&#xA;&lt;h2&gt;BERT的基础使用方式&lt;/h2&gt;&#xA;&lt;p&gt;本文以是否fine-tune预训练模型和是否对上层模型进行训练作为两个参考指标，将BERT的应用方法大致划分为三类，如下表所示：&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/d0/03/d0bea984e8101a4eebcf99b15711bd03.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;p&gt;其中，方法NFT-TM是指在BERT模型的上层添加复杂的网络结构，在训练时，固定BERT的参数，仅单独训练上层任务模型网络。方法FT-NTM是指在在BERT模型后接一个简单的特定任务层（如全连接网络），在训练时，根据任务的训练样本集对BERT进行fine-tune即可。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/tWXDvtX0m9oqlaFJgKUO?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>百分点认知智能实验室</author>
+      <guid>https://www.infoq.cn/article/tWXDvtX0m9oqlaFJgKUO?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 14:08:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>何恺明团队开源图像分割新算法PointRend：性能显著提升，算力仅需Mask R-CNN的2.6%</title>
+      <link>https://www.infoq.cn/article/TvXQIeRZDiS5mileRJIN?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;PointRend是何恺明团队对图像分割领域的又一最新探索，该项工作创新地采用计算机图形学的渲染思路来解决计算机视觉领域的图像分割问题。算法不仅提升了分割过程中的平滑性，实现了对图像细节的准确分割，也大大节省了资源消耗，算力需求仅为Mask R-CNN的2.6%。此外，PointRend可以作为神经网络模块，与其他图像分割元网络，例如Mask R-CNN和DeepLabV3结合使用，能够显著提升分割网络的性能。目前，PointRend已在GitHub上&lt;a href=&#34;https://github.com/facebookresearch/detectron2/tree/master/projects/PointRend&#34;&gt;开源&lt;/a&gt;，本文为AI前线第104篇论文导读，我们将对这篇论文的具体方法和效果进行解读。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;在论文《&lt;a href=&#34;https://arxiv.org/abs/1912.08193v2&#34;&gt;PointRend: Image Segmentation as Rendering&lt;/a&gt;》中，研究人员提出了一种有效的高质量图像分割新方法：将计算机图形学经典方法中的高效渲染与像素标记任务中的过采样（oversampling）和欠采样（undersampling）挑战类比，提出了将图像分割作为渲染问题的独特视角。从这个角度出发，作者提出了PointRend（Point-based Rendering）神经网络模块：该模块基于迭代细分算法，在自适应选择的位置执行基于点的分割预测。PointRend可以与现有的最新模型结合，灵活地应用于实例和语义分割任务。定性实验表明，对于先前的方法过度平滑的区域，PointRend可以输出清晰的对象边界。定量实验表明，PointRend在COCO和Cityscapes数据集上的实例分割和语义分割任务的表现都有显著提高。在同样的内存和算力情况下，PointRend与现有方法相比能输出更高的分辨率。&lt;/p&gt;&#xA;&lt;h2&gt;1 介绍&lt;/h2&gt;&#xA;&lt;p&gt;图像分割任务需要将从规则网格中采样的像素映射为同一网格上的一个或一组标签图（label map）。对于语义分割任务来说，标签图表示了每个像素的预测类别。而在实例分割任务中，需要为每个被检测的对象预测二值的前景vs背景图。这些任务所使用的方法目前基本上都是基于卷积神经网络（CNN）构建的。&lt;/p&gt;&#xA;&lt;p&gt;用于图像分割任务的卷积神经网络通常在&lt;strong&gt;规则网格（regular grid）&lt;/strong&gt;上操作：输入的是图像像素的规则网格，隐藏表征是规则网格上的特征向量，而输出则是基于规则网格的标签图。规则网格虽然方便，但在对图像分割而言，在计算方面未必理想。图像分割网络预测的标签图应当是基本平滑的，即邻近的像素一般使用同一个标签，因为图像的高频区域往往被限制在不同对象之间的稀疏边界。规则网格会对平滑区域过采样，而同时对对象边界欠采样。这样会导致在平滑区域进行过度计算，使得预测结果的轮廓变得模糊（如图1左上）。图像分割方法通常基于低分辨率规则网格来预测标签，如在语义分割任务中输入1/8分辨率的图像，或实例分割中输入大小为28×28的图像，以此作为欠采样和过采样之间的折衷。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/38/6f/38ce31c8ef5a1a4c046582a2aa3a836f.png&#34; alt=&#34;&#34; /&gt;&lt;center&gt;图1：使用PointRend（右）进行实例分割与传统方法（左）的对比。PointRend的细节效果更好，并且分辨率高，甚至五指的轮廓都可以分割出来。&lt;/center&gt;&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/TvXQIeRZDiS5mileRJIN?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>Alexander Kirillov等</author>
+      <guid>https://www.infoq.cn/article/TvXQIeRZDiS5mileRJIN?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 14:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>美国正式立法禁止官方购买华为设备，出资10亿美元帮助运营商更换</title>
+      <link>https://www.infoq.cn/article/Po8CS3ROV0r889edHfbQ?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;近日，美国参议院正式通过的一项法案规定：禁止政府机构使用联邦资金从“被认为威胁国家安全的公司”购买电信设备。至此，该项法案只需总统签字，便可生效。&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;据外媒报道，美国参议院已经正式通过《安全可信电信网络法案（The Secure and Trusted Telecommunications Networks Act）》，《法案》规定：&lt;strong&gt;禁止政府机构使用联邦资金从“被认为威胁国家安全的公司”购买电信设备。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;早在2019年12月，美国众议院就率先通过了该法案，而这次经参议院通过后，&lt;strong&gt;只需总统签字法案便可生效。&lt;/strong&gt;也就是说，&lt;strong&gt;美国正式从立法上禁止官方购买华为和中兴的设备。&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;h2&gt;出资10亿美元帮助运营商更换&lt;/h2&gt;&#xA;&lt;p&gt;该法案最初主要由众议院能源和商业委员会主席Frank Pallone Jr.、议员Greg Walden、Doris Matsui和 Brett Guthrie 提出。&lt;/p&gt;&#xA;&lt;p&gt;众议院提案者们于2月27日在一份联合声明中表示：在当今万物互连的世界中，美国无线通讯的未来，取决于是否能拥有不受他国恶意干扰的、安全的网络。目前，华为网络中的技术对美国国家和地区的安全及经济构成巨大威胁。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/Po8CS3ROV0r889edHfbQ?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>李冬梅</author>
+      <guid>https://www.infoq.cn/article/Po8CS3ROV0r889edHfbQ?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 11:19:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>打造工业级推荐系统（十）：如何构建可解释的推荐系统</title>
+      <link>https://www.infoq.cn/article/hcZOOCap39P4jkFaGzcv?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;推荐系统的目标是为用户推荐可能会感兴趣的标的物。通过算法推荐达到节省用户时间、提升用户满意度、为公司创造更多的商业价值的目的。要想达到这个目的就需要让用户信任你的推荐系统，只有信任了，用户才会经常使用推荐系统。那么我们怎样做到让用户信任呢？一种比较好的方法是为用户推荐标的物的同时给用户提供推荐的理由，向用户解释清楚是基于什么原因给他推荐的。那怎样在推荐的同时提供推荐的理由呢？这就是本文的主题。下面作者会给大家提供一套构建可解释推荐系统的策略和方法。&lt;/p&gt;&#xA;&lt;p&gt;本文会从可解释性推荐系统简介、构建可解释性推荐系统的方法、常用工业级推荐产品的推荐解释、更好的理解和落地推荐解释需要思考的问题、构建可解释性推荐系统面临的挑战与机遇等5个部分来讲解。希望读者读完本文后对可解释性推荐系统有一个大致了解，并且知道有哪些方法可以用来构建可解释性推荐系统。&lt;/p&gt;&#xA;&lt;h2&gt;一，可解释性推荐系统简介&lt;/h2&gt;&#xA;&lt;h3&gt;1. 什么是推荐解释&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;所谓推荐解释，就是在为用户提供推荐的同时，给出推荐的理由&lt;/strong&gt;。人类是一个非常好奇的物种，不满足于只知道结论，一定会对引起结论的原因感兴趣，往往特别想知道个中的理由。小孩从会说话时起就会问各种为什么。对社会和环境的好奇，才会引起人类的探索欲，从而更好的理解和认知这个世界，这可能是生物进化的自然选择吧。&lt;/p&gt;&#xA;&lt;p&gt;在现实生活中，我们经常会为朋友做推荐或者让别人帮我们推荐，比如推荐旅游地、推荐电影、推荐书籍、推荐餐厅等。现实生活中的推荐，大家都会给出推荐原因的，比如推荐餐厅，我们会说这家环境好、好吃、卫生等等。&lt;/p&gt;&#xA;&lt;p&gt;对于互联网上的推荐产品，相信大家不陌生。你在亚马逊上买书时，系统会给你推荐书，你在头条上看新闻时，系统会为你推荐其他的新闻。随着移动互联网的发展和成熟，个性化推荐无处不在，变成了任何一个toC互联网公司的标配技术。下面图1是我们公司一个推荐产品，“看过该电影的人还喜欢”就是一类推荐解释。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/hcZOOCap39P4jkFaGzcv?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>gongyouliu</author>
+      <guid>https://www.infoq.cn/article/hcZOOCap39P4jkFaGzcv?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 10:20:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>优酷暗黑模式（十一）：质量保证简析</title>
+      <link>https://www.infoq.cn/article/X9WdlGTRdVLlYkwawc8T?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;h2&gt;一、测试背景&lt;/h2&gt;&#xA;&lt;p&gt;随着iOS 13系统添加了对暗黑模式的支持，暗黑模式所带来的质感以及填充感是大家所公认的。优酷App也准备加入对iOS 13和Android 10系统的暗黑模式支持，优酷测试部门的暗黑模式适配工作提上了日程。全站暗黑视觉升级对测试来说也是全新的挑战，因为暗黑模式的适配涉及大到一个页面、组件，小到一个按钮、一个组件元素；涉及到交互弹窗、Toast，同时也有全局换肤以及氛围配置的兼容工作。&lt;/p&gt;&#xA;&lt;p&gt;那么优酷测试部门是怎么去覆盖全站的暗黑模式的测试工作的呢？这篇文章希望通过对暗黑模式测试的简单总结，来为未来的全站颜色切换等测试流程提供方法沉淀，同时也希望给其他BU开展暗黑模式适配的测试提供参考。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/f5/b7/f5db456441ef6f55669572a483a50bb7.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&#xA;&lt;h2&gt;二、测试方案&lt;/h2&gt;&#xA;&lt;p&gt;起初，对于优酷App暗黑模式的测试，我们邀请开发同学进行了实现方案讲解，分析影响面之后，我们总结出有效review case 7类。起初，测试团队认为这些case足以覆盖所有的情况，剩下的UI细节交给设计同学走查验收。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/f7/dd/f7c12ffefb27c86cef713a82ad2d57dd.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/X9WdlGTRdVLlYkwawc8T?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>阿里文娱技术团队</author>
+      <guid>https://www.infoq.cn/article/X9WdlGTRdVLlYkwawc8T?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>优酷客户端埋点质量保障三步曲</title>
+      <link>https://www.infoq.cn/article/pxkVQ5jB4q7efYV2Cw5C?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;h2&gt;一、背景&lt;/h2&gt;&#xA;&lt;p&gt;优酷客户端在埋点的质量保障过程中，遇到了一些困难和挑战，我们从项目流程、测试方案、业务深入度3个方面进行改造，经历多个版本的迭代，形成了一套客户端埋点质量保障方案，这里和大家分享一下。&lt;/p&gt;&#xA;&lt;h2&gt;二、改造之前的我们&lt;/h2&gt;&#xA;&lt;p&gt;先来了解下优酷客户端埋点，它使用的是阿里巴巴的UT（UserTrack）埋点，把不同的用户行为分成不同埋点事件，常见的事件有：页面事件、点击/曝光事件、播放事件，不同的事件又有基于位置和内容等多维度统计的埋点字段。&lt;/p&gt;&#xA;&lt;p&gt;在实际的埋点测试工作中，不同事件和字段组合，一个版本的埋点数据需求量很大，而且需要面对枯燥的数据，辛苦测试完成，发布上线后却是“大问题偶尔有、小问题不间断”的状况，是不是很崩溃？&lt;/p&gt;&#xA;&lt;p&gt;为什么会有这种状况？是因为整个环节存在诸多问题：比如，业务上，埋点需求延续性差，容易漏测；测试同学无法将埋点和业务的数据指标关联，排查问题无从下手；手工测试，效率稍低。流程上，常常是多个大项目项目同时进行，问题处理不及时。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/3f/6a/3f9de74f6a5e97071ee01c51e68a536a.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/pxkVQ5jB4q7efYV2Cw5C?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>阿里文娱技术团队</author>
+      <guid>https://www.infoq.cn/article/pxkVQ5jB4q7efYV2Cw5C?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>超级碗历史数据集分析（1967~2020 年）</title>
+      <link>https://www.infoq.cn/article/WXgEBEBRjLEf4vPouyVQ?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;blockquote&gt;&#xA;&lt;p&gt;有没有想过自己对某个好玩的历史数据集进行分析呢？比如，历届春晚的历史数据集，看看谁上春晚次数多，谁人气最高等等，可是分析的思路又该是什么样的呢？InfoQ 带来了 Sadrach Pierr 博士的文章，虽然不是对春晚的历史数据集分析，但思路是类似的，话不多说，让我们看看他是怎么对超级碗历史数据集进行分析的，相信对你一定有所裨益！&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;超级碗（Superbowl）是美国一年一度的比赛，决定着美国国家橄榄球联盟（National Football League，NFL）的冠军。这是世界上收视率最高的年度体育赛事之一，在美国，拥有大量的国内观众，平均每年有超过 1 亿人收看超级碗。&lt;/p&gt;&#xA;&lt;p&gt;在本文中，我们将分析超级碗历史数据集（1967-2020 年）。我们将生成汇总统计和数据可视化信息，如获胜球队、大球场、获胜得分和最有价值球员。我们将要使用的数据可以在&lt;a href=&#34;https://www.kaggle.com/timoboz/superbowl-history-1967-2020&#34;&gt;这里&lt;/a&gt;找到。&lt;/p&gt;&#xA;&lt;p&gt;言归正题。&lt;/p&gt;&#xA;&lt;p&gt;首先，让我们用 pandas 导入数据：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import pandas as pd&#xA;df = pd.read_csv(&amp;quot;superbowl.csv&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;接下来，我们可以打印列的列表：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;print(df.columns)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://static001.infoq.cn/resource/image/f4/39/f4a1e5415122226e56b29bf13adc7539.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/WXgEBEBRjLEf4vPouyVQ?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>Sadrach Pierr</author>
+      <guid>https://www.infoq.cn/article/WXgEBEBRjLEf4vPouyVQ?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 10:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>编码、标记和实现：一种高效可控的文本生成方法</title>
+      <link>https://www.infoq.cn/article/GdM0CWqZGs93gywFRmBx?utm_source=rss&amp;utm_medium=article</link>
+      <description>&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Seq2seq&#34;&gt;序列到序列&lt;/a&gt;（sequence-to-sequence，简称seq2seq）模型使机器翻译这个领域起了翻天覆地的变化，并且成为像&lt;a href=&#34;https://www.microsoft.com/en-us/research/publication/dataset-evaluation-metrics-abstractive-sentence-paragraph-compression/&#34;&gt;摘要&lt;/a&gt;、&lt;a href=&#34;https://ai.google/tools/datasets/discofuse/&#34;&gt;句子融合&lt;/a&gt;和语法错误纠正等各种文本生成任务的首选工具。近几年来我们看到，得益于模型架构（如&lt;a href=&#34;https://ai.googleblog.com/2017/08/transformer-novel-neural-network.html&#34;&gt;Transformer&lt;/a&gt;）的诸多改进和通过无监督的预训练来利用大量未注释文本的能力，神经网络方法的质量得到了相应的提升。&lt;/p&gt;&#xA;&lt;p&gt;但是，把seq2seq模型用于文本生成会带来一些不可忽视的缺点，具体则取决于用例，比如生成不受输入文本支持的输出（被称为&lt;a href=&#34;https://arxiv.org/abs/1910.08684&#34;&gt;幻觉&lt;/a&gt;），以及需要大量训练数据才能达到良好的性能。此外，由于seq2seq模型通常是一个词一个词地生成输出，因此它们的推理速度天生就很慢。&lt;/p&gt;&#xA;&lt;p&gt;在&lt;a href=&#34;https://ai.google/research/pubs/pub48542/&#34;&gt;《编码、标记、实现：高精度文本编辑》&lt;/a&gt;（ Encode, Tag, Realize: High-Precision Text Editing）这篇文章中，我们提出了一个全新的&lt;a href=&#34;http://lasertagger.page.link/code&#34;&gt;开源&lt;/a&gt;文本生成方法，该方法旨在专门解决这三个缺点。&lt;/p&gt;&#xA;&lt;p&gt;由于该方法速度快、精度高，因此被称为LaserTagger。LaserTagger不是从头开始生成输出文本，而是通过预测的编辑操作来标记单词以生成输出，这些预测的编辑操作随后在单独的实现步骤上应用于输入词组。这种方法在处理文本生成时不易出错，处理它的模型架构也可以选择更容易训练和更快执行的类型。&lt;/p&gt;&#xA;&lt;h2&gt;LaserTagger的设计和功能&lt;/h2&gt;&#xA;&lt;p&gt;很多文本生成任务的一个显著特征是，在输入和输出之间常常存在高度重叠。比如，在检测测和修复语法错误或是融合语句时，大多数输入文本可以保持不变，只有一小部分单词需要修改。因此，LaserTagger会生成一系列编辑操作而不是一些实际的单词。我们使用的4种编辑操作是：Keep（把一个单词复制到输出）、Delete（删除一个单词）以及Keep-AddX/Delete-AddX（在标记过的单词前面添加短语X，还可以选择删除这个标记过的单词）。该过程如下图所示，展示了LaserTagger在语句融合中的应用。&lt;/p&gt;&lt;div align=&#39;right&#39;&gt;&lt;a href=&#39;https://www.infoq.cn/article/GdM0CWqZGs93gywFRmBx?utm_source=rss&amp;utm_medium=article&#39;&gt;点击查看原文&gt;&lt;/a&gt;&lt;/div&gt;</description>
+      <author>Sebastian Krause,Eric Malmi</author>
+      <guid>https://www.infoq.cn/article/GdM0CWqZGs93gywFRmBx?utm_source=rss&amp;utm_medium=article</guid>
+      <pubDate>Sat, 29 Feb 2020 09:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>
