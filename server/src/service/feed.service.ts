@@ -10,11 +10,11 @@ class FeedService {
       case '_all':
       case null:
       case undefined:
-        return this.getAllFeeds({userId, limit, offset});
+        return this.getAllFeeds({ userId, limit, offset });
       case '_favorite':
-        return this.getFavoriteFeeds({userId, limit, offset});
+        return this.getFavoriteFeeds({ userId, limit, offset });
       default:
-        return this.getSourceFeeds({userId, limit, offset, sourceId: category});
+        return this.getSourceFeeds({ userId, limit, offset, sourceId: category });
     }
   }
 
@@ -27,34 +27,39 @@ class FeedService {
     return await getRepository(Feed).findOne({ id: feedId });
   }
 
-  private async getAllFeeds({ userId, limit, offset}): Promise<Feed[]>  {
-    return await getRepository(Feed)
-    .createQueryBuilder('feed')
-    .orderBy('"feed"."createdAt"', 'DESC')
-    .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
-    .leftJoinAndSelect("feed.source", "feed_source")
-    .limit(limit)
-    .offset(offset)
-    .getMany();
-  }
-
-  private async getFavoriteFeeds({userId, limit, offset}): Promise<Feed[]> {
+  private async getAllFeeds({ userId, limit, offset }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
-      .innerJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId AND "feed_mark"."type" = :favorite', { userId, favorite: 'FAVORITE' })
-      .leftJoinAndSelect("feed.source", "feed_source")
+      .orderBy('"feed"."createdAt"', 'DESC')
+      .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
+      .leftJoinAndSelect('feed.source', 'feed_source')
+      .limit(limit)
+      .offset(offset)
+      .getMany();
+  }
+
+  private async getFavoriteFeeds({ userId, limit, offset }): Promise<Feed[]> {
+    return await getRepository(Feed)
+      .createQueryBuilder('feed')
+      .innerJoinAndSelect(
+        'feed.marks',
+        'feed_mark',
+        '"feed_mark"."userId" = :userId AND "feed_mark"."type" = :markType',
+        { userId, markType: 'FAVORITE' }
+      )
+      .leftJoinAndSelect('feed.source', 'feed_source')
       .orderBy('"feed"."createdAt"', 'DESC')
       .limit(limit)
       .offset(offset)
       .getMany();
   }
 
-  private async getSourceFeeds({userId, sourceId, limit, offset}): Promise<Feed[]> {
+  private async getSourceFeeds({ userId, sourceId, limit, offset }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
-      .leftJoinAndSelect("feed.source", "feed_source")
-      .where('feed_source.id = :sourceId', {sourceId})
+      .leftJoinAndSelect('feed.source', 'feed_source')
+      .where('feed_source.id = :sourceId', { sourceId })
       .orderBy('"feed"."createdAt"', 'DESC')
       .limit(limit)
       .offset(offset)

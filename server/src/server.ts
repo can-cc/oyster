@@ -11,6 +11,7 @@ import { pignRouter } from './route/ping.route';
 import { webpushRouter } from './route/webpush.route';
 import { feedSourceRouter } from './route/feed-source.route';
 import { feedSourceFaviconRouter } from './route/feed-source-favicon.route';
+import { logger } from './logger';
 
 export function setupServer() {
   const app = express();
@@ -21,19 +22,19 @@ export function setupServer() {
   app.use(useragent.express());
 
   app.use('/api', authRouter);
-  app.use('/api', feedSourceFaviconRouter)
+  app.use('/api', feedSourceFaviconRouter);
 
   app.use(authMiddle);
 
   graphqlServer.applyMiddleware({ app, path: '/api/v1/graphql' });
 
   app.use(feedRouter);
-  app.use (feedSourceRouter);
+  app.use(feedSourceRouter);
   app.use(pignRouter);
   app.use(webpushRouter);
 
   app.use((error, req, res, next) => {
-    console.error(error);
+    logger.error(error);
     if (error.name === 'QueryFailedError') {
       res.status(409).send();
     } else {

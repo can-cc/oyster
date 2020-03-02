@@ -8,7 +8,7 @@ export function getPostgresConfig(): any {
     password: configure.getConfig('POSTGRES_PASSWORD'),
     database: configure.getConfig('POSTGRES_DB'),
     synchronize: true,
-    logging: false,
+    logging: configure.getConfig('orm_logging'),
     entities: ['src/entity/**/*.ts'],
     migrations: ['src/migration/**/*.ts'],
     subscribers: ['src/subscriber/**/*.ts'],
