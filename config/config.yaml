@@ -10,6 +10,7 @@ POSTGRES_HOST: "localhost"
 POSTGRES_USERNAME: "postgres"
 POSTGRES_PASSWORD: "mysecretpassword"
 POSTGRES_DB: "oyster"
+orm_logging: false
 
 VAPID_DETAIL_EMAIL: "me@oyster"
 # set proxy url
