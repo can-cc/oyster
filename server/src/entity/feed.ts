@@ -39,7 +39,7 @@ export class Feed {
   @Column()
   public author: string;
 
-  @CreateDateColumn()
+  @Column()
   public publishedDate: Date;
 
   @Index()
@@ -61,6 +61,7 @@ export class Feed {
     this.content = feedData.content;
     this.source = feedData.source;
     this.originHref = feedData.originHref;
+    this.publishedDate = feedData.publishedDate;
     this.author = feedData.author;
   }
 }
