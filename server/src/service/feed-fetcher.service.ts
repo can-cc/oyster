@@ -16,6 +16,11 @@ import { FeedData, FeedResult } from '../typing/feed';
 function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
   return interval(intervalValue).pipe(
     startWith(0),
+    tap(n => {
+      logger.info(`fetch times`, {
+        fetchTime: n
+      });
+    }),
     concatMap(() =>
       of(...sources).pipe(
         concatMap(s => {
@@ -37,7 +42,7 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
         })
       )
     ),
-    catchError((value) => {
+    catchError(value => {
       console.log('Fetch source error in cancat', value);
       return empty();
     })
@@ -47,15 +52,29 @@ function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Obs
 function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
   return Observable.create((observer: Observer<FeedData[]>) => {
     const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe(async (result: FeedResult) => {
-      try {
-        const feedDataList: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({ ...f, source: result.source }));
-        observer.next(feedDataList);
-      } catch (error) {
-        logger.error(`[parse and save feed error] `, error);
+    const subscription = feed$.subscribe({
+      next: async (result: FeedResult) => {
+        try {
+          const feedDataList: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({
+            ...f,
+            source: result.source
+          }));
+          observer.next(feedDataList);
+        } catch (error) {
+          logger.error(`[parse and save feed error] `, error);
+        }
+      },
+      complete: () => {
+        logger.info('FeedSource$ unsubscribe!');
+      },
+      error: error => {
+        logger.error(error);
       }
     });
-    return () => subscription.unsubscribe();
+    return () => {
+      logger.info('FeedSource$ unsubscribe!');
+      subscription.unsubscribe();
+    };
   });
 }
 
