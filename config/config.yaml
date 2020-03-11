@@ -1,3 +1,5 @@
+fetch_cron: '* * * * *' # every minute
+
 SECRET_KEY: oyster # !IMPORTANT please replace this key
 JWT_EXP: 2592000 # 30d
 
@@ -13,6 +15,7 @@ POSTGRES_DB: "oyster"
 orm_logging: false
 
 VAPID_DETAIL_EMAIL: "me@oyster"
+
 # set proxy url
 # proxy_url: "http://127.0.0.1:8888"
 

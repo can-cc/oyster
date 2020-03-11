@@ -8,75 +8,11 @@ import { FeedSource } from '../entity/feed-source';
 import { Feed } from '../entity/feed';
 import feedSourceService from './feed-source.service';
 import * as fetch from 'isomorphic-fetch';
-import { startWith, switchMap, mergeMap, catchError, concatMap, ignoreElements, tap } from 'rxjs/operators';
-import { Observable, interval, of, empty, Observer } from 'rxjs';
+import { startWith, switchMap, mergeMap, catchError, concatMap, tap } from 'rxjs/operators';
+import { Observable, interval, of, empty, Observer, Subject } from 'rxjs';
 import { parseFeedData } from '../util/parser';
 import { FeedData, FeedResult } from '../typing/feed';
-
-function loop(sources: FeedSource[], intervalValue: number = 5 * 60 * 1000): Observable<FeedResult> {
-  return interval(intervalValue).pipe(
-    startWith(0),
-    tap(n => {
-      logger.info(`fetch times`, {
-        fetchTime: n
-      });
-    }),
-    concatMap(() =>
-      of(...sources).pipe(
-        concatMap(s => {
-          return of(s).pipe(
-            mergeMap(async source => {
-              logger.info(`fetch source`, {
-                sourceName: source.name,
-                time: new Date()
-              });
-              logger.info(`fetching source [url] = ${source.url}`);
-              const feedRawData = await (await fetch(source.url)).text();
-              return { source, feedRawData };
-            }),
-            catchError((error, caught) => {
-              logger.error(`fetch failure in interval : ${error}`);
-              return empty();
-            })
-          );
-        })
-      )
-    ),
-    catchError(value => {
-      console.log('Fetch source error in cancat', value);
-      return empty();
-    })
-  );
-}
-
-function fetchFeedSources(feedSources: FeedSource[]): Observable<FeedData[]> {
-  return Observable.create((observer: Observer<FeedData[]>) => {
-    const feed$ = loop(feedSources);
-    const subscription = feed$.subscribe({
-      next: async (result: FeedResult) => {
-        try {
-          const feedDataList: FeedData[] = (await parseFeedData(result.feedRawData)).map(f => ({
-            ...f,
-            source: result.source
-          }));
-          observer.next(feedDataList);
-        } catch (error) {
-          logger.error(`[parse and save feed error] `, error);
-        }
-      },
-      complete: () => {
-        logger.info('FeedSource$ unsubscribe!');
-      },
-      error: error => {
-        logger.error(error);
-      }
-    });
-    return () => {
-      logger.info('FeedSource$ unsubscribe!');
-      subscription.unsubscribe();
-    };
-  });
-}
+var cron = require('node-cron');
 
 class FeedFetcher {
   private filter: bloom.BloomFilter;
@@ -92,29 +28,45 @@ class FeedFetcher {
 
   public async pollFetch() {
     await feedSourceService.refreshFeedSource();
+    let sources: FeedSource[];
     const feedSources$: Observable<FeedSource[]> = feedSourceService.getFeedSources$();
-    try {
-      feedSources$.pipe(switchMap(fetchFeedSources)).subscribe(async (feedDatas: FeedData[]) => {
-        await Promise.all(
-          feedDatas.map(
-            async (feedData: FeedData): Promise<void> => {
-              const feed: Feed = new Feed(feedData);
-              if (!(await this.isFeedExist(feed))) {
-                await this.handleParsedFeedData(feed);
-                logger.info(`feed saved`, {
-                  id: feed.id,
-                  title: feed.title,
-                  sourceName: feedData.source.name,
-                  time: new Date()
-                });
-              }
-            }
-          )
-        );
+    feedSources$.subscribe(s => {
+      sources = s;
+    });
+
+    cron.schedule(configure.getConfig('fetch_cron'), async () => {
+      const fetchResults: FeedResult[] = await Promise.all(
+        sources.map(async (source: FeedSource) => {
+          logger.info(`fetch source`, {
+            sourceName: source.name,
+            time: new Date()
+          });
+          logger.info(`fetching source [url] = ${source.url}`);
+          const feedRawData = await (await fetch(source.url)).text();
+          return { source, feedRawData };
+        })
+      );
+
+      fetchResults.forEach(async (fetchResult: FeedResult) => {
+        const feeds: FeedData[] = (await parseFeedData(fetchResult.feedRawData)).map(f => ({
+          ...f,
+          source: fetchResult.source
+        }));
+        feeds.forEach(async (feedData: FeedData) => {
+          const feed: Feed = new Feed(feedData);
+          if (await this.isFeedExist(feed)) {
+            return;
+          }
+          await this.handleParsedFeedData(feed);
+          logger.info(`feed saved`, {
+            id: feed.id,
+            title: feed.title,
+            sourceName: feedData.source.name,
+            time: new Date()
+          });
+        });
       });
-    } catch (error) {
-      logger.error(error);
-    }
+    });
   }
 
   private async handleParsedFeedData(feed: Feed): Promise<void> {
