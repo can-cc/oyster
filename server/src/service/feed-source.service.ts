@@ -4,7 +4,6 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import faviconGrabberService from './favicon-grabber.service';
 const psl = require('psl');
 
-
 class FeedSourceService {
   private sources: FeedSource[];
   private source$: BehaviorSubject<FeedSource[]> = new BehaviorSubject([]);
@@ -24,7 +23,7 @@ class FeedSourceService {
     this.source$.next(sources);
   }
 
-  public  getFeedSources(): FeedSource[] {
+  public getFeedSources(): FeedSource[] {
     return this.sources;
   }
 
@@ -37,7 +36,12 @@ class FeedSourceService {
   }
 
   public async saveFeedSource({ name, url }): Promise<FeedSource> {
-    const favicon =   await faviconGrabberService.getFavicon(url);
+    let favicon;
+    try {
+      favicon = await faviconGrabberService.getFavicon(url);
+    } catch {
+      favicon = null;
+    }
     const feedSource = new FeedSource({ name, url, favicon });
     const savedFeedSource: FeedSource = await getRepository(FeedSource).save(feedSource);
     await this.refreshFeedSource();

@@ -16,7 +16,7 @@ export class FeedSource {
   public logoUrl: string;
 
   @Column({ type: 'bytea',  nullable: true })
-  public favicon: any;
+  public favicon?: any;
 
   @CreateDateColumn()
   public createdAt: Date;

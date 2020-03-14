@@ -9,7 +9,8 @@ export class FaviconGrabberService {
 getFavicon(domain: string) {
     return axios
       .get(`https://www.google.com/s2/favicons?domain=${domain}`, {
-        responseType: 'arraybuffer'
+        responseType: 'arraybuffer',
+        timeout: 3000
       })
       .then(r => r.data);
   }
