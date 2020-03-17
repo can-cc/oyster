@@ -5,7 +5,7 @@ export const resolvers = {
   Query: {
     feeds: async (root, args: { limit: number; offset: number; category: string }, context) => {
       return await feedService.getFeeds({
-        userId: 1,
+        userId: context.auth.id,
         limit: args.limit,
         offset: args.offset,
         category: args.category

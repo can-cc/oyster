@@ -15,7 +15,7 @@ export class AuthService {
     );
   }
 
-  public static unsignJwt(token: string): any {
+  public static unSignJwt(token: string): any {
     return jwt.verify(token, configure.getConfig('SECRET_KEY'));
   }
 

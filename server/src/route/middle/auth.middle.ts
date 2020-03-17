@@ -1,4 +1,5 @@
 import { AuthService } from '../../service/auth.service';
+import { logger } from '../../logger';
 
 export function authMiddle(req, res, next) {
   const jwtdata: string = req.header('Authorization');
@@ -8,11 +9,11 @@ export function authMiddle(req, res, next) {
   }
 
   try {
-    const jwtData = AuthService.unsignJwt(jwtdata);
+    const jwtData = AuthService.unSignJwt(jwtdata);
     req.auth = jwtData.data;
     return next();
   } catch (error) {
-    console.error(error);
+    logger.error(error);
     res.status(401).send();
   }
 }
