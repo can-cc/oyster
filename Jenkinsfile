@@ -14,7 +14,7 @@ pipeline {
         stage('CI') {
             agent {
                 docker {
-                    image 'node:12.14.0-stretch'
+                    image 'node:12.16.1-stretch'
                 }
             }
             stages {
