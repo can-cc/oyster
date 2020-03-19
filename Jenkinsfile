@@ -5,6 +5,7 @@ pipeline {
     }
     environment {
         CI = 'true'
+        HOME = '.'
         DOCKER_REGISTER = credentials('oyster-docker-register')
         oyster_web_sentry_dsn = credentials('oyster-web-sentry-dsn')
         docker_hub_username = credentials('docker_hub_username')
