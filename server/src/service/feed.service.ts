@@ -1,6 +1,5 @@
 import { getRepository } from 'typeorm';
 import { Feed } from '../entity/feed';
-import { logger } from '../logger';
 
 type Category = 'all' | 'favorite' | string;
 
