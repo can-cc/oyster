@@ -82,3 +82,16 @@ test('test infoq parser(RSS2)', async () => {
   expect(feeds[0].publishedDate).toEqual(new Date('2020-03-02T11:55:22.000Z'));
   expect(feeds.length).toEqual(20);
 });
+
+test('test observablehq parser(RSS2)', async () => {
+  const mockXmlData = fs.readFileSync(path.join(__dirname, './__mock_data__/_mock_observablehq_d3.xml'), 'utf-8');
+  const feeds: FeedData[] = await parseFeedData(mockXmlData);
+
+  expect(feeds[0].title).toEqual('Zoomable Scatterplot');
+  expect(feeds[0].content.length).toEqual(220);
+  expect(feeds[0].originHref).toEqual('https://observablehq.com/@d3/zoomable-scatterplot');
+  expect(feeds[0].globalID).toEqual('https://observablehq.com/@d3/zoomable-scatterplot');
+  expect(feeds[0].author).toEqual(undefined);
+  expect(feeds[0].publishedDate).toEqual(new Date('2020-04-03T23:47:27.000Z'));
+  expect(feeds.length).toEqual(30);
+});

@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>D3 / Observable</title>
+    <link>https://observablehq.com/@d3</link>
+    <atom:link href="https://api.observablehq.com/documents/@d3.rss" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://api.observablehq.com/documents/@d3.rss?before=2020-02-19T18:36:40.016Z" rel="next" type="application/rss+xml"/>
+    <description>D3 / Observable</description>
+    <pubDate>Fri, 03 Apr 2020 23:47:27 GMT</pubDate>
+    <lastBuildDate>Fri, 03 Apr 2020 23:47:27 GMT</lastBuildDate><item>
+        <title>Zoomable Scatterplot</title>
+        <link>https://observablehq.com/@d3/zoomable-scatterplot</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/zoomable-scatterplot"><img src="https://static.observableusercontent.com/thumbnail/9c37b38560bf32ffb988906dca92b51d2fcfc6514cd2c04eda0a67adbeafd3a6.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/zoomable-scatterplot</guid>
+        <pubDate>Fri, 03 Apr 2020 23:47:27 GMT</pubDate>
+      </item><item>
+        <title>Scatterplot Tour</title>
+        <link>https://observablehq.com/@d3/scatterplot-tour</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/scatterplot-tour"><img src="https://static.observableusercontent.com/thumbnail/d18023b5df31a426d5d9f0d2e4f1fd7954a905b478787977ec576bd01f8e9024.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/scatterplot-tour</guid>
+        <pubDate>Fri, 03 Apr 2020 20:15:42 GMT</pubDate>
+      </item><item>
+        <title>Fan Chart</title>
+        <link>https://observablehq.com/@d3/fan-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/fan-chart"><img src="https://static.observableusercontent.com/thumbnail/ea9e2c96eccc863d404fd3365b3e62a1d0410c5ccc1f96d54c229c19c1067f91.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/fan-chart</guid>
+        <pubDate>Thu, 02 Apr 2020 23:32:30 GMT</pubDate>
+      </item><item>
+        <title>Lollipop Chart</title>
+        <link>https://observablehq.com/@d3/lollipop-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/lollipop-chart"><img src="https://static.observableusercontent.com/thumbnail/9a8e0c032a6bb1ea31d26e4207ffbc1927c4f09fccac0ad22ca661631d3fc242.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/lollipop-chart</guid>
+        <pubDate>Thu, 02 Apr 2020 22:33:26 GMT</pubDate>
+      </item><item>
+        <title>Barcode Plot</title>
+        <link>https://observablehq.com/@d3/barcode-plot</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/barcode-plot"><img src="https://static.observableusercontent.com/thumbnail/e787401ecf4df462c229b9d33236e41e9d5f3b0a4ce1a474d33b1af19b3ec282.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/barcode-plot</guid>
+        <pubDate>Thu, 02 Apr 2020 21:55:02 GMT</pubDate>
+      </item><item>
+        <title>Dot Strip Plot</title>
+        <link>https://observablehq.com/@d3/dot-strip-plot</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/dot-strip-plot"><img src="https://static.observableusercontent.com/thumbnail/130d451a00104b8420ab64e7e3869857e442cda3ea835423b1eec033723d2202.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/dot-strip-plot</guid>
+        <pubDate>Thu, 02 Apr 2020 21:43:17 GMT</pubDate>
+      </item><item>
+        <title>Bar-Line Chart</title>
+        <link>https://observablehq.com/@d3/bar-line-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/bar-line-chart"><img src="https://static.observableusercontent.com/thumbnail/e52eab39840c65bbd72c4dc1fcbd801af454c089f6ff97c189b2ed3e5e22e469.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/bar-line-chart</guid>
+        <pubDate>Wed, 01 Apr 2020 23:59:46 GMT</pubDate>
+      </item><item>
+        <title>Diverging Bar Chart</title>
+        <link>https://observablehq.com/@d3/diverging-bar-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/diverging-bar-chart"><img src="https://static.observableusercontent.com/thumbnail/7061e6ca2e957581c8bb0218c949bc895c396d351f38ac5e31b183a96cf5bd83.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/diverging-bar-chart</guid>
+        <pubDate>Wed, 01 Apr 2020 16:53:52 GMT</pubDate>
+      </item><item>
+        <title>General Update Pattern</title>
+        <link>https://observablehq.com/@d3/general-update-pattern</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/general-update-pattern"><img src="https://static.observableusercontent.com/thumbnail/13eea3679e052a50f578fadaf2b0da97d179115a34b5e203953449a2ed8fba2d.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/general-update-pattern</guid>
+        <pubDate>Fri, 27 Mar 2020 16:02:34 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Further Topics</title>
+        <link>https://observablehq.com/@d3/learn-d3-further-topics</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-further-topics"><img src="https://static.observableusercontent.com/thumbnail/ee03db4c1ea6291b528ff13acce607ca10141b1b545a24019c95e26b3e8c6c1e.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-further-topics</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:18 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Interaction</title>
+        <link>https://observablehq.com/@d3/learn-d3-interaction</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-interaction"><img src="https://static.observableusercontent.com/thumbnail/ee02670104e0786d5ea44866b57d291f94693210bc878f445c09f1a8dc9f3f02.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-interaction</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:15 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Joins</title>
+        <link>https://observablehq.com/@d3/learn-d3-joins</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-joins"><img src="https://static.observableusercontent.com/thumbnail/4fa29b512b19fda4e5468ee68a78f946a11559ec56af140a31ee0cc4502de372.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-joins</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:12 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Animation</title>
+        <link>https://observablehq.com/@d3/learn-d3-animation</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-animation"><img src="https://static.observableusercontent.com/thumbnail/ee02670104e0786d5ea44866b57d291f94693210bc878f445c09f1a8dc9f3f02.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-animation</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:09 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Shapes</title>
+        <link>https://observablehq.com/@d3/learn-d3-shapes</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-shapes"><img src="https://static.observableusercontent.com/thumbnail/ee02670104e0786d5ea44866b57d291f94693210bc878f445c09f1a8dc9f3f02.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-shapes</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:06 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Scales</title>
+        <link>https://observablehq.com/@d3/learn-d3-scales</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-scales"><img src="https://static.observableusercontent.com/thumbnail/4ee728f0cfaea01c360656d15d5dd6a844162057b5712d82b3cfa115ebadfc34.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-scales</guid>
+        <pubDate>Tue, 24 Mar 2020 15:08:02 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Data</title>
+        <link>https://observablehq.com/@d3/learn-d3-data</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-data"><img src="https://static.observableusercontent.com/thumbnail/9536fe5ee140e834af0b8dbd79161d674c087cd61d78f554d3f168191b13923f.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-data</guid>
+        <pubDate>Tue, 24 Mar 2020 15:07:58 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: By Example</title>
+        <link>https://observablehq.com/@d3/learn-d3-by-example</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3-by-example"><img src="https://static.observableusercontent.com/thumbnail/98543ee79c224d1f9b7e0c53f0830b4ab32d97637a5139c4dfd00368335b0f71.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3-by-example</guid>
+        <pubDate>Tue, 24 Mar 2020 15:07:55 GMT</pubDate>
+      </item><item>
+        <title>Learn D3: Introduction</title>
+        <link>https://observablehq.com/@d3/learn-d3</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/learn-d3"><img src="https://static.observableusercontent.com/thumbnail/6782987c12640214fe1eedf5693751984e9dde1e277f7450436345a307d51067.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/learn-d3</guid>
+        <pubDate>Tue, 24 Mar 2020 15:07:50 GMT</pubDate>
+      </item><item>
+        <title>Diverging Stacked Bar Chart</title>
+        <link>https://observablehq.com/@d3/diverging-stacked-bar-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/diverging-stacked-bar-chart"><img src="https://static.observableusercontent.com/thumbnail/6d30eda49a7bfd8b63019064257600a812ad4443f13becd3719db16a467de722.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/diverging-stacked-bar-chart</guid>
+        <pubDate>Thu, 12 Mar 2020 17:59:29 GMT</pubDate>
+      </item><item>
+        <title>Build Your Own Graph!</title>
+        <link>https://observablehq.com/@d3/build-your-own-graph</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/build-your-own-graph"><img src="https://static.observableusercontent.com/thumbnail/e9ea4cf3ad8553750656e40b161a9979c17bc65398e2b2f9d02e4f11f23b5a5e.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/build-your-own-graph</guid>
+        <pubDate>Wed, 11 Mar 2020 22:22:43 GMT</pubDate>
+      </item><item>
+        <title>Modifying a Force-Directed Graph</title>
+        <link>https://observablehq.com/@d3/modifying-a-force-directed-graph</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/modifying-a-force-directed-graph"><img src="https://static.observableusercontent.com/thumbnail/bb192b69ba10bcccee2d8dd388f47fd204d14d284f9f9ed361aa65bad4deeb18.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/modifying-a-force-directed-graph</guid>
+        <pubDate>Wed, 11 Mar 2020 15:25:54 GMT</pubDate>
+      </item><item>
+        <title>Versor Zooming</title>
+        <link>https://observablehq.com/@d3/versor-zooming</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/versor-zooming"><img src="https://static.observableusercontent.com/thumbnail/79a43b8d1ba72926ee8efb9bdfe24ed20611184e081ed3c892eb32e1bb805397.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/versor-zooming</guid>
+        <pubDate>Mon, 09 Mar 2020 16:32:52 GMT</pubDate>
+      </item><item>
+        <title>Testing Projection Visibility</title>
+        <link>https://observablehq.com/@d3/testing-projection-visibility</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/testing-projection-visibility"><img src="https://static.observableusercontent.com/thumbnail/22ab765316700e9e41cf84778f2d760b74ea71bf8ba8045807cbbea8d05d7bd8.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/testing-projection-visibility</guid>
+        <pubDate>Sun, 08 Mar 2020 05:31:39 GMT</pubDate>
+      </item><item>
+        <title>Let’s Make a Bar Chart, Part 4</title>
+        <link>https://observablehq.com/@d3/lets-make-a-bar-chart/4</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/lets-make-a-bar-chart/4"><img src="https://static.observableusercontent.com/thumbnail/cc7bde54ab120f887b2aa0a6ae0fb8c073a32198d809b15f10815df42d852068.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/lets-make-a-bar-chart/4</guid>
+        <pubDate>Wed, 04 Mar 2020 04:50:44 GMT</pubDate>
+      </item><item>
+        <title>Let’s Make a Bar Chart, Part 3</title>
+        <link>https://observablehq.com/@d3/lets-make-a-bar-chart/3</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/lets-make-a-bar-chart/3"><img src="https://static.observableusercontent.com/thumbnail/7ad12ff0267c3aab1df01e1503639f5a2170d9dd50c2e6366d9fe9e9630f590f.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/lets-make-a-bar-chart/3</guid>
+        <pubDate>Wed, 04 Mar 2020 04:50:28 GMT</pubDate>
+      </item><item>
+        <title>Let’s Make a Bar Chart, Part 2</title>
+        <link>https://observablehq.com/@d3/lets-make-a-bar-chart/2</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/lets-make-a-bar-chart/2"><img src="https://static.observableusercontent.com/thumbnail/5d62595a580b91deec7ab86a4405e0b1be817dee70ebef3ad0d20dee40a1aa6f.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/lets-make-a-bar-chart/2</guid>
+        <pubDate>Wed, 04 Mar 2020 04:50:03 GMT</pubDate>
+      </item><item>
+        <title>Let’s Make a Bar Chart, Part 1</title>
+        <link>https://observablehq.com/@d3/lets-make-a-bar-chart</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/lets-make-a-bar-chart"><img src="https://static.observableusercontent.com/thumbnail/bc6be114ad4e79d47f2a6f83b4d3faba77ad04fc7d2dc94a0bf17d4169b946f6.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/lets-make-a-bar-chart</guid>
+        <pubDate>Wed, 04 Mar 2020 04:49:36 GMT</pubDate>
+      </item><item>
+        <title>Indented Tree</title>
+        <link>https://observablehq.com/@d3/indented-tree</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/indented-tree"><img src="https://static.observableusercontent.com/thumbnail/baa8dac553884e09caa3f0611a077594ebdfcfd9416647f1d5c8457d898a52a6.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/indented-tree</guid>
+        <pubDate>Sun, 01 Mar 2020 17:08:30 GMT</pubDate>
+      </item><item>
+        <title>Margin Convention</title>
+        <link>https://observablehq.com/@d3/margin-convention</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/margin-convention"><img src="https://static.observableusercontent.com/thumbnail/b98a6680ef3bb25dce9fc40ab9ee7a7ea31be5984189c79e0c7d3afdc0901ec9.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/margin-convention</guid>
+        <pubDate>Tue, 25 Feb 2020 20:36:43 GMT</pubDate>
+      </item><item>
+        <title>Focus + Context</title>
+        <link>https://observablehq.com/@d3/focus-context</link>
+        <description><![CDATA[<a href="https://observablehq.com/@d3/focus-context"><img src="https://static.observableusercontent.com/thumbnail/da22e5a42232a633d7c402968f8888ece749db91594a247edef76bdecef6c5fd.jpg" width="320" height="240"></a>]]></description>
+        <guid>https://observablehq.com/@d3/focus-context</guid>
+        <pubDate>Wed, 19 Feb 2020 18:36:40 GMT</pubDate>
+      </item>
+  </channel>
+</rss>
