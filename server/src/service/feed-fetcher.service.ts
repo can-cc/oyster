@@ -94,6 +94,7 @@ class FeedFetcher {
   }
 
   private genFeedIdentifyStr(feed: Feed): string {
+    // TODO bug! use gid!
     if (feed.id) {
       return feed.id;
     }
