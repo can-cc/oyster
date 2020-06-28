@@ -2,6 +2,6 @@
 .idea
 /log/*
 .DS_Store
-
 /docker-data
-node_modules
+/config/config.custom.yaml
+/docker-data
