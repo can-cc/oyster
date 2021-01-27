@@ -12,7 +12,7 @@ services:
     restart: always
     image: postgres:11.5
     networks:
-      - app
+      - oyster
     environment:
       POSTGRES_PASSWORD: mysecretpassword
     volumes:
