@@ -8,15 +8,15 @@ services:
       - ./docker-data/redis:/data
     networks: 
       - oyster
-  # postgres:
-  #   restart: always
-  #   image: postgres:11.5
-  #   networks: 
-  #     - app
-  #   environment:
-  #     POSTGRES_PASSWORD: mysecretpassword
-  #   volumes:
-  #     - ~/docker-data/pgdata:/var/lib/postgresql/data
+  postgres:
+    restart: always
+    image: postgres:11.5
+    networks:
+      - app
+    environment:
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - ./docker-data/pgdata:/var/lib/postgresql/data
   web:
     restart: always
     image: fwchen/oyster-web:latest
@@ -34,8 +34,8 @@ services:
     volumes:
       - ./config:/config
       - ./log:/log
-    # depends_on:
-    #   - postgres
+    depends_on:
+      - postgres
 
 networks:
   oyster:
