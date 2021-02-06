@@ -15,6 +15,7 @@ services:
       - oyster
     environment:
       POSTGRES_PASSWORD: mysecretpassword
+      POSTGRES_DB: oyster
     volumes:
       - ./docker-data/pgdata:/var/lib/postgresql/data
   web:
