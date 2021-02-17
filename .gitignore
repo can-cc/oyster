@@ -5,3 +5,4 @@
 /docker-data
 /config/config.custom.yaml
 /docker-data
+/node_modules
