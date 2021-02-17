@@ -1,6 +1,8 @@
 # oyster
 a rss reader.
 
+## APP
+
 ## Deploy
 
 ``` bash
@@ -51,3 +53,4 @@ su - postgres && psql
 ## Proxy (Experimental)
 just set `HTTP_PROXY` and `HTTPS_PROXY`env in shell (linux or mac).
 Or set `proxy_url` in `config.yaml`
+
