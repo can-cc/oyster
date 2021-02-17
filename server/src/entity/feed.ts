@@ -7,17 +7,17 @@ import {
   ManyToOne,
   JoinColumn,
   OneToMany,
-  Index
+  Index,
+  PrimaryColumn
 } from 'typeorm';
 import { FeedData } from '../typing/feed';
 import { FeedSource } from './feed-source';
 import { FeedMark } from './feed-mark';
 
-// make sure filename `feed.ts`
 @Entity()
 export class Feed {
-  @PrimaryGeneratedColumn('uuid')
-  public id: string;
+  @PrimaryGeneratedColumn()
+  public id: number;
 
   @Column({ nullable: true })
   public globalID: string;

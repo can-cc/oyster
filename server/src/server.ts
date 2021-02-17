@@ -4,7 +4,6 @@ import * as morgan from 'morgan';
 import * as useragent from 'express-useragent';
 import { authRouter } from './route/auth.route';
 import { graphqlServer } from './graphql/schema';
-
 import { authMiddle } from './route/middle/auth.middle';
 import { feedRouter } from './route/feed.route';
 import { pignRouter } from './route/ping.route';
@@ -43,6 +42,6 @@ export function setupServer() {
   });
 
   app.listen(7788, '0.0.0.0');
-  console.log(colors.green(`server ready at http://localhost:7788`));
-  console.log(`🚀 graphql Server ready at http://localhost:7788${graphqlServer.graphqlPath}`);
+  console.log(colors.green(`server ready at http://0.0.0.0:7788`));
+  console.log(`🚀 graphql Server ready at http://0.0.0.0:7788${graphqlServer.graphqlPath}`);
 }

@@ -4,16 +4,16 @@ import { Feed } from '../entity/feed';
 type Category = 'all' | 'favorite' | string;
 
 class FeedService {
-  public async getFeeds({ userId, limit, offset, category }): Promise<Feed[]> {
+  public async getFeeds({ userId, limit, offset, from, category, order }): Promise<Feed[]> {
     switch (category as Category) {
       case '_all':
       case null:
       case undefined:
-        return this.getAllFeeds({ userId, limit, offset });
+        return this.getAllFeeds({ userId, limit, offset, from, order });
       case '_favorite':
-        return this.getFavoriteFeeds({ userId, limit, offset });
+        return this.getFavoriteFeeds({ userId, limit, offset, from, order });
       default:
-        return this.getSourceFeeds({ userId, limit, offset, sourceId: category });
+        return this.getSourceFeeds({ userId, limit, offset, sourceId: category, from, order });
     }
   }
 
@@ -22,22 +22,23 @@ class FeedService {
     return savedFeed;
   }
 
-  public async findFeed(feedId: string): Promise<Feed> {
+  public async findFeed(feedId: number): Promise<Feed> {
     return await getRepository(Feed).findOne({ id: feedId });
   }
 
-  private async getAllFeeds({ userId, limit, offset }): Promise<Feed[]> {
+  private async getAllFeeds({ userId, limit, offset, from, order }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
-      .orderBy('"feed"."createdAt"', 'DESC')
+      .orderBy('"feed"."createdAt"', order.toUpperCase())
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
+      .where('"feed"."id" > :from', { from: from || 0 })
       .limit(limit)
       .offset(offset)
       .getMany();
   }
 
-  private async getFavoriteFeeds({ userId, limit, offset }): Promise<Feed[]> {
+  private async getFavoriteFeeds({ userId, limit, offset, from, order }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .innerJoinAndSelect(
@@ -47,19 +48,21 @@ class FeedService {
         { userId, markType: 'FAVORITE' }
       )
       .leftJoinAndSelect('feed.source', 'feed_source')
-      .orderBy('"feed"."createdAt"', 'DESC')
+      .orderBy('"feed"."createdAt"', order.toUpperCase())
+      .where('"feed"."id" > :from', { from: from || 0 })
       .limit(limit)
       .offset(offset)
       .getMany();
   }
 
-  private async getSourceFeeds({ userId, sourceId, limit, offset }): Promise<Feed[]> {
+  private async getSourceFeeds({ userId, sourceId, limit, offset, from, order }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
       .where('feed_source.id = :sourceId', { sourceId })
-      .orderBy('"feed"."createdAt"', 'DESC')
+      .andWhere('"feed"."id" > :from', { from: from || 0 })
+      .orderBy('"feed"."createdAt"', order.toUpperCase())
       .limit(limit)
       .offset(offset)
       .getMany();

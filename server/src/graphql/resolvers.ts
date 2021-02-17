@@ -8,7 +8,9 @@ export const resolvers = {
         userId: context.auth.id,
         limit: args.limit,
         offset: args.offset,
-        category: args.category
+        category: args.category,
+        order: 'desc',
+        from: null
       });
     },
     sources: async (root, args: {}) => {

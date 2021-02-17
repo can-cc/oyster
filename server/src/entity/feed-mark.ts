@@ -15,7 +15,7 @@ import { User } from './app-user';
 @Entity()
 @Unique(['user', 'feed'])
 export class FeedMark {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   public id: string;
 
   @ManyToOne(() => User)

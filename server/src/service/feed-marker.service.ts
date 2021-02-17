@@ -18,11 +18,12 @@ class FeedMarkerService {
     return await getRepository(FeedMark).save(mark);
   }
 
-  public async removeFeedFavoriteMark({ userId, markId }): Promise<void> {
+  public async removeFeedFavoriteMark({ userId, feedId }): Promise<void> {
     const mark: FeedMark = await getRepository(FeedMark).findOne({
       where: {
-        id: markId,
-        userId
+        feedId: feedId,
+        userId,
+        type: 'FAVORITE'
       },
     });
     await getRepository(FeedMark).remove(mark);
