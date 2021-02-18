@@ -1,5 +1,13 @@
-# oyster
-a rss reader.
+<div align="center">
+  <img src="https://github.com/fwchen/oyster/blob/master/asset/head.png?raw=true" alt="Feed for Node.js" width="326">
+  <br>
+  <a href="https://github.com/facebook/jest"><img src="https://img.shields.io/badge/tested_with-jest-99424f.svg" alt="Tested with Jest"></a><a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT"></a>
+</div>
+<p align="center"><code>jpmonette/feed</code> - <strong>RSS 2.0, JSON Feed 1.0, and Atom 1.0</strong> generator for <strong>Node.js</strong><br>
+Making content syndication simple and intuitive!</p>
+
+
+
 
 ![screenshot](./asset/screenshot.png)
 
