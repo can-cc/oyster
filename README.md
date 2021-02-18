@@ -1,6 +1,8 @@
 # oyster
 a rss reader.
 
+![screenshot](./asset/screenshot.png)
+
 ## APP
 
 ## Deploy
