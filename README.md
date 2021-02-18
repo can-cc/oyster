@@ -11,7 +11,7 @@ Making content syndication simple and intuitive! And Oyster has APP now!</p>
 
 <div align="center">
    <p><b>Download APP</b></p>
-   <img src="https://www.hualigs.cn/image/602e4fce1f936.jpg" style="border-radius: 6px" alt="App Icon" width="126">
+   <img src="https://www.hualigs.cn/image/602e4fce1f936.jpg" style="border-radius: 6px" border-radius="6px" alt="App Icon" width="126">
    <p>It can be downloading in the iOS App Store or Google Play Store soon.</p>
   <br>
 </div>
