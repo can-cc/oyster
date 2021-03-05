@@ -32,7 +32,7 @@ class FeedService {
       .orderBy('"feed"."createdAt"', order.toUpperCase())
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
-      .where('"feed"."id" > :from', { from: from || 0 })
+      .where(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
       .limit(limit)
       .offset(offset)
       .getMany();
