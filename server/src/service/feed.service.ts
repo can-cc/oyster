@@ -49,7 +49,7 @@ class FeedService {
       )
       .leftJoinAndSelect('feed.source', 'feed_source')
       .orderBy('"feed"."createdAt"', order.toUpperCase())
-      .where('"feed"."id" > :from', { from: from || 0 })
+      .where(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
       .limit(limit)
       .offset(offset)
       .getMany();
@@ -61,7 +61,7 @@ class FeedService {
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
       .where('feed_source.id = :sourceId', { sourceId })
-      .andWhere('"feed"."id" > :from', { from: from || 0 })
+      .andWhere(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
       .orderBy('"feed"."createdAt"', order.toUpperCase())
       .limit(limit)
       .offset(offset)
