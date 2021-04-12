@@ -28,11 +28,11 @@ jobs:
         run: cd client && docker build . --tag image
 
       - name: Log into registry
-        run: echo "${{ secrets.docker_hub_password }}" | docker login -u ${{ secrets.docker_hub_username }} --password-stdin
+        run: echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
 
       - name: Push image
         run: |
-          IMAGE_ID=${{ secrets.docker_hub_username }}/oyster-web
+          IMAGE_ID=${{ secrets.DOCKER_HUB_USERNAME }}/oyster-web
 
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
