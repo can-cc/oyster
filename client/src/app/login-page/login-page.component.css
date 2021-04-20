@@ -10,8 +10,8 @@ h2 {
 
 .panel {
   border-radius: 6px;
-  border: 1px solid #eee;
   padding: 28px;
+  box-shadow: 1px 3px 8px #d6d6d6;
 }
 
 mat-form-field {
