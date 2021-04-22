@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faAngleDown, faCog } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-aside-top-bar',
@@ -9,6 +9,7 @@ import { faSearch, faAngleDown } from '@fortawesome/free-solid-svg-icons';
 export class AsideTopBarComponent implements OnInit {
   faSearch = faSearch;
   faAngleDown = faAngleDown;
+  faCog = faCog;
   @Input() selectedCategoryName = '';
 
   constructor() {}
