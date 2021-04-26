@@ -31,8 +31,9 @@ export class AuthService {
     const match = bcrypt.compareSync(password, user.hash);
     if (match) {
       return user;
+    } else {
+      return null;
     }
-    return user;
   }
 }
 
