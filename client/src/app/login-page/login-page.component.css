@@ -1,11 +1,21 @@
 h2 {
   color: #555;
+  text-align: center;
+  margin-top: 0;
 }
 
 .container {
-  width: 500px;
+  width: 420px;
   margin: auto;
   padding-top: 100px;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-container img {
+  width: 80px;
 }
 
 .panel {
