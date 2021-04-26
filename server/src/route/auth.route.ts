@@ -7,7 +7,6 @@ authRouter.post('/login', async (req, res, next) => {
   try {
     const { username, password } = req.body;
     const user = await authService.login(username, password);
-    console.log('user', user);
     if (user) {
       const jwtToken = AuthService.signJwt({
         id: user.id,
