@@ -21,12 +21,12 @@ const tags: CategoryItemProps[] = [
     name: 'Favorite',
     icon: faStar
   },
-  {
-    type: 'tag',
-    id: '_updated',
-    name: 'Updated',
-    icon: faClock
-  },
+  // {
+  //   type: 'tag',
+  //   id: '_updated',
+  //   name: 'Updated',
+  //   icon: faClock
+  // },
 
 ];
 

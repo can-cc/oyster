@@ -14,6 +14,7 @@ export class ButtonComponent implements OnInit, OnChanges {
   @Input() class: string;
   @Input() type: ButtonType;
   @Input() htmlType = 'button'
+  @Input() transparent = false;
 
   @HostBinding('class') ngClass: string;
 
@@ -30,6 +31,6 @@ export class ButtonComponent implements OnInit, OnChanges {
   }
 
   buildClass(): void {
-    this.ngClass = [this.class, this.type].join(' ');
+    this.ngClass = [this.class, this.type, this.transparent ? 'transparent' : ''].join(' ');
   }
 }

@@ -1,8 +1,9 @@
 :host {
-  display: block;
+  display: flex;
   height: 35px;
   line-height: 35px;
   padding: 18px 18px 12px 10px;
+  align-items: center;
 }
 
 .heading {
@@ -19,9 +20,14 @@
 }
 
 .container {
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+app-input {
+  margin-right: 12px;
 }
 
 .search-container {
@@ -29,3 +35,4 @@
   padding: 3px;
   color: #555;
 }
+

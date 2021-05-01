@@ -1,17 +1,26 @@
 <div class="container">
-  <div class="heading">
+  <div class="heading" *ngIf="!isSearching">
     {{ selectedCategoryName }}
     <fa-icon size="1x" [icon]="faAngleDown"></fa-icon>
   </div>
 
+  <app-input
+    *ngIf="isSearching"
+    placeholder="Search"
+    [formControl]="searchStrCtrl"
+    size="sm"
+    (keydown.enter)="onSearch()"
+  ></app-input>
+
 
   <div class="operating-container">
-    <app-button>
+    <app-button [transparent]="true" (click)="toggleSearch()">
       <fa-icon class="search-icon" size="1x" [icon]="faSearch"></fa-icon>
     </app-button>
-    <span>
+
+    <app-button [transparent]="true" *ngIf="!isSearching">
       <fa-icon class="setting-icon" size="1x" [icon]="faCog"></fa-icon>
-    </span>
+    </app-button>
   </div>
 
 </div>

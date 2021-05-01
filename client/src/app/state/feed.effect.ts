@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import {act, Actions, Effect, ofType} from '@ngrx/effects';
 import { EMPTY } from 'rxjs';
 import { map, mergeMap, catchError, tap, mapTo, switchMap } from 'rxjs/operators';
 import { FeedMarkService } from '../core/feed-mark.service';
@@ -113,8 +113,8 @@ export class FeedEffects {
     switchMap((action: GetFeeds) => {
       return this.apollo.query({
         query: gql`
-          query getFeeds($limit: Int!, $offset: Int!, $category: String!) {
-            feeds(limit: $limit, offset: $offset, category: $category) {
+          query getFeeds($limit: Int!, $offset: Int!, $category: String!, $search: String!) {
+            feeds(limit: $limit, offset: $offset, category: $category, search: $search) {
               id
               rssId
               title
@@ -139,7 +139,8 @@ export class FeedEffects {
         variables: {
           limit: action.payload.limit,
           offset: action.payload.offset,
-          category: action.payload.category
+          category: action.payload.category,
+          search: action.payload.search
         },
         fetchPolicy: 'network-only'
       });

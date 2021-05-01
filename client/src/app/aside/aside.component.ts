@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { faDotCircle, faCog } from '@fortawesome/free-solid-svg-icons';
 import { StoreType, FeedSource, CategoryItemProps } from '../../typing/feed';
 import { map } from 'rxjs/operators';
 import { GetSources } from '../state/feed.actions';
@@ -27,6 +26,7 @@ export class AsideComponent implements OnInit {
     // sources$.subscribe((sources: FeedSource[]) => {});
 
     combineLatest(sources$, this.route.params).subscribe(([sources, paramsMap]) => {
+      // @ts-ignore
       this.categories = sources.map((source: FeedSource) => {
         return {
           type: 'source',

@@ -18,7 +18,7 @@ feedRouter.get('/api/feeds/:limit', async (req, res, next) => {
       offset: req.query.offset,
       from: req.query.from,
       category: req.query.category,
-      order
+      order,
     });
     return res.status(200).json(feeds);
   } catch (error) {

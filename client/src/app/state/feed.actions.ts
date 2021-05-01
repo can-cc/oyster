@@ -8,6 +8,8 @@ export enum ActionTypes {
   GET_FEEDS = '[Source Component] Get feeds',
   GET_FEEDS_SUCCESS = '[Source Component] Get feeds success',
 
+  SET_SEARCH = '[Set Search] Set Search Str',
+
   GET_SOURCES = '[Source Component] Get sources',
   GET_SOURCES_SUCCESS = '[Source Component] Get sources success',
   REMOVE_SOURCE = '[Source Component] Remove sources',
@@ -29,7 +31,7 @@ export class CleanFeeds implements Action {
 export class GetFeeds implements Action {
   readonly type = ActionTypes.GET_FEEDS;
 
-  constructor(public payload: { offset: number; limit: number; category: string }) {}
+  constructor(public payload: { offset: number; limit: number; category: string, search: string }) {}
 }
 
 export class GetFeedsSuccess implements Action {
@@ -95,6 +97,12 @@ export class RemoveFeedMarkSuccess implements Action {
   readonly type = ActionTypes.REMOVE_FEED_MARK_SUCCESS;
 
   constructor(public payload: { feedId: string }) {}
+}
+
+export class SetSearchStr implements Action {
+  readonly type = ActionTypes.SET_SEARCH;
+
+  constructor(public payload: { searchStr: string }) {}
 }
 
 export class Reset implements Action {

@@ -16,6 +16,8 @@ export class FeedsPageComponent implements OnInit {
   offset = 0;
 
   public feeds$: Observable<Feed[]>;
+  private searchStr$: Observable<string>;
+  public searchStr: string = '';
   public urlFeedId$: Observable<string>;
 
   private complete$: Subject<void> = new Subject();
@@ -26,6 +28,7 @@ export class FeedsPageComponent implements OnInit {
       feed: {
         feedMap: { [id: string]: Feed };
         feedIds: string[];
+        searchStr: string;
       };
     }>,
     public route: ActivatedRoute,
@@ -38,14 +41,23 @@ export class FeedsPageComponent implements OnInit {
         return feed.feedIds.map(id => feed.feedMap[id]);
       })
     );
+
+    this.searchStr$ = store.pipe(map(({ feed }) => {
+      return feed.searchStr;
+    }), distinctUntilChanged())
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.searchStr$.pipe(takeUntil(this.complete$)).subscribe(searchStr => {
+      this.searchStr = searchStr;
+      this.queryFeeds();
+    });
+  }
 
   private setUrlListener() {
     this.urlFeedId$ = this.route.paramMap.pipe(
+      map((params: ParamMap) => params.get('feedId')),
       takeUntil(this.complete$),
-      map((params: ParamMap) => params.get('feedId'))
     );
 
     this.route.paramMap
@@ -66,7 +78,7 @@ export class FeedsPageComponent implements OnInit {
 
   public queryFeeds(): void {
     this.store.dispatch(
-      new GetFeeds({ offset: this.offset, limit: this.pageLimit, category: this.category })
+      new GetFeeds({ offset: this.offset, limit: this.pageLimit, category: this.category, search: this.searchStr })
     );
     this.offset += this.pageLimit;
   }

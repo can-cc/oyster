@@ -3,7 +3,7 @@ const { ApolloServer, gql } = require('apollo-server-express');
 
 const typeDefs = gql`
   type Query {
-    feeds(limit: Int!, offset: Int!, category: String!): [Feed]
+    feeds(limit: Int!, offset: Int!, category: String!, search: String!): [Feed]
     sources: [FeedSource]
   }
   type Mutation {

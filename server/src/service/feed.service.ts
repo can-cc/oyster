@@ -4,16 +4,16 @@ import { Feed } from '../entity/feed';
 type Category = 'all' | 'favorite' | string;
 
 class FeedService {
-  public async getFeeds({ userId, limit, offset, from, category, order }): Promise<Feed[]> {
+  public async getFeeds({ userId, limit, offset, from, category, order, search = undefined }): Promise<Feed[]> {
     switch (category as Category) {
       case '_all':
       case null:
       case undefined:
-        return this.getAllFeeds({ userId, limit, offset, from, order });
+        return this.getAllFeeds({ userId, limit, offset, from, order, search });
       case '_favorite':
-        return this.getFavoriteFeeds({ userId, limit, offset, from, order });
+        return this.getFavoriteFeeds({ userId, limit, offset, from, order, search });
       default:
-        return this.getSourceFeeds({ userId, limit, offset, sourceId: category, from, order });
+        return this.getSourceFeeds({ userId, limit, offset, sourceId: category, from, order, search });
     }
   }
 
@@ -26,19 +26,21 @@ class FeedService {
     return await getRepository(Feed).findOne({ id: feedId });
   }
 
-  private async getAllFeeds({ userId, limit, offset, from, order }): Promise<Feed[]> {
+  private async getAllFeeds({ userId, limit, offset, from, order, search }): Promise<Feed[]> {
+    console.log('search', search)
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .orderBy('"feed"."createdAt"', order.toUpperCase())
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
       .where(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
+      .andWhere(!!search ? `("feed".title LIKE '%${search}%' OR "feed".content LIKE '%${search}%')` : '1=1')
       .limit(limit)
       .offset(offset)
       .getMany();
   }
 
-  private async getFavoriteFeeds({ userId, limit, offset, from, order }): Promise<Feed[]> {
+  private async getFavoriteFeeds({ userId, limit, offset, from, order, search }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .innerJoinAndSelect(
@@ -50,18 +52,20 @@ class FeedService {
       .leftJoinAndSelect('feed.source', 'feed_source')
       .orderBy('"feed"."createdAt"', order.toUpperCase())
       .where(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
+      .andWhere(!!search ? `("feed".title LIKE '%${search}%' OR "feed".content LIKE '%${search}%')` : '1=1')
       .limit(limit)
       .offset(offset)
       .getMany();
   }
 
-  private async getSourceFeeds({ userId, sourceId, limit, offset, from, order }): Promise<Feed[]> {
+  private async getSourceFeeds({ userId, sourceId, limit, offset, from, order, search }): Promise<Feed[]> {
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .leftJoinAndSelect('feed.marks', 'feed_mark', '"feed_mark"."userId" = :userId', { userId })
       .leftJoinAndSelect('feed.source', 'feed_source')
       .where('feed_source.id = :sourceId', { sourceId })
       .andWhere(`"feed"."id" ${order === 'desc' && !!Number(from) ? '<' : '>'} :from`, { from: from || 0 })
+      .andWhere(!!search ? `("feed".title LIKE '%${search}%' OR "feed".content LIKE '%${search}%')` : '1=1')
       .orderBy('"feed"."createdAt"', order.toUpperCase())
       .limit(limit)
       .offset(offset)

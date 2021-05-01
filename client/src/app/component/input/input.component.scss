@@ -21,6 +21,16 @@
     width: 100%;
     outline: none;
     box-sizing: border-box;
+    padding-left: 8px;
+  }
+}
+
+:host.sm {
+  height: 26px;
+}
+
+:host.has-icon {
+  input {
     padding-left: 40px;
   }
 }
