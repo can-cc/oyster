@@ -1,7 +1,6 @@
 <div class="container">
   <div class="heading" *ngIf="!isSearching">
     {{ selectedCategoryName }}
-    <fa-icon size="1x" [icon]="faAngleDown"></fa-icon>
   </div>
 
   <app-input
@@ -14,8 +13,12 @@
 
 
   <div class="operating-container">
-    <app-button [transparent]="true" (click)="toggleSearch()">
+    <app-button [transparent]="true" (click)="toggleSearch()" *ngIf="!isSearching">
       <fa-icon class="search-icon" size="1x" [icon]="faSearch"></fa-icon>
+    </app-button>
+
+    <app-button [transparent]="true" (click)="toggleSearch()" *ngIf="isSearching">
+      <fa-icon class="times-icon" size="1x" [icon]="faTimes"></fa-icon>
     </app-button>
 
     <app-button [transparent]="true" *ngIf="!isSearching">

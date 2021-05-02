@@ -3,9 +3,9 @@ import { Store } from '@ngrx/store';
 import { StoreType, FeedSource, CategoryItemProps } from '../../typing/feed';
 import { map } from 'rxjs/operators';
 import { GetSources } from '../state/feed.actions';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { DefaultTagsComponent } from './default-tags/default-tags.component';
-import { merge, combineLatest } from 'rxjs';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-aside',

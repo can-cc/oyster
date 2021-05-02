@@ -4,11 +4,12 @@ import { Feed, FeedMark, FeedSource } from '../../typing/feed';
 export enum ActionTypes {
   ADD_SOURCE = '[Feed Component] Add feed source',
   ADD_SOURCE_SUCCESS = '[Feed Component] Add feed source success',
-  CLEAN_FEEDS = '[Feed Component] Clean all feeds',
   GET_FEEDS = '[Source Component] Get feeds',
   GET_FEEDS_SUCCESS = '[Source Component] Get feeds success',
+  CLEAN_FEEDS = '[Feed Component] Clean all feeds',
 
-  SET_SEARCH = '[Set Search] Set Search Str',
+  SET_SEARCH = '[Feed Search] Set Search Str',
+  CLEAN_SEARCH = '[Search Search] clean searching str',
 
   GET_SOURCES = '[Source Component] Get sources',
   GET_SOURCES_SUCCESS = '[Source Component] Get sources success',
@@ -19,7 +20,7 @@ export enum ActionTypes {
   MARK_FEED_FAVORITE_SUCCESS = '[Feed Component] Mark feed favorite success',
   REMOVE_FEED_MARK = '[Feed Component] Remove feed mark',
   REMOVE_FEED_MARK_SUCCESS = '[Feed Component] Remove feed mark success',
-  Reset = '[Counter Component] Reset'
+  Reset = '[Feed Reducer] Reset'
 }
 
 export class CleanFeeds implements Action {
@@ -31,7 +32,9 @@ export class CleanFeeds implements Action {
 export class GetFeeds implements Action {
   readonly type = ActionTypes.GET_FEEDS;
 
-  constructor(public payload: { offset: number; limit: number; category: string, search: string }) {}
+  constructor(
+    public payload: { offset: number; limit: number; category: string; search: string }
+  ) {}
 }
 
 export class GetFeedsSuccess implements Action {
@@ -103,6 +106,12 @@ export class SetSearchStr implements Action {
   readonly type = ActionTypes.SET_SEARCH;
 
   constructor(public payload: { searchStr: string }) {}
+}
+
+export class CleanSearch implements Action {
+  readonly type = ActionTypes.CLEAN_SEARCH;
+
+  constructor() {}
 }
 
 export class Reset implements Action {

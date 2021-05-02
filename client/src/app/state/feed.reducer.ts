@@ -1,18 +1,20 @@
 import {
   ActionTypes,
   CleanFeeds,
+  CleanSearch,
   GetFeedsSuccess,
   GetSourcesSuccess,
   MarkFeedFavoriteSuccess,
-  RemoveFeedMarkSuccess, SetSearchStr
+  RemoveFeedMarkSuccess,
+  SetSearchStr
 } from './feed.actions';
-import {Feed} from '../../typing/feed';
+import { Feed } from '../../typing/feed';
 
 export const initialState = {
   feedMap: {},
   feedIds: [],
   feedSources: [],
-  searchStr: '',
+  searchStr: ''
 };
 
 export function feedReducer(
@@ -24,6 +26,7 @@ export function feedReducer(
     | GetSourcesSuccess
     | SetSearchStr
     | CleanFeeds
+    | CleanSearch
 ) {
   switch (action.type) {
     case ActionTypes.GET_SOURCES_SUCCESS:
@@ -75,6 +78,12 @@ export function feedReducer(
       return {
         ...state,
         searchStr: action.payload.searchStr
+      };
+
+    case ActionTypes.CLEAN_SEARCH:
+      return {
+        ...state,
+        searchStr: ''
       };
 
     case ActionTypes.CLEAN_FEEDS:
