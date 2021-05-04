@@ -17,8 +17,8 @@ class FeedSourceService {
   public async refreshFeedSource(): Promise<void> {
     const sources: FeedSource[] = await getRepository(FeedSource).find({
       where: {
-        isDeleted: 'FALSE'
-      }
+        isDeleted: 'FALSE',
+      },
     });
     this.source$.next(sources);
   }
@@ -51,7 +51,7 @@ class FeedSourceService {
   public async removeFeedSource({ id }): Promise<string> {
     try {
       await getRepository(FeedSource).update(id, {
-        isDeleted: true
+        isDeleted: true,
       });
       await this.refreshFeedSource();
       return 'OK';

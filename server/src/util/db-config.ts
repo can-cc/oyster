@@ -15,7 +15,7 @@ export function getPostgresConfig(): any {
     cli: {
       entitiesDir: 'src/entity',
       migrationsDir: 'src/migration',
-      subscribersDir: 'src/subscriber'
-    }
+      subscribersDir: 'src/subscriber',
+    },
   };
 }

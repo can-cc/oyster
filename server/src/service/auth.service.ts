@@ -9,7 +9,7 @@ export class AuthService {
     return jwt.sign(
       {
         data,
-        exp: Math.floor(Date.now() / 1000) + configure.getConfig('JWT_EXP')
+        exp: Math.floor(Date.now() / 1000) + configure.getConfig('JWT_EXP'),
       },
       configure.getConfig('SECRET_KEY')
     );

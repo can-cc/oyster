@@ -18,11 +18,11 @@ function generateElasticsearchIfConfigured() {
         requestTimeout: 6000,
         auth: {
           username: configure.getConfig('elasticsearch_auth_username'),
-          password: configure.getConfig('elasticsearch_auth_password')
-        }
+          password: configure.getConfig('elasticsearch_auth_password'),
+        },
       },
-      buffering: true
-    })
+      buffering: true,
+    }),
   ];
 }
 
@@ -37,8 +37,8 @@ export const logger = winston.createLogger({
       zippedArchive: true,
       format: winston.format.json(),
       maxSize: '20m',
-      maxFiles: '14d'
+      maxFiles: '14d',
     }),
-    ...generateElasticsearchIfConfigured()
-  ]
+    ...generateElasticsearchIfConfigured(),
+  ],
 });

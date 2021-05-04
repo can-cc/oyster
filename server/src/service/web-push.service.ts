@@ -29,7 +29,7 @@ class WebPushService {
   public async checkHasVapidKey(): Promise<boolean> {
     return await getRepository(VapidKey)
       .count()
-      .then(count => count > 0);
+      .then((count) => count > 0);
   }
 
   public async saveVapidKey(newVapidKeys: VapidKeys): Promise<void> {
@@ -50,13 +50,13 @@ class WebPushService {
           const stringifyText: string = htmlToText.fromString(feed.content, {
             ignoreImage: true,
             ignoreHref: true,
-            wordwrap: false
+            wordwrap: false,
           });
           const content = stringifyText.length > 200 ? stringifyText.slice(0, 200) + '...' : stringifyText;
           return this.sendNotification(subscriber, {
             title: feed.title,
             content,
-            link: feed.originHref
+            link: feed.originHref,
           });
         }
       )
@@ -66,7 +66,7 @@ class WebPushService {
   // https://developers.google.com/web/fundamentals/push-notifications/sending-messages-with-web-push-libraries
   public sendNotification(subscriber: WebpushSubscriber, params: WebPushNotification): Promise<void> {
     const subscription: WebPushSubscription = JSON.parse(subscriber.serialization);
-    return webpush.sendNotification(subscription, JSON.stringify(params)).catch(error => {
+    return webpush.sendNotification(subscription, JSON.stringify(params)).catch((error) => {
       console.error('Push to FCM error');
       console.error(error);
       if (error.statusCode === 410) {

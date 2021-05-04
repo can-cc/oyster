@@ -6,14 +6,13 @@ import { Feed } from '../entity/feed';
 import feedService from './feed.service';
 
 class FeedMarkerService {
-
   public async markFeedFavorite({ userId, feedId }): Promise<FeedMark> {
     const user: User = await authService.findUser(userId);
     const feed: Feed = await feedService.findFeed(feedId);
     const mark = new FeedMark({
       user,
       feed,
-      type: 'FAVORITE'
+      type: 'FAVORITE',
     });
     return await getRepository(FeedMark).save(mark);
   }
@@ -23,7 +22,7 @@ class FeedMarkerService {
       where: {
         feedId: feedId,
         userId,
-        type: 'FAVORITE'
+        type: 'FAVORITE',
       },
     });
     await getRepository(FeedMark).remove(mark);

@@ -8,7 +8,7 @@ import {
   JoinColumn,
   OneToMany,
   Index,
-  PrimaryColumn
+  PrimaryColumn,
 } from 'typeorm';
 import { FeedData } from '../typing/feed';
 import { FeedSource } from './feed-source';
@@ -49,7 +49,7 @@ export class Feed {
   @UpdateDateColumn()
   public updatedAt: Date;
 
-  @OneToMany(() => FeedMark, mark => mark.feed)
+  @OneToMany(() => FeedMark, (mark) => mark.feed)
   public marks: FeedMark[];
 
   constructor(feedData: FeedData) {

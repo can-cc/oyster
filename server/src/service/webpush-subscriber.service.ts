@@ -7,7 +7,7 @@ class WebpushSubscriberService {
   private subscribers$: Subject<WebpushSubscriber[]> = new Subject();
 
   constructor() {
-    this.subscribers$.subscribe(subsribers => (this.subscribers = subsribers));
+    this.subscribers$.subscribe((subsribers) => (this.subscribers = subsribers));
   }
 
   public async saveWebpushSubscriber(subscription: WebPushSubscription, useragent: string): Promise<void> {

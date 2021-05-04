@@ -19,7 +19,7 @@ class FeedFetcher {
   constructor() {
     const client = redis.createClient({
       host: configure.getConfig('REDIS_HOST'),
-      port: configure.getConfig('REDIS_POST')
+      port: configure.getConfig('REDIS_POST'),
     });
     bloom.connect(client);
     this.filter = new bloom.BloomFilter({ key: 'feed-exist' });
@@ -29,7 +29,7 @@ class FeedFetcher {
     await feedSourceService.refreshFeedSource();
     let sources: FeedSource[];
     const feedSources$: Observable<FeedSource[]> = feedSourceService.getFeedSources$();
-    feedSources$.subscribe(s => {
+    feedSources$.subscribe((s) => {
       sources = s;
     });
 
@@ -38,7 +38,7 @@ class FeedFetcher {
         sources.map(async (source: FeedSource) => {
           logger.info(`fetch source`, {
             sourceName: source.name,
-            time: new Date()
+            time: new Date(),
           });
           logger.info(`fetching source [url] = ${source.url}`);
           const feedRawData = await (await fetch(source.url)).text();
@@ -47,9 +47,9 @@ class FeedFetcher {
       );
 
       fetchResults.forEach(async (fetchResult: FeedResult) => {
-        const feeds: FeedData[] = (await parseFeedData(fetchResult.feedRawData)).map(f => ({
+        const feeds: FeedData[] = (await parseFeedData(fetchResult.feedRawData)).map((f) => ({
           ...f,
-          source: fetchResult.source
+          source: fetchResult.source,
         }));
         feeds.forEach(async (feedData: FeedData) => {
           const feed: Feed = new Feed(feedData);
@@ -61,7 +61,7 @@ class FeedFetcher {
             id: feed.id,
             title: feed.title,
             sourceName: feedData.source.name,
-            time: new Date()
+            time: new Date(),
           });
         });
       });

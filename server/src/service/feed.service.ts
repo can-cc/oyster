@@ -27,7 +27,7 @@ class FeedService {
   }
 
   private async getAllFeeds({ userId, limit, offset, from, order, search }): Promise<Feed[]> {
-    console.log('search', search)
+    console.log('search', search);
     return await getRepository(Feed)
       .createQueryBuilder('feed')
       .orderBy('"feed"."createdAt"', order.toUpperCase())

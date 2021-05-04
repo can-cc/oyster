@@ -18,7 +18,7 @@ async function createUser(username: string, password: string) {
       () => {
         console.log(`create user ${username}/${password} successful.`);
       },
-      error => {
+      (error) => {
         console.error(error);
       }
     );

@@ -10,7 +10,7 @@ class Configure {
     const configDoc: any = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '../../config/config.yaml'), 'utf8'));
 
     this.config = {
-      ...configDoc
+      ...configDoc,
     };
     this.readCustomConfig();
     this.overrideConfigKeyFromEnv();
@@ -28,7 +28,7 @@ class Configure {
     const customConfigDoc: any = yaml.safeLoad(fs.readFileSync(customConfigPath, 'utf8'));
     this.config = {
       ...this.config,
-      ...customConfigDoc
+      ...customConfigDoc,
     };
   }
 

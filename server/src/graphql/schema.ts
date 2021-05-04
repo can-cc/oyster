@@ -44,6 +44,6 @@ export const graphqlServer = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => ({
-    auth: req.auth
-  })
+    auth: req.auth,
+  }),
 });

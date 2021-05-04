@@ -1,5 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
-import { Feed } from './feed';
+import { Entity, Index, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class FeedSource {
@@ -9,13 +8,14 @@ export class FeedSource {
   @Column()
   public name: string;
 
+  @Index()
   @Column()
   public url: string;
 
   @Column({ nullable: true })
   public logoUrl: string;
 
-  @Column({ type: 'bytea',  nullable: true })
+  @Column({ type: 'bytea', nullable: true })
   public favicon?: any;
 
   @CreateDateColumn()
@@ -25,7 +25,7 @@ export class FeedSource {
   public updatedAt: Date;
 
   @Column({
-    default: false
+    default: false,
   })
   public isDeleted: boolean;
 

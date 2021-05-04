@@ -8,7 +8,7 @@ export function startApmIfConfigured() {
     serviceName: configure.getConfig('apm_service_name'),
     secretToken: configure.getConfig('apm_secret_token'),
     serverUrl: configure.getConfig('apm_server_url'),
-    environment: configure.getConfig('apm_server_environment')
+    environment: configure.getConfig('apm_server_environment'),
   });
   return apm;
 }

@@ -10,15 +10,12 @@ authRouter.post('/login', async (req, res, next) => {
     if (user) {
       const jwtToken = AuthService.signJwt({
         id: user.id,
-        username: user.username
+        username: user.username,
       });
-      return res
-        .header('Authorization', jwtToken)
-        .status(200)
-        .json({
-          id: user.id,
-          username: user.username
-        });
+      return res.header('Authorization', jwtToken).status(200).json({
+        id: user.id,
+        username: user.username,
+      });
     } else {
       return res.status(401).send();
     }

@@ -30,7 +30,7 @@ feedRouter.post('/api/feed/:feedId/favorite', async (req, res, next) => {
   try {
     const feedId: string = req.params.feedId;
     const userId: number = req.auth.id;
-    const feedMark: FeedMark =  await feedMarkerService.markFeedFavorite({ userId, feedId });
+    const feedMark: FeedMark = await feedMarkerService.markFeedFavorite({ userId, feedId });
     res.status(200).send(feedMark);
   } catch (error) {
     next(error);

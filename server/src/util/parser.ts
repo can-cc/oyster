@@ -75,7 +75,7 @@ const checkFeedStandard = (getParsedData: any): 'RSS2' | 'FEED' | 'YAHOO_FEED' |
 
 export async function parseFeedData(rawData: string): Promise<FeedData[]> {
   const parsedObject: any = await new Promise((resolve, reject) => {
-    parseString(rawData, function(err, result) {
+    parseString(rawData, function (err, result) {
       if (err) {
         return reject(rawData);
       }
@@ -87,9 +87,9 @@ export async function parseFeedData(rawData: string): Promise<FeedData[]> {
     case 'RSS2':
       return R.flatten(parseRSS2(parsedObject.rss.channel[0].item, parsedObject));
     case 'YAHOO_FEED':
-      return R.flatten(parseYahaooVersionFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
+      return R.flatten(parseYahaooVersionFeed(parsedObject.feed.entry, parsedObject.feed)).filter((_) => !!_);
     case 'FEED':
-      return R.flatten(parseFeed(parsedObject.feed.entry, parsedObject.feed)).filter(_ => !!_);
+      return R.flatten(parseFeed(parsedObject.feed.entry, parsedObject.feed)).filter((_) => !!_);
     default:
       return [];
   }

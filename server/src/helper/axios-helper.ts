@@ -18,6 +18,6 @@ export function parseProxyConfig(url: string) {
   return {
     host: host,
     port: parseInt(port, 10),
-    protocol: protocol
+    protocol: protocol,
   };
 }

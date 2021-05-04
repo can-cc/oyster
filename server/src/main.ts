@@ -15,9 +15,9 @@ function main() {
   const dbConfig = getPostgresConfig();
 
   createConnection(dbConfig)
-    .then((connection:Connection) => {
+    .then((connection: Connection) => {
       connection.runMigrations();
-      
+
       console.log(colors.yellow(`connect postgres ${dbConfig.host}:5432/${dbConfig.database}`));
       console.log('database connection successful.');
 
@@ -27,7 +27,7 @@ function main() {
 
       setupServer();
     })
-    .catch(error => console.log(error));
+    .catch((error) => console.log(error));
 }
 
 main();

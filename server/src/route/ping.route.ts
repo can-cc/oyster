@@ -12,7 +12,7 @@ pignRouter.post('/api/webpush/ping', async (req, res) => {
     const params = {
       title: 'Pong!',
       content,
-      link: ''
+      link: '',
     };
     await Promise.all(
       webpushSubscriberService.getWebpushSubscribers().map((subscriber: WebpushSubscriber) => {

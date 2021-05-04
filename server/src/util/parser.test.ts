@@ -76,8 +76,12 @@ test('test infoq parser(RSS2)', async () => {
 
   expect(feeds[0].title).toEqual('Apache Tomcat被曝重大漏洞，影响过去13年的所有版本');
   expect(feeds[0].content.length).toEqual(860);
-  expect(feeds[0].originHref).toEqual('https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&utm_medium=article');
-  expect(feeds[0].globalID).toEqual('https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&utm_medium=article');
+  expect(feeds[0].originHref).toEqual(
+    'https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&utm_medium=article'
+  );
+  expect(feeds[0].globalID).toEqual(
+    'https://www.infoq.cn/article/CyeCTLTTqWT2QJkuLEh3?utm_source=rss&utm_medium=article'
+  );
   expect(feeds[0].author).toEqual('万佳');
   expect(feeds[0].publishedDate).toEqual(new Date('2020-03-02T11:55:22.000Z'));
   expect(feeds.length).toEqual(20);
